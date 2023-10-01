@@ -11,7 +11,7 @@ public class DictionaryManagement {
         int wordNumber = Integer.parseInt(scanner.nextLine());
 
         for (int i = 0; i< wordNumber; i++) {
-            System.out.println("Enter the new word: ");
+            System.out.print("Enter the new word: ");
             String wordSource = scanner.nextLine();
             System.out.print("Enter the meaning: ");
             String wordTarget = scanner.nextLine();

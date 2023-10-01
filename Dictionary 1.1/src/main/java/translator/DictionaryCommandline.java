@@ -40,17 +40,14 @@ public class DictionaryCommandline {
     public static void dictionarySearcher(Dictionary wordList) {
         System.out.print("Enter the word you want to search: ");
         String searchWord = scanner.nextLine().trim().toLowerCase();
-
-        List<String> listWords = new ArrayList<String>();
-        System.out.println("List words starting with \"" + searchWord + "\" are: ");
-        for (Map.Entry<String, String> e : wordList.getWords().entrySet()) {
-            if (e.getKey().length() >= searchWord.length() && e.getKey().startsWith(searchWord)) {
-                listWords.add(e.getKey());
+        boolean found = false;
+        for (Map.Entry<String, String> entry : wordList.getWords().entrySet()) {
+            if (entry.getKey().startsWith(searchWord)){
+                System.out.println(entry.getKey() + " means: " + entry.getValue() );
+                found = true;
             }
         }
-        if (!listWords.isEmpty()) {
-            System.out.println(String.join(", ", listWords));
-        } else {
+        if (!found) {
             System.out.println("There are no words that start with \"" + searchWord + "\" in the dictionary!");
         }
     }
@@ -59,15 +56,17 @@ public class DictionaryCommandline {
 
     public static int displayMenu() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("\n\t\t\tDictionary CommandLine");
-        System.out.println("1. Show all words in dictionary");
-        System.out.println("2. Sync with dictionary data file");
-        System.out.println("3. Translate");
-        System.out.println("4. Change meaning of a word");
-        System.out.println("5. Remove a word from dictionary");
-        System.out.println("6. Add new word to dictionary");
-        System.out.println("7. Export dictionary to data file");
-        System.out.println("8. Quit");
+        System.out.println("\n\t\t\tWelcome to My Application");
+        System.out.println("0. Exit");
+        System.out.println("1. Add new word to dictionary");
+        System.out.println("2. Remove a word from dictionary");
+        System.out.println("3. Change meaning of a word");
+        System.out.println("4. Display all words in dictionary");
+        System.out.println("5. Lookup a word");
+        System.out.println("6. Search for words");
+        System.out.println("7. Game");
+        System.out.println("8. Import from file");
+        System.out.println("9. Export to file");
         System.out.println("Choose an option: ");
         if (sc.hasNextInt()) {
             return sc.nextInt();
@@ -85,38 +84,41 @@ public class DictionaryCommandline {
         while (!out) {
             int option = displayMenu();
             switch (option) {
+                case 0:
+                    out = true;
+                    break;
                 case 1:
-                    showAllWords(wordList);
+                    insertFromCommandLine(wordList);
                     break;
                 case 2:
-                    DictionaryManagement.insertFromFile(wordList);
-                    System.out.println("Sync successfully!");
-                    break;
-                case 3:
-                    DictionaryManagement.dictionaryLookup(wordList);
-                    break;
-                case 4:
-                    dictionaryEdit(wordList);
-                    break;
-                case 5:
                     dictionaryRemove(wordList);
                     break;
+                case 3:
+                    dictionaryEdit(wordList);
+                    break;
+                case 4:
+                    showAllWords(wordList);
+                    break;
+                case 5:
+                    dictionaryLookup(wordList);
+                    break;
                 case 6:
-                    DictionaryManagement.insertFromCommandLine(wordList);
+                    dictionarySearcher(wordList);
                     break;
                 case 7:
+
+                case 8:
+                    insertFromFile(wordList);
+                    System.out.println("Dictionary imported successfully!");
+                    break;
+                case 9:
                     dictionaryExportToFile(wordList);
                     System.out.println("Dictionary exported successfully!");
-                    break;
-                case 8:
-                    out = true;
                     break;
                 default:
                     System.out.println("Invalid option. Please choose a valid option.");
             }
         }
-
         System.out.println("Bye bye!");
     }
-
 }
