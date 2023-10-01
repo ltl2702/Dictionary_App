@@ -1,24 +1,21 @@
 package translator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Represents a word and its explanation in a translation dictionary.
  */
 public class Word {
 
-    private String word_explain;
+    private String word_source;
     private String word_target;
 
     /**
      * Constructs a Word object with the specified explanation and target word.
      *
-     * @param word_explain The explanation of the word.
+     * @param word_source The explanation of the word.
      * @param word_target  The target word to be translated.
      */
-    public Word(String word_explain, String word_target) {
-        this.word_explain = word_explain.trim().toLowerCase();
+    public Word(String word_source, String word_target) {
+        this.word_source = word_source.trim().toLowerCase();
         this.word_target = word_target.trim().toLowerCase();
     }
 
@@ -26,7 +23,7 @@ public class Word {
      * Constructs a default Word object with empty explanation and target word.
      */
     public Word() {
-        this.word_explain = "";
+        this.word_source = "";
         this.word_target = "";
     }
 
@@ -35,17 +32,17 @@ public class Word {
      *
      * @return The explanation of the word.
      */
-    public String getWord_explain() {
-        return word_explain;
+    public String getWord_source() {
+        return word_source;
     }
 
     /**
      * Sets the explanation of the word.
      *
-     * @param word_explain The explanation of the word.
+     * @param word_source The explanation of the word.
      */
-    public void setWord_explain(String word_explain) {
-        this.word_explain = word_explain;
+    public void setWord_source(String word_source) {
+        this.word_source = word_source;
     }
 
     /**
