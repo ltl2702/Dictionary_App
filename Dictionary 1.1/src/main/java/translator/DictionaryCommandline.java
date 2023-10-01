@@ -34,15 +34,46 @@ public class DictionaryCommandline {
 
     public static void dictionaryBasic(Dictionary wordList) {
         System.out.println("\n\t\t\tWelcome to Basic Dictionary");
-        insertFromCommandLine(wordList);
-        showAllWords(wordList);
+        boolean out = false;
+        while (!out) {
+            System.out.println("0. Exit");
+            System.out.println("1. Add new word to dictionary");
+            System.out.println("2. Display all words in dictionary");
+            Scanner sc = new Scanner(System.in);
+            int option = sc.nextInt();
+            switch (option) {
+            case 0:
+                System.out.println("Exiting the application");
+                return;
+            case 1:
+                insertFromCommandLine(wordList);
+                break;
+            case 2:
+                showAllWords(wordList);
+                break;
+            default:
+                System.out.println("Invalid option. Please choose a valid option.");
+                break;
+            }
+        }
     }
 
     public static void dictionaryAdvanced(Dictionary wordList) throws IOException {
         System.out.println("\n\t\t\tWelcome to Advanced Dictionary");
         boolean out = false;
         while (!out) {
-            int option = displayMenu();
+            System.out.println("0. Exit");
+            System.out.println("1. Add new word to dictionary");
+            System.out.println("2. Remove a word from dictionary");
+            System.out.println("3. Change meaning of a word");
+            System.out.println("4. Display all words in dictionary");
+            System.out.println("5. Lookup a word");
+            System.out.println("6. Search for words");
+            System.out.println("7. Game");
+            System.out.println("8. Import from file");
+            System.out.println("9. Export to file");
+            System.out.println("Choose an option: ");
+            int option = scanner.nextInt();
             switch (option) {
                 case 0:
                     out = true;
@@ -78,29 +109,8 @@ public class DictionaryCommandline {
                     break;
                 default:
                     System.out.println("Invalid option. Please choose a valid option.");
+                    break;
             }
-        }
-    }
-
-    public static int displayMenu() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("0. Exit");
-        System.out.println("1. Add new word to dictionary");
-        System.out.println("2. Remove a word from dictionary");
-        System.out.println("3. Change meaning of a word");
-        System.out.println("4. Display all words in dictionary");
-        System.out.println("5. Lookup a word");
-        System.out.println("6. Search for words");
-        System.out.println("7. Game");
-        System.out.println("8. Import from file");
-        System.out.println("9. Export to file");
-        System.out.println("Choose an option: ");
-
-        if (sc.hasNextInt()) {
-            return sc.nextInt();
-        } else {
-            sc.next();
-            return -1;
         }
     }
 }

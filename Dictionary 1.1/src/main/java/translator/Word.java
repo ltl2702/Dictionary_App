@@ -26,7 +26,7 @@ public class Word {
     public String getWord_target() {
         return word_target;
     }
-    
+
     public void setWord_target(String word_target) {
         this.word_target = word_target;
     }
