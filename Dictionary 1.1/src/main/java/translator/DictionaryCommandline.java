@@ -1,7 +1,5 @@
 package translator;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -17,33 +15,13 @@ public class DictionaryCommandline {
         }
     }
 
-
-
-    public static void dictionaryBasic(Dictionary wordList) {
-        DictionaryManagement.insertFromCommandLine(wordList);
-        showAllWords(wordList);
-    }
-
-    public static void dictionaryAdvanced(Dictionary wordList) throws IOException {
-        DictionaryManagement.insertFromFile(wordList);
-        showAllWords(wordList);
-        DictionaryManagement.dictionaryLookup(wordList);
-        dictionarySearcher(wordList);
-        dictionaryExportToFile(wordList);
-        dictionaryEdit(wordList);
-        showAllWords(wordList);
-        dictionaryRemove(wordList);
-        showAllWords(wordList);
-    }
-
-
     public static void dictionarySearcher(Dictionary wordList) {
         System.out.print("Enter the word you want to search: ");
         String searchWord = scanner.nextLine().trim().toLowerCase();
         boolean found = false;
         for (Map.Entry<String, String> entry : wordList.getWords().entrySet()) {
-            if (entry.getKey().startsWith(searchWord)){
-                System.out.println(entry.getKey() + " means: " + entry.getValue() );
+            if (entry.getKey().startsWith(searchWord)) {
+                System.out.println(entry.getKey() + " means: " + entry.getValue());
                 found = true;
             }
         }
@@ -52,35 +30,15 @@ public class DictionaryCommandline {
         }
     }
 
-
-
-    public static int displayMenu() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\n\t\t\tWelcome to My Application");
-        System.out.println("0. Exit");
-        System.out.println("1. Add new word to dictionary");
-        System.out.println("2. Remove a word from dictionary");
-        System.out.println("3. Change meaning of a word");
-        System.out.println("4. Display all words in dictionary");
-        System.out.println("5. Lookup a word");
-        System.out.println("6. Search for words");
-        System.out.println("7. Game");
-        System.out.println("8. Import from file");
-        System.out.println("9. Export to file");
-        System.out.println("Choose an option: ");
-        if (sc.hasNextInt()) {
-            return sc.nextInt();
-        } else {
-            sc.next();
-            return -1;
-        }
+    public static void dictionaryBasic() {
+        Dictionary wordList = new Dictionary();
+        insertFromCommandLine(wordList);
+        showAllWords(wordList);
     }
 
-    // Hàm main để chạy ứng dụng
-    public static void main(String[] args) throws IOException {
+    public static void dictionaryAdvanced() throws IOException {
         Dictionary wordList = new Dictionary();
         boolean out = false;
-
         while (!out) {
             int option = displayMenu();
             switch (option) {
@@ -118,6 +76,54 @@ public class DictionaryCommandline {
                 default:
                     System.out.println("Invalid option. Please choose a valid option.");
             }
+        }
+        System.out.println("Bye bye!");
+    }
+
+    public static int displayMenu() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\n\t\t\tWelcome to My Application");
+        System.out.println("0. Exit");
+        System.out.println("1. Add new word to dictionary");
+        System.out.println("2. Remove a word from dictionary");
+        System.out.println("3. Change meaning of a word");
+        System.out.println("4. Display all words in dictionary");
+        System.out.println("5. Lookup a word");
+        System.out.println("6. Search for words");
+        System.out.println("7. Game");
+        System.out.println("8. Import from file");
+        System.out.println("9. Export to file");
+
+        if (sc.hasNextInt()) {
+            return sc.nextInt();
+        } else {
+            sc.next();
+            return -1;
+        }
+    }
+
+    // Hàm main để chạy ứng dụng
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\n\t\t\tWelcome to My Application");
+        System.out.println("0. Exit");
+        System.out.println("1. Basic Dictionary");
+        System.out.println("2. Advanced Dictionary");
+        System.out.println("Select mode:");
+
+        int modeChoice = scanner.nextInt();
+        switch (modeChoice) {
+            case 0:
+                System.out.println("Exiting the application.");
+                break;
+            case 1:
+                dictionaryBasic();
+                break;
+            case 2:
+                dictionaryAdvanced();
+                break;
+            default:
+                System.out.println("Invalid mode choice. Please select a valid option.");
         }
         System.out.println("Bye bye!");
     }
