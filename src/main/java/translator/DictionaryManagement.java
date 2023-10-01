@@ -1,4 +1,4 @@
-package translator.cli;
+package translator;
 
 import java.io.*;
 import java.util.Map;
