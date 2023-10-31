@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7a8c904-5a64-4ff8-8027-42474cf81ccb" name="Changes" comment="thêm javadoc" />
+    <list default="true" id="e7a8c904-5a64-4ff8-8027-42474cf81ccb" name="Changes" comment="thêm javadoc">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.0/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/translator/DictionaryCommandline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/translator/DictionaryCommandline.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +51,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Downloads/Game-Java-main/Game-Java-main/Game&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/IdeaProjects/Dictionary/BTL_OOP/Dictionary 1.1&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -67,6 +73,9 @@
       <workItem from="1695966307112" duration="638000" />
       <workItem from="1696137997008" duration="75000" />
       <workItem from="1696141485940" duration="1749000" />
+      <workItem from="1697530683646" duration="662000" />
+      <workItem from="1698049991900" duration="593000" />
+      <workItem from="1698084759324" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="thêm javadoc">
       <option name="closed" value="true" />

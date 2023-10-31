@@ -73,7 +73,8 @@ public class DictionaryCommandline {
             System.out.println("8. Import from file");
             System.out.println("9. Export to file");
             System.out.println("Choose an option: ");
-            int option = scanner.nextInt();
+            Scanner sc = new Scanner(System.in);
+            int option = sc.nextInt();
             switch (option) {
                 case 0:
                     out = true;
