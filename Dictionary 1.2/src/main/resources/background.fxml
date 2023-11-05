@@ -8,7 +8,7 @@
     <children>
         <ImageView fitHeight="600.0" fitWidth="900.0" layoutX="-5.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../resources/image/background.png" />
+                <Image url="@image/background.png" />
             </image>
         </ImageView>
     </children>

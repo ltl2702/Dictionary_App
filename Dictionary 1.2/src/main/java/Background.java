@@ -14,11 +14,11 @@ public class Background extends Application{
     @Override
     public void start(Stage primaryStage) {
         try{
-            Parent root = FXMLLoader.load(this.getClass().getResource("background.fxml"));
+            Parent root = FXMLLoader.load(this.getClass().getResource("../resources/background.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
-        }catch (Exception e){
+        } catch (Exception e){
             e.printStackTrace();
         }
     }

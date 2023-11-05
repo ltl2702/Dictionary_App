@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.HTMLEditor?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="second-color" stylesheets="@../style/search.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.SearchController">
+    <children>
+        <AnchorPane layoutX="4.0" layoutY="6.0" prefHeight="600.0" prefWidth="791.0" AnchorPane.bottomAnchor="6.7999999999999545" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.7999999999999545" AnchorPane.topAnchor="6.0">
+            <children>
+                <Button layoutX="14.0" layoutY="154.0" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/add1.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+                <TextField fx:id="searchField" layoutX="14.0" layoutY="55.0" onKeyReleased="#searchFieldAction" prefHeight="43.0" prefWidth="274.0" promptText="Search">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+                <Button layoutX="11.0" layoutY="304.0" mnemonicParsing="false">
+               <graphic>
+                      <ImageView fitHeight="46.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/delete1.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+                <Button layoutX="11.0" layoutY="226.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="54.0">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/edit1.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Icon content="EMPTY" layoutX="25.0" layoutY="19.0" prefHeight="58.0" prefWidth="54.0" />
+            <Button layoutX="288.0" layoutY="55.0" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/search.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="11.0" layoutY="465.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="54.0">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/game.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="13.0" layoutY="385.0" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/translate.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <ImageView fitHeight="65.0" fitWidth="50.0" layoutX="747.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icon/icon.png" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="342.4" layoutY="54.4" prefHeight="525.0" prefWidth="458.0" style="-fx-background-radius: 3;" styleClass="first-color" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="54.0">
+            <children>
+                <HBox layoutX="25.0" layoutY="17.0" prefHeight="40.0" prefWidth="390.0">
+                    <children>
+                        <Label fx:id="headText" prefHeight="51.0" prefWidth="398.0" styleClass="title-meaning" text="Definition" textFill="#131313" wrapText="true">
+                            <font>
+                                <Font size="32.0" />
+                            </font>
+                     <graphic>
+                        <ImageView fitHeight="51.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/defi.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox accessibleRole="BUTTON" alignment="CENTER" layoutX="259.0" layoutY="40.0" prefHeight="46.0" prefWidth="54.0" AnchorPane.rightAnchor="144.20000000000005" AnchorPane.topAnchor="40.0">
+                    <children>
+                        <Label styleClass="text-lang-first" text="UK " textFill="#4fb18b">
+                            <font>
+                                <Font name="Agency FB Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="speaker1" mnemonicParsing="false" onAction="#handleClickSpeaker1" prefHeight="30.0" prefWidth="27.0" styleClass="button-speak" textFill="#8e9297" textOverrun="WORD_ELLIPSIS">
+                            <font>
+                                <Font size="7.0" />
+                            </font>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/volumn1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+                <AnchorPane layoutX="28.0" layoutY="99.2" prefHeight="385.0" prefWidth="414.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="99.0">
+                    <children>
+                        <WebView fx:id="definitionView" layoutX="-28.0" layoutY="-8.0" prefHeight="393.0" prefWidth="402.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-28.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-8.0" />
+                        <HTMLEditor fx:id="editDefinition" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="-28.0" prefHeight="415.0" prefWidth="447.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-28.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    </children>
+                </AnchorPane>
+                <HBox alignment="CENTER" layoutX="343.0" layoutY="34.0" prefHeight="58.0" prefWidth="54.0">
+                    <children>
+                        <Label prefHeight="16.0" prefWidth="18.0" styleClass="text-lang-second" text="US" textFill="#8f0ecc">
+                            <font>
+                                <Font name="Agency FB Bold" size="14.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="speaker2" mnemonicParsing="false" onAction="#handleClickSpeaker2" prefHeight="30.0" prefWidth="28.0" styleClass="button-speak" textFill="#8e9297" textOverrun="WORD_ELLIPSIS">
+                            <font>
+                                <Font size="7.0" />
+                            </font>
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/volumn2.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+        <VBox layoutX="84.0" layoutY="139.2" prefHeight="446.0" prefWidth="235.0" style="-fx-background-radius: 3;" styleClass="third-color" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="139.0" />
+    </children>
+</AnchorPane>
