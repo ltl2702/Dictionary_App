@@ -1,4 +1,7 @@
-package translator;
+package main.java;
+
+import main.java.Dictionary;
+import main.java.Word;
 
 import java.io.*;
 import java.util.Map;
@@ -6,7 +9,7 @@ import java.util.Scanner;
 
 public class DictionaryManagement {
     public static final Scanner scanner = new Scanner(System.in);
-    public static void insertFromCommandLine(Dictionary wordList) {
+    public static void insertFromCommandLine(main.java.Dictionary wordList) {
         System.out.print("How many words do you want to add to the dictionary? ");
         int wordNumber = Integer.parseInt(scanner.nextLine());
 
@@ -15,17 +18,17 @@ public class DictionaryManagement {
             String wordSource = scanner.nextLine();
             System.out.print("Enter the meaning: ");
             String wordTarget = scanner.nextLine();
-            Word newWord = new Word(wordSource, wordTarget);
+            main.java.Word newWord = new main.java.Word(wordSource, wordTarget);
             wordList.insert(newWord);
         }
         System.out.println();
     }
 
-    public static void insertFromFile(Dictionary wordList) throws FileNotFoundException {
+    public static void insertFromFile(main.java.Dictionary wordList) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File("src/main/resources/dictionaries.txt"));
         scanner.useDelimiter("\t");
         while (scanner.hasNext()) {
-            Word word = new Word();
+            main.java.Word word = new Word();
             word.setWord_source(scanner.next());
             word.setWord_target((scanner.nextLine()).trim());
             wordList.insert(word);
@@ -33,7 +36,7 @@ public class DictionaryManagement {
         scanner.close();
     }
 
-    public static void dictionaryLookup(Dictionary wordList) {
+    public static void dictionaryLookup(main.java.Dictionary wordList) {
         System.out.print("Enter the word to translate: ");
         String findWord = scanner.nextLine().trim().toLowerCase();
 
@@ -49,7 +52,7 @@ public class DictionaryManagement {
     }
 
 
-    public static void dictionaryEdit(Dictionary dict) {
+    public static void dictionaryEdit(main.java.Dictionary dict) {
         System.out.print("Enter the word in the dictionary to edit: ");
         String editWord = scanner.nextLine().trim().toLowerCase();
 
@@ -63,7 +66,7 @@ public class DictionaryManagement {
         }
     }
 
-    public static void dictionaryRemove(Dictionary wordList) {
+    public static void dictionaryRemove(main.java.Dictionary wordList) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the word to remove from the dictionary: ");
         String removeWord = scanner.nextLine().trim().toLowerCase();

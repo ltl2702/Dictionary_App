@@ -1,4 +1,4 @@
-package translator;
+package cmd;
 import java.io.IOException;
 import java.util.Map;
 

@@ -1,14 +1,14 @@
-package translator;
+package main.java;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-import static translator.DictionaryCommandline.dictionaryAdvanced;
-import static translator.DictionaryCommandline.dictionaryBasic;
+import static main.java.DictionaryCommandline.dictionaryAdvanced;
+import static main.java.DictionaryCommandline.dictionaryBasic;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Dictionary wordList = new Dictionary();
+        main.java.Dictionary wordList = new Dictionary();
         boolean out = false;
         Scanner scanner = new Scanner(System.in);
 

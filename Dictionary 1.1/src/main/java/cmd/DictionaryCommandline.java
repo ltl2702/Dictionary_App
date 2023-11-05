@@ -1,10 +1,10 @@
-package translator;
+package cmd;
 
 import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
-import static translator.DictionaryManagement.*;
+import static cmd.DictionaryManagement.*;
 
 public class DictionaryCommandline {
 

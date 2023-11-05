@@ -1,4 +1,4 @@
-package translator;
+package main.java;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class DictionaryManagement {
             String wordSource = scanner.nextLine();
             System.out.print("Enter the meaning: ");
             String wordTarget = scanner.nextLine();
-            Word newWord = new Word(wordSource, wordTarget);
+            main.java.Word newWord = new Word(wordSource, wordTarget);
             wordList.insert(newWord);
         }
         System.out.println();

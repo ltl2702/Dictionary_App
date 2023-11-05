@@ -1,4 +1,4 @@
-package translator;
+package main.java;
 
 import java.util.TreeMap;
 

@@ -1,4 +1,4 @@
-package translator;
+package cmd;
 
 public class Word {
 

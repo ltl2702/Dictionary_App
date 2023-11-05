@@ -1,4 +1,5 @@
-package translator;
+package main.java;
+
 public class Word {
 
     private String word_source;
