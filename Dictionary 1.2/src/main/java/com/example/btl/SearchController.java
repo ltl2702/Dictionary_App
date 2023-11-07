@@ -1,4 +1,4 @@
-package user;
+package com.example.btl;
 
 import javafx.scene.input.KeyEvent;
 

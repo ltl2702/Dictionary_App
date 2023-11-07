@@ -1,4 +1,4 @@
-package user;
+package com.example.btl;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

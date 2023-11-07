@@ -1,4 +1,4 @@
-package app;
+package com.example.btl;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;

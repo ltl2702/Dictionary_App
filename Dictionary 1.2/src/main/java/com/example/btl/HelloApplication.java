@@ -1,13 +1,14 @@
-package app;
+package com.example.btl;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class HelloApp extends Application {
+public class HelloApplication extends Application {
 
     public Stage window;
 
