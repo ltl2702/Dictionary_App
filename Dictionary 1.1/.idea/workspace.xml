@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7a8c904-5a64-4ff8-8027-42474cf81ccb" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dictionary 1.2/src/main/resources/css/navigation.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Dictionary 1.0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.0/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.0/src/main/java/Dictionary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.0/src/main/java/DictionaryCommandline.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.0/src/main/java/DictionaryManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.0/src/main/java/Word.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Dictionary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DictionaryCommandline.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DictionaryManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Word.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +62,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/PC/IdeaProjects/Dictionary/BTL_OOP/Dictionary 1.1",
+    "last_opened_file_path": "C:/Users/PC/Downloads/BTL_OOP-master/BTL_OOP-master/Dictionary 1.1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
