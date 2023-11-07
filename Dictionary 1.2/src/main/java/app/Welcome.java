@@ -1,4 +1,4 @@
-package com.example.btl;
+package app;
 
 
 import javafx.event.ActionEvent;
@@ -14,6 +14,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import user.Signup;
+import user.UserInfo;
 
 import java.io.IOException;
 import java.sql.*;

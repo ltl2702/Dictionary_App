@@ -7,6 +7,6 @@ module com.example.btl {
     //requires javafx.sql;
     requires mysql.connector.j;
 
-    opens com.example.btl to javafx.fxml;
-    exports com.example.btl;
+    opens app to javafx.fxml;
+    exports app;
 }
