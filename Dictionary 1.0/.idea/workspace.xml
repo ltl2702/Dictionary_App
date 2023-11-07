@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7a8c904-5a64-4ff8-8027-42474cf81ccb" name="Changes" comment="version 1">
+      <change afterPath="$PROJECT_DIR$/../Dictionary 1.1/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dictionary 1.2/src/main/resources/css/navigation.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.1/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.1/src/main/java/translator/DictionaryCommandline.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.1/src/main/java/translator/DictionaryCommandline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.1/src/main/java/Dictionary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.1/src/main/java/DictionaryCommandline.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.1/src/main/java/DictionaryManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.1/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.1/src/main/java/Word.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +83,7 @@
       <workItem from="1696141485940" duration="10993000" />
       <workItem from="1696153392296" duration="567000" />
       <workItem from="1697531755407" duration="635000" />
+      <workItem from="1699341577156" duration="49000" />
     </task>
     <task id="LOCAL-00001" summary="thêm javadoc">
       <option name="closed" value="true" />

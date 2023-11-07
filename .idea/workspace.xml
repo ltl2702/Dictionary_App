@@ -5,35 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7a8c904-5a64-4ff8-8027-42474cf81ccb" name="Changes" comment="thêm javadoc">
-      <change beforePath="$PROJECT_DIR$/.idea/BTL_OOP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BTL_OOP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/css/navigation.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.0/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.0/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.0/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.0/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/src/main/java/translator/Dictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.0/src/main/java/Dictionary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/src/main/java/translator/DictionaryCommandline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.0/src/main/java/DictionaryCommandline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/src/main/java/translator/DictionaryManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.0/src/main/java/DictionaryManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/src/main/java/translator/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.0/src/main/java/Word.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/src/main/resources/dictionaries.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.0/src/main/resources/dictionaries.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.1/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.1/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.1/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dictionary 1.1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/translator/Dictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/Dictionary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/translator/DictionaryCommandline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/DictionaryCommandline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/translator/DictionaryManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/DictionaryManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/translator/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/translator/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/Word.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/resources/dictionaries.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionary 1.1/src/main/resources/dictionaries.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionay 1.2/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionay 1.2/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionay 1.2/out/production/Dictionay 1.2/main/Background.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionay 1.2/out/production/Dictionay 1.2/main/background.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionay 1.2/src/main/java/background.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionay 1.2/out/production/Dictionay 1.2/resources/image/background.png" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionay 1.2/src/main/resources/image/background.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionay 1.2/src/main/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/Dictionay 1.2/src/main/java/Background.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionay 1.2/src/main/background.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dictionay 1.2/src/resources/image/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/Dictionary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/DictionaryCommandline.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/DictionaryManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/Word.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/PC/IdeaProjects/Dictionary/BTL_OOP",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
