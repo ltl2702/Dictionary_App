@@ -1,17 +1,20 @@
 package com.example.btl;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,6 +59,18 @@ public class Signup implements Initializable {
 
     @FXML
     private ImageView welcomeimageView;
+
+    @FXML
+    private ProgressBar loading;
+
+    private Timeline timeline;
+
+    /*
+    @FXML
+    private AnchorPane mainpane;
+     */
+
+    private Stage stage;
 
     @FXML
     void signupButtonOnAction(ActionEvent event) {
@@ -120,6 +135,19 @@ public class Signup implements Initializable {
                             + first + "','" + last + "','" + user + "','" + pass + "')";
                     statement.executeUpdate(add);
                     invalidLabel.setText("User has been registered successfully!");
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("home2.fxml"));
+                        //AnchorPane loadingpane = fxmlLoader.load();
+                        Parent root = fxmlLoader.load();
+                        Home homeController = fxmlLoader.getController();
+                        homeController.setStage(stage);
+
+                        Scene scene = new Scene(root, 893, 600);
+                        loading(scene);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        ex.getCause();
+                    }
                 }
             }
         } catch (Exception e) {
@@ -130,10 +158,35 @@ public class Signup implements Initializable {
         }
     }
 
+    private void loading(Scene scene) {
+        if (timeline != null) {
+            timeline.stop();
+        }
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            loading.setOpacity(1);
+            loading.setProgress(loading.getProgress() + 0.15);
+            if (loading.getProgress() >= 1.0) {
+                timeline.stop();
+                //Pauses 1 second.
+                PauseTransition pause = new PauseTransition(Duration.seconds(1));
+                //pause.setOnFinished(event -> mainpane.getChildren().setAll(loadingpane));
+                pause.setOnFinished(event -> stage.setScene(scene));
+                pause.play();
+            }
+        }));
+        //Set cycle of timeline
+        timeline.setCycleCount(-1);
+        timeline.play();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         File welcomeFile = new File("src/main/resources/com/example/btl/image/background.png");
         Image welcomeImage = new Image(welcomeFile.toURI().toString());
         welcomeimageView.setImage(welcomeImage);
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }
