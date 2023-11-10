@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="903.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl.Home">
+   <children>
+      <ImageView fx:id="homeImage" fitHeight="704.0" fitWidth="1130.0" layoutX="-185.0" layoutY="-79.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 1;">
+         <image>
+            <Image url="@image/home3.png" />
+         </image></ImageView>
+      <Line endX="122.93511962890625" endY="-7.62939453125E-6" layoutX="120.0" layoutY="92.0" startX="-100.0" stroke="#c79168" strokeWidth="2.0" />
+      <Label alignment="CENTER" layoutX="19.0" layoutY="17.0" prefHeight="63.0" prefWidth="230.0" text="Oxford Advanced Learner's Dictionary" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Arial Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="391.0" layoutY="56.0" text="THE BLIND GROUP ">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.06985054910182953" green="0.5490253567695618" blue="0.7543859481811523" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="19.0" layoutY="107.0" text="Make your words meaningful" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="editButton" layoutX="22.0" layoutY="233.0" mnemonicParsing="false" onAction="#editButtonOnAction" prefHeight="40.0" prefWidth="50.0" style="-fx-background-color: rgba(255,255,255,0);">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
+               <image>
+                  <Image url="@icon/edit2.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <AnchorPane layoutX="111.0" layoutY="136.0" prefHeight="446.0" prefWidth="274.0">
+         <children>
+            <ListView fx:id="listResult" layoutX="7.0" layoutY="68.0" prefHeight="363.0" prefWidth="259.0" />
+            <TextField fx:id="searchField" layoutX="7.0" layoutY="14.0" onAction="#searchFieldOnAction" prefHeight="39.0" prefWidth="259.0" promptText="Search" style="-fx-border-radius: 5;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Button fx:id="searchButton" layoutX="222.0" layoutY="16.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="22.0">
+               <graphic>
+                  <ImageView fx:id="searchImage" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
+                     <image>
+                        <Image url="@icon/search.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="9.0" layoutY="133.0" prefHeight="419.0" prefWidth="95.0">
+         <children>
+            <Button fx:id="userButton" layoutX="14.0" layoutY="346.0" mnemonicParsing="false" onAction="#userButtonOnAction" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: rgba(255,255,255,0);">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
+                     <image>
+                        <Image url="@icon/avt2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="gameButton" layoutX="9.0" layoutY="288.0" mnemonicParsing="false" onAction="#gameButtonOnAction" prefHeight="40.0" prefWidth="35.0" style="-fx-background-color: rgba(255,255,255,0);">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
+                     <image>
+                        <Image url="@icon/game2-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="translateButton" layoutX="14.0" layoutY="222.0" mnemonicParsing="false" onAction="#translateButtonOnAction" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: rgba(255,255,255,0);">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
+                     <image>
+                        <Image url="@icon/translate.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="addButton" layoutX="14.0" layoutY="37.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="40.0" prefWidth="35.0" style="-fx-background-color: rgba(255,255,255,0);">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
+                     <image>
+                        <Image url="@icon/add2-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="eraseButton" layoutX="14.0" layoutY="154.0" mnemonicParsing="false" onAction="#eraseButtonOnAction" prefHeight="43.0" prefWidth="35.0" style="-fx-background-color: rgba(255,255,255,0);">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icon/delete3-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <TextArea fx:id="definitionArea" layoutX="452.0" layoutY="192.0" prefHeight="376.0" prefWidth="406.0" promptText="Properties" style="-fx-background-radius: 10; -fx-background-color: #f0f0f0; -fx-opacity: 0.5;" wrapText="true">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextArea>
+      <AnchorPane layoutX="452.0" layoutY="122.0" prefHeight="70.0" prefWidth="424.0">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="8.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icon/defi.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="62.0" layoutY="20.0" text="Definition" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <Pane layoutX="235.0" layoutY="13.0" prefHeight="43.0" prefWidth="174.0">
+               <children>
+                  <Button fx:id="USspeakerButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="79.0" layoutY="4.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="95.0" style="-fx-background-color: rgba(255,255,255,0);" text="US" textAlignment="JUSTIFY" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/loa-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="UKspeakerButton" contentDisplay="RIGHT" layoutY="4.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: rgba(255,255,255,0);" text="UK" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon/loa-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
