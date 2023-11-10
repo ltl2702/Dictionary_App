@@ -15,18 +15,18 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl.Home">
    <children>
-      <ImageView fitHeight="750.0" fitWidth="1168.0" layoutX="-56.0" layoutY="-55.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 1;">
+      <ImageView fx:id="homeImage" fitHeight="716.0" fitWidth="1085.0" layoutX="-56.0" layoutY="-55.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 1;">
          <image>
             <Image url="@image/home3.png" />
          </image></ImageView>
-      <TextField layoutX="115.0" layoutY="138.0" prefHeight="39.0" prefWidth="259.0" promptText="Search" style="-fx-border-radius: 5; -fx-border-color: black;">
+      <TextField fx:id="searchField" layoutX="115.0" layoutY="138.0" onAction="#searchFieldOnAction" prefHeight="39.0" prefWidth="259.0" promptText="Search" style="-fx-border-radius: 5;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="331.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
+      <ImageView fx:id="searchImage" fitHeight="40.0" fitWidth="35.0" layoutX="331.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
          <image>
             <Image url="@icon/search.png" />
          </image>
@@ -41,7 +41,7 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
-      <TextArea layoutX="477.0" layoutY="193.0" prefHeight="382.0" prefWidth="389.0" promptText="Properties" style="-fx-background-radius: 10; -fx-background-color: #f0f0f0; -fx-opacity: 0.5;" wrapText="true">
+      <TextArea fx:id="definitionField" layoutX="477.0" layoutY="193.0" prefHeight="379.0" prefWidth="389.0" promptText="Properties" style="-fx-background-radius: 10; -fx-background-color: #f0f0f0; -fx-opacity: 0.5;" wrapText="true">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -49,8 +49,8 @@
             <Insets />
          </opaqueInsets>
       </TextArea>
-      <VBox layoutX="112.0" layoutY="177.0" prefHeight="370.0" prefWidth="266.0" style="-fx-background-radius: 10;" />
-      <Button layoutX="756.0" layoutY="202.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="20.0" style="-fx-background-color: rgba(255,255,255,0);">
+      <VBox layoutX="115.0" layoutY="197.0" prefHeight="379.0" prefWidth="259.0" style="-fx-background-radius: 10;" />
+      <Button fx:id="USspeakerButton" layoutX="756.0" layoutY="202.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="20.0" style="-fx-background-color: rgba(255,255,255,0);">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -59,7 +59,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="820.0" layoutY="202.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="40.0" style="-fx-background-color: rgba(255,255,255,0);">
+      <Button fx:id="UKspeakerButton" layoutX="820.0" layoutY="202.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="40.0" style="-fx-background-color: rgba(255,255,255,0);">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -68,7 +68,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label alignment="CENTER" layoutX="729.0" layoutY="210.0" prefHeight="16.0" prefWidth="35.0" text="US">
+      <Label fx:id="USLabel" alignment="CENTER" layoutX="729.0" layoutY="210.0" prefHeight="16.0" prefWidth="35.0" text="US">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
@@ -105,12 +105,12 @@
             <Font name="Arial" size="15.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="793.0" layoutY="210.0" prefHeight="16.0" prefWidth="35.0" text="UK">
+      <Label fx:id="UKLabel" alignment="CENTER" layoutX="793.0" layoutY="210.0" prefHeight="16.0" prefWidth="35.0" text="UK">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="22.0" layoutY="173.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="35.0" style="-fx-background-color: rgba(255,255,255,0);">
+      <Button fx:id="addButton" layoutX="22.0" layoutY="173.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="40.0" prefWidth="35.0" style="-fx-background-color: rgba(255,255,255,0);">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
                <image>
@@ -118,7 +118,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="22.0" layoutY="233.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="50.0" style="-fx-background-color: rgba(255,255,255,0);">
+      <Button fx:id="editButton" layoutX="22.0" layoutY="233.0" mnemonicParsing="false" onAction="#editButtonOnAction" prefHeight="40.0" prefWidth="50.0" style="-fx-background-color: rgba(255,255,255,0);">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
                <image>
@@ -126,7 +126,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="22.0" layoutY="289.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="35.0" style="-fx-background-color: rgba(255,255,255,0);">
+      <Button fx:id="eraseButton" layoutX="22.0" layoutY="289.0" mnemonicParsing="false" onAction="#eraseButtonOnAction" prefHeight="43.0" prefWidth="35.0" style="-fx-background-color: rgba(255,255,255,0);">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -134,7 +134,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="22.0" layoutY="354.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: rgba(255,255,255,0);">
+      <Button fx:id="translateButton" layoutX="22.0" layoutY="354.0" mnemonicParsing="false" onAction="#translateButtonOnAction" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: rgba(255,255,255,0);">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
                <image>
@@ -142,7 +142,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="17.0" layoutY="414.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="35.0" style="-fx-background-color: rgba(255,255,255,0);">
+      <Button fx:id="gameButton" layoutX="17.0" layoutY="414.0" mnemonicParsing="false" onAction="#gameButtonOnAction" prefHeight="40.0" prefWidth="35.0" style="-fx-background-color: rgba(255,255,255,0);">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
                <image>
@@ -150,7 +150,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="22.0" layoutY="467.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: rgba(255,255,255,0);">
+      <Button fx:id="userButton" layoutX="22.0" layoutY="467.0" mnemonicParsing="false" onAction="#userButtonOnAction" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: rgba(255,255,255,0);">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
                <image>

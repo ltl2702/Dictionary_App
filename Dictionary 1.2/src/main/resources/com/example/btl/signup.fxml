@@ -3,10 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="547.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl.Signup">
@@ -49,5 +51,10 @@
          </font>
       </Label>
       <TextField fx:id="lastnamefill" layoutX="629.0" layoutY="189.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter your username" />
+      <Pane layoutX="213.0" layoutY="463.0" prefHeight="99.0" prefWidth="487.0">
+         <children>
+            <ProgressBar fx:id="loading" layoutY="41.0" prefHeight="18.0" prefWidth="487.0" progress="0.0" style="-fx-opacity: 0;" />
+         </children>
+      </Pane>
     </children>
 </AnchorPane>
