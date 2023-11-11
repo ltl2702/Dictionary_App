@@ -2,19 +2,15 @@ package cmd;
 
 public class Word {
     private String wordTarget;
-    private String wordExplain;
-    private String pronounce;
+    private String html;
 
     public Word() {
-        this.wordTarget = "";
-        this.wordExplain = "";
-        this.pronounce = "";
+        // Default constructor
     }
 
-    public Word(String wordTarget, String wordExplain, String pronounce) {
+    public Word(String wordTarget, String html) {
         this.wordTarget = wordTarget;
-        this.wordExplain = wordExplain;
-        this.pronounce = pronounce;
+        this.html = html;
     }
 
     public String getWordTarget() {
@@ -25,24 +21,16 @@ public class Word {
         this.wordTarget = wordTarget;
     }
 
-    public String getWordExplain() {
-        return wordExplain;
+    public String getHtml() {
+        return html;
     }
 
-    public void setWordExplain(String wordExplain) {
-        this.wordExplain = wordExplain;
-    }
-
-    public String getPronounce() {
-        return pronounce;
-    }
-
-    public void setPronounce(String pronounce) {
-        this.pronounce = pronounce;
+    public void setHtml(String html) {
+        this.html = html;
     }
 
     @Override
     public String toString() {
-        return wordTarget;
+        return wordTarget; // or return any other information you want to display
     }
 }

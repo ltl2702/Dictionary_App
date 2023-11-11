@@ -4,6 +4,7 @@ module com.example.btl {
     requires javafx.fxml;
     requires javafx.graphics;
     requires java.sql;
+    requires javafx.web;
     //requires javafx.sql;
     //requires mysql.connector.j;
 

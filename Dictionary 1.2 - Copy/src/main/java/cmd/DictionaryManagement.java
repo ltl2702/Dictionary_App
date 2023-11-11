@@ -21,15 +21,15 @@ public class DictionaryManagement {
             c.setAutoCommit(false);
 
             stmt = c.createStatement();
-            // Use double quotes to ensure that the keyword is properly enclosed in the SQL query.
             String sql = "SELECT * FROM " + tableName + " WHERE word like " + keyWord + " ORDER BY word";
-            System.out.println("Executing SQL query: " + sql);  // Log the query
+            System.out.println("Executing SQL query: " + sql);
+
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                Word word = new Word();
-                word.setWordTarget(rs.getString("word"));
-                word.setWordExplain(rs.getString("description"));
-                word.setPronounce(rs.getString("pronounce"));
+                Word word = new Word(
+                        rs.getString("word"),
+                        rs.getString("html")
+                );
                 list.add(word);
             }
             rs.close();
@@ -54,5 +54,3 @@ public class DictionaryManagement {
         return list;
     }
 }
-
-
