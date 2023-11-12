@@ -122,9 +122,7 @@ public class Home implements Initializable {
         listResult.setItems(list);
 
         listResult.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == null) {
-                System.out.println("NOOOOOOO");
-            } else {
+            if (newValue != null) {
                 showHtmlContent(newValue.getHtml());
             }
         });
@@ -132,41 +130,35 @@ public class Home implements Initializable {
 
     private void showHtmlContent(String htmlContent) {
         String cautionHtml = """
-            <html>
-                <head>
-                    <style>
-                        body { font-family: 'Arial', sans-serif; background-color: #f8f8f8; }
-                        aside { background: rgb(255, 243, 224); color: #dd2c00; font-family: Roboto, sans-serif; font-size: 14px; margin: 18px 0px; padding: 12px 24px 12px 20px; }
-                    </style>
-                </head>
-                <body>
-                    <aside class='caution'>
-                        <strong>Caution:</strong>
-                        &nbsp;The word you are looking for is not in the dictionary.
-                        <br> Please try again or add a new word.
-                    </aside>
-                </body>
-            </html>
-            """;
+                <html>
+                    <head>
+                        <style>
+                            body { font-family: 'Arial', sans-serif; background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+                            aside {; color: #ff0000; font-family: Roboto, sans-serif; font-size: 18px; padding: 12px 24px; text-align: center; }
+                        </style>
+                    </head>
+                    <body>
+                        <aside class='caution'>
+                            <strong>Caution:</strong><br>
+                            &nbsp; The word you are looking for is not in the dictionary.
+                            <br>   Please try again or add a new word.
+                        </aside>
+                    </body>
+                </html>
+                """;
 
         if (htmlContent != null && !htmlContent.isEmpty()) {
             webEngine.loadContent(htmlContent);
-            InvalidWord.setVisible(false);
-            webView.setVisible(true);
+            if (InvalidWord != null) InvalidWord.setVisible(false);
         } else {
-            webEngine.loadContent(cautionHtml);
-            InvalidWord.setVisible(true);
-            webView.setVisible(true);
+            webEngine.loadContent(cautionHtml != null && !cautionHtml.isEmpty() ? cautionHtml : "");
+            if (InvalidWord != null) InvalidWord.setVisible(true);
         }
+
+        if (webView != null) webView.setVisible(true);
     }
 
 
-    /**
-     * onActionSearchBtn.
-     */
-    public void onActionSearchBtn() {
-        performSearch(searchField.getText());
-    }
 
     private void performSearch(String searchTerm) {
         list = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "%'", datatable);
@@ -179,10 +171,7 @@ public class Home implements Initializable {
             showHtmlContent(null);
         }
     }
-
-    /**
-     * onMouseClickListView.
-     */
+/*
     public void onMouseClickListView() {
         Word selectedWord = listResult.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
@@ -192,6 +181,21 @@ public class Home implements Initializable {
             showHtmlContent(null);
         }
     }
+
+
+    public void onActionSearchBtn() {
+        String searchTerm = searchField.getText();
+        performSearch(searchTerm);
+        if (!list.isEmpty()) {
+            Word firstWord = list.get(0);
+            showHtmlContent(firstWord.getHtml());
+        } else {
+            showHtmlContent(null);
+        }
+    }
+
+ */
+
 
     @FXML
     void searchFieldOnAction(ActionEvent event) {
