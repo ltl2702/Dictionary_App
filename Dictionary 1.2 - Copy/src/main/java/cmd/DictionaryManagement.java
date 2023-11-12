@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DictionaryManagement {
-    private static final String url = "jdbc:sqlite:./src/main/java/com/example/btl/dict_hh.db";
+    private static final String url = "jdbc:sqlite:./src/main/resources/data/database/dictionary_database.db";
 
     public static ObservableList<Word> dbSearchWord(String keyWord, String tableName) {
         ObservableList<Word> list = FXCollections.observableArrayList();

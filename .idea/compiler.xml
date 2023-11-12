@@ -6,15 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="BTL (2)" />
-        <module name="BTL_OOP (1)" />
-        <module name="BTL (1)" />
-        <module name="BTL_OOP (2)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="BTL" target="20" />
+      <module name="BTL (1)" target="1.5" />
+      <module name="BTL (2)" target="1.5" />
       <module name="BTL_OOP" target="20" />
+      <module name="BTL_OOP (1)" target="20" />
+      <module name="BTL_OOP (2)" target="20" />
     </bytecodeTargetLevel>
   </component>
 </project>

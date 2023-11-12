@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="dict_hh.db" uuid="5f94f3e9-5676-4fac-9528-6f73d8fdfaf6">
+    <data-source source="LOCAL" name="dict_hh.db" uuid="56f543fd-1808-4306-80ce-22c5a38bce2e">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/java/com/example/btl/dict_hh.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/resources/data/database/dict_hh.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="dictionary_database.db" uuid="5d5265d4-c9bc-4a0d-ac1b-ec1f01d3184d">
+    <data-source source="LOCAL" name="dictionary_database.db" uuid="c4ba83eb-5b6b-4e18-8157-8aab434ba818">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/java/com/example/btl/dictionary_database.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/resources/data/database/dictionary_database.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="userinfo.db" uuid="fe621acc-4544-412c-943d-45735be5f81d">
+    <data-source source="LOCAL" name="userinfo.db" uuid="035612b5-f299-44a0-8924-ab3565c416aa">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/java/com/example/btl/userinfo.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/resources/data/database/userinfo.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
