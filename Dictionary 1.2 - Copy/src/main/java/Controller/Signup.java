@@ -25,6 +25,8 @@ import java.util.ResourceBundle;
 
 public class Signup implements Initializable {
 
+    double x,y = 0;
+
     @FXML
     private TextField firstnamefill;
 
@@ -101,11 +103,21 @@ public class Signup implements Initializable {
                     statement.executeUpdate(add);
                     invalidLabel.setText("User has been registered successfully!");
                     try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home2.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/homecopy.fxml"));
                         //AnchorPane loadingpane = fxmlLoader.load();
                         Parent root = fxmlLoader.load();
                         Home homeController = fxmlLoader.getController();
                         homeController.setStage(stage);
+
+                        root.setOnMousePressed(e -> {
+                            x = e.getSceneX();
+                            y = e.getSceneY();
+                        });
+
+                        root.setOnMouseDragged(e -> {
+                            stage.setX(e.getScreenX() - x);
+                            stage.setY(e.getScreenY() - y);
+                        });
 
                         Scene scene = new Scene(root, 893, 600);
                         loading(scene);
@@ -129,7 +141,7 @@ public class Signup implements Initializable {
         }
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
             loading.setOpacity(1);
-            loading.setProgress(loading.getProgress() + 0.15);
+            loading.setProgress(loading.getProgress() + 0.25);
             if (loading.getProgress() >= 1.0) {
                 timeline.stop();
                 //Pauses 1 second.
