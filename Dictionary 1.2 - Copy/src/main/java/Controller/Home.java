@@ -2,7 +2,6 @@ package Controller;
 
 import cmd.DictionaryManagement;
 import cmd.Word;
-import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -24,205 +22,172 @@ public class Home implements Initializable {
     private final String datatable = "av";
 
     @FXML
-    private Label Menu;
+    private Label Menu, MenuClose;
 
     @FXML
-    private Label MenuClose;
+    private WebView webView;
+    private WebEngine webEngine;
+    private Stage stage;
+
+    @FXML
+    private Label InvalidWord;
 
     @FXML
     private AnchorPane slider;
 
     @FXML
-    private Button UKspeakerButton;
-
-    @FXML
-    private Button searchButton;
-
-    @FXML
-    private Button USspeakerButton;
-
-    @FXML
-    private JFXButton editButton;
-
-    @FXML
-    private JFXButton gameButton;
-
-    @FXML
-    private JFXButton homeButton;
-
-    @FXML
-    private JFXButton translateButton;
-
-    @FXML
-    private JFXButton userButton;
-
-    @FXML
-    private ImageView homeImage;
+    private Button UKspeakerButton, searchButton, USspeakerButton;
 
     @FXML
     private TextField searchField;
 
     @FXML
-    private ImageView searchImage;
-
-    @FXML
     private ListView<Word> listResult;
 
-    @FXML
-    private WebView webView; // New WebView
-
-    @FXML
-    private Label InvalidWord;
-
     private ObservableList<Word> list = FXCollections.observableArrayList();
-    private WebEngine webEngine;
-    private Stage stage;
+
+    // Initialize the Trie with your word data
+    private DictionaryManagement.TrieNode trie;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Initialize the Trie with your word data
+        trie = DictionaryManagement.buildTrie(datatable);
+
         slider.setTranslateX(-176);
-        Menu.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
-
-            slide.setToX(0);
-            slide.play();
-
-            slider.setTranslateX(-176);
-
-            slide.setOnFinished((ActionEvent e)-> {
-                Menu.setVisible(false);
-                MenuClose.setVisible(true);
-            });
-        });
-
-        MenuClose.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
-
-            slide.setToX(-176);
-            slide.play();
-
-            slider.setTranslateX(0);
-
-            slide.setOnFinished((ActionEvent e)-> {
-                Menu.setVisible(true);
-                MenuClose.setVisible(false);
-            });
-        });
+        Menu.setOnMouseClicked(event -> toggleSlider(true));
+        MenuClose.setOnMouseClicked(event -> toggleSlider(false));
 
         webEngine = webView.getEngine();
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            performSearch(newValue);
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> performSearch(newValue));
+
+        listResult.setCellFactory(param -> new ListCell<Word>() {
+            @Override
+            protected void updateItem(Word item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null || item.getWordTarget() == null) {
+                    setText(null);
+                } else {
+                    setText(item.getWordTarget());
+                }
+            }
         });
 
-        list = DictionaryManagement.dbSearchWord("'a%'", datatable);
-        listResult.setItems(list);
-
         listResult.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                showHtmlContent(newValue.getHtml());
+            if (newValue != null && !newValue.equals(oldValue) && !list.isEmpty()) {
+                showHtmlContent(newValue);
             }
         });
     }
 
-    private void showHtmlContent(String htmlContent) {
-        String cautionHtml = """
-                <html>
-                    <head>
-                        <style>
-                            body { font-family: 'Arial', sans-serif; background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-                            aside {; color: #ff0000; font-family: Roboto, sans-serif; font-size: 18px; padding: 12px 24px; text-align: center; }
-                        </style>
-                    </head>
-                    <body>
-                        <aside class='caution'>
-                            <strong>Caution:</strong><br>
-                            &nbsp; The word you are looking for is not in the dictionary.
-                            <br>   Please try again or add a new word.
-                        </aside>
-                    </body>
-                </html>
-                """;
+    private void toggleSlider(boolean open) {
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(slider);
 
-        if (htmlContent != null && !htmlContent.isEmpty()) {
-            webEngine.loadContent(htmlContent);
-            if (InvalidWord != null) InvalidWord.setVisible(false);
+        if (open) {
+            slide.setToX(0);
+            slide.setOnFinished((ActionEvent e) -> MenuClose.setVisible(true));
         } else {
-            webEngine.loadContent(cautionHtml != null && !cautionHtml.isEmpty() ? cautionHtml : "");
-            if (InvalidWord != null) InvalidWord.setVisible(true);
+            slide.setToX(-176);
+            slide.setOnFinished((ActionEvent e) -> Menu.setVisible(true));
         }
 
-        if (webView != null) webView.setVisible(true);
+        slide.play();
     }
 
+    private void showHtmlContent(Word word) {
+        String cautionHtml = """
+            <html>
+                <head>
+                    <style>
+                        body { font-family: 'Arial', sans-serif; background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+                        aside {; color: #ff0000; font-family: Roboto, sans-serif; font-size: 18px; padding: 12px 24px; text-align: center; }
+                    </style>
+                </head>
+                <body>
+                    <aside class='caution'>
+                        <strong>Caution:</strong><br>
+                        &nbsp; The word you are looking for is not in the dictionary.
+                        <br>   Please try again or add a new word.
+                    </aside>
+                </body>
+            </html>
+            """;
+        if (word != null) {
+            String htmlContent = DictionaryManagement.searchWordInTrie(trie, word.getWordTarget());
 
+            if (htmlContent != null && !htmlContent.isEmpty()) {
+                webEngine.loadContent(htmlContent);
+                if (InvalidWord != null) InvalidWord.setVisible(false);
+            } else {
+                webEngine.loadContent(cautionHtml != null && !cautionHtml.isEmpty() ? cautionHtml : "");
+                if (InvalidWord != null) InvalidWord.setVisible(true);
+            }
+
+            // No need to set webView.setVisible(true) here
+        } else {
+            // If word is null, handle accordingly (e.g., set webView invisible)
+            if (InvalidWord != null) InvalidWord.setVisible(false);
+            if (webView != null) webView.setVisible(false);
+        }
+    }
 
     private void performSearch(String searchTerm) {
-        list = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "%'", datatable);
+        searchTerm = searchTerm.toLowerCase().trim();
+
+        list = FXCollections.observableArrayList();
+
+        if (!searchTerm.isEmpty()) {
+            // Trie-based search
+            list = DictionaryManagement.searchWordsInTrie(trie, searchTerm);
+
+            // Database search
+            list.addAll(DictionaryManagement.dbSearchWord(searchTerm, datatable));
+        }
         listResult.setItems(list);
-
         if (!list.isEmpty()) {
             Word firstWord = list.get(0);
-            showHtmlContent(firstWord.getHtml());
+            showHtmlContent(firstWord);
         } else {
-            showHtmlContent(null);
+            showHtmlContent(new Word(null, null)); // Passing null to show caution HTML
         }
     }
-/*
-    public void onMouseClickListView() {
-        Word selectedWord = listResult.getSelectionModel().getSelectedItem();
-        if (selectedWord != null) {
-            searchField.setText(selectedWord.toString());
-            showHtmlContent(selectedWord.getHtml());
-        } else {
-            showHtmlContent(null);
-        }
-    }
-
-
-    public void onActionSearchBtn() {
-        String searchTerm = searchField.getText();
-        performSearch(searchTerm);
-        if (!list.isEmpty()) {
-            Word firstWord = list.get(0);
-            showHtmlContent(firstWord.getHtml());
-        } else {
-            showHtmlContent(null);
-        }
-    }
-
- */
-
 
     @FXML
     void searchFieldOnAction(ActionEvent event) {
+        String searchTerm = searchField.getText();
+        performSearch(searchTerm);
     }
 
     @FXML
     void addButtonOnAction(ActionEvent event) {
+        // Handle add button action...
     }
 
     @FXML
     void editButtonOnAction(ActionEvent event) {
+        // Handle edit button action...
     }
 
     @FXML
     void eraseButtonOnAction(ActionEvent event) {
+        // Handle erase button action...
     }
 
     @FXML
     void gameButtonOnAction(ActionEvent event) {
+        // Handle game button action...
     }
 
     @FXML
     void translateButtonOnAction(ActionEvent event) {
+        // Handle translate button action...
     }
 
     @FXML
     void userButtonOnAction(ActionEvent event) {
+        // Handle user button action...
     }
 
     public void setStage(Stage stage) {
