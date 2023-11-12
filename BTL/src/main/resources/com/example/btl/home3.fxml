@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl.Home">
+   <children>
+      <ImageView fx:id="homeImage" fitHeight="716.0" fitWidth="1085.0" layoutX="-56.0" layoutY="-55.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 1;">
+         <image>
+            <Image url="@image/home3.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="searchField" layoutX="115.0" layoutY="138.0" onAction="#searchFieldOnAction" prefHeight="39.0" prefWidth="259.0" promptText="Search" style="-fx-border-radius: 5;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <ImageView fx:id="searchImage" fitHeight="40.0" fitWidth="35.0" layoutX="331.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
+         <image>
+            <Image url="@icon/search.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="50.0" layoutX="525.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icon/defi.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="576.0" layoutY="144.0" text="Definition" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="definitionField" layoutX="477.0" layoutY="193.0" prefHeight="379.0" prefWidth="389.0" promptText="Properties" style="-fx-background-radius: 10; -fx-background-color: #f0f0f0; -fx-opacity: 0.5;" wrapText="true">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TextArea>
+      <VBox layoutX="115.0" layoutY="197.0" prefHeight="379.0" prefWidth="259.0" style="-fx-background-radius: 10;" />
+      <Button fx:id="USspeakerButton" layoutX="756.0" layoutY="202.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="20.0" style="-fx-background-color: rgba(255,255,255,0);">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icon/loa-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="UKspeakerButton" layoutX="820.0" layoutY="202.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="40.0" style="-fx-background-color: rgba(255,255,255,0);">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icon/loa-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="USLabel" alignment="CENTER" layoutX="729.0" layoutY="210.0" prefHeight="16.0" prefWidth="35.0" text="US">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <Line endX="122.93511962890625" endY="-7.62939453125E-6" layoutX="120.0" layoutY="92.0" startX="-100.0" stroke="#c79168" strokeWidth="2.0" />
+      <Label alignment="CENTER" layoutX="19.0" layoutY="17.0" prefHeight="63.0" prefWidth="230.0" text="Oxford Advanced Learner's Dictionary" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Arial Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="397.0" layoutY="104.0" text="THE BLIND GROUP ">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.06985054910182953" green="0.5490253567695618" blue="0.7543859481811523" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label layoutX="19.0" layoutY="107.0" text="Make your words meaningful" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="UKLabel" alignment="CENTER" layoutX="793.0" layoutY="210.0" prefHeight="16.0" prefWidth="35.0" text="UK">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <JFXDrawer layoutY="127.0" prefHeight="379.0" prefWidth="179.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+               <children>
+                  <JFXButton layoutY="14.0" prefHeight="35.0" prefWidth="180.0" text="Home" />
+                  <JFXButton layoutY="58.0" prefHeight="35.0" prefWidth="180.0" text="Home" />
+                  <JFXButton layoutY="108.0" prefHeight="35.0" prefWidth="180.0" text="Home" />
+               </children>
+            </AnchorPane>
+         </children>
+      </JFXDrawer>
+   </children>
+</AnchorPane>
