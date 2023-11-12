@@ -72,7 +72,7 @@ public class Home implements Initializable {
             performSearch(newValue);
         });
 
-        list = DictionaryManagement.dbSearchWord("'%a%'", datatable);
+        list = DictionaryManagement.dbSearchWord("'a%'", datatable);
         listResult.setItems(list);
 
         listResult.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -96,7 +96,7 @@ public class Home implements Initializable {
     }
 
     private void performSearch(String searchTerm) {
-        list = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "%'", datatable);
+        list = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "a%'", datatable);
         listResult.setItems(list);
 
         if (!list.isEmpty()) {
@@ -104,6 +104,7 @@ public class Home implements Initializable {
             showHtmlContent(firstWord.getHtml());
         }
     }
+
 
     /**
      * onMouseClickListView.

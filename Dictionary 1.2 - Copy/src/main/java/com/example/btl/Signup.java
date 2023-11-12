@@ -74,44 +74,11 @@ public class Signup implements Initializable {
 
     @FXML
     void signupButtonOnAction(ActionEvent event) {
-        /*
-            try (Connection connectDatabase = new UserInfo().connect()) {
-                //Verifies login.
-                String verify = "SELECT COUNT(*) AS counter" +
-                        " FROM account WHERE username = '" + usernamefill.getText() + "'";
-                Statement statement = connectDatabase.createStatement();
-                ResultSet query = statement.executeQuery(verify);
-
-                if (query.next()) {
-                    int count = query.getInt("counter");
-                    if (count == 1)
-                        invalidLabel.setText("Account already exists. Please try again.");
-                    else {
-                        signup();
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                e.getCause();
-            } finally {
-                UserInfo.closeConnection();
-            }
-         */
         if (!usernamefill.getText().isBlank() && !passwordfill.getText().isBlank() && !firstnamefill.getText().isBlank() && !lastnamefill.getText().isBlank())
             signup();
         else
             invalidLabel.setText("Please enter your information.");
     }
-        /*
-        finally {
-                try {
-                    connectDatabase.close();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    ex.getCause();
-                }
-            }
-         */
 
     public void signup() {
         try (Connection connectDatabase = new UserInfo().connect()) {
