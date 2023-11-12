@@ -24,7 +24,7 @@ public class Home implements Initializable {
 
     @FXML
     private Button searchButton;
-    
+
     @FXML
     private Button USspeakerButton;
 
@@ -61,6 +61,9 @@ public class Home implements Initializable {
     @FXML
     private WebView webView; // New WebView
 
+    @FXML
+    private Label InvalidWord;
+
     private ObservableList<Word> list = FXCollections.observableArrayList();
     private WebEngine webEngine;
     private Stage stage;
@@ -85,8 +88,35 @@ public class Home implements Initializable {
     }
 
     private void showHtmlContent(String htmlContent) {
-        webEngine.loadContent(htmlContent);
+        String cautionHtml = """
+            <html>
+                <head>
+                    <style>
+                        body { font-family: 'Arial', sans-serif; background-color: #f8f8f8; }
+                        aside { background: rgb(255, 243, 224); color: #dd2c00; font-family: Roboto, sans-serif; font-size: 14px; margin: 18px 0px; padding: 12px 24px 12px 20px; }
+                    </style>
+                </head>
+                <body>
+                    <aside class='caution'>
+                        <strong>Caution:</strong>
+                        &nbsp;The word you are looking for is not in the dictionary.
+                        <br> Please try again or add a new word.
+                    </aside>
+                </body>
+            </html>
+            """;
+
+        if (htmlContent != null && !htmlContent.isEmpty()) {
+            webEngine.loadContent(htmlContent);
+            InvalidWord.setVisible(false);
+            webView.setVisible(true);
+        } else {
+            webEngine.loadContent(cautionHtml);
+            InvalidWord.setVisible(true);
+            webView.setVisible(true);
+        }
     }
+
 
     /**
      * onActionSearchBtn.
@@ -96,15 +126,16 @@ public class Home implements Initializable {
     }
 
     private void performSearch(String searchTerm) {
-        list = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "a%'", datatable);
+        list = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "%'", datatable);
         listResult.setItems(list);
 
         if (!list.isEmpty()) {
             Word firstWord = list.get(0);
             showHtmlContent(firstWord.getHtml());
+        } else {
+            showHtmlContent(null);
         }
     }
-
 
     /**
      * onMouseClickListView.
@@ -112,7 +143,10 @@ public class Home implements Initializable {
     public void onMouseClickListView() {
         Word selectedWord = listResult.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
+            searchField.setText(selectedWord.toString());
             showHtmlContent(selectedWord.getHtml());
+        } else {
+            showHtmlContent(null);
         }
     }
 
@@ -147,5 +181,4 @@ public class Home implements Initializable {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-
 }
