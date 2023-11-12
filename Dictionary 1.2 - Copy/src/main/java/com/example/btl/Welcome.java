@@ -85,10 +85,7 @@ public class Welcome implements Initializable {
                         invalidLabel.setText("Congratulations!!!");
                         try {
                             FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("home2.fxml"));
-                            //Cách 1:
-                            //AnchorPane loadingpane = fxmlLoader.load();
-                            //loading(mainpane, loadingpane);
-                            //Cách 2:
+
                             Parent root = fxmlLoader.load();
                             Home homeController = fxmlLoader.getController();
                             homeController.setStage(stage);
@@ -142,59 +139,6 @@ public class Welcome implements Initializable {
         });
     }
 
-/*
-    public void validLogin() throws SQLException, ClassNotFoundException {
-
-        UserInfo connection = new UserInfo();
-        Connection connectDatabase = connection.getConnection();
-
-        //Verifies login.
-        String verify = "SELECT count(1) FROM account WHERE username = '" + usernamefill.getText() + "' AND password = '" + passwordfill.getText() +  "'";
-        try {
-            Statement statement = connectDatabase.createStatement();
-            ResultSet query = statement.executeQuery(verify);
-
-            while (query.next()) {
-                if (query.getInt(1) == 1) {
-                    invalidLabel.setText("Congratulations!!!");
-                }
-                else {
-                    invalidLabel.setText("Invalid Login. Please try again.");
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
-        }
-
-        UserInfo connection = new UserInfo();
-        Connection connectDatabase = connection.connect();
-        //Verifies login.
-        String verify = "SELECT username, password" +
-                " FROM account WHERE username = '" + usernamefill.getText() +
-                "' AND password = '" + passwordfill.getText() + "'";
-
-        try {
-            Statement statement = connectDatabase.createStatement();
-            ResultSet query = statement.executeQuery(verify);
-
-            if (!query.next())
-                invalidLabel.setText("Invalid Login. Please try again.");
-            else
-                invalidLabel.setText("Congratulations!!!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getCause();
-        } finally {
-            try {
-                connectDatabase.close();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                ex.getCause();
-            }
-        }
-    }
-*/
     private void loading(Scene scene) {
         if (timeline != null) {
             timeline.stop();

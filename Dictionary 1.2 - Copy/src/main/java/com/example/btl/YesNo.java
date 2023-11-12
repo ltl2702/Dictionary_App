@@ -22,48 +22,6 @@ public class YesNo {
      * @param message the message you want to send to the user.
      */
     public static boolean display(String title, String message) {
-        /*
-        FXMLLoader loader = new FXMLLoader(getResource("YesNo.fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Scene scene = new Scene(root);
-            Stage window = new Stage();
-            window.initModality(Modality.APPLICATION_MODAL);
-            window.setTitle(title);
-            window.setMinWidth(250);
-
-            Label label = (Label) root.lookup("#label");
-
-            //Creates 2 buttons.
-            Button yesButton = (Button) root.lookup("#yesButton");
-            Button noButton = (Button) root.lookup("#noButton");
-
-            yesButton.setOnAction(e -> {
-                answer = true;
-                window.close();
-            });
-
-            noButton.setOnAction(e -> {
-                answer = false;
-                window.close();
-            });
-
-            window.setScene(scene);
-            //Displays window and waits for it to be closed before returning.
-            window.showAndWait();
-            return answer;
-        }
-
-        catch (IOException e) {
-            e.printStackTrace(); // Xử lý ngoại lệ theo ý của bạn, ví dụ: in thông báo lỗi
-            return false; // Hoặc trả về giá trị mặc định khi có lỗi
-        }
-
-         */
 
         Stage window = new Stage();
         //Click ra ngoài window là không được phép.
