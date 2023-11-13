@@ -15,11 +15,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Home">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Home">
     <children>
-        <AnchorPane fx:id="homePane" layoutX="7.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
+        <AnchorPane fx:id="homePane" layoutX="7.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <ImageView fx:id="homeImage" fitHeight="607.0" fitWidth="940.0" layoutX="-7.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 1;">
+                <ImageView fx:id="homeImage" fitHeight="613.0" fitWidth="918.0" layoutX="-10.666666666666666" layoutY="-4.666666666666667" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <image>
                         <Image url="@../image/home3.png" />
                     </image>
@@ -120,7 +120,7 @@
             <children>
                 <AnchorPane fx:id="slider" prefHeight="393.0" prefWidth="176.0" style="-fx-background-color: #0A4969; -fx-background-radius: 10;">
                     <children>
-                        <JFXButton fx:id="homeButton" alignment="BASELINE_LEFT" layoutY="26.0" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Home" textFill="WHITE">
+                        <JFXButton fx:id="homeButton" alignment="BASELINE_LEFT" layoutY="26.0" onAction="#homeButtonOnAction" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Home" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -132,7 +132,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" layoutY="84.0" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Edit" textFill="WHITE">
+                        <JFXButton fx:id="editButton" alignment="BASELINE_LEFT" layoutY="84.0" onAction="#editButtonOnAction" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Edit" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -144,7 +144,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" layoutY="152.0" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Translate" textFill="WHITE">
+                        <JFXButton fx:id="translateButton" alignment="BASELINE_LEFT" layoutY="152.0" onAction="#translateButtonOnAction" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Translate" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -156,7 +156,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" layoutY="291.0" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="User" textFill="WHITE">
+                        <JFXButton fx:id="userButton" alignment="BASELINE_LEFT" layoutY="291.0" onAction="#userButtonOnAction" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="User" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -168,7 +168,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" layoutY="221.0" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Game" textFill="WHITE">
+                        <JFXButton fx:id="gameButton" alignment="BASELINE_LEFT" layoutY="221.0" onAction="#gameButtonOnAction" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="Game" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -194,18 +194,18 @@
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="MenuClose" layoutX="22.0" layoutY="422.0" prefHeight="22.0" prefWidth="114.0" text="MENU" textFill="#b7b7b7">
-                    <graphic>
-                        <ImageView fx:id="menucloseimage" fitHeight="22.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../icon/menu.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
+            <Label fx:id="MenuClose" layoutX="22.0" layoutY="422.0" prefHeight="22.0" prefWidth="92.0" text="MENU" textFill="#b7b7b7">
+               <graphic>
+                  <ImageView fx:id="menuimage1" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>

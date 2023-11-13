@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.layout.Layer?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.Double?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" stylesheets="@../main.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Edit">
+   <children>
+      <TabPane layoutX="177.0" layoutY="175.0" prefHeight="384.0" prefWidth="561.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-border-width: 3; -fx-background-color: #cccccc;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Add">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="355.0" prefWidth="632.0">
+                     <children>
+                        <Label alignment="BASELINE_LEFT" layoutX="120.0" layoutY="57.0" prefHeight="31.0" prefWidth="100.0" text="Word">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="120.0" layoutY="104.0" prefHeight="31.0" prefWidth="100.0" text="Pronounce">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="120.0" layoutY="169.0" prefHeight="31.0" prefWidth="100.0" text="Description">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="220.0" layoutY="60.0" prefHeight="25.0" prefWidth="222.0" />
+                        <TextField layoutX="220.0" layoutY="107.0" prefHeight="25.0" prefWidth="222.0" />
+                        <JFXButton layoutX="250.0" layoutY="276.0" text="Submit">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/2631293.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font></JFXButton>
+                        <Label layoutX="191.0" layoutY="248.0" text="The word already exists. Please try again." />
+                        <TextArea layoutX="220.0" layoutY="153.0" prefHeight="63.0" prefWidth="222.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/add4.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Tab>
+          <Tab text="Remove">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="144.0" layoutY="81.0" text="Which word do you want to remove?">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Layer layoutX="144.0" layoutY="130.0" />
+                        <Label layoutX="170.0" layoutY="140.0" text="Word">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="242.0" layoutY="140.0" />
+                        <JFXButton layoutX="228.0" layoutY="206.0" text="Submit">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/2631293.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font></JFXButton>
+                        <Label alignment="CENTER" layoutX="172.0" layoutY="181.0" text="The word has been successfully removed." />
+                     </children>
+                  </AnchorPane>
+            </content>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/1564502_basket_delete_remove_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Tab>
+            <Tab text="Update">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="120.0" layoutY="43.0" text="Old word">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="120.0" layoutY="98.0" text="New word">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="120.0" layoutY="151.0" text="Pronounce">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="120.0" layoutY="213.0" text="Description">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="220.0" layoutY="41.0" prefHeight="25.0" prefWidth="222.0" />
+                        <TextField layoutX="220.0" layoutY="95.0" prefHeight="25.0" prefWidth="222.0" />
+                        <TextField layoutX="220.0" layoutY="148.0" prefHeight="25.0" prefWidth="222.0" />
+                        <TextArea layoutX="220.0" layoutY="201.0" prefHeight="63.0" prefWidth="222.0" />
+                        <JFXButton layoutX="228.0" layoutY="297.0" text="Submit">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../../../Downloads/2631293.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font></JFXButton>
+                        <Label layoutX="169.0" layoutY="279.0" text="The word has been successfully updated." />
+                     </children></AnchorPane>
+               </content>
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icon/edit2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="140.0" prefWidth="917.0" style="-fx-background-color: rgb(29,35,78);">
+         <children>
+            <Label alignment="CENTER" layoutX="344.0" layoutY="60.0" prefHeight="63.0" prefWidth="230.0" text="EDIT WORDS" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="23.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Line endX="119.99998474121094" layoutX="445.0" layoutY="120.0" startX="-100.0" stroke="#c79168" strokeWidth="2.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0580e8" height="108.0" layoutX="880.0" layoutY="1.0" strokeType="INSIDE" width="40.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffc400" height="31.0" layoutX="799.0" layoutY="109.0" strokeType="INSIDE" width="129.0" />
+            <Circle fill="#5ce8ff" layoutX="854.0" layoutY="82.0" radius="26.0" strokeType="INSIDE" />
+            <Circle fill="#ff8029" layoutX="359.0" layoutY="-11.0" radius="48.0" strokeType="INSIDE" />
+            <Arc fill="#76ae26" layoutX="672.0" layoutY="21.0" length="270.0" radiusX="34.0" radiusY="31.0" startAngle="45.0" strokeType="INSIDE" style="-fx-rotate: 15;" type="ROUND" />
+            <Circle fill="WHITE" layoutX="560.0" layoutY="49.0" radius="10.0" strokeType="INSIDE" />
+            <Circle fill="#e2ce18" layoutX="269.0" layoutY="89.0" radius="10.0" strokeType="INSIDE" />
+            <Circle fill="#ffc400" layoutX="22.0" layoutY="120.0" radius="20.0" strokeType="INSIDE" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="96.0" layoutX="31.0" layoutY="43.0" strokeType="INSIDE" style="-fx-rotate: 145;" width="33.0" />
+            <Polygon fill="#76ae26" layoutX="169.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" style="-fx-rotate: 85;">
+              <points>
+                <Double fx:value="-50.0" />
+                <Double fx:value="40.0" />
+                <Double fx:value="50.0" />
+                <Double fx:value="40.0" />
+                <Double fx:value="0.0" />
+                <Double fx:value="-60.0" />
+              </points>
+            </Polygon>
+         </children>
+      </Pane>
+      <ImageView fitHeight="184.0" fitWidth="177.0" layoutX="738.0" layoutY="423.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/EditPerson.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

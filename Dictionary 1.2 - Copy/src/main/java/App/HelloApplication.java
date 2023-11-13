@@ -21,7 +21,7 @@ public class HelloApplication extends Application {
         Parent root = fxmlLoader.load();
         Welcome welcomeController = fxmlLoader.getController();
         welcomeController.initializeStage(window);
-        Scene scene = new Scene(root, 893, 540);
+        Scene scene = new Scene(root, 900, 600);
 
         //Closes the window.
         window.setOnCloseRequest(e -> {

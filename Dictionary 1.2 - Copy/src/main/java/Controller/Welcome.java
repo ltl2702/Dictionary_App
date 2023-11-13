@@ -1,7 +1,7 @@
 package Controller;
 
 
-import Connect.UserInfo;
+import Connect.ConnectDB;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
@@ -72,7 +72,7 @@ public class Welcome implements Initializable {
     @FXML
     public void loginButtonOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         if (!usernamefill.getText().isBlank() && !passwordfill.getText().isBlank()) {
-            try (Connection connectDatabase = new UserInfo().connect()) {
+            try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
                 //Verifies login.
                 String verify = "SELECT username, password" +
                         " FROM account WHERE username = '" + usernamefill.getText() +
@@ -103,7 +103,7 @@ public class Welcome implements Initializable {
                                 stage.setY(e.getScreenY() - y);
                             });
 
-                            Scene scene = new Scene(root, 893, 600);
+                            Scene scene = new Scene(root, 900, 600);
                             //stage.setScene(scene);
                             loading(scene);
                         } catch (Exception ex) {
@@ -116,7 +116,7 @@ public class Welcome implements Initializable {
                     e.getCause();
                 } finally {
                     try {
-                        UserInfo.closeConnection();
+                        ConnectDB.closeConnection();
                     } catch (Exception ex) {
                         ex.printStackTrace();
                         ex.getCause();
@@ -143,7 +143,7 @@ public class Welcome implements Initializable {
                 Signup signupController = fxmlLoader.getController();
                 signupController.setStage(stage);
 
-                Scene scene = new Scene(root, 893, 540);
+                Scene scene = new Scene(root, 900, 600);
                 stage.setScene(scene);
             } catch (Exception ex) {
                 ex.printStackTrace();

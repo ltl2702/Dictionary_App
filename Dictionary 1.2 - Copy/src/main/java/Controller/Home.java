@@ -2,11 +2,13 @@ package Controller;
 
 import cmd.DictionaryManagement;
 import cmd.Word;
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +22,16 @@ import java.util.ResourceBundle;
 
 public class Home implements Initializable {
     private final String datatable = "av";
+    private Stage stage;
+
+    @FXML
+    private AnchorPane homePane;
+
+    @FXML
+    private JFXButton editButton;
+
+    @FXML
+    private JFXButton homeButton;
 
     @FXML
     private Label Menu, MenuClose;
@@ -27,7 +39,6 @@ public class Home implements Initializable {
     @FXML
     private WebView webView;
     private WebEngine webEngine;
-    private Stage stage;
 
     @FXML
     private Label InvalidWord;
@@ -87,10 +98,16 @@ public class Home implements Initializable {
 
         if (open) {
             slide.setToX(0);
-            slide.setOnFinished((ActionEvent e) -> MenuClose.setVisible(true));
+            slide.setOnFinished((ActionEvent e) -> {
+                MenuClose.setVisible(true);
+                Menu.setVisible(false);
+            });
         } else {
             slide.setToX(-176);
-            slide.setOnFinished((ActionEvent e) -> Menu.setVisible(true));
+            slide.setOnFinished((ActionEvent e) -> {
+                Menu.setVisible(true);
+                MenuClose.setVisible(false);
+            });
         }
 
         slide.play();
@@ -161,18 +178,32 @@ public class Home implements Initializable {
     }
 
     @FXML
-    void addButtonOnAction(ActionEvent event) {
-        // Handle add button action...
+    void homeButtonOnAction(ActionEvent event) {
+        homeButton.setOnAction(e -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/homecopy.fxml"));
+                AnchorPane homepane2 = fxmlLoader.load();
+                homePane.getChildren().setAll(homepane2);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                ex.getCause();
+            }
+        });
     }
 
     @FXML
     void editButtonOnAction(ActionEvent event) {
         // Handle edit button action...
-    }
-
-    @FXML
-    void eraseButtonOnAction(ActionEvent event) {
-        // Handle erase button action...
+        editButton.setOnAction(e -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/edit2.fxml"));
+                AnchorPane editpane = fxmlLoader.load();
+                homePane.getChildren().setAll(editpane);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                ex.getCause();
+            }
+        });
     }
 
     @FXML

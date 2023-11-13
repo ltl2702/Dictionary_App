@@ -1,6 +1,6 @@
 package Controller;
 
-import Connect.UserInfo;
+import Connect.ConnectDB;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
@@ -81,7 +81,7 @@ public class Signup implements Initializable {
     }
 
     public void signup() {
-        try (Connection connectDatabase = new UserInfo().connect()) {
+        try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
             String first = firstnamefill.getText();
             String last = lastnamefill.getText();
             String user = usernamefill.getText();
@@ -89,7 +89,7 @@ public class Signup implements Initializable {
 
             //Verifies login.
             String verify = "SELECT COUNT(*) AS counter" +
-                    " FROM account WHERE username = '" + usernamefill.getText() + "'";
+                    " FROM account WHERE username = '" + user + "'";
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(verify);
 
@@ -119,7 +119,7 @@ public class Signup implements Initializable {
                             stage.setY(e.getScreenY() - y);
                         });
 
-                        Scene scene = new Scene(root, 893, 600);
+                        Scene scene = new Scene(root, 900, 600);
                         loading(scene);
                     } catch (Exception ex) {
                         ex.printStackTrace();
@@ -131,7 +131,7 @@ public class Signup implements Initializable {
             e.printStackTrace();
             e.getCause();
         } finally {
-            UserInfo.closeConnection();
+            ConnectDB.closeConnection();
         }
     }
 
