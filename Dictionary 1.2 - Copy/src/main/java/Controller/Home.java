@@ -45,9 +45,6 @@ public class Home implements Initializable {
     private WebEngine webEngine;
 
     @FXML
-    private Label InvalidWord;
-
-    @FXML
     private AnchorPane slider;
 
     @FXML
@@ -101,7 +98,7 @@ public class Home implements Initializable {
             performSearch(newValue);
         });
 
-        list = DictionaryManagement.dbSearchWord("'%'", datatable);
+        list = DictionaryManagement.dbSearchWord("''", datatable);
         listResult.setItems(list);
 
         listResult.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -110,9 +107,7 @@ public class Home implements Initializable {
             }
         });
     }
-
-    private void showHtmlContent(String htmlContent) {
-        String cautionHtml = """
+    private String cautionHtml = """
                 <html>
                     <head>
                         <style>
@@ -130,46 +125,43 @@ public class Home implements Initializable {
                 </html>
                 """;
 
-        if (htmlContent != null && !htmlContent.isEmpty()) {
-            webEngine.loadContent(htmlContent);
-            if (InvalidWord != null) InvalidWord.setVisible(false);
-        } else {
-            webEngine.loadContent(cautionHtml != null && !cautionHtml.isEmpty() ? cautionHtml : "");
-            if (InvalidWord != null) InvalidWord.setVisible(true);
-        }
+    private void showHtmlContent(String htmlContent) {
+        if (searchField.getText().trim().isEmpty()) {
+            // Nếu trường tìm kiếm trống, tải nội dung trống vào WebView
+            webEngine.loadContent("");
 
-        if (webView != null) webView.setVisible(true);
-    }
+        } else if (htmlContent != null && !htmlContent.isEmpty()) {
+            // Nếu htmlContent không null và không trống, tải nó vào WebView
+            webEngine.loadContent(htmlContent);
+
+        } else {
+            // Nếu htmlContent null hoặc trống, tải cautionHtml vào WebView
+            webEngine.loadContent(cautionHtml != null && !cautionHtml.isEmpty() ? cautionHtml : "");
+            }
+        }
 
     private ExecutorService threadPool = Executors.newFixedThreadPool(1);
 
     private void performSearch(String searchTerm) {
         threadPool.submit(() -> {
-            ObservableList<Word> searchResults = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "%'", datatable);
+            list = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "%'", datatable);
 
             Platform.runLater(() -> {
-                listResult.setItems(searchResults);
+                listResult.setItems(list);
 
-                if (!searchResults.isEmpty()) {
-                    Word firstWord = searchResults.get(0);
+                if (!list.isEmpty() && !searchTerm.trim().isEmpty()) {
+                    // If there are matching words and the search term is not empty, display the HTML content of the first word
+                    Word firstWord = list.get(0);
                     showHtmlContent(firstWord.getHtml());
                 } else {
+                    list.clear();
                     showHtmlContent(null);
                 }
-
-                // Sự kiện nhấp nút
-                listResult.setOnMouseClicked(event -> {
-                    if (event.getClickCount() == 1) {
-                        Word selectedWord = listResult.getSelectionModel().getSelectedItem();
-                        if (selectedWord != null) {
-                            showHtmlContent(selectedWord.getHtml());
-                        }
-                    }
-                });
             });
         });
-
     }
+
+
 
     @FXML
     void searchFieldOnAction(ActionEvent event) {

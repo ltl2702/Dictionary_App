@@ -21,7 +21,7 @@ public class DictionaryManagement {
             c.setAutoCommit(false);
 
             stmt = c.createStatement();
-            String sql = "SELECT * FROM " + tableName + " WHERE word like " + keyWord;
+            String sql = "SELECT * FROM " + tableName + " WHERE word LIKE " + keyWord;;
             System.out.println("Executing SQL query: " + sql);
 
             ResultSet rs = stmt.executeQuery(sql);
