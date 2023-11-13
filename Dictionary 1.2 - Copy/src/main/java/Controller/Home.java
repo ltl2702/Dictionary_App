@@ -100,6 +100,7 @@ public class Home implements Initializable {
 
         list = DictionaryManagement.dbSearchWord("''", datatable);
         listResult.setItems(list);
+        listResult.setVisible(false);
 
         listResult.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -150,11 +151,12 @@ public class Home implements Initializable {
                 listResult.setItems(list);
 
                 if (!list.isEmpty() && !searchTerm.trim().isEmpty()) {
+                    listResult.setVisible(true);
                     // If there are matching words and the search term is not empty, display the HTML content of the first word
                     Word firstWord = list.get(0);
                     showHtmlContent(firstWord.getHtml());
                 } else {
-                    list.clear();
+                    listResult.setVisible(false);
                     showHtmlContent(null);
                 }
             });
