@@ -29,13 +29,10 @@ public class Home implements Initializable {
     private Stage stage;
 
     @FXML
-    private AnchorPane homePane;
+    private AnchorPane homePane, slider;
 
     @FXML
-    private JFXButton editButton;
-
-    @FXML
-    private JFXButton homeButton;
+    private JFXButton editButton, homeButton;
 
     @FXML
     private Label Menu, MenuClose;
@@ -43,9 +40,6 @@ public class Home implements Initializable {
     @FXML
     private WebView webView;
     private WebEngine webEngine;
-
-    @FXML
-    private AnchorPane slider;
 
     @FXML
     private Button UKspeakerButton, searchButton, USspeakerButton;
@@ -168,7 +162,6 @@ public class Home implements Initializable {
     @FXML
     void searchFieldOnAction(ActionEvent event) {
     }
-
 
     @FXML
     void homeButtonOnAction(ActionEvent event) {
