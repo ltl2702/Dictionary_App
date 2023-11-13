@@ -1,12 +1,10 @@
 module com.example.btl {
-
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
     requires java.sql;
     requires javafx.web;
     requires com.jfoenix;
-    //requires mysql.connector.j;
 
     exports App;
     opens App to javafx.fxml;

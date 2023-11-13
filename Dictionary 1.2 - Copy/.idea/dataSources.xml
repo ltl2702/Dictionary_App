@@ -1,38 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="dict_hh.db" uuid="56f543fd-1808-4306-80ce-22c5a38bce2e">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/resources/data/database/dict_hh.db</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="dictionary_database.db" uuid="c4ba83eb-5b6b-4e18-8157-8aab434ba818">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/resources/data/database/dictionary_database.db</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="userinfo.db" uuid="035612b5-f299-44a0-8924-ab3565c416aa">
+    <data-source source="LOCAL" name="userinfo.db" uuid="ece94fde-f24b-47ca-9282-d52aa236f532">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/resources/data/database/userinfo.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="test2" uuid="49645f79-14ce-4ebd-ada2-434483b71084">
+    <data-source source="LOCAL" name="test2" uuid="1ff191dd-01cd-44de-83d5-1bbbcc0d20ae">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Thu Trang\IdeaProjects\BTL_OOP\Dictionary 1.2 - Copy\src\main\resources\data\database\test2.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\PC\IdeaProjects\Dictionary\BTL_OOP\Dictionary 1.2 - Copy\src\main\resources\data\database\test2.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.43.0/org/xerial/sqlite-jdbc/3.43.0.0/sqlite-jdbc-3.43.0.0.jar</url>
         </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.43.0/org/xerial/sqlite-jdbc/3.43.0.0/sqlite-jdbc-3.43.0.0.jar</url>
+        </library>
       </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="dict_hh.db" uuid="24577cab-0635-4e04-8f12-b7ff9434d877">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/main/resources/data/database/dict_hh.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
 </project>
