@@ -90,6 +90,12 @@ public class Edit {
             String pronounce = addPro.getText();
             String description = addDes.getText();
 
+            //Converts to HTML.
+            StringBuilder convertHTML = new StringBuilder();
+            convertHTML.append("<h1>").append(word).append("</h1>");
+            convertHTML.append("<h3><i>/").append(pronounce).append("/</i></h3>");
+            convertHTML.append("<h2>").append(description).append("</h2>");
+
             //Verifies word.
             String verify = "SELECT COUNT(*) AS counter" +
                     " FROM av WHERE word = '" + word + "'";
@@ -101,8 +107,8 @@ public class Edit {
                 if (count == 1)
                     addLabel.setText("The word already exists. Please try again.");
                 else {
-                    String add = "INSERT INTO av(word, pronounce, description) VALUES ('"
-                            + word + "','" + pronounce + "','" + description + "')";
+                    String add = "INSERT INTO av(word, html, pronounce, description) VALUES ('"
+                            + word + "','" + convertHTML.toString() + "','" + pronounce + "','" + description + "')";
                     statement.executeUpdate(add);
                     addLabel.setText("The word is added.");
                 }
@@ -132,39 +138,37 @@ public class Edit {
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(verify);
 
-            if (query.next()) {
+            while (query.next()) {
                 int count = query.getInt("counter");
                 if (count == 1) {
-                    /*
+
                     String getID = "SELECT id FROM av WHERE word = '" + wordremove + "'";
                     ResultSet IDquery = statement.executeQuery(getID);
                     if (IDquery.next()) {
                         int id = IDquery.getInt("id");
-                     */
+
                         String remove = "DELETE FROM av WHERE word = '" + wordremove + "'";
                         statement.executeUpdate(remove);
-                        /*
+
                         String updateID = "UPDATE av SET id = id - 1 WHERE id > " + id;
                         statement.executeUpdate(updateID);
-                         */
-                        removeLabel.setText("The word is removed.");
 
-                /*}
-                    else {
-                        removeLabel.setText("Error fetching ID.");
+                        removeLabel.setText("The word is removed.");
                     }
-                    */
+                    else{
+                            removeLabel.setText("Error fetching ID.");
+                        }
+                    } else {
+                        removeLabel.setText("The word does not exist. Please try again.");
+                    }
                 }
-                else {
-                    removeLabel.setText("The word does not exist. Please try again.");
-                }
+        } catch(Exception ex){
+                ex.printStackTrace();
+                ex.getCause();
+            } finally{
+                ConnectDB.closeConnection();
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            ex.getCause();
-        } finally {
-            ConnectDB.closeConnection();
-        }
+
     }
 
     @FXML
@@ -182,6 +186,12 @@ public class Edit {
             String description = updateDes.getText();
             String pronounce = updatePro.getText();
 
+            //Converts all information to HTML
+            StringBuilder convertHTML = new StringBuilder();
+            convertHTML.append("<h1>").append(newWord).append("</h1>");
+            convertHTML.append("<h3><i>/").append(pronounce).append("/</i></h3>");
+            convertHTML.append("<h2>").append(description).append("</h2>");
+
             String verify = "SELECT COUNT(*) AS counter" +
                     " FROM av WHERE word = '" + oldWord + "'";
             Statement statement = connectDatabase.createStatement();
@@ -192,7 +202,7 @@ public class Edit {
                 ResultSet IDquery = statement.executeQuery(getID);
                 if (IDquery.next()) {
                     int id = IDquery.getInt("id");
-                    String update = "UPDATE av SET word = '" + newWord + "', description = '" + description + "', pronounce = '" + pronounce + "' WHERE id = '" + id + "'";
+                    String update = "UPDATE av SET word = '" + newWord + "', html = '" + convertHTML.toString() + "', description = '" + description + "', pronounce = '" + pronounce + "' WHERE id = '" + id + "'";
                     statement.executeUpdate(update);
                     updateLabel.setText("The word has been successfully updated.");
                 }

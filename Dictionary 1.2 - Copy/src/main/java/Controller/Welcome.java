@@ -69,13 +69,26 @@ public class Welcome implements Initializable {
         return mainpane;
     }
 
+    public String getUsernamefill() {
+        return usernamefill.getText();
+    }
+
+    public void setUsernamefill(TextField usernamefill) {
+        this.usernamefill = usernamefill;
+    }
+
+    public boolean check = false;
+
+    public boolean isCheck() {
+        return check;
+    }
+
     @FXML
     public void loginButtonOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         if (!usernamefill.getText().isBlank() && !passwordfill.getText().isBlank()) {
             try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
                 //Verifies login.
-                String verify = "SELECT username, password" +
-                        " FROM account WHERE username = '" + usernamefill.getText() +
+                String verify = "SELECT username, password FROM account WHERE username = '" + usernamefill.getText() +
                         "' AND password = '" + passwordfill.getText() + "'";
 
                 try {
@@ -86,12 +99,17 @@ public class Welcome implements Initializable {
                         invalidLabel.setText("Invalid Login. Please try again.");
                     else {
                         invalidLabel.setText("Congratulations!!!");
+                        check = true;
+                        //setUsernamefill(usernamefill);
+                        System.out.println(getUsernamefill());
                         try {
                             FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/homecopy.fxml"));
 
                             Parent root = fxmlLoader.load();
                             Home homeController = fxmlLoader.getController();
                             homeController.setStage(stage);
+                            homeController.setUsernameLogin(usernamefill);
+                            homeController.setCheckLogin(check);
 
                             root.setOnMousePressed(e -> {
                                 x = e.getSceneX();

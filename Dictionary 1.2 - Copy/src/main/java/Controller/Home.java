@@ -29,10 +29,16 @@ public class Home implements Initializable {
     private Stage stage;
 
     @FXML
-    private AnchorPane homePane, slider;
+    private AnchorPane homePane;
 
     @FXML
-    private JFXButton editButton, homeButton;
+    private JFXButton editButton;
+
+    @FXML
+    private JFXButton homeButton;
+
+    @FXML
+    private JFXButton userButton;
 
     @FXML
     private Label Menu, MenuClose;
@@ -40,6 +46,12 @@ public class Home implements Initializable {
     @FXML
     private WebView webView;
     private WebEngine webEngine;
+
+    @FXML
+    private Label InvalidWord;
+
+    @FXML
+    private AnchorPane slider;
 
     @FXML
     private Button UKspeakerButton, searchButton, USspeakerButton;
@@ -51,6 +63,9 @@ public class Home implements Initializable {
     private ListView<Word> listResult;
 
     private ObservableList<Word> list = FXCollections.observableArrayList();
+    private boolean checklogin;
+    private boolean checksignup;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -202,12 +217,53 @@ public class Home implements Initializable {
         // Handle translate button action...
     }
 
+    private TextField username;
     @FXML
     void userButtonOnAction(ActionEvent event) {
         // Handle user button action...
+        userButton.setOnAction(e -> {
+            System.out.println("Home check login: " + checklogin);
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
+                AnchorPane userpane = fxmlLoader.load();
+                homePane.getChildren().setAll(userpane);
+
+                User userController = fxmlLoader.getController();
+                if(checklogin == true) {
+                    userController.setUsernameLogin(username);
+                    userController.setCheckLogin(checklogin);
+                }
+                else if(checksignup == true) {
+                    userController.setUsernameSignup(username);
+                    userController.setCheckSignup(checksignup);
+                }
+                userController.userLogin();
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                ex.getCause();
+            }
+
+        });
     }
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public void setUsernameLogin(TextField usernamefill) {
+        this.username = usernamefill;
+    }
+
+    public void setCheckLogin(boolean check) {
+        this.checklogin = check;
+    }
+
+    public void setUsernameSignup(TextField usernamefill) {
+        this.username = usernamefill;
+    }
+
+    public void setCheckSignup(boolean check) {
+        this.checksignup = check;
     }
 }

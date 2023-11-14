@@ -5,19 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7a8c904-5a64-4ff8-8027-42474cf81ccb" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Dictionary 1.2/src/main/resources/css/navigation.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.0/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.0/src/main/java/Dictionary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.0/src/main/java/DictionaryCommandline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.0/src/main/java/DictionaryManagement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.0/src/main/java/Word.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dictionary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DictionaryCommandline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DictionaryManagement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Word.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/resources/data/fxml/user.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Edit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Edit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Signup.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Signup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Welcome.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Welcome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/resources/data/database/test2.db" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/resources/data/database/test2.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,27 +50,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/PC/Downloads/BTL_OOP-master/BTL_OOP-master/Dictionary 1.1",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Downloads/BTL_OOP-master/BTL_OOP-master/Dictionary 1.1&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="translator.Main" />
