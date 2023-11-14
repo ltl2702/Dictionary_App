@@ -22,7 +22,6 @@ public class YesNo {
      * @param message the message you want to send to the user.
      */
     public static boolean display(String title, String message) {
-
         Stage window = new Stage();
         //Click ra ngoài window là không được phép.
         window.initModality(Modality.APPLICATION_MODAL);

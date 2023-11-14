@@ -238,7 +238,8 @@ public class Home implements Initializable {
                     userController.setCheckSignup(checksignup);
                 }
                 userController.userLogin();
-
+                userController.setmainpane(homePane);
+                userController.setStage(stage);
             } catch (Exception ex) {
                 ex.printStackTrace();
                 ex.getCause();

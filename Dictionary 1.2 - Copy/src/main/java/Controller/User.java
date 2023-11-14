@@ -4,6 +4,8 @@ import Connect.ConnectDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,10 +13,16 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class User implements Initializable {
     
@@ -40,18 +48,26 @@ public class User implements Initializable {
     private TextField usernameSignup;
     private boolean checkLogin;
     private boolean checkSignup;
+    private AnchorPane userpane;
+    private Stage stage;
 
     void userLogin() {
         System.out.println("User check login: " + checkLogin);
         if(checkLogin == true) {
             try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
-                String select = "SELECT firstname, lastname, username FROM account WHERE username = '" + usernameLogin.getText() + "'";
+                String select = "SELECT firstname, lastname, username, image FROM account WHERE username = '" + usernameLogin.getText() + "'";
                 Statement statement = connectDatabase.createStatement();
                 ResultSet query = statement.executeQuery(select);
                 if (query.next()) {
                     String firstname = query.getString("firstname");
                     String lastname = query.getString("lastname");
                     String username = query.getString("username");
+                    int imageNumber = query.getInt("image");
+                    Image image = new Image(getClass().getResourceAsStream("/data/user/user" + imageNumber + ".png"));
+
+                    userimage.setImage(image);
+                    //UpdateAcc a = new UpdateAcc();
+                    //a.setuserImage(userimage);
 
                     firstnameLabel.setText(firstname);
                     lastLabel.setText(lastname);
@@ -59,6 +75,7 @@ public class User implements Initializable {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
+                System.out.println("Error loading image: " + e.getMessage());
                 e.getCause();
             } finally {
                 ConnectDB.closeConnection();
@@ -66,13 +83,19 @@ public class User implements Initializable {
         }
         if(checkSignup == true) {
             try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
-                String select = "SELECT firstname, lastname, username FROM account WHERE username = '" + usernameSignup.getText() + "'";
+                String select = "SELECT firstname, lastname, username, image FROM account WHERE username = '" + usernameSignup.getText() + "'";
                 Statement statement = connectDatabase.createStatement();
                 ResultSet query = statement.executeQuery(select);
                 if (query.next()) {
                     String firstname = query.getString("firstname");
                     String lastname = query.getString("lastname");
                     String username = query.getString("username");
+                    int imageNumber = query.getInt("image");
+                    Image image = new Image(getClass().getResourceAsStream("/data/user/user" + imageNumber + ".png"));
+
+                    userimage.setImage(image);
+                    //UpdateAcc a = new UpdateAcc();
+                    //a.setuserImage(userimage);
 
                     firstnameLabel.setText(firstname);
                     lastLabel.setText(lastname);
@@ -89,12 +112,47 @@ public class User implements Initializable {
 
     @FXML
     void changeInfoButtonOnAction(ActionEvent event) {
+        changeInfoButton.setOnAction(e -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(UpdateAcc.class.getResource("/data/fxml/updateAcc.fxml"));
+                AnchorPane updatepane = fxmlLoader.load();
+                userpane.getChildren().setAll(updatepane);
 
+                UpdateAcc updateController = fxmlLoader.getController();
+                if(checkSignup) {
+                    updateController.setusername(usernameSignup);
+                    updateController.setuserImage();
+                    updateController.setMainpane(userpane);
+                }
+                if(checkLogin) {
+                    updateController.setusername(usernameLogin);
+                    updateController.setuserImage();
+                    updateController.setMainpane(userpane);
+                }
+                //signupController.setStage(stage);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                ex.getCause();
+            }
+        });
     }
 
     @FXML
     void signoutButtonOnAction(ActionEvent event) {
+        signoutButton.setOnAction(e -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(Signup.class.getResource("/data/fxml/background.fxml"));
+                Parent root = fxmlLoader.load();
+                Welcome welcomeController = fxmlLoader.getController();
+                welcomeController.initializeStage(stage);
 
+                Scene scene = new Scene(root, 900, 600);
+                stage.setScene(scene);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                ex.getCause();
+            }
+        });
     }
 
 
@@ -117,5 +175,13 @@ public class User implements Initializable {
 
     public void setCheckSignup(boolean checksignup) {
         this.checkSignup = checksignup;
+    }
+
+    public void setmainpane(AnchorPane homePane) {
+        this.userpane = homePane;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }
