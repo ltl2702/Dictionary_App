@@ -115,7 +115,6 @@ public class Avatar {
 
     @FXML
     void returnButtonOnAction(ActionEvent event) {
-        returnButton.setOnAction(e -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(UpdateAcc.class.getResource("/data/fxml/updateAcc.fxml"));
                 AnchorPane updatepane = fxmlLoader.load();
@@ -129,7 +128,6 @@ public class Avatar {
                 ex.printStackTrace();
                 ex.getCause();
             }
-        });
     }
 
     public void setusername(TextField username) {
