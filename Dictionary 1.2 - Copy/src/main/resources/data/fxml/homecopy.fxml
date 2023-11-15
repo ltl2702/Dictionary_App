@@ -78,7 +78,7 @@
                 <WebView fx:id="webView" layoutX="388.0" layoutY="167.0" prefHeight="400.0" prefWidth="483.0" style="-fx-opacity: 0.5;" />
                 <AnchorPane layoutX="391.0" layoutY="72.0" prefHeight="86.0" prefWidth="422.0">
                     <children>
-                        <Button fx:id="USspeakerButton" contentDisplay="RIGHT" layoutX="176.0" layoutY="44.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: rgba(255,255,255,0);" text="US" textFill="WHITE">
+                        <Button fx:id="USspeakerButton" contentDisplay="RIGHT" layoutX="176.0" layoutY="44.0" mnemonicParsing="false" onAction="#speakClick" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: rgba(255,255,255,0);" text="US" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" style="fx-background-color: rgba(255,255,255,0);">
                                     <image>
@@ -90,7 +90,7 @@
                                 <Font name="System Bold" size="18.0" />
                             </font>
                         </Button>
-                        <Button fx:id="UKspeakerButton" contentDisplay="RIGHT" layoutX="263.0" layoutY="44.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="87.0" style="-fx-background-color: rgba(255,255,255,0);" text="UK" textFill="WHITE">
+                        <Button fx:id="UKspeakerButton" contentDisplay="RIGHT" layoutX="263.0" layoutY="44.0" mnemonicParsing="false" onAction="#speakClick" prefHeight="40.0" prefWidth="87.0" style="-fx-background-color: rgba(255,255,255,0);" text="UK" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                     <image>

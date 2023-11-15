@@ -151,7 +151,6 @@ public class Welcome implements Initializable {
 
     @FXML
     public void signupButtonOnAction(ActionEvent event) {
-        //signupbutton.setOnAction(e -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Signup.class.getResource("/data/fxml/signup.fxml"));
 
@@ -167,7 +166,6 @@ public class Welcome implements Initializable {
                 ex.printStackTrace();
                 ex.getCause();
             }
-        //});
     }
 
     private void loading(Scene scene) {

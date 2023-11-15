@@ -13,12 +13,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javazoom.jl.decoder.JavaLayerException;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
@@ -27,7 +31,7 @@ import java.util.concurrent.Executors;
 public class Home implements Initializable {
     private final String datatable = "av";
     private Stage stage;
-
+    private String word;
     @FXML
     private AnchorPane homePane;
 
@@ -180,7 +184,7 @@ public class Home implements Initializable {
 
     @FXML
     void homeButtonOnAction(ActionEvent event) {
-        //homeButton.setOnAction(e -> {
+        homeButton.setOnAction(e -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/homecopy.fxml"));
                 AnchorPane homepane2 = fxmlLoader.load();
@@ -189,13 +193,13 @@ public class Home implements Initializable {
                 ex.printStackTrace();
                 ex.getCause();
             }
-        //});
+        });
     }
 
     @FXML
     void editButtonOnAction(ActionEvent event) {
         // Handle edit button action...
-        //editButton.setOnAction(e -> {
+        editButton.setOnAction(e -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/edit2.fxml"));
                 AnchorPane editpane = fxmlLoader.load();
@@ -204,7 +208,7 @@ public class Home implements Initializable {
                 ex.printStackTrace();
                 ex.getCause();
             }
-        //});
+        });
     }
 
     @FXML
@@ -221,7 +225,7 @@ public class Home implements Initializable {
     @FXML
     void userButtonOnAction(ActionEvent event) {
         // Handle user button action...
-        //userButton.setOnAction(e -> {
+        userButton.setOnAction(e -> {
             System.out.println("Home check login: " + checklogin);
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
@@ -245,7 +249,7 @@ public class Home implements Initializable {
                 ex.getCause();
             }
 
-        //});
+        });
     }
 
     public void setStage(Stage stage) {
@@ -267,4 +271,18 @@ public class Home implements Initializable {
     public void setCheckSignup(boolean check) {
         this.checksignup = check;
     }
+
+    @FXML
+    void speakClick(MouseEvent event) throws JavaLayerException, IOException {
+        if (event.getSource() == UKspeakerButton) {
+            GoogleAPI audio = GoogleAPI.getInstance();
+            InputStream sound = audio.getAudio(word, "en-UK");
+            audio.play(sound);
+        } else if (event.getSource() == USspeakerButton) {
+            GoogleAPI audio = GoogleAPI.getInstance();
+            InputStream sound = audio.getAudio(word, "en-US");
+            audio.play(sound);
+        }
+    }
 }
+

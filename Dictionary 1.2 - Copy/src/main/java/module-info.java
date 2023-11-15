@@ -1,10 +1,11 @@
-module com.example.btl {
+module OOP {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
     requires java.sql;
     requires javafx.web;
     requires com.jfoenix;
+    requires jlayer;
 
     exports App;
     opens App to javafx.fxml;

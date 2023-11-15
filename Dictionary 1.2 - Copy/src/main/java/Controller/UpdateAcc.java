@@ -94,7 +94,6 @@ public class UpdateAcc implements Initializable {
 
     @FXML
     void changeavtButtonOnAction(ActionEvent event) {
-        //changeavt.setOnAction(e -> {
             try {
                 Stage window = new Stage();
                 FXMLLoader fxmlLoader = new FXMLLoader(Avatar.class.getResource("/data/fxml/avt.fxml"));
@@ -119,7 +118,6 @@ public class UpdateAcc implements Initializable {
                 ex.printStackTrace();
                 ex.getCause();
             }
-        //});
     }
 
     public void setusername(TextField username) {
