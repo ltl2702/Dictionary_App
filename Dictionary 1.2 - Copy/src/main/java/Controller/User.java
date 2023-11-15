@@ -112,7 +112,7 @@ public class User implements Initializable {
 
     @FXML
     void changeInfoButtonOnAction(ActionEvent event) {
-        changeInfoButton.setOnAction(e -> {
+        //changeInfoButton.setOnAction(e -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(UpdateAcc.class.getResource("/data/fxml/updateAcc.fxml"));
                 AnchorPane updatepane = fxmlLoader.load();
@@ -134,12 +134,12 @@ public class User implements Initializable {
                 ex.printStackTrace();
                 ex.getCause();
             }
-        });
+        //});
     }
 
     @FXML
     void signoutButtonOnAction(ActionEvent event) {
-        signoutButton.setOnAction(e -> {
+        //signoutButton.setOnAction(e -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Signup.class.getResource("/data/fxml/background.fxml"));
                 Parent root = fxmlLoader.load();
@@ -152,7 +152,7 @@ public class User implements Initializable {
                 ex.printStackTrace();
                 ex.getCause();
             }
-        });
+        //});
     }
 
 

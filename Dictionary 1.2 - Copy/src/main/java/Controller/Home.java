@@ -180,7 +180,7 @@ public class Home implements Initializable {
 
     @FXML
     void homeButtonOnAction(ActionEvent event) {
-        homeButton.setOnAction(e -> {
+        //homeButton.setOnAction(e -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/homecopy.fxml"));
                 AnchorPane homepane2 = fxmlLoader.load();
@@ -189,13 +189,13 @@ public class Home implements Initializable {
                 ex.printStackTrace();
                 ex.getCause();
             }
-        });
+        //});
     }
 
     @FXML
     void editButtonOnAction(ActionEvent event) {
         // Handle edit button action...
-        editButton.setOnAction(e -> {
+        //editButton.setOnAction(e -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/edit2.fxml"));
                 AnchorPane editpane = fxmlLoader.load();
@@ -204,7 +204,7 @@ public class Home implements Initializable {
                 ex.printStackTrace();
                 ex.getCause();
             }
-        });
+        //});
     }
 
     @FXML
@@ -221,7 +221,7 @@ public class Home implements Initializable {
     @FXML
     void userButtonOnAction(ActionEvent event) {
         // Handle user button action...
-        userButton.setOnAction(e -> {
+        //userButton.setOnAction(e -> {
             System.out.println("Home check login: " + checklogin);
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
@@ -245,7 +245,7 @@ public class Home implements Initializable {
                 ex.getCause();
             }
 
-        });
+        //});
     }
 
     public void setStage(Stage stage) {
