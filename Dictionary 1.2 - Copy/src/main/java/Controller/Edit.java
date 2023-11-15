@@ -85,7 +85,7 @@ public class Edit {
 
     void add() {
         try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
-            String word = addword.getText();
+            String word = addword.getText().toLowerCase();
             String pronounce = addPro.getText();
             String description = addDes.getText();
 
@@ -97,13 +97,14 @@ public class Edit {
 
             //Verifies word.
             String verify = "SELECT COUNT(*) AS counter" +
-                    " FROM av WHERE word = '" + word + "'";
+                    " FROM av WHERE LOWER(word) = '" + word + "'";
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(verify);
 
             if (query.next()) {
                 int count = query.getInt("counter");
-                if (count == 1)
+                //if (count == 1)
+                if (count > 0)
                     addLabel.setText("The word already exists. Please try again.");
                 else {
                     String add = "INSERT INTO av(word, html, pronounce, description) VALUES ('"
@@ -130,16 +131,17 @@ public class Edit {
 
     void remove() {
         try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
-            String wordremove = removeword.getText();
+            String wordremove = removeword.getText().toLowerCase();
 
             String verify = "SELECT COUNT(*) AS counter" +
-                    " FROM av WHERE word = '" + wordremove + "'";
+                    " FROM av WHERE LOWER(word) = '" + wordremove + "'";
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(verify);
 
             while (query.next()) {
                 int count = query.getInt("counter");
-                if (count == 1) {
+                //if (count == 1) {
+                if (count > 0) {
                     /*
                     String getID = "SELECT id FROM av WHERE word = '" + wordremove + "'";
                     ResultSet IDquery = statement.executeQuery(getID);
@@ -147,7 +149,7 @@ public class Edit {
                         int id = IDquery.getInt("id");
                      */
 
-                        String remove = "DELETE FROM av WHERE word = '" + wordremove + "'";
+                        String remove = "DELETE FROM av WHERE LOWER(word) = '" + wordremove + "'";
                         statement.executeUpdate(remove);
                         /*
                         String updateID = "UPDATE av SET id = id - 1 WHERE id > " + id;
@@ -184,8 +186,8 @@ public class Edit {
 
     void update() {
         try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
-            String oldWord = oldword.getText();
-            String newWord = newword.getText();
+            String oldWord = oldword.getText().toLowerCase();
+            String newWord = newword.getText().toLowerCase();
             String description = updateDes.getText();
             String pronounce = updatePro.getText();
 
@@ -196,12 +198,12 @@ public class Edit {
             convertHTML.append("<h2>").append(description).append("</h2>");
 
             String verify = "SELECT COUNT(*) AS counter" +
-                    " FROM av WHERE word = '" + oldWord + "'";
+                    " FROM av WHERE LOWER(word) = '" + oldWord + "'";
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(verify);
 
             if (query.next()) {
-                String getID = "SELECT id FROM av WHERE word = '" + oldWord + "'";
+                String getID = "SELECT id FROM av WHERE LOWER(word) = '" + oldWord + "'";
                 ResultSet IDquery = statement.executeQuery(getID);
                 if (IDquery.next()) {
                     int id = IDquery.getInt("id");

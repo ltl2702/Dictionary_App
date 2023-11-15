@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7a8c904-5a64-4ff8-8027-42474cf81ccb" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/resources/data/fxml/user.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Edit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Edit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Signup.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Signup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Welcome.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/java/Controller/Welcome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/resources/data/database/test2.db" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/resources/data/database/test2.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/resources/data/database/dict_hh.db" beforeDir="false" afterPath="$PROJECT_DIR$/../Dictionary 1.2 - Copy/src/main/resources/data/database/dict_hh.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +103,7 @@
       <workItem from="1696153961433" duration="6603000" />
       <workItem from="1696210081800" duration="126000" />
       <workItem from="1697530747323" duration="2955000" />
+      <workItem from="1700026425143" duration="173000" />
     </task>
     <task id="LOCAL-00001" summary="thêm javadoc">
       <option name="closed" value="true" />
