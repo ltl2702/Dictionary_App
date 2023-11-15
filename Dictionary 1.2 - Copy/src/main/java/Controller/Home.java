@@ -1,7 +1,7 @@
 package Controller;
 
-import cmd.DictionaryManagement;
-import cmd.Word;
+import Dictionary.DictionaryManagement;
+import Dictionary.Word;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
@@ -33,32 +32,21 @@ public class Home implements Initializable {
     private Stage stage;
     private String word;
     @FXML
-    private AnchorPane homePane;
+    private AnchorPane homePane, slider;
 
     @FXML
-    private JFXButton editButton;
+    private JFXButton editButton, homeButton, userButton;
 
     @FXML
-    private JFXButton homeButton;
-
-    @FXML
-    private JFXButton userButton;
+    private Button UKspeakerButton, USspeakerButton;
 
     @FXML
     private Label Menu, MenuClose;
 
     @FXML
     private WebView webView;
+
     private WebEngine webEngine;
-
-    @FXML
-    private Label InvalidWord;
-
-    @FXML
-    private AnchorPane slider;
-
-    @FXML
-    private Button UKspeakerButton, searchButton, USspeakerButton;
 
     @FXML
     private TextField searchField;
@@ -67,9 +55,7 @@ public class Home implements Initializable {
     private ListView<Word> listResult;
 
     private ObservableList<Word> list = FXCollections.observableArrayList();
-    private boolean checklogin;
-    private boolean checksignup;
-
+    private boolean checklogin, checksignup;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -121,6 +107,7 @@ public class Home implements Initializable {
             }
         });
     }
+
     private String cautionHtml = """
                 <html>
                     <head>
@@ -140,43 +127,52 @@ public class Home implements Initializable {
                 """;
 
     private void showHtmlContent(String htmlContent) {
-        if (searchField.getText().trim().isEmpty()) {
-            // Nếu trường tìm kiếm trống, tải nội dung trống vào WebView
-            webEngine.loadContent("");
-
-        } else if (htmlContent != null && !htmlContent.isEmpty()) {
-            // Nếu htmlContent không null và không trống, tải nó vào WebView
-            webEngine.loadContent(htmlContent);
-
-        } else {
-            // Nếu htmlContent null hoặc trống, tải cautionHtml vào WebView
-            webEngine.loadContent(cautionHtml != null && !cautionHtml.isEmpty() ? cautionHtml : "");
+        Platform.runLater(() -> {
+            if (searchField.getText().trim().isEmpty()) {
+                webEngine.loadContent("");
+            } else if (htmlContent != null && !htmlContent.isEmpty()) {
+                webEngine.loadContent(htmlContent);
+            } else {
+                webEngine.loadContent(cautionHtml != null && !cautionHtml.isEmpty() ? cautionHtml : "");
             }
-        }
-
-    private ExecutorService threadPool = Executors.newFixedThreadPool(1);
-
-    private void performSearch(String searchTerm) {
-        threadPool.submit(() -> {
-            list = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "%'", datatable);
-
-            Platform.runLater(() -> {
-                listResult.setItems(list);
-
-                if (!list.isEmpty() && !searchTerm.trim().isEmpty()) {
-                    listResult.setVisible(true);
-                    // If there are matching words and the search term is not empty, display the HTML content of the first word
-                    Word firstWord = list.get(0);
-                    showHtmlContent(firstWord.getHtml());
-                } else {
-                    listResult.setVisible(false);
-                    showHtmlContent(null);
-                }
-            });
         });
     }
 
 
+    private ExecutorService threadPool = Executors.newFixedThreadPool(2);
+
+    private void performSearchInBackground(String searchTerm) {
+        threadPool.submit(() -> {
+            try {
+                // Thực hiện tìm kiếm từ cơ sở dữ liệu
+                ObservableList<Word> result = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "%'", datatable);
+
+                // Cập nhật giao diện trên luồng giao diện chính
+                Platform.runLater(() -> updateUI(result, searchTerm));
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Xử lý lỗi nếu cần
+            }
+        });
+    }
+
+    private void updateUI(ObservableList<Word> result, String searchTerm) {
+        list = result;
+        listResult.setItems(list);
+
+        if (!list.isEmpty() && !searchTerm.trim().isEmpty()) {
+            listResult.setVisible(true);
+            Word firstWord = list.get(0);
+            showHtmlContent(firstWord.getHtml());
+        } else {
+            listResult.setVisible(false);
+            showHtmlContent(null);
+        }
+    }
+
+    private void performSearch(String searchTerm) {
+        performSearchInBackground(searchTerm);
+    }
 
     @FXML
     void searchFieldOnAction(ActionEvent event) {
@@ -265,17 +261,29 @@ public class Home implements Initializable {
         this.checksignup = check;
     }
 
+    public void speakClick(ActionEvent actionEvent) {
+    }
+
+    /*
     @FXML
     void speakClick(MouseEvent event) throws JavaLayerException, IOException {
-        if (event.getSource() == UKspeakerButton) {
-            GoogleAPI audio = GoogleAPI.getInstance();
-            InputStream sound = audio.getAudio(word, "en-UK");
-            audio.play(sound);
-        } else if (event.getSource() == USspeakerButton) {
-            GoogleAPI audio = GoogleAPI.getInstance();
-            InputStream sound = audio.getAudio(word, "en-US");
+        GoogleAPI audio = GoogleAPI.getInstance();
+        InputStream sound = null;
+        switch (event.getSource()) {
+            case UKspeakerButton:
+                sound = audio.getAudio(word, "en-UK");
+                break;
+            case USspeakerButton:
+                sound = audio.getAudio(word, "en-US");
+                break;
+        }
+
+        if (sound != null) {
             audio.play(sound);
         }
     }
+
+     */
+
 }
 

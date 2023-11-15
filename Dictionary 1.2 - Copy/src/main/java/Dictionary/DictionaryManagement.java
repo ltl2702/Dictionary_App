@@ -1,4 +1,4 @@
-package cmd;
+package Dictionary;
 
 import Connect.ConnectDB;
 import javafx.collections.FXCollections;
@@ -13,32 +13,32 @@ public class DictionaryManagement {
 
     public static ObservableList<Word> dbSearchWord(String keyWord, String datatable) {
         ObservableList<Word> list = FXCollections.observableArrayList();
-        Connection c = null;
-        Statement stmt = null;
 
-        try {
-            // Establish the database connection using ConnectDB class
-            c = ConnectDB.connect("dict_hh");
+        try (Connection c = ConnectDB.connect("dict_hh");
+             Statement stmt = c.createStatement()) {
 
-            stmt = c.createStatement();
             String sql = "SELECT * FROM " + TABLE_NAME + " WHERE word LIKE " + keyWord;
             System.out.println("Executing SQL query: " + sql);
 
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                Word word = new Word(
-                        rs.getString("word"),
-                        rs.getString("html")
-                );
-                list.add(word);
+            try (ResultSet rs = stmt.executeQuery(sql)) {
+                while (rs.next()) {
+                    String wordValue = rs.getString("word");
+                    String htmlValue = rs.getString("html");
+
+                    if (wordValue != null && htmlValue != null) {
+                        Word word = new Word(wordValue, htmlValue);
+                        list.add(word);
+                    }
+                }
+
             }
+
         } catch (Exception e) {
             System.out.println("Error executing query: " + e.getMessage());
             e.printStackTrace();
-        } finally {
-            // Close the database connection
-            ConnectDB.closeConnection();
         }
+
         return list;
     }
+
 }
