@@ -12,16 +12,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import javazoom.jl.decoder.JavaLayerException;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
@@ -57,40 +53,14 @@ public class Home implements Initializable {
     private ObservableList<Word> list = FXCollections.observableArrayList();
     private boolean checklogin, checksignup;
 
-    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         slider.setTranslateX(-176);
-        Menu.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
 
-            slide.setToX(0);
-            slide.play();
+        // Animation duration
+        Duration animationDuration = Duration.millis(300);
 
-            slider.setTranslateX(-176);
-
-            slide.setOnFinished((ActionEvent e)-> {
-                Menu.setVisible(false);
-                MenuClose.setVisible(true);
-            });
-        });
-
-        MenuClose.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
-
-            slide.setToX(-176);
-            slide.play();
-
-            slider.setTranslateX(0);
-
-            slide.setOnFinished((ActionEvent e)-> {
-                Menu.setVisible(true);
-                MenuClose.setVisible(false);
-            });
-        });
+        Menu.setOnMouseClicked(event -> animateMenu(0, animationDuration));
+        MenuClose.setOnMouseClicked(event -> animateMenu(-176, animationDuration));
 
         webEngine = webView.getEngine();
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -107,6 +77,23 @@ public class Home implements Initializable {
             }
         });
     }
+
+    private void animateMenu(double toX, Duration duration) {
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(duration);
+        slide.setNode(slider);
+
+        slide.setToX(toX);
+        slide.play();
+
+        slider.setTranslateX(-toX);
+
+        slide.setOnFinished((ActionEvent e) -> {
+            Menu.setVisible(toX != 0);
+            MenuClose.setVisible(toX == 0);
+        });
+    }
+
 
     private String cautionHtml = """
                 <html>
@@ -192,7 +179,6 @@ public class Home implements Initializable {
 
     @FXML
     void editButtonOnAction(ActionEvent event) {
-        // Handle edit button action...
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/edit2.fxml"));
                 AnchorPane editpane = fxmlLoader.load();
@@ -216,7 +202,6 @@ public class Home implements Initializable {
     private TextField username;
     @FXML
     void userButtonOnAction(ActionEvent event) {
-        // Handle user button action...
             System.out.println("Home check login: " + checklogin);
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
@@ -224,11 +209,11 @@ public class Home implements Initializable {
                 homePane.getChildren().setAll(userpane);
 
                 User userController = fxmlLoader.getController();
-                if(checklogin == true) {
+                if(checklogin) {
                     userController.setUsernameLogin(username);
                     userController.setCheckLogin(checklogin);
                 }
-                else if(checksignup == true) {
+                else if(checksignup) {
                     userController.setUsernameSignup(username);
                     userController.setCheckSignup(checksignup);
                 }
