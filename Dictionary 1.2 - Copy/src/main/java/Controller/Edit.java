@@ -19,7 +19,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Edit {
-
     int index = -1;
 
     //Add words.....................................
@@ -85,7 +84,7 @@ public class Edit {
     }
 
     void add() {
-        try (Connection connectDatabase = new ConnectDB().connect("test2")) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String word = addword.getText();
             String pronounce = addPro.getText();
             String description = addDes.getText();
@@ -130,7 +129,7 @@ public class Edit {
     }
 
     void remove() {
-        try (Connection connectDatabase = new ConnectDB().connect("test2")) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String wordremove = removeword.getText();
 
             String verify = "SELECT COUNT(*) AS counter" +
@@ -141,23 +140,27 @@ public class Edit {
             while (query.next()) {
                 int count = query.getInt("counter");
                 if (count == 1) {
-
+                    /*
                     String getID = "SELECT id FROM av WHERE word = '" + wordremove + "'";
                     ResultSet IDquery = statement.executeQuery(getID);
                     if (IDquery.next()) {
                         int id = IDquery.getInt("id");
+                     */
 
                         String remove = "DELETE FROM av WHERE word = '" + wordremove + "'";
                         statement.executeUpdate(remove);
-
+                        /*
                         String updateID = "UPDATE av SET id = id - 1 WHERE id > " + id;
                         statement.executeUpdate(updateID);
+                        */
 
                         removeLabel.setText("The word is removed.");
+                    /*
                     }
                     else{
                             removeLabel.setText("Error fetching ID.");
                         }
+                    */
                     } else {
                         removeLabel.setText("The word does not exist. Please try again.");
                     }
@@ -180,7 +183,7 @@ public class Edit {
     }
 
     void update() {
-        try (Connection connectDatabase = new ConnectDB().connect("test2")) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String oldWord = oldword.getText();
             String newWord = newword.getText();
             String description = updateDes.getText();
