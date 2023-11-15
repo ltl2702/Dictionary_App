@@ -109,8 +109,9 @@ public class UpdateAcc implements Initializable {
                     avatarController.setusername(newUsername);
                 else
                     avatarController.setusername(oldUsername);
-                avatarController.setStage(window);
+                avatarController.setmainpane(mainpane);
                 avatarController.display();
+                //avatarController.setStage(window);
                 //window.setTitle("Choose your avatar");
                 //window.setScene(scene);
                 //window.show();

@@ -38,7 +38,7 @@ public class HelloApplication extends Application {
         launch();
     }
     private void closeProgram() {
-        boolean answer = YesNo.display("EXIT", "Are you sure?");
+        boolean answer = YesNo.display("EXIT", "Are you sure you want to exit?");
         if (answer) {
             window.close();
         }
