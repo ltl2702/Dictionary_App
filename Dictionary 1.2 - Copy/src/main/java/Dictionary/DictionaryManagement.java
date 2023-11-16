@@ -7,6 +7,8 @@ import javafx.collections.ObservableList;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 
 public class DictionaryManagement {
     private static final String TABLE_NAME = "av";
@@ -40,5 +42,17 @@ public class DictionaryManagement {
 
         return list;
     }
+
+    public static void textToSpeech(String text) {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+        if (voice != null) {
+            voice.allocate();
+            voice.speak(text);
+        } else {
+            throw new IllegalStateException("Cannot find voice: kevin16");
+        }
+    }
+
 
 }
