@@ -1,6 +1,7 @@
 package Controller;
 
 import Dictionary.DictionaryManagement;
+
 import Dictionary.Word;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;

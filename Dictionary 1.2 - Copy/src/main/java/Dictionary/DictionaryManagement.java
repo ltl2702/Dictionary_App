@@ -1,6 +1,7 @@
 package Dictionary;
 
 import Connect.ConnectDB;
+import Dictionary.Word;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
