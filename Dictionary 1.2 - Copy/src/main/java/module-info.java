@@ -6,6 +6,7 @@ module OOP {
     requires javafx.web;
     requires com.jfoenix;
     requires jlayer;
+    requires freetts;
 
     exports App;
     opens App to javafx.fxml;
