@@ -95,54 +95,31 @@ public class Home implements Initializable {
         });
     }
 
-
-    private String cautionHtml = """
-                <html>
-                    <head>
-                        <style>
-                            body { font-family: 'Arial', sans-serif; background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-                            aside {; color: #ff0000; font-family: Roboto, sans-serif; font-size: 18px; padding: 12px 24px; text-align: center; }
-                        </style>
-                    </head>
-                    <body>
-                        <aside class='caution'>
-                            <strong>Caution:</strong><br>
-                            &nbsp; The word you are looking for is not in the dictionary.
-                            <br>   Please try again or add a new word.
-                        </aside>
-                    </body>
-                </html>
-                """;
-
     private void showHtmlContent(String htmlContent) {
         Platform.runLater(() -> {
-            if (searchField.getText().trim().isEmpty()) {
-                webEngine.loadContent("");
-            } else if (htmlContent != null && !htmlContent.isEmpty()) {
+            if (htmlContent != null) {
                 webEngine.loadContent(htmlContent);
             } else {
-                webEngine.loadContent(cautionHtml != null && !cautionHtml.isEmpty() ? cautionHtml : "");
+                // If htmlContent is null, clear the WebView
+                webEngine.loadContent("");
             }
         });
     }
-
 
     private ExecutorService threadPool = Executors.newFixedThreadPool(2);
 
     private void performSearchInBackground(String searchTerm) {
         threadPool.submit(() -> {
             try {
-                // Thực hiện tìm kiếm từ cơ sở dữ liệu
                 ObservableList<Word> result = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "%'", datatable);
 
-                // Cập nhật giao diện trên luồng giao diện chính
                 Platform.runLater(() -> updateUI(result, searchTerm));
             } catch (Exception e) {
                 e.printStackTrace();
-                // Xử lý lỗi nếu cần
             }
         });
     }
+
 
     private void updateUI(ObservableList<Word> result, String searchTerm) {
         list = result;
@@ -150,13 +127,13 @@ public class Home implements Initializable {
 
         if (!list.isEmpty() && !searchTerm.trim().isEmpty()) {
             listResult.setVisible(true);
-            Word firstWord = list.get(0);
-            showHtmlContent(firstWord.getHtml());
         } else {
-            listResult.setVisible(false);
-            showHtmlContent(null);
+            // Display "No result" in the listResult
+            listResult.setItems(FXCollections.observableArrayList(Word.NO_RESULT));
+            listResult.setVisible(true);
         }
     }
+
 
     private void performSearch(String searchTerm) {
         performSearchInBackground(searchTerm);
@@ -248,7 +225,11 @@ public class Home implements Initializable {
     }
 
     public void speakClick(ActionEvent actionEvent) {
-    }
+            Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+            if (selectedWord != null) {
+                DictionaryManagement.textToSpeech(selectedWord.getWordTarget());
+            }
+        }
 
     /*
     @FXML
