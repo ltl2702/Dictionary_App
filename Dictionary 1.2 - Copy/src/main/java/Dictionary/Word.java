@@ -4,7 +4,7 @@ public class Word {
     private String wordTarget;
     private String html;
 
-    public static final Word NO_RESULT = new Word("No result", "");
+    public static final Word NO_RESULT = new Word("Not found", "");
 
     public Word() {
     }
