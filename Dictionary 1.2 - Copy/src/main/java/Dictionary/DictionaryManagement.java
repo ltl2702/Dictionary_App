@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLOutput;
 import java.sql.Statement;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
@@ -44,16 +45,29 @@ public class DictionaryManagement {
         return list;
     }
 
-    public static void textToSpeech(String text) {
+    public static void textToSpeechUS(String text) {
         System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
         Voice voice = VoiceManager.getInstance().getVoice("kevin16");
         if (voice != null) {
+            System.out.println("Kevin ok");
             voice.allocate();
             voice.speak(text);
+            voice.deallocate();
         } else {
             throw new IllegalStateException("Cannot find voice: kevin16");
         }
     }
 
-
+    public static void textToSpeechUK(String text) {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_time_awb.AlanVoiceDirectory");
+        Voice voice = VoiceManager.getInstance().getVoice("alan");
+        if (voice != null) {
+            System.out.println("Alan ok");
+            voice.allocate();
+            voice.speak(text);
+            voice.deallocate();
+        } else {
+            throw new IllegalStateException("Cannot find voice: alan");
+        }
+    }
 }

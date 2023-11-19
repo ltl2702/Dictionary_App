@@ -224,33 +224,23 @@ public class Home implements Initializable {
         this.checksignup = check;
     }
 
-    public void speakClick(ActionEvent actionEvent) {
-            Word selectedWord = listResult.getSelectionModel().getSelectedItem();
-            if (selectedWord != null) {
-                DictionaryManagement.textToSpeech(selectedWord.getWordTarget());
+    public void speakClick(ActionEvent actionEvent, String voiceType) {
+        Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+        if (selectedWord != null) {
+            if ("UK".equals(voiceType)) {
+                DictionaryManagement.textToSpeechUK(selectedWord.getWordTarget());
+            } else if ("US".equals(voiceType)) {
+                DictionaryManagement.textToSpeechUS(selectedWord.getWordTarget());
             }
-        }
-
-    /*
-    @FXML
-    void speakClick(MouseEvent event) throws JavaLayerException, IOException {
-        GoogleAPI audio = GoogleAPI.getInstance();
-        InputStream sound = null;
-        switch (event.getSource()) {
-            case UKspeakerButton:
-                sound = audio.getAudio(word, "en-UK");
-                break;
-            case USspeakerButton:
-                sound = audio.getAudio(word, "en-US");
-                break;
-        }
-
-        if (sound != null) {
-            audio.play(sound);
         }
     }
 
-     */
+    public void UKspeakClick(ActionEvent actionEvent) {
+        speakClick(actionEvent, "UK");
+    }
 
+    public void USspeakClick(ActionEvent actionEvent) {
+        speakClick(actionEvent, "US");
+    }
 }
 
