@@ -7,7 +7,7 @@ module OOP {
     requires com.jfoenix;
     requires jlayer;
     requires freetts;
-    requires jsapi;
+    //requires jsapi;
 
     exports App;
     opens App to javafx.fxml;

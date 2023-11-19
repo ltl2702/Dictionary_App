@@ -2,12 +2,13 @@ package Dictionary;
 
 import Connect.ConnectDB;
 import Dictionary.Word;
+import com.sun.speech.freetts.FreeTTS;
+import com.sun.speech.freetts.jsapi.FreeTTSEngineCentral;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLOutput;
 import java.sql.Statement;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
@@ -62,7 +63,6 @@ public class DictionaryManagement {
         System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_time_awb.AlanVoiceDirectory");
         Voice voice = VoiceManager.getInstance().getVoice("alan");
         if (voice != null) {
-            System.out.println("Alan ok");
             voice.allocate();
             voice.speak(text);
             voice.deallocate();
@@ -70,4 +70,5 @@ public class DictionaryManagement {
             throw new IllegalStateException("Cannot find voice: alan");
         }
     }
+
 }
