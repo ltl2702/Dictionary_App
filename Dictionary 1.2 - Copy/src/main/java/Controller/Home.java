@@ -4,6 +4,7 @@ import Dictionary.DictionaryManagement;
 
 import Dictionary.Word;
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -22,6 +23,7 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -117,14 +119,12 @@ public class Home implements Initializable {
         threadPool.submit(() -> {
             try {
                 ObservableList<Word> result = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "%'", datatable);
-
                 Platform.runLater(() -> updateUI(result, searchTerm));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
     }
-
 
     private void updateUI(ObservableList<Word> result, String searchTerm) {
         list = result;
@@ -139,13 +139,16 @@ public class Home implements Initializable {
         }
     }
 
-
     private void performSearch(String searchTerm) {
         performSearchInBackground(searchTerm);
     }
 
     @FXML
-    void searchFieldOnAction(ActionEvent event) {
+    void searchOnAction(ActionEvent event) {
+        if (!list.isEmpty()) {
+            Word firstResult = list.get(0);
+            showHtmlContent(firstResult.getHtml());
+        }
     }
 
     @FXML
@@ -242,5 +245,7 @@ public class Home implements Initializable {
             DictionaryManagement.textToSpeech(selectedWord.getWordTarget());
         }
     }
+
+
 }
 
