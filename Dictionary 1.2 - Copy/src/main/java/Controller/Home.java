@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -26,6 +27,14 @@ import java.util.concurrent.Executors;
 
 public class Home implements Initializable {
     private final String datatable = "av";
+    public Button speakerButton;
+    public JFXButton gameButton;
+    public ImageView menuimage1;
+    public JFXButton translateButton;
+    public AnchorPane menuPane;
+    public ImageView searchImage;
+    public Button searchButton;
+    public ImageView homeImage;
     private Stage stage;
     private String word;
     @FXML
@@ -33,10 +42,6 @@ public class Home implements Initializable {
 
     @FXML
     private JFXButton editButton, homeButton, userButton;
-
-    @FXML
-    private Button UKspeakerButton, USspeakerButton;
-
     @FXML
     private Label Menu, MenuClose;
 
@@ -145,26 +150,26 @@ public class Home implements Initializable {
 
     @FXML
     void homeButtonOnAction(ActionEvent event) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/homecopy.fxml"));
-                AnchorPane homepane2 = fxmlLoader.load();
-                homePane.getChildren().setAll(homepane2);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                ex.getCause();
-            }
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/homecopy.fxml"));
+            AnchorPane homepane2 = fxmlLoader.load();
+            homePane.getChildren().setAll(homepane2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
     @FXML
     void editButtonOnAction(ActionEvent event) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/edit2.fxml"));
-                AnchorPane editpane = fxmlLoader.load();
-                homePane.getChildren().setAll(editpane);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                ex.getCause();
-            }
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/edit2.fxml"));
+            AnchorPane editpane = fxmlLoader.load();
+            homePane.getChildren().setAll(editpane);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
     @FXML
@@ -174,34 +179,41 @@ public class Home implements Initializable {
 
     @FXML
     void translateButtonOnAction(ActionEvent event) {
-        // Handle translate button action...
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/translate.fxml"));
+            AnchorPane translatepane = fxmlLoader.load();
+            homePane.getChildren().setAll(translatepane);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
     private TextField username;
     @FXML
     void userButtonOnAction(ActionEvent event) {
-            System.out.println("Home check login: " + checklogin);
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
-                AnchorPane userpane = fxmlLoader.load();
-                homePane.getChildren().setAll(userpane);
+        System.out.println("Home check login: " + checklogin);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
+            AnchorPane userpane = fxmlLoader.load();
+            homePane.getChildren().setAll(userpane);
 
-                User userController = fxmlLoader.getController();
-                if(checklogin) {
-                    userController.setUsernameLogin(username);
-                    userController.setCheckLogin(checklogin);
-                }
-                else if(checksignup) {
-                    userController.setUsernameSignup(username);
-                    userController.setCheckSignup(checksignup);
-                }
-                userController.userLogin();
-                userController.setmainpane(homePane);
-                userController.setStage(stage);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                ex.getCause();
+            User userController = fxmlLoader.getController();
+            if(checklogin) {
+                userController.setUsernameLogin(username);
+                userController.setCheckLogin(checklogin);
             }
+            else if(checksignup) {
+                userController.setUsernameSignup(username);
+                userController.setCheckSignup(checksignup);
+            }
+            userController.userLogin();
+            userController.setmainpane(homePane);
+            userController.setStage(stage);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
     public void setStage(Stage stage) {
@@ -224,23 +236,11 @@ public class Home implements Initializable {
         this.checksignup = check;
     }
 
-    public void speakClick(ActionEvent actionEvent, String voiceType) {
+    public void speakClick(ActionEvent actionEvent) {
         Word selectedWord = listResult.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
-            if ("UK".equals(voiceType)) {
-                DictionaryManagement.textToSpeechUK(selectedWord.getWordTarget());
-            } else if ("US".equals(voiceType)) {
-                DictionaryManagement.textToSpeechUS(selectedWord.getWordTarget());
-            }
+            DictionaryManagement.textToSpeech(selectedWord.getWordTarget());
         }
-    }
-
-    public void UKspeakClick(ActionEvent actionEvent) {
-        speakClick(actionEvent, "UK");
-    }
-
-    public void USspeakClick(ActionEvent actionEvent) {
-        speakClick(actionEvent, "US");
     }
 }
 

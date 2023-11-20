@@ -46,7 +46,7 @@ public class DictionaryManagement {
         return list;
     }
 
-    public static void textToSpeechUS(String text) {
+    public static void textToSpeech(String text) {
         System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
         Voice voice = VoiceManager.getInstance().getVoice("kevin16");
         if (voice != null) {
@@ -56,18 +56,6 @@ public class DictionaryManagement {
             voice.deallocate();
         } else {
             throw new IllegalStateException("Cannot find voice: kevin16");
-        }
-    }
-
-    public static void textToSpeechUK(String text) {
-        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_time_awb.AlanVoiceDirectory");
-        Voice voice = VoiceManager.getInstance().getVoice("alan");
-        if (voice != null) {
-            voice.allocate();
-            voice.speak(text);
-            voice.deallocate();
-        } else {
-            throw new IllegalStateException("Cannot find voice: alan");
         }
     }
 

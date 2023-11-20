@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Edit">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Edit">
    <children>
       <TabPane layoutX="177.0" layoutY="108.0" prefHeight="384.0" prefWidth="561.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-border-width: 3; -fx-background-color: #cccccc; -fx-opacity: 1;" tabClosingPolicy="UNAVAILABLE">
         <tabs>

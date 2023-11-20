@@ -8,21 +8,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Translate">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Translate">
    <children>
       <AnchorPane layoutX="132.0" layoutY="149.0" prefHeight="57.0" prefWidth="635.0" style="-fx-background-color: #006699; -fx-background-radius: 10;">
          <children>
-            <JFXComboBox layoutX="58.0" layoutY="15.0" prefHeight="26.0" prefWidth="174.0" promptText="   Select language" style="-fx-background-color: white; -fx-background-radius: 5;" />
+            <JFXComboBox fx:id="selectLanguge1" layoutX="58.0" layoutY="15.0" prefHeight="26.0" prefWidth="174.0" promptText="   Select language" style="-fx-background-color: white; -fx-background-radius: 5;" />
             <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="301.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../icon/exchange2.png" />
                </image>
             </ImageView>
-            <JFXComboBox layoutX="406.0" layoutY="15.0" prefHeight="26.0" prefWidth="174.0" promptText="   Select language" style="-fx-background-color: white; -fx-background-radius: 5;" />
+            <JFXComboBox fx:id="selectLanguge2" layoutX="406.0" layoutY="15.0" prefHeight="26.0" prefWidth="174.0" promptText="   Select language" style="-fx-background-color: white; -fx-background-radius: 5;" />
          </children>
       </AnchorPane>
-      <TextArea layoutX="132.0" layoutY="241.0" prefHeight="287.0" prefWidth="289.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" />
-      <TextArea layoutX="477.0" layoutY="241.0" prefHeight="287.0" prefWidth="289.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" />
+      <TextArea fx:id="area1" layoutX="132.0" layoutY="241.0" prefHeight="287.0" prefWidth="289.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" />
+      <TextArea fx:id="area2" layoutX="477.0" layoutY="241.0" prefHeight="287.0" prefWidth="289.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" />
       <Label alignment="CENTER" layoutX="335.0" layoutY="72.0" prefHeight="49.0" prefWidth="230.0" text="TRANSLATE" textFill="#08328f">
          <font>
             <Font name="Arial Bold Italic" size="24.0" />
