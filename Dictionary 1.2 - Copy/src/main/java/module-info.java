@@ -15,6 +15,8 @@ module OOP {
     opens Controller to javafx.fxml;
     exports Connect;
     opens Connect to javafx.fxml;
+    exports MatchGame;
+    opens MatchGame to javafx.fxml;
     //exports API;
    // opens API to javafx.fxml;
 }

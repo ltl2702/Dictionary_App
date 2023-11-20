@@ -178,6 +178,14 @@ public class Home implements Initializable {
     @FXML
     void gameButtonOnAction(ActionEvent event) {
         // Handle game button action...
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("/data/fxml/gameController.fxml"));
+            AnchorPane gamepane = fxmlLoader.load();
+            homePane.getChildren().setAll(gamepane);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
     @FXML
@@ -245,7 +253,5 @@ public class Home implements Initializable {
             DictionaryManagement.textToSpeech(selectedWord.getWordTarget());
         }
     }
-
-
 }
 
