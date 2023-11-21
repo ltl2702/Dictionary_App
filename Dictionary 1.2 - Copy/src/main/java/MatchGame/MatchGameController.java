@@ -121,11 +121,9 @@ public class MatchGameController implements Initializable {
         card12.setText(list.get(11));
     }
 
-    /*
-
     private ArrayList<String> getDescription(String text) {
         List<String> descriptions = null;
-        text.replaceAll("\'", "''");
+        text = text.replaceAll("\'", "''");
         descriptions = new ArrayList<>();
         try (Connection connection = new ConnectDB().connect("test3")) {
             String query = "SELECT COUNT(*) AS counter FROM av WHERE description = '" + text + "'";
@@ -152,15 +150,10 @@ public class MatchGameController implements Initializable {
         return (ArrayList<String>) descriptions;
     }
 
-    private void change(String text) {
-        text.replaceAll("\'", "''");
-    }
-*/
-
-
+/*
     private ArrayList<String> getDescription(String text) {
         ArrayList<String> descriptions = new ArrayList<>();
-        try (Connection connection = new ConnectDB().connect("dict_hh")) {
+        try (Connection connection = new ConnectDB().connect("test3")) {
             String query = "SELECT COUNT(*) AS counter FROM av WHERE description = ?";
             try (PreparedStatement countStatement = connection.prepareStatement(query)) {
                 countStatement.setString(1, text);
@@ -187,7 +180,7 @@ public class MatchGameController implements Initializable {
             ConnectDB.closeConnection();
         }
         return descriptions;
-    }
+    }*/
 
     private void handleButtonClick(JFXButton button) {
         if (isButtonClickable) {

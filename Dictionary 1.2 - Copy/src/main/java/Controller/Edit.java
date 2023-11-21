@@ -84,14 +84,20 @@ public class Edit {
     }
 
     void add() {
-        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
-            String word = addword.getText().toLowerCase();
-            String pronounce = addPro.getText();
-            String description = addDes.getText();
+        try (Connection connectDatabase = new ConnectDB().connect("test3")) {
+            String word = addword.getText().toLowerCase().trim();
+            String word2 = addword.getText().trim();
+            word = word.replaceAll("\\s+", " ");
+            word2 = word2.replaceAll("\\s+", " ");
+            System.out.println(word);
+            String pronounce = addPro.getText().trim();
+            String description = addDes.getText().trim();
+            description = description.replaceAll("\\s+", " ");
+            pronounce = pronounce.replaceAll("\\s+", " ");
 
             //Converts to HTML.
             StringBuilder convertHTML = new StringBuilder();
-            convertHTML.append("<h1>").append(word).append("</h1>");
+            convertHTML.append("<h1>").append(word2).append("</h1>");
             convertHTML.append("<h3><i>/").append(pronounce).append("/</i></h3>");
             convertHTML.append("<h2>").append(description).append("</h2>");
 
@@ -108,7 +114,7 @@ public class Edit {
                     addLabel.setText("The word already exists. Please try again.");
                 else {
                     String add = "INSERT INTO av(word, html, pronounce, description) VALUES ('"
-                            + word + "','" + convertHTML.toString() + "','" + pronounce + "','" + description + "')";
+                            + word2 + "','" + convertHTML.toString() + "','" + pronounce + "','" + description + "')";
                     statement.executeUpdate(add);
                     addLabel.setText("The word is added.");
                 }
@@ -130,8 +136,9 @@ public class Edit {
     }
 
     void remove() {
-        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
-            String wordremove = removeword.getText().toLowerCase();
+        try (Connection connectDatabase = new ConnectDB().connect("test3")) {
+            String wordremove = removeword.getText().toLowerCase().trim();
+            wordremove = wordremove.replaceAll("\\s+", " ");
 
             String verify = "SELECT COUNT(*) AS counter" +
                     " FROM av WHERE LOWER(word) = '" + wordremove + "'";
@@ -185,15 +192,22 @@ public class Edit {
     }
 
     void update() {
-        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
-            String oldWord = oldword.getText().toLowerCase();
-            String newWord = newword.getText().toLowerCase();
-            String description = updateDes.getText();
-            String pronounce = updatePro.getText();
+        try (Connection connectDatabase = new ConnectDB().connect("test3")) {
+            String oldWord = oldword.getText().toLowerCase().trim();
+            String newWord = newword.getText().toLowerCase().trim();
+            String newWord2 = newword.getText().trim();
+            String description = updateDes.getText().trim();
+            String pronounce = updatePro.getText().trim();
+
+            oldWord = oldWord.replaceAll("\\s+", " ");
+            newWord = newWord.replaceAll("\\s+", " ");
+            newWord2 = newWord2.replaceAll("\\s+", " ");
+            description = description.replaceAll("\\s+", " ");
+            pronounce = pronounce.replaceAll("\\s+", " ");
 
             //Converts all information to HTML
             StringBuilder convertHTML = new StringBuilder();
-            convertHTML.append("<h1>").append(newWord).append("</h1>");
+            convertHTML.append("<h1>").append(newWord2).append("</h1>");
             convertHTML.append("<h3><i>/").append(pronounce).append("/</i></h3>");
             convertHTML.append("<h2>").append(description).append("</h2>");
 
@@ -207,7 +221,7 @@ public class Edit {
                 ResultSet IDquery = statement.executeQuery(getID);
                 if (IDquery.next()) {
                     int id = IDquery.getInt("id");
-                    String update = "UPDATE av SET word = '" + newWord + "', html = '" + convertHTML.toString() + "', description = '" + description + "', pronounce = '" + pronounce + "' WHERE id = '" + id + "'";
+                    String update = "UPDATE av SET word = '" + newWord2 + "', html = '" + convertHTML.toString() + "', description = '" + description + "', pronounce = '" + pronounce + "' WHERE id = '" + id + "'";
                     statement.executeUpdate(update);
                     updateLabel.setText("The word has been successfully updated.");
                 }
