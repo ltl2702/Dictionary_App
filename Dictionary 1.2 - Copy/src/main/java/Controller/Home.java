@@ -1,5 +1,6 @@
 package Controller;
 
+import API.TextToSpeech;
 import Dictionary.DictionaryManagement;
 
 import Dictionary.Word;
@@ -118,7 +119,7 @@ public class Home implements Initializable {
     private void performSearchInBackground(String searchTerm) {
         threadPool.submit(() -> {
             try {
-                ObservableList<Word> result = DictionaryManagement.dbSearchWord("'" + searchTerm.toLowerCase().trim() + "%'", datatable);
+                ObservableList<Word> result = DictionaryManagement.dbSearchWord(searchTerm.toLowerCase(), datatable);
                 Platform.runLater(() -> updateUI(result, searchTerm));
             } catch (Exception e) {
                 e.printStackTrace();
@@ -250,7 +251,7 @@ public class Home implements Initializable {
     public void speakClick(ActionEvent actionEvent) {
         Word selectedWord = listResult.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
-            DictionaryManagement.textToSpeech(selectedWord.getWordTarget());
+            TextToSpeech.convertTextToSpeech(selectedWord.getWordTarget());
         }
     }
 }
