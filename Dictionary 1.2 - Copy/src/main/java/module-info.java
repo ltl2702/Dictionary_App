@@ -7,6 +7,8 @@ module OOP {
     requires com.jfoenix;
     requires jlayer;
     requires freetts;
+    requires com.fasterxml.jackson.databind;
+    requires java.net.http;
     //requires jsapi;
 
     exports App;
