@@ -5,18 +5,13 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Avatar {
@@ -25,14 +20,9 @@ public class Avatar {
     private JFXButton user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, user11, user12, user13, user14, user15, user16;
 
     @FXML
-    private JFXButton returnButton;
-
-    @FXML
     private Label avtLabel;
 
     private TextField username;
-    @FXML
-    private ImageView userimage;
     //private Stage window;
     private AnchorPane mainpane;
 

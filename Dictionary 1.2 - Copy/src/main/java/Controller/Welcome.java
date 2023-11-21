@@ -34,22 +34,7 @@ public class Welcome implements Initializable {
     private Label invalidLabel;
 
     @FXML
-    private Label signupLabel;
-
-    @FXML
-    private Button loginbutton;
-
-    @FXML
-    private Button signupbutton;
-
-    @FXML
     private PasswordField passwordfill;
-
-    @FXML
-    private Label passwordlabel;
-
-    @FXML
-    private Label userlabel;
 
     @FXML
     private TextField usernamefill;

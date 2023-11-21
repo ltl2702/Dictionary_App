@@ -5,7 +5,6 @@ import Dictionary.DictionaryManagement;
 
 import Dictionary.Word;
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -24,27 +23,22 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Home implements Initializable {
     private final String datatable = "av";
-    public Button speakerButton;
+    public Button speakerButton, searchButton;
     public JFXButton gameButton;
     public ImageView menuimage1;
-    public JFXButton translateButton;
+    public JFXButton translateButton, editButton, homeButton, userButton;
     public AnchorPane menuPane;
-    public ImageView searchImage;
-    public Button searchButton;
-    public ImageView homeImage;
+    public ImageView searchImage, homeImage;
     private Stage stage;
-    private String word;
+
     @FXML
     private AnchorPane homePane, slider;
 
-    @FXML
-    private JFXButton editButton, homeButton, userButton;
     @FXML
     private Label Menu, MenuClose;
 

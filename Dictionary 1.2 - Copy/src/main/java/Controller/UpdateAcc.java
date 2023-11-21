@@ -6,8 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -18,28 +16,16 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class UpdateAcc implements Initializable {
 
     @FXML
-    private TextField newPass;
+    private TextField newPass, newUsername, oldPass,oldUsername;
 
     @FXML
-    private TextField newUsername;
-
-    @FXML
-    private TextField oldPass;
-
-    private TextField oldUsername;
-
-    @FXML
-    private JFXButton submitButton;
-
-    @FXML
-    private JFXButton changeavt;
+    private JFXButton submitButton, changeavt;
 
     @FXML
     private Label updateLabel;

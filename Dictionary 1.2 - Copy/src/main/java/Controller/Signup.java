@@ -28,34 +28,13 @@ public class Signup implements Initializable {
     double x,y = 0;
 
     @FXML
-    private TextField firstnamefill;
-
-    @FXML
-    private Label firstnamelabel;
+    private TextField firstnamefill, lastnamefill, usernamefill;
 
     @FXML
     private Label invalidLabel;
 
     @FXML
-    private TextField lastnamefill;
-
-    @FXML
-    private Label lastnamelabel;
-
-    @FXML
     private PasswordField passwordfill;
-
-    @FXML
-    private Label passwordlabel;
-
-    @FXML
-    private Button signupbutton;
-
-    @FXML
-    private Label userlabel;
-
-    @FXML
-    private TextField usernamefill;
 
     @FXML
     private ImageView welcomeimageView;

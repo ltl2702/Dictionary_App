@@ -1,18 +1,12 @@
 package Dictionary;
 
 import Connect.ConnectDB;
-import Dictionary.Word;
-import com.sun.speech.freetts.FreeTTS;
-import com.sun.speech.freetts.jsapi.FreeTTSEngineCentral;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
 
 public class DictionaryManagement {
     private static final String TABLE_NAME = "av";
