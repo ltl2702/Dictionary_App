@@ -34,6 +34,5 @@
          </font>
       </Label>
       <Label fx:id="count" layoutX="328.0" layoutY="545.0" prefHeight="18.0" prefWidth="75.0" text="" />
-      <Label fx:id="count1" layoutX="674.0" layoutY="545.0" prefHeight="18.0" prefWidth="75.0" text="" />
    </children>
 </AnchorPane>

@@ -3,17 +3,19 @@ package Controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import API.TranslateText;
 
-import java.io.IOException;
-
 public class TranslateController {
+
     public Label count;
-    public Label count1;
     public JFXButton changeLanguage;
+
     @FXML
     private JFXComboBox<String> selectLanguage1;
     @FXML
@@ -24,54 +26,96 @@ public class TranslateController {
     private TextArea area2;
 
     private TranslateText translator = new TranslateText();
+    private Task<Void> translationTask;
 
     @FXML
     private void initialize() {
+        initializeLanguageComboBoxes();
+        initializeEventHandlers();
+    }
+
+    private void initializeLanguageComboBoxes() {
         selectLanguage1.getItems().addAll("English", "Vietnamese");
         selectLanguage2.getItems().addAll("English", "Vietnamese");
 
-        // Set default selections
+         //Set default selections
         //selectLanguage1.getSelectionModel().select("English");
         //selectLanguage2.getSelectionModel().select("Vietnamese");
+    }
 
+    private void initializeEventHandlers() {
         selectLanguage1.setOnAction(event -> updateTranslationDirection());
         changeLanguage.setOnAction(event -> swapLanguages());
 
         area1.textProperty().addListener((observable, oldValue, newValue) -> {
-            translate();
+            handleTextChangedWithDelay(newValue);
             updateCharCount(newValue);
         });
         area1.setWrapText(true);
         area2.setWrapText(true);
     }
+
+    private void handleTextChangedWithDelay(String newValue) {
+        if (translationTask != null && translationTask.isRunning()) {
+            translationTask.cancel();
+        }
+
+        // Tạo một Task mới để dịch với độ trễ
+        translationTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                Thread.sleep(500); // Đợi 500ms trước khi dịch
+                translate();
+                return null;
+            }
+        };
+
+        translationTask.setOnSucceeded(event -> {
+            // Cập nhật UI sau khi dịch hoàn thành
+            Platform.runLater(() -> {
+                String translatedText = translator.getTranslatedItem();
+                if (translatedText != null && !translatedText.isEmpty()) {
+                    area2.setText(translatedText);
+                } else {
+                    System.out.println("Không có dữ liệu dịch để hiển thị.");
+                }
+            });
+        });
+
+        translationTask.setOnCancelled(event -> {
+            // Xử lý hủy bỏ (nếu cần)
+        });
+
+        translationTask.setOnFailed(event -> {
+            // Xử lý lỗi (nếu cần)
+        });
+
+        // Bắt đầu Task mới
+        Thread thread = new Thread(translationTask);
+        thread.setDaemon(true);
+        thread.start();
+    }
+
     private void swapLanguages() {
-        // Lưu trữ ngôn ngữ hiện tại của cả hai vùng văn bản
         String language1 = selectLanguage1.getValue();
         String language2 = selectLanguage2.getValue();
 
-        String textInArea1 = area1.getText();
-        String textInArea2 = area2.getText();
-
-        // Hoán đổi ngôn ngữ
         selectLanguage1.setValue(language2);
         selectLanguage2.setValue(language1);
 
-        // Hoán đổi nội dung giữa area1 và area2
-        area1.setText(textInArea2);
+        String textInArea1 = area1.getText();
+        area1.setText(area2.getText());
         area2.setText(textInArea1);
 
-        // Cập nhật ngôn ngữ đối tượng dịch
         updateTranslationDirection();
 
-        // Gọi lại translate để cập nhật nội dung mới của area1
         translate();
     }
 
 
     private void updateTranslationDirection() {
         String selectedLanguage = selectLanguage1.getValue();
-
-        String targetLanguage = (selectedLanguage.equals("English")) ? "Vietnamese" : "English";
+        String targetLanguage = ("Vietnamese".equals(selectedLanguage)) ? "English" : "Vietnamese";
 
         selectLanguage2.getSelectionModel().select(targetLanguage);
 
@@ -80,26 +124,18 @@ public class TranslateController {
 
         translate();
     }
+
     private void translate() {
         String textToTranslate = area1.getText();
 
         try {
             translator.setTextForTranslate(textToTranslate);
             translator.translate();
-
-            String translatedText = translator.getTranslatedItem();
-
-            Platform.runLater(() -> {
-                if (translatedText != null && !translatedText.isEmpty()) {
-                    area2.setText(translatedText);
-                } else {
-                    System.out.println("Không có dữ liệu dịch để hiển thị.");
-                }
-            });
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     private void updateCharCount(String text) {
         int charCount = text.length();
         count.setText("Count: " + charCount);

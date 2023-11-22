@@ -36,6 +36,7 @@ public class TranslateText {
     public void setTextForTranslate(String textForTranslate) {
         this.textForTranslate = textForTranslate;
     }
+
     public void translate() {
         try {
             // Encode the text for the URL
@@ -43,10 +44,9 @@ public class TranslateText {
 
             // Build the request URL and body
             String url = "https://google-translate113.p.rapidapi.com/api/v1/translator/text";
-            String body = "from=" + URLEncoder.encode("en", StandardCharsets.UTF_8)
-                    + "&to=" + URLEncoder.encode("vi", StandardCharsets.UTF_8)
+            String body = "from=" + URLEncoder.encode(getLanguageCode(languageFrom), StandardCharsets.UTF_8)
+                    + "&to=" + URLEncoder.encode(getLanguageCode(languageTo), StandardCharsets.UTF_8)
                     + "&text=" + encodedText;
-
 
             // Create the HTTP request
             HttpRequest request = HttpRequest.newBuilder()
@@ -75,14 +75,13 @@ public class TranslateText {
                 JsonNode jsonNode = objectMapper.readTree(response.body());
                 String translation = jsonNode.path("trans").asText();
 
-                    // Kiểm tra xem bản dịch có trống không
+                // Kiểm tra xem bản dịch có trống không
                 if (!translation.isEmpty()) {
                     this.translatedItem = translation;
                 } else {
                     System.out.println("Không có bản dịch được tìm thấy trong phản hồi.");
                     System.out.println("Phản hồi JSON đã phân tích: " + jsonNode.toPrettyString());
                 }
-
 
             } else {
                 // Print the error message if the request was not successful
@@ -92,6 +91,19 @@ public class TranslateText {
         } catch (IOException | InterruptedException e) {
             // Handle exceptions
             e.printStackTrace();
+        }
+    }
+
+    private String getLanguageCode(String language) {
+        // Chuyển đổi tên ngôn ngữ thành mã ngôn ngữ tương ứng (ví dụ: "Vietnamese" -> "vi", "English" -> "en")
+        switch (language) {
+            case "Vietnamese":
+                return "vi";
+            case "English":
+                return "en";
+            // Thêm các trường hợp khác nếu cần
+            default:
+                throw new IllegalArgumentException("Ngôn ngữ không được hỗ trợ: " + language);
         }
     }
 }
