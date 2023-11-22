@@ -1,7 +1,8 @@
 package Controller;
 
-import Connect.Alert;
+import Connect.Alerter;
 import Connect.ConnectDB;
+import Connect.HTML;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,13 +13,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Edit {
@@ -84,10 +82,10 @@ public class Edit {
             add();
         else {
             addLabel.setText("Please enter your word.");
-            FXMLLoader fxmlLoader = new FXMLLoader(Alert.class.getResource("/data/fxml/Alert.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
-            Alert alertControler = fxmlLoader.getController();
+            Alerter alertControler = fxmlLoader.getController();
             alertControler.display("Please enter your word.", "/data/icon/angry2.gif", scene);
         }
     }
@@ -96,19 +94,23 @@ public class Edit {
         try (Connection connectDatabase = new ConnectDB().connect("test3")) {
             String word = addword.getText().toLowerCase().trim();
             String word2 = addword.getText().trim();
-            word = word.replaceAll("\\s+", " ");
-            word2 = word2.replaceAll("\\s+", " ");
+            word = word.replaceAll("\\s+", " ").replaceAll("\'", "''");
+            word2 = word2.replaceAll("\\s+", " ").replaceAll("\'", "''");
             System.out.println(word);
             String pronounce = addPro.getText().trim();
             String description = addDes.getText().trim();
-            description = description.replaceAll("\\s+", " ");
-            pronounce = pronounce.replaceAll("\\s+", " ");
+            description = description.replaceAll("\\s+", " ").replaceAll("\'", "''");
+            pronounce = pronounce.replaceAll("\\s+", " ").replaceAll("\'", "''");
 
             //Converts to HTML.
+            /*
             StringBuilder convertHTML = new StringBuilder();
             convertHTML.append("<h1>").append(word2).append("</h1>");
             convertHTML.append("<h3><i>/").append(pronounce).append("/</i></h3>");
             convertHTML.append("<h2>").append(description).append("</h2>");
+             */
+            String convertHTML;
+            convertHTML = HTML.convertToHtml(word, pronounce, description);
 
             //Verifies word.
             String verify = "SELECT COUNT(*) AS counter" +
@@ -121,22 +123,22 @@ public class Edit {
                 //if (count == 1)
                 if (count > 0) {
                     addLabel.setText("The word already exists. Please try again.");
-                    FXMLLoader fxmlLoader = new FXMLLoader(Alert.class.getResource("/data/fxml/Alert.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
                     Parent root = fxmlLoader.load();
                     Scene scene = new Scene(root);
-                    Alert alertControler = fxmlLoader.getController();
+                    Alerter alertControler = fxmlLoader.getController();
                     alertControler.display("The word already exists. Please try again.", "/data/icon/cry.gif", scene);
                 }
                 else {
                     String add = "INSERT INTO av(word, html, pronounce, description) VALUES ('"
-                            + word2 + "','" + convertHTML.toString() + "','" + pronounce + "','" + description + "')";
+                            + word2 + "','" + convertHTML + "','" + pronounce + "','" + description + "')";
                     statement.executeUpdate(add);
                     addLabel.setText("The word is added.");
 
-                    FXMLLoader fxmlLoader = new FXMLLoader(Alert.class.getResource("/data/fxml/Alert.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
                     Parent root = fxmlLoader.load();
                     Scene scene = new Scene(root);
-                    Alert alertControler = fxmlLoader.getController();
+                    Alerter alertControler = fxmlLoader.getController();
                     alertControler.display("The word is added.", "/data/icon/like2.gif", scene);
                 }
             }
@@ -154,10 +156,10 @@ public class Edit {
             remove();
         else {
             removeLabel.setText("Please enter your word.");
-            FXMLLoader fxmlLoader = new FXMLLoader(Alert.class.getResource("/data/fxml/Alert.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
-            Alert alertControler = fxmlLoader.getController();
+            Alerter alertControler = fxmlLoader.getController();
             alertControler.display("Please enter your word.", "/data/icon/angry2.gif", scene);
         }
     }
@@ -165,7 +167,7 @@ public class Edit {
     void remove() {
         try (Connection connectDatabase = new ConnectDB().connect("test3")) {
             String wordremove = removeword.getText().toLowerCase().trim();
-            wordremove = wordremove.replaceAll("\\s+", " ");
+            wordremove = wordremove.replaceAll("\\s+", " ").replaceAll("\'", "''");
 
             String verify = "SELECT COUNT(*) AS counter" +
                     " FROM av WHERE LOWER(word) = '" + wordremove + "'";
@@ -183,76 +185,86 @@ public class Edit {
                         int id = IDquery.getInt("id");
                      */
 
-                        String remove = "DELETE FROM av WHERE LOWER(word) = '" + wordremove + "'";
-                        statement.executeUpdate(remove);
+                    String remove = "DELETE FROM av WHERE LOWER(word) = '" + wordremove + "'";
+                    statement.executeUpdate(remove);
                         /*
                         String updateID = "UPDATE av SET id = id - 1 WHERE id > " + id;
                         statement.executeUpdate(updateID);
                         */
 
-                        removeLabel.setText("The word is removed.");
-                        FXMLLoader fxmlLoader = new FXMLLoader(Alert.class.getResource("/data/fxml/Alert.fxml"));
-                        Parent root = fxmlLoader.load();
-                        Scene scene = new Scene(root);
-                        Alert alertControler = fxmlLoader.getController();
-                        alertControler.display("The word is removed.", "/data/icon/like2.gif", scene);
+                    removeLabel.setText("The word is removed.");
+                    FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                    Parent root = fxmlLoader.load();
+                    Scene scene = new Scene(root);
+                    Alerter alertControler = fxmlLoader.getController();
+                    alertControler.display("The word is removed.", "/data/icon/like2.gif", scene);
                     /*
                     }
                     else{
                             removeLabel.setText("Error fetching ID.");
                         }
                     */
-                    } else {
-                        removeLabel.setText("The word does not exist. Please try again.");
-                        FXMLLoader fxmlLoader = new FXMLLoader(Alert.class.getResource("/data/fxml/Alert.fxml"));
-                        Parent root = fxmlLoader.load();
-                        Scene scene = new Scene(root);
-                        Alert alertControler = fxmlLoader.getController();
-                        alertControler.display("The word does not exist. Please try again.", "/data/icon/cry.gif", scene);
-                    }
+                } else {
+                    removeLabel.setText("The word does not exist. Please try again.");
+                    FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                    Parent root = fxmlLoader.load();
+                    Scene scene = new Scene(root);
+                    Alerter alertControler = fxmlLoader.getController();
+                    alertControler.display("The word does not exist. Please try again.", "/data/icon/cry.gif", scene);
                 }
-        } catch(Exception ex){
-                ex.printStackTrace();
-                ex.getCause();
-            } finally{
-                ConnectDB.closeConnection();
             }
+        } catch(Exception ex){
+            ex.printStackTrace();
+            ex.getCause();
+        } finally{
+            ConnectDB.closeConnection();
+        }
 
     }
 
     @FXML
     void updateSubOnAction(ActionEvent event) throws IOException {
-        if (!newword.getText().isBlank() && !oldword.getText().isBlank())
-            update();
-        else {
+        //old word = null
+        if (oldword.getText().isBlank() || (oldword.getText().isBlank() && newword.getText().isBlank() && updateDes.getText().isBlank() && updatePro.getText().isBlank())) {
             updateLabel.setText("Please enter your word.");
-            FXMLLoader fxmlLoader = new FXMLLoader(Alert.class.getResource("/data/fxml/Alert.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
-            Alert alertControler = fxmlLoader.getController();
+            Alerter alertControler = fxmlLoader.getController();
             alertControler.display("Please enter your word.", "/data/icon/angry2.gif", scene);
         }
+        else if (newword.getText().isBlank() && updateDes.getText().isBlank() && updatePro.getText().isBlank() && !oldword.getText().isBlank()) {
+            updateLabel.setText("No change.");
+            FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            Alerter alertControler = fxmlLoader.getController();
+            alertControler.display("Your word has no change.", "/data/icon/notfun2.gif", scene);
+        } else
+            update();
     }
 
     void update() {
         try (Connection connectDatabase = new ConnectDB().connect("test3")) {
             String oldWord = oldword.getText().toLowerCase().trim();
-            String newWord = newword.getText().toLowerCase().trim();
-            String newWord2 = newword.getText().trim();
+            String newWord = newword.getText().trim();
             String description = updateDes.getText().trim();
             String pronounce = updatePro.getText().trim();
 
-            oldWord = oldWord.replaceAll("\\s+", " ");
-            newWord = newWord.replaceAll("\\s+", " ");
-            newWord2 = newWord2.replaceAll("\\s+", " ");
-            description = description.replaceAll("\\s+", " ");
-            pronounce = pronounce.replaceAll("\\s+", " ");
+            oldWord = oldWord.replaceAll("\\s+", " ").replaceAll("\'", "''");
+            newWord = newWord.replaceAll("\\s+", " ").replaceAll("\'", "''");
+            description = description.replaceAll("\\s+", " ").replaceAll("\'", "''");
+            pronounce = pronounce.replaceAll("\\s+", " ").replaceAll("\'", "''");
 
             //Converts all information to HTML
-            StringBuilder convertHTML = new StringBuilder();
-            convertHTML.append("<h1>").append(newWord2).append("</h1>");
-            convertHTML.append("<h3><i>/").append(pronounce).append("/</i></h3>");
-            convertHTML.append("<h2>").append(description).append("</h2>");
+            //StringBuilder convertHTML = new StringBuilder();
+            //convertHTML.append("<h1>").append(newWord2).append("</h1>");
+            //convertHTML.append("<h3><i>/").append(pronounce).append("/</i></h3>");
+            //convertHTML.append("<h2>").append(description).append("</h2>");
+            String authword = null, authpro = null, authdes = null;
+            int newchange = 0;
+            String convertHTML;
+            //convertHTML = HTML.convertToHtml(authword, authpro, authdes);
 
             String verify = "SELECT COUNT(*) AS counter" +
                     " FROM av WHERE LOWER(word) = '" + oldWord + "'";
@@ -260,26 +272,105 @@ public class Edit {
             ResultSet query = statement.executeQuery(verify);
 
             if (query.next()) {
-                String getID = "SELECT id FROM av WHERE LOWER(word) = '" + oldWord + "'";
-                ResultSet IDquery = statement.executeQuery(getID);
-                if (IDquery.next()) {
-                    int id = IDquery.getInt("id");
-                    String update = "UPDATE av SET word = '" + newWord2 + "', html = '" + convertHTML.toString() + "', description = '" + description + "', pronounce = '" + pronounce + "' WHERE id = '" + id + "'";
-                    statement.executeUpdate(update);
-                    updateLabel.setText("The word has been successfully updated.");
-                    FXMLLoader fxmlLoader = new FXMLLoader(Alert.class.getResource("/data/fxml/Alert.fxml"));
-                    Parent root = fxmlLoader.load();
-                    Scene scene = new Scene(root);
-                    Alert alertControler = fxmlLoader.getController();
-                    alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+                String getinfo = "SELECT id, word, html, description, pronounce FROM av WHERE LOWER(word) = '" + oldWord + "'";
+                ResultSet IFquery = statement.executeQuery(getinfo);
+                if (IFquery.next()) {
+                    int id = IFquery.getInt("id");
+                    String fakeword = IFquery.getString("word");
+                    String fakedes = IFquery.getString("description");
+                    String fakepro = IFquery.getString("pronounce");
+                    String fakehtml = IFquery.getString("html");
+
+                    fakeword = fakeword.replaceAll("\'", "''");
+                    fakedes = fakedes.replaceAll("\'", "''");
+                    fakepro = fakepro.replaceAll("\'", "''");
+                    //Tìm vị trí của "</h3>"
+                    int index = fakehtml.indexOf("</h3>");
+                    //Tìm thấy
+                    if (index != -1) {
+                        fakehtml = fakehtml.substring(index + "</h3>".length());
+                    }
+                    //Không tìm thấy thì giữ nguyên
+
+                    if (!newWord.isBlank()) {
+                        authword = newWord;
+                        if (!authword.equals(fakeword))
+                            newchange++;
+                    } else {
+                        authword = fakeword;
+                    }
+
+                    if (!description.isBlank()) {
+                        authdes = description;
+                        if (!authdes.equals(fakedes))
+                            newchange++;
+                    } else {
+                        authdes = fakedes;
+                    }
+
+                    if (!pronounce.isBlank()) {
+                        authpro = pronounce;
+                        if (!authpro.equals(fakepro))
+                            newchange++;
+                    } else {
+                        authpro = fakepro;
+                    }
+                    convertHTML = HTML.convertToHtml(authword, authpro, authdes);
+
+                    StringBuilder html = new StringBuilder();
+                    html.append("<h1>").append(authword).append("</h1>");
+                    html.append("<h3><i>/").append(authpro).append("/</i></h3>");
+                    html.append(fakehtml);
+
+                    System.out.println(newchange);
+                    System.out.println(authword);
+                    System.out.println(authpro);
+                    System.out.println(authdes);
+                    System.out.println(convertHTML);
+                    System.out.println(html);
+                    if (newchange > 0) {
+                        if (description.isBlank()) {
+                            System.out.println("true");
+                            String update = "UPDATE av SET word = '" + authword + "', html = '" + html.toString() + "', pronounce = '" + authpro + "' WHERE LOWER(word) = '" + oldWord + "'";
+
+                            statement.executeUpdate(update);
+                            updateLabel.setText("The word has been successfully updated.");
+
+                            FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                            Parent root = fxmlLoader.load();
+                            Scene scene = new Scene(root);
+                            Alerter alertControler = fxmlLoader.getController();
+                            alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+                        }
+                        else {
+                            System.out.println("false");
+                            String update = "UPDATE av SET word = '" + authword + "', html = '" + convertHTML + "', description = '" + authdes + "', pronounce = '" + authpro + "' WHERE LOWER(word) = '" + oldWord + "'";
+
+                            statement.executeUpdate(update);
+                            updateLabel.setText("The word has been successfully updated.");
+
+                            FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                            Parent root = fxmlLoader.load();
+                            Scene scene = new Scene(root);
+                            Alerter alertControler = fxmlLoader.getController();
+                            alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+                        }
+                    } else {
+                        updateLabel.setText("No change.");
+                        FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                        Parent root = fxmlLoader.load();
+                        Scene scene = new Scene(root);
+                        Alerter alertControler = fxmlLoader.getController();
+                        alertControler.display("Your word has no change.", "/data/icon/notfun2.gif", scene);
+                    }
                 }
             }
             else {
                 updateLabel.setText("The word does not exist.");
-                FXMLLoader fxmlLoader = new FXMLLoader(Alert.class.getResource("/data/fxml/Alert.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
                 Parent root = fxmlLoader.load();
                 Scene scene = new Scene(root);
-                Alert alertControler = fxmlLoader.getController();
+                Alerter alertControler = fxmlLoader.getController();
                 alertControler.display("The word does not exist. Please try again.", "/data/icon/cry.gif", scene);
             }
         } catch (Exception ex) {

@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Edit">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Edit">
    <children>
       <TabPane layoutX="177.0" layoutY="108.0" prefHeight="384.0" prefWidth="561.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-border-width: 3; -fx-background-color: #cccccc; -fx-opacity: 1;" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab fx:id="addTab" text="Add">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="355.0" prefWidth="632.0">
+         <tabs>
+            <Tab fx:id="addTab" text="Add">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="355.0" prefWidth="632.0">
                      <children>
                         <Label alignment="BASELINE_LEFT" layoutX="120.0" layoutY="57.0" prefHeight="31.0" prefWidth="100.0" text="Word">
                            <font>
@@ -49,9 +49,14 @@
                            </font></JFXButton>
                         <Label fx:id="addLabel" alignment="CENTER" layoutX="165.0" layoutY="251.0" prefHeight="17.0" prefWidth="267.0" />
                         <TextArea fx:id="addDes" layoutX="220.0" layoutY="153.0" prefHeight="63.0" prefWidth="222.0" />
+                        <Label layoutX="166.0" layoutY="62.0" text="*" textFill="#e61c1c">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
-            </content>
+               </content>
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -59,10 +64,10 @@
                      </image>
                   </ImageView>
                </graphic>
-          </Tab>
-          <Tab fx:id="removeTab" text="Remove">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            </Tab>
+            <Tab fx:id="removeTab" text="Remove">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Label layoutX="144.0" layoutY="81.0" text="Which word do you want to remove?">
                            <font>
@@ -89,7 +94,7 @@
                         <Label fx:id="removeLabel" alignment="CENTER" layoutX="153.0" layoutY="181.0" prefHeight="17.0" prefWidth="256.0" />
                      </children>
                   </AnchorPane>
-            </content>
+               </content>
                <graphic>
                   <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -97,7 +102,7 @@
                      </image>
                   </ImageView>
                </graphic>
-          </Tab>
+            </Tab>
             <Tab fx:id="updateTab" text="Update">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -138,6 +143,11 @@
                               <Font name="Arial Bold" size="14.0" />
                            </font></JFXButton>
                         <Label fx:id="updateLabel" alignment="CENTER" layoutX="138.0" layoutY="279.0" prefHeight="17.0" prefWidth="278.0" />
+                        <Label layoutX="195.0" layoutY="43.0" text="*" textFill="#e61c1c">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
                      </children></AnchorPane>
                </content>
                <graphic>
@@ -148,7 +158,7 @@
                   </ImageView>
                </graphic>
             </Tab>
-        </tabs>
+         </tabs>
       </TabPane>
       <Label layoutX="400.0" layoutY="62.0" text="EDIT WORDS">
          <font>

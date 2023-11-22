@@ -1,7 +1,6 @@
 package Connect;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -13,7 +12,7 @@ import javafx.stage.StageStyle;
 
 import java.util.Objects;
 
-public class Alert {
+public class Alerter {
     //Stage window = new Stage();
 
     @FXML
