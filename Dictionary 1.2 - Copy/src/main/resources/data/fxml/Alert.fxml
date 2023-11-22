@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="300.0" prefWidth="450.0" style="-fx-border-radius: 10; -fx-border-width: 4; -fx-border-color: black; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Connect.Alert">
+   <children>
+      <Label fx:id="alertLabel" alignment="CENTER" layoutX="83.0" layoutY="78.0" prefHeight="95.0" prefWidth="283.0" text="This word is exintct. Please try again." textAlignment="CENTER" textFill="#072e7d" wrapText="true">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="okButton" alignment="CENTER" layoutX="173.0" layoutY="206.0" prefHeight="35.0" prefWidth="103.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-background-color: #99ccff;" text="OKEEE" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <ImageView fx:id="alertImage" fitHeight="140.0" fitWidth="140.0" layoutX="307.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/cry.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
