@@ -3,12 +3,13 @@ package Controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import API.TranslateText;
-
-import java.util.concurrent.*;
 
 public class TranslateController {
 
@@ -25,12 +26,6 @@ public class TranslateController {
     private TextArea area2;
 
     private TranslateText translator = new TranslateText();
-    private static final String ENGLISH = "English";
-    private static final String VIETNAMESE = "Vietnamese";
-
-    private ExecutorService translationExecutor = Executors.newSingleThreadExecutor();
-    private final ScheduledExecutorService delayExecutor = Executors.newScheduledThreadPool(1);
-    private static final int TRANSLATION_DELAY_MILLIS = 500; // Độ trễ 500 milliseconds
 
     @FXML
     private void initialize() {
@@ -39,12 +34,12 @@ public class TranslateController {
     }
 
     private void initializeLanguageComboBoxes() {
-        addLanguagesToComboBox(selectLanguage1);
-        addLanguagesToComboBox(selectLanguage2);
-    }
+        selectLanguage1.getItems().addAll("English", "Vietnamese");
+        selectLanguage2.getItems().addAll("English", "Vietnamese");
 
-    private void addLanguagesToComboBox(JFXComboBox<String> comboBox) {
-        comboBox.getItems().addAll(ENGLISH, VIETNAMESE);
+        // Set default selections
+        //selectLanguage1.getSelectionModel().select("English");
+        //selectLanguage2.getSelectionModel().select("Vietnamese");
     }
 
     private void initializeEventHandlers() {
@@ -52,8 +47,7 @@ public class TranslateController {
         changeLanguage.setOnAction(event -> swapLanguages());
 
         area1.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Hủy bỏ bất kỳ tác vụ dịch nào đang đợi và đặt lại độ trễ
-            delayExecutor.schedule(() -> translateAsync(), TRANSLATION_DELAY_MILLIS, TimeUnit.MILLISECONDS);
+            translate();
             updateCharCount(newValue);
         });
         area1.setWrapText(true);
@@ -74,57 +68,56 @@ public class TranslateController {
         area2.setText(textInArea1);
 
         updateTranslationDirection();
-        translateAsync();
+        translate();
     }
 
     private void updateTranslationDirection() {
         String selectedLanguage = selectLanguage1.getValue();
-        String targetLanguage = (VIETNAMESE.equals(selectedLanguage)) ? ENGLISH : VIETNAMESE;
+        String targetLanguage = ("Vietnamese".equals(selectedLanguage)) ? "English" : "Vietnamese";
 
         selectLanguage2.getSelectionModel().select(targetLanguage);
 
         translator.setLanguageFrom(selectedLanguage);
         translator.setLanguageTo(targetLanguage);
 
-        translateAsync();
+        translate();
     }
 
-    private void translateAsync() {
-        // Hủy bỏ bất kỳ tác vụ dịch nào đang chờ
-        translationExecutor.shutdownNow();
-
-        // Khởi tạo một luồng mới cho quá trình dịch
-        translationExecutor = Executors.newSingleThreadExecutor();
-
-        // Thực hiện dịch trong một luồng mới
-        CompletableFuture.runAsync(() -> translate(), translationExecutor);
-    }
 
     private void translate() {
         String textToTranslate = area1.getText();
 
         // Check if the text to translate is empty
         if (textToTranslate.isEmpty()) {
+            // Clear area2 or take any other desired action
             Platform.runLater(() -> area2.clear());
             return;
         }
 
-        try {
-            translator.setTextForTranslate(textToTranslate);
-            translator.translate();
+        Task<Void> translationTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                // Simulate a delay (500 milliseconds)
+                Thread.sleep(500);
 
-            String translatedText = translator.getTranslatedItem();
+                translator.setTextForTranslate(textToTranslate);
+                translator.translate();
 
-            Platform.runLater(() -> {
-                if (translatedText != null && !translatedText.isEmpty()) {
-                    area2.setText(translatedText);
-                } else {
-                    System.out.println("Không có dữ liệu dịch để hiển thị.");
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                String translatedText = translator.getTranslatedItem();
+
+                Platform.runLater(() -> {
+                    if (translatedText != null && !translatedText.isEmpty()) {
+                        area2.setText(translatedText);
+                    } else {
+                        System.out.println("Không có dữ liệu dịch để hiển thị.");
+                    }
+                });
+
+                return null;
+            }
+        };
+
+        new Thread(translationTask).start();
     }
 
     private void updateCharCount(String text) {

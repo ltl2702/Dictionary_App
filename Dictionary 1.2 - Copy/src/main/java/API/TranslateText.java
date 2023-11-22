@@ -39,10 +39,6 @@ public class TranslateText {
     }
 
     public void translate() {
-        if (textForTranslate == null || textForTranslate.trim().isEmpty()) {
-            System.out.println("Không có văn bản để dịch.");
-            return;
-        }
         try {
             // Encode the text for the URL
             String encodedText = URLEncoder.encode(textForTranslate, StandardCharsets.UTF_8);
