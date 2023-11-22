@@ -81,6 +81,9 @@ public class Home implements Initializable {
             }
         });
     }
+    private void closeMenu() {
+        animateMenu(-176, Duration.millis(500));
+    }
 
     private void animateMenu(double toX, Duration duration) {
         TranslateTransition slide = new TranslateTransition();
@@ -169,6 +172,7 @@ public class Home implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/homecopy.fxml"));
             AnchorPane homepane2 = fxmlLoader.load();
             homePane.getChildren().setAll(homepane2);
+            closeMenu();
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
@@ -181,6 +185,7 @@ public class Home implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/edit2.fxml"));
             AnchorPane editpane = fxmlLoader.load();
             homePane.getChildren().setAll(editpane);
+            closeMenu();
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
@@ -194,6 +199,7 @@ public class Home implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("/data/fxml/gameController.fxml"));
             AnchorPane gamepane = fxmlLoader.load();
             homePane.getChildren().setAll(gamepane);
+            closeMenu();
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
@@ -206,6 +212,8 @@ public class Home implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/translate.fxml"));
             AnchorPane translatepane = fxmlLoader.load();
             homePane.getChildren().setAll(translatepane);
+
+            closeMenu();
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
@@ -221,6 +229,7 @@ public class Home implements Initializable {
             AnchorPane userpane = fxmlLoader.load();
 
             homePane.getChildren().setAll(userpane);
+            closeMenu();
 
             User userController = fxmlLoader.getController();
             if(checklogin) {
