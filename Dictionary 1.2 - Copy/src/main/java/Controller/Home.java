@@ -2,7 +2,6 @@ package Controller;
 
 import API.TextToSpeech;
 import Dictionary.DictionaryManagement;
-
 import Dictionary.Word;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
@@ -76,6 +75,7 @@ public class Home implements Initializable {
 
         listResult.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
+                updateSearchField(newValue);
                 showHtmlContent(newValue.getHtml());
             }
         });
@@ -132,10 +132,21 @@ public class Home implements Initializable {
             listResult.setItems(FXCollections.observableArrayList(Word.NO_RESULT));
             listResult.setVisible(true);
         }
+        Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+        if (selectedWord != null) {
+            updateSearchField(selectedWord);
+            showHtmlContent(selectedWord.getHtml());
+        }
     }
 
     private void performSearch(String searchTerm) {
         performSearchInBackground(searchTerm);
+    }
+
+    private void updateSearchField(Word selectedWord) {
+        Platform.runLater(() -> {
+            searchField.setText(selectedWord.getWordTarget());
+        });
     }
 
     @FXML
@@ -202,6 +213,7 @@ public class Home implements Initializable {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
             AnchorPane userpane = fxmlLoader.load();
+
             homePane.getChildren().setAll(userpane);
 
             User userController = fxmlLoader.getController();
