@@ -29,12 +29,18 @@ public class TextToSpeech {
     }
 
     private static void speakText(Voice voice, String text) {
-        if (voice != null) {
-            System.out.println("Speaking: " + text);
-            voice.speak(text);
-            voice.deallocate();
-        } else {
-            throw new IllegalStateException("Voice is not allocated");
+        try {
+            if (voice != null) {
+                System.out.println("Speaking: " + text);
+                voice.speak(text);
+            } else {
+                throw new IllegalStateException("Voice is not allocated");
+            }
+        } finally {
+            if (voice != null) {
+                voice.deallocate();
+            }
         }
     }
+
 }

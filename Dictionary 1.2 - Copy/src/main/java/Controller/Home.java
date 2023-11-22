@@ -73,12 +73,16 @@ public class Home implements Initializable {
         listResult.setItems(list);
         listResult.setVisible(false);
 
-        listResult.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                updateSearchField(newValue);
-                showHtmlContent(newValue.getHtml());
+        listResult.setOnMouseClicked(event -> {
+            Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+            if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
+                updateSearchField(selectedWord);
+                showHtmlContent(selectedWord.getHtml());
             }
         });
+    }
+    private void closeMenu() {
+        animateMenu(-176, Duration.millis(500));
     }
 
     private void animateMenu(double toX, Duration duration) {
@@ -108,7 +112,7 @@ public class Home implements Initializable {
         });
     }
 
-    private ExecutorService threadPool = Executors.newFixedThreadPool(2);
+    private ExecutorService threadPool = Executors.newCachedThreadPool();
 
     private void performSearchInBackground(String searchTerm) {
         threadPool.submit(() -> {
@@ -125,11 +129,13 @@ public class Home implements Initializable {
         list = result;
         listResult.setItems(list);
 
+        if (list.isEmpty()) listResult.setVisible(false);
+
         if (!list.isEmpty() && !searchTerm.trim().isEmpty()) {
             listResult.setVisible(true);
         } else {
-            // Display "No result" in the listResult
-            listResult.setItems(FXCollections.observableArrayList(Word.NO_RESULT));
+            // Display "Not found" in the listResult
+            listResult.setItems(FXCollections.observableArrayList(Word.NOT_FOUND));
             listResult.setVisible(true);
         }
         Word selectedWord = listResult.getSelectionModel().getSelectedItem();
@@ -155,6 +161,9 @@ public class Home implements Initializable {
             Word firstResult = list.get(0);
             showHtmlContent(firstResult.getHtml());
         }
+
+        // Khi hiển thị definition, enable speakerButton
+        speakerButton.setDisable(false);
     }
 
     @FXML
@@ -163,6 +172,7 @@ public class Home implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/homecopy.fxml"));
             AnchorPane homepane2 = fxmlLoader.load();
             homePane.getChildren().setAll(homepane2);
+            closeMenu();
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
@@ -175,6 +185,7 @@ public class Home implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/edit2.fxml"));
             AnchorPane editpane = fxmlLoader.load();
             homePane.getChildren().setAll(editpane);
+            closeMenu();
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
@@ -188,6 +199,7 @@ public class Home implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("/data/fxml/gameController.fxml"));
             AnchorPane gamepane = fxmlLoader.load();
             homePane.getChildren().setAll(gamepane);
+            closeMenu();
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
@@ -200,6 +212,8 @@ public class Home implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/translate.fxml"));
             AnchorPane translatepane = fxmlLoader.load();
             homePane.getChildren().setAll(translatepane);
+
+            closeMenu();
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
@@ -215,6 +229,7 @@ public class Home implements Initializable {
             AnchorPane userpane = fxmlLoader.load();
 
             homePane.getChildren().setAll(userpane);
+            closeMenu();
 
             User userController = fxmlLoader.getController();
             if(checklogin) {
@@ -255,10 +270,16 @@ public class Home implements Initializable {
     }
 
     public void speakClick(ActionEvent actionEvent) {
-        Word selectedWord = listResult.getSelectionModel().getSelectedItem();
-        if (selectedWord != null) {
-            TextToSpeech.convertTextToSpeech(selectedWord.getWordTarget());
+        ObservableList<Word> items = listResult.getItems();
+        if (!items.isEmpty()) {
+            Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+            if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
+                    TextToSpeech.convertTextToSpeech(selectedWord.getWordTarget());
+            } else if (items.get(0) != Word.NOT_FOUND) {
+                selectedWord = items.get(0);
+                    TextToSpeech.convertTextToSpeech(selectedWord.getWordTarget());
+                }
+            }
         }
-    }
 }
 
