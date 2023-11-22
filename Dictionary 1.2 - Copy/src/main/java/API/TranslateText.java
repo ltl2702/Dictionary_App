@@ -13,7 +13,8 @@ import java.nio.charset.StandardCharsets;
 
 public class TranslateText {
 
-    private final String MY_API_KEY = "69b58ee62amshd04e099689f7f18p1e56e9jsn7d5a526f61de";
+    //private final String MY_API_KEY = "69b58ee62amshd04e099689f7f18p1e56e9jsn7d5a526f61de"; hết hạn
+    private final String MY_API_KEY = "3389d69e99msh7fb681519198bcfp12a68djsn33fd40a0c29c";
     //dùng cái trên, cái dưới để lúc quan trọng dùng, dùng nhiều hết lượt :))) dùng 2 nick đấy các friend
     //private final String MY_API_KEY = "350c50c415msh8a0f5c71730baadp15d423jsnbe641e0ae6b8";
     private String languageFrom;
@@ -38,6 +39,10 @@ public class TranslateText {
     }
 
     public void translate() {
+        if (textForTranslate == null || textForTranslate.trim().isEmpty()) {
+            System.out.println("Không có văn bản để dịch.");
+            return;
+        }
         try {
             // Encode the text for the URL
             String encodedText = URLEncoder.encode(textForTranslate, StandardCharsets.UTF_8);
@@ -95,15 +100,19 @@ public class TranslateText {
     }
 
     private String getLanguageCode(String language) {
-        // Chuyển đổi tên ngôn ngữ thành mã ngôn ngữ tương ứng (ví dụ: "Vietnamese" -> "vi", "English" -> "en")
+        if (language == null) {
+            // Xử lý giá trị null nếu cần
+            throw new IllegalArgumentException("Ngôn ngữ không được hỗ trợ: null");
+        }
+
         switch (language) {
             case "Vietnamese":
                 return "vi";
             case "English":
                 return "en";
-            // Thêm các trường hợp khác nếu cần
             default:
                 throw new IllegalArgumentException("Ngôn ngữ không được hỗ trợ: " + language);
         }
     }
+
 }

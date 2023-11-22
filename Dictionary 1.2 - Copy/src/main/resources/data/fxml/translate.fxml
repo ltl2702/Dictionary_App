@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TranslateController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TranslateController">
    <children>
       <AnchorPane layoutX="132.0" layoutY="149.0" prefHeight="57.0" prefWidth="635.0" style="-fx-background-color: #006699; -fx-background-radius: 10;">
          <children>
@@ -33,6 +30,6 @@
             <Font name="Arial Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="count" layoutX="328.0" layoutY="545.0" prefHeight="18.0" prefWidth="75.0" text="" />
+      <Label fx:id="count" layoutX="283.0" layoutY="545.0" prefHeight="26.0" prefWidth="120.0" text="" />
    </children>
 </AnchorPane>
