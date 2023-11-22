@@ -112,7 +112,7 @@ public class Home implements Initializable {
         });
     }
 
-    private ExecutorService threadPool = Executors.newFixedThreadPool(2);
+    private ExecutorService threadPool = Executors.newCachedThreadPool();
 
     private void performSearchInBackground(String searchTerm) {
         threadPool.submit(() -> {

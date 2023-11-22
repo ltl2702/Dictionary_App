@@ -3,8 +3,6 @@ package Controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -26,6 +24,7 @@ public class TranslateController {
     private TextArea area2;
 
     private TranslateText translator = new TranslateText();
+    private Task<Void> translationTask;
 
     @FXML
     private void initialize() {
@@ -36,10 +35,6 @@ public class TranslateController {
     private void initializeLanguageComboBoxes() {
         selectLanguage1.getItems().addAll("English", "Vietnamese");
         selectLanguage2.getItems().addAll("English", "Vietnamese");
-
-        // Set default selections
-        //selectLanguage1.getSelectionModel().select("English");
-        //selectLanguage2.getSelectionModel().select("Vietnamese");
     }
 
     private void initializeEventHandlers() {
@@ -47,7 +42,7 @@ public class TranslateController {
         changeLanguage.setOnAction(event -> swapLanguages());
 
         area1.textProperty().addListener((observable, oldValue, newValue) -> {
-            translate();
+            delayedTranslate();  // Thay vì gọi translate trực tiếp, gọi delayedTranslate
             updateCharCount(newValue);
         });
         area1.setWrapText(true);
@@ -68,7 +63,7 @@ public class TranslateController {
         area2.setText(textInArea1);
 
         updateTranslationDirection();
-        translate();
+        delayedTranslate();  // Thay vì gọi translate trực tiếp, gọi delayedTranslate
     }
 
     private void updateTranslationDirection() {
@@ -80,42 +75,56 @@ public class TranslateController {
         translator.setLanguageFrom(selectedLanguage);
         translator.setLanguageTo(targetLanguage);
 
-        translate();
+        delayedTranslate();  // Thay vì gọi translate trực tiếp, gọi delayedTranslate
     }
-
 
     private void translate() {
         String textToTranslate = area1.getText();
 
         // Check if the text to translate is empty
         if (textToTranslate.isEmpty()) {
-            // Clear area2 or take any other desired action
             Platform.runLater(() -> area2.clear());
             return;
         }
+        // Simulate a delay
+        translator.setTextForTranslate(textToTranslate);
+        translator.translate();
 
-        Task<Void> translationTask = new Task<Void>() {
+        String translatedText = translator.getTranslatedItem();
+
+        Platform.runLater(() -> {
+            if (translatedText != null && !translatedText.isEmpty()) {
+                area2.setText(translatedText);
+            } else {
+                System.out.println("Không có dữ liệu dịch để hiển thị.");
+            }
+        });
+    }
+
+    private void delayedTranslate() {
+        // Hủy bỏ task trước đó (nếu có)
+        if (translationTask != null) {
+            translationTask.cancel();
+        }
+
+        translationTask = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                // Simulate a delay (500 milliseconds)
+                // Đợi 500ms trước khi thực hiện dịch
                 Thread.sleep(500);
 
-                translator.setTextForTranslate(textToTranslate);
-                translator.translate();
-
-                String translatedText = translator.getTranslatedItem();
-
-                Platform.runLater(() -> {
-                    if (translatedText != null && !translatedText.isEmpty()) {
-                        area2.setText(translatedText);
-                    } else {
-                        System.out.println("Không có dữ liệu dịch để hiển thị.");
-                    }
-                });
+                translate();
 
                 return null;
             }
         };
+
+        // Thực hiện task sau 500ms nếu không có thay đổi mới
+        translationTask.setOnSucceeded(event -> {
+            if (!translationTask.isCancelled()) {
+                new Thread(translationTask).start();
+            }
+        });
 
         new Thread(translationTask).start();
     }
