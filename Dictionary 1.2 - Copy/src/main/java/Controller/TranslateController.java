@@ -11,6 +11,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import API.TranslateText;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class TranslateController {
 
     public Label count;
@@ -74,16 +77,12 @@ public class TranslateController {
             // Cập nhật UI sau khi dịch hoàn thành
             Platform.runLater(() -> {
                 String translatedText = translator.getTranslatedItem();
-                if (translatedText != null && !translatedText.isEmpty()) {
-                    area2.setText(translatedText);
-                } else {
-                    System.out.println("Không có dữ liệu dịch để hiển thị.");
-                }
+                area2.setText(translatedText != null && !translatedText.isEmpty() ? translatedText : "Không có dữ liệu dịch để hiển thị.");
             });
         });
 
         translationTask.setOnCancelled(event -> {
-            // Xử lý hủy bỏ (nếu cần)
+            Thread.currentThread().interrupt();
         });
 
         translationTask.setOnFailed(event -> {
@@ -91,9 +90,9 @@ public class TranslateController {
         });
 
         // Bắt đầu Task mới
-        Thread thread = new Thread(translationTask);
-        thread.setDaemon(true);
-        thread.start();
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.submit(translationTask);
+        executorService.shutdown();
     }
 
     private void swapLanguages() {
