@@ -38,6 +38,7 @@ public class TranslateText {
         this.textForTranslate = textForTranslate;
     }
 
+
     public void translate() {
         try {
             String encodedText = URLEncoder.encode(textForTranslate, StandardCharsets.UTF_8);
@@ -76,8 +77,11 @@ public class TranslateText {
                 System.out.println("Error: " + response.body());
             }
 
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException e) {
+            // Handle other exceptions
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 

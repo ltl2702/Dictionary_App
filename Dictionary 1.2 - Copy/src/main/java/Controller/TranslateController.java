@@ -109,9 +109,15 @@ public class TranslateController {
 
         translationTask = new Task<Void>() {
             @Override
-            protected Void call() throws Exception {
+            protected Void call(){
                 // Đợi 500ms trước khi thực hiện dịch
-                Thread.sleep(500);
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    // Restore interrupted status and return
+                    Thread.currentThread().interrupt();
+                    return null;
+                }
 
                 translate();
 
@@ -128,6 +134,7 @@ public class TranslateController {
 
         new Thread(translationTask).start();
     }
+
 
     private void updateCharCount(String text) {
         int charCount = text.length();
