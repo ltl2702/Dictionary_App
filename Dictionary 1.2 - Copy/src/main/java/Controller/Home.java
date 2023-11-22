@@ -106,7 +106,6 @@ public class Home implements Initializable {
             if (htmlContent != null) {
                 webEngine.loadContent(htmlContent);
             } else {
-                // If htmlContent is null, clear the WebView
                 webEngine.loadContent("");
             }
         });
@@ -166,6 +165,21 @@ public class Home implements Initializable {
         speakerButton.setDisable(false);
     }
 
+    private ExecutorService fxmlLoaderThreadPool = Executors.newCachedThreadPool();
+
+    private void loadFXMLInBackground(String resource) {
+        fxmlLoaderThreadPool.submit(() -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource(resource));
+                AnchorPane pane = fxmlLoader.load();
+                Platform.runLater(() -> homePane.getChildren().setAll(pane));
+                closeMenu();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+    }
+
     @FXML
     void homeButtonOnAction(ActionEvent event) {
         try {
@@ -178,46 +192,19 @@ public class Home implements Initializable {
             ex.getCause();
         }
     }
-
     @FXML
     void editButtonOnAction(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/edit2.fxml"));
-            AnchorPane editpane = fxmlLoader.load();
-            homePane.getChildren().setAll(editpane);
-            closeMenu();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            ex.getCause();
-        }
+        loadFXMLInBackground("/data/fxml/edit2.fxml");
     }
 
     @FXML
     void gameButtonOnAction(ActionEvent event) {
-        // Handle game button action...
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("/data/fxml/gameController.fxml"));
-            AnchorPane gamepane = fxmlLoader.load();
-            homePane.getChildren().setAll(gamepane);
-            closeMenu();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            ex.getCause();
-        }
+        loadFXMLInBackground("/data/fxml/gameController.fxml");
     }
 
     @FXML
     void translateButtonOnAction(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/translate.fxml"));
-            AnchorPane translatepane = fxmlLoader.load();
-            homePane.getChildren().setAll(translatepane);
-
-            closeMenu();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            ex.getCause();
-        }
+        loadFXMLInBackground("/data/fxml/translate.fxml");
     }
 
     private TextField username;
