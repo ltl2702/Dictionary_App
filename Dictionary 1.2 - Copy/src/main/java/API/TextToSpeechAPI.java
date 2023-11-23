@@ -5,32 +5,29 @@ import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 import javazoom.jl.player.advanced.PlaybackEvent;
 import javazoom.jl.player.advanced.PlaybackListener;
 
-public class TextToSpeechAPI {
+public class TextToSpeechAPI extends BaseAPI{
 
-    private static final String API_URL = "https://text-to-speech27.p.rapidapi.com/speech";
-    private static final String API_KEY = "3389d69e99msh7fb681519198bcfp12a68djsn33fd40a0c29c";
-    private static final String API_HOST = "text-to-speech27.p.rapidapi.com";
+
+    //private static final String API_KEY = "3389d69e99msh7fb681519198bcfp12a68djsn33fd40a0c29c";
+    /*
+    private static final String API_URL = "https://text-to-speech-api3.p.rapidapi.com/speak";
+    private static final String API_HOST = "text-to-speech-api3.p.rapidapi.com";
+     */
+
+    public TextToSpeechAPI(String apiKey, String apiHost, String apiUrl) {
+        super(apiKey,apiHost,apiUrl);
+    }
 
     public void convertTextToSpeech(String text, String lang) throws Exception {
-        String encodedText = URLEncoder.encode(text, "UTF-8");
-        String apiUrlWithParams = String.format("%s?text=%s&lang=%s", API_URL, encodedText, lang);
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(apiUrlWithParams))
-                .header("X-RapidAPI-Key", API_KEY)
-                .header("X-RapidAPI-Host", API_HOST)
-                .method("GET", HttpRequest.BodyPublishers.noBody())
-                .build();
-
-        HttpResponse<InputStream> response = HttpClient.newHttpClient()
-                .send(request, HttpResponse.BodyHandlers.ofInputStream());
-
+        HttpResponse<InputStream> response = makeGetRequest(text, lang);
         // Play audio if the request was successful (status code 200)
         if (response.statusCode() == 200) {
             playSpeech(response.body());

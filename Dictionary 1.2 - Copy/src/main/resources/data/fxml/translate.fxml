@@ -31,7 +31,7 @@
          </font>
       </Label>
       <Label fx:id="count" layoutX="283.0" layoutY="545.0" prefHeight="26.0" prefWidth="120.0" text="" />
-      <JFXButton fx:id="speak1" layoutX="140.0" layoutY="539.0" onAction="#speakAction" text=" ">
+      <JFXButton fx:id="speak1" layoutX="107.0" layoutY="527.0" onAction="#speakAction" prefHeight="50.0" prefWidth="90.0" text=" ">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -40,7 +40,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="speak2" layoutX="487.0" layoutY="539.0" onAction="#speakAction" text=" ">
+      <JFXButton fx:id="speak2" layoutX="469.0" layoutY="527.0" onAction="#speakAction" prefHeight="50.0" prefWidth="75.0" text=" ">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -9,8 +9,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
-public class TranslateController {
+import java.io.IOException;
 
+public class TranslateController {
     public Label count;
     public JFXButton changeLanguage;
     public JFXButton speak1, speak2;
@@ -24,7 +25,7 @@ public class TranslateController {
     @FXML
     private TextArea area2;
 
-    private GoogleTranslateAPI translator = new GoogleTranslateAPI();
+    private final GoogleTranslateAPI translator = new GoogleTranslateAPI("f80aa95348msh2d56bb30429d70ap139102jsn3766e7dff046", "google-translate113.p.rapidapi.com", "https://google-translate113.p.rapidapi.com/api/v1/translator/text");
     private Task<Void> translationTask;
 
     @FXML
@@ -39,7 +40,11 @@ public class TranslateController {
     }
 
     private void initializeEventHandlers() {
-        selectLanguage1.setOnAction(event -> updateTranslationDirection());
+        selectLanguage1.setOnAction(event -> {
+            updateTranslationDirection();
+            area1.setDisable(false);
+            area2.setDisable(false);
+        });
         changeLanguage.setOnAction(event -> swapLanguages());
 
         speak1.setOnAction(event -> {
@@ -65,6 +70,9 @@ public class TranslateController {
         });
         area1.setWrapText(true);
         area2.setWrapText(true);
+
+        area1.setDisable(true);
+        area2.setDisable(true);
     }
 
     private void swapLanguages() {
@@ -96,7 +104,7 @@ public class TranslateController {
         delayedTranslate();  // Thay vì gọi translate trực tiếp, gọi delayedTranslate
     }
 
-    private void translate() {
+    private void translate() throws IOException, InterruptedException {
         String textToTranslate = area1.getText();
 
         // Check if the text to translate is empty
@@ -113,9 +121,11 @@ public class TranslateController {
         Platform.runLater(() -> {
             if (translatedText != null && !translatedText.isEmpty()) {
                 area2.setText(translatedText);
+                System.out.println("Translation: " + translatedText);
             } else {
-                System.out.println("Không có dữ liệu dịch để hiển thị.");
+                System.out.println("No translation found.");
             }
+
         });
     }
 
@@ -127,7 +137,7 @@ public class TranslateController {
 
         translationTask = new Task<Void>() {
             @Override
-            protected Void call(){
+            protected Void call() throws IOException, InterruptedException {
                 // Đợi 500ms trước khi thực hiện dịch
                 try {
                     Thread.sleep(300);
@@ -161,9 +171,7 @@ public class TranslateController {
 
     private void speak(String textToSpeak, String lang) {
         try {
-            TextToSpeechAPI textToSpeechApi = new TextToSpeechAPI();
-
-            // Run the textToSpeechApi.convertTextToSpeech in a separate thread
+            TextToSpeechAPI textToSpeechApi = new TextToSpeechAPI("f80aa95348msh2d56bb30429d70ap139102jsn3766e7dff046", "text-to-speech27.p.rapidapi.com", "https://text-to-speech27.p.rapidapi.com/speech");
             new Thread(() -> {
                 try {
                     textToSpeechApi.convertTextToSpeech(textToSpeak, lang);
@@ -175,7 +183,6 @@ public class TranslateController {
             e.printStackTrace();
         }
     }
-
     public void speakAction(ActionEvent actionEvent) {
     }
 }
