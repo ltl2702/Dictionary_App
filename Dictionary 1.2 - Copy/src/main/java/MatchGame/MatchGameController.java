@@ -83,9 +83,9 @@ public class MatchGameController implements Initializable {
     private AnchorPane mainpane;
 
     private void loadDataFromDatabase() {
-            try (Connection connectDatabase = new ConnectDB().connect("test3")) {
+            try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
                 //Verifies.
-                String verify = "SELECT word, description FROM av ORDER BY RANDOM() LIMIT 6";
+                String verify = "SELECT word, description FROM av1 ORDER BY RANDOM() LIMIT 6";
                 Statement statement = connectDatabase.createStatement();
                 ResultSet query = statement.executeQuery(verify);
 
@@ -121,6 +121,7 @@ public class MatchGameController implements Initializable {
         card12.setText(list.get(11));
     }
 
+    /*
     private ArrayList<String> getDescription(String text) {
         List<String> descriptions = null;
         text = text.replaceAll("\'", "''");
@@ -150,7 +151,6 @@ public class MatchGameController implements Initializable {
         return (ArrayList<String>) descriptions;
     }
 
-/*
     private ArrayList<String> getDescription(String text) {
         ArrayList<String> descriptions = new ArrayList<>();
         try (Connection connection = new ConnectDB().connect("test3")) {
@@ -181,6 +181,34 @@ public class MatchGameController implements Initializable {
         }
         return descriptions;
     }*/
+
+    private String getWord(String description) {
+        String word = "";
+        try (Connection connection = new ConnectDB().connect("dict_hh")) {
+            String query = "SELECT COUNT(*) AS counter FROM av1 WHERE word = '" + description + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet.next()) {
+                int count = resultSet.getInt("counter");
+                if (count == 1) {
+                    word = description;
+                }
+                else {
+                    String select = "SELECT word FROM av1 WHERE description = '" + description + "'";
+                    ResultSet qquery = statement.executeQuery(select);
+                    if (qquery.next()) {
+                        //int imageNumber = query.getInt("image");
+                        word = qquery.getString("word");
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ConnectDB.closeConnection();
+        }
+        return word;
+    }
 
     private void handleButtonClick(JFXButton button) {
         if (isButtonClickable) {
@@ -218,8 +246,8 @@ public class MatchGameController implements Initializable {
                     } else {
                         // Nếu không phải là cặp, đặt lại trạng thái nhấn của cả hai nút
                         System.out.println("false");
-                        System.out.println(getDescription(firstPressedButton.getText()));
-                        System.out.println(getDescription(button.getText()));
+                        System.out.println(getWord(firstPressedButton.getText()));
+                        System.out.println(getWord(button.getText()));
                         button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
                         firstPressedButton.setDisable(false);
                         button.setDisable(false);
@@ -248,6 +276,7 @@ public class MatchGameController implements Initializable {
         }
     }
 
+    /*
     private boolean isPair(JFXButton button1, JFXButton button2) {
         // Kiểm tra xem 2 nút có tạo thành cặp hay không
         //word word, word des, des word, des des
@@ -268,38 +297,17 @@ public class MatchGameController implements Initializable {
         }
         return false;
     }
-
-/*
-    private boolean isPair(JFXButton button1, JFXButton button2) {
-        // Get descriptions for the two buttons
-        ArrayList<String> description1 = getDescription(button1.getText());
-        ArrayList<String> description2 = getDescription(button2.getText());
-
-        // Check for null or empty descriptions
-        if (description1 == null || description2 == null || description1.isEmpty() || description2.isEmpty()) {
-            return false;
-        }
-
-        // Convert descriptions to sets for efficient comparison
-        Set<String> descriptionSet1 = new HashSet<>(description1);
-        Set<String> descriptionSet2 = new HashSet<>(description2);
-
-        // Check if there is any common description
-        for (String desc1 : descriptionSet1) {
-            for (String desc2 : descriptionSet2) {
-                if (desc1.equalsIgnoreCase(desc2)) {
-                    // Found a common description, it's a pair
-                    System.out.println(desc1);
-                    System.out.println(desc2);
-                    return true;
-                }
-            }
-        }
-
-        // No common description found, not a pair
-        return false;
-    }
     */
+
+    private boolean isPair(JFXButton button1, JFXButton button2) {
+        // Kiểm tra xem 2 nút có tạo thành cặp hay không
+        String description1 = button1.getText();
+        String description2 = button2.getText();
+        String word1 = getWord(description1);
+        String word2 = getWord(description2);
+        //return description1.equals(word2) && description2.equals(word1);
+        return word1.equals(word2);
+    }
 
     private void animation(JFXButton button) {
         //Vị trí ban đầu
