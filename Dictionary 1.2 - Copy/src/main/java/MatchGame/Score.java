@@ -1,13 +1,25 @@
 package MatchGame;
 
+import Controller.Welcome;
+import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.Objects;
 
 public class Score {
+
+    Stage window = new Stage();
 
     @FXML
     private Label judgeLabel;
@@ -21,7 +33,11 @@ public class Score {
     @FXML
     private Label timeLabel;
 
+    @FXML
+    private JFXButton answerButton, okButton;
+    
     private int score;
+    private AnchorPane mainpane;
 
     public void setScore(int currentscore) {
         this.score = currentscore;
@@ -38,7 +54,43 @@ public class Score {
         return String.format("%02d:%02d", minutes, remainingSeconds);
     }
 
-    public void display() {
+    @FXML
+    void answerButtonOnAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(AnswerSlide.class.getResource("/data/fxml/answerSlide.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Scene scene = new Scene(root);
+            window.setScene(scene);
+            window.show();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
+    }
+
+    @FXML
+    void okButtonOnAction(ActionEvent event) {
+        event.consume();
+        try {
+            window.close();
+            FXMLLoader fxmlLoader2 = new FXMLLoader(MenuMatchGame.class.getResource("/data/fxml/MenuMatchGame.fxml"));
+            AnchorPane Matchpane = fxmlLoader2.load();
+            mainpane.getChildren().setAll(Matchpane);
+
+            MenuMatchGame MenuController = fxmlLoader2.getController();
+            MenuController.setmainpane(mainpane);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
+    }
+    
+    public void display(Scene scene) {
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.initStyle(StageStyle.UNDECORATED);
+
         System.out.println(score);
         if (score == 100) {
             judgeLabel.setText("Sir! Please lead us.");
@@ -57,5 +109,11 @@ public class Score {
             Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/data/gameMatching/0-30.jpg")));
             memeImage.setImage(image);
         }
+        window.setScene(scene);
+        window.show();
+    }
+
+    public void setmainpane(AnchorPane mainpane) {
+        this.mainpane = mainpane;
     }
 }

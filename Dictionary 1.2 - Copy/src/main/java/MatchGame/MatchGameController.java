@@ -82,10 +82,12 @@ public class MatchGameController implements Initializable {
     private int timeRemaining = 180;
     private AnchorPane mainpane;
 
+    private ArrayList<String> wordAnswer = new ArrayList<>();
+
     private void loadDataFromDatabase() {
-            try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
+            try (Connection connectDatabase = new ConnectDB().connect("test3")) {
                 //Verifies.
-                String verify = "SELECT word, description FROM av1 ORDER BY RANDOM() LIMIT 6";
+                String verify = "SELECT word, description FROM av WHERE description IS NOT NULL AND description != '' ORDER BY RANDOM() LIMIT 6";
                 Statement statement = connectDatabase.createStatement();
                 ResultSet query = statement.executeQuery(verify);
 
@@ -182,6 +184,7 @@ public class MatchGameController implements Initializable {
         return descriptions;
     }*/
 
+   /*
     private String getWord(String description) {
         String word = "";
         try (Connection connection = new ConnectDB().connect("dict_hh")) {
@@ -208,6 +211,64 @@ public class MatchGameController implements Initializable {
             ConnectDB.closeConnection();
         }
         return word;
+    }
+*/
+   private ArrayList<String> getDescription(String text) {
+       List<String> descriptions = null;
+       text = text.replaceAll("\'", "''");
+       descriptions = new ArrayList<>();
+       try (Connection connection = new ConnectDB().connect("test3")) {
+           String query = "SELECT COUNT(*) AS counter FROM av WHERE description = '" + text + "'";
+           Statement statement = connection.createStatement();
+           ResultSet resultSet = statement.executeQuery(query);
+           if (resultSet.next()) {
+               int count = resultSet.getInt("counter");
+               if (count >= 1) {
+                   descriptions.add(text);
+               }
+               else {
+                   String select = "SELECT description FROM av WHERE word = '" + text + "'";
+                   ResultSet qquery = statement.executeQuery(select);
+                   while (qquery.next()) {
+                       descriptions.add(qquery.getString("description"));
+                   }
+               }
+           }
+       } catch (Exception e) {
+           e.printStackTrace();
+       } finally {
+           ConnectDB.closeConnection();
+       }
+       return (ArrayList<String>) descriptions;
+   }
+
+    private ArrayList<String> getWord(String text) {
+        List<String> word = null;
+        text = text.replaceAll("\'", "''");
+        word = new ArrayList<>();
+        try (Connection connection = new ConnectDB().connect("test3")) {
+            String query = "SELECT COUNT(*) AS counter FROM av WHERE word = '" + text + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet.next()) {
+                int count = resultSet.getInt("counter");
+                if (count >= 1) {
+                    word.add(text);
+                }
+                else {
+                    String select = "SELECT word FROM av WHERE description = '" + text + "'";
+                    ResultSet qquery = statement.executeQuery(select);
+                    while (qquery.next()) {
+                        word.add(qquery.getString("word"));
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ConnectDB.closeConnection();
+        }
+        return (ArrayList<String>) word;
     }
 
     private void handleButtonClick(JFXButton button) {
@@ -276,20 +337,28 @@ public class MatchGameController implements Initializable {
         }
     }
 
-    /*
+    private ArrayList<String> getWordAnswer() {
+        return wordAnswer;
+    }
+
     private boolean isPair(JFXButton button1, JFXButton button2) {
         // Kiểm tra xem 2 nút có tạo thành cặp hay không
         //word word, word des, des word, des des
-        String word1 = button1.getText();
-        String word2 = button2.getText();
-        ArrayList<String> description1 = getDescription(word1);
-        ArrayList<String> description2 = getDescription(word2);
+        String description1 = button1.getText();
+        String description2 = button2.getText();
+        ArrayList<String> word1 = getWord(description1);
+        System.out.println(word1);
+        ArrayList<String> word2 = getWord(description2);
+        System.out.println(word2);
         if (!description1.isEmpty() && !description2.isEmpty()) {
-            for (String string : description1) {
-                for (String s : description2) {
+            for (String string : word1) {
+                for (String s : word2) {
+                    string = string.replaceAll("''", "\'");
+                    s = s.replaceAll("''", "\'");
                     if (string.equalsIgnoreCase(s)) {
-                        System.out.println(description1);
-                        System.out.println(description2);
+                        wordAnswer.add(string);
+                        //System.out.println(description1);
+                        //System.out.println(description2);
                         return true;
                     }
                 }
@@ -297,8 +366,8 @@ public class MatchGameController implements Initializable {
         }
         return false;
     }
-    */
 
+/*
     private boolean isPair(JFXButton button1, JFXButton button2) {
         // Kiểm tra xem 2 nút có tạo thành cặp hay không
         String description1 = button1.getText();
@@ -308,6 +377,7 @@ public class MatchGameController implements Initializable {
         //return description1.equals(word2) && description2.equals(word1);
         return word1.equals(word2);
     }
+     */
 
     private void animation(JFXButton button) {
         //Vị trí ban đầu
@@ -349,37 +419,15 @@ public class MatchGameController implements Initializable {
         System.out.println("Thời gian còn lại: " + formatTime(timeRemaining));
         // Dừng đếm ngược
         countdown.stop();
-        Stage window = new Stage();
         FXMLLoader fxmlLoader1 = new FXMLLoader(Score.class.getResource("/data/fxml/ScoreMatchGame.fxml"));
         try {
             Parent root = fxmlLoader1.load();
             Score scoreController = fxmlLoader1.getController();
             scoreController.setScore(currentscore);
             scoreController.setTime(180 - timeRemaining);
-            scoreController.display();
-            Scene scene = new Scene(root, 500, 350);
-
-            //Closes the window.
-            window.setOnCloseRequest(e -> {
-                e.consume();
-                try {
-                    window.close();
-                    FXMLLoader fxmlLoader2 = new FXMLLoader(MenuMatchGame.class.getResource("/data/fxml/MenuMatchGame.fxml"));
-                    AnchorPane Matchpane = fxmlLoader2.load();
-                    mainpane.getChildren().setAll(Matchpane);
-
-                    MenuMatchGame MenuController = fxmlLoader2.getController();
-                    MenuController.setmainpane(mainpane);
-
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    ex.getCause();
-                }
-            });
-
-            window.setTitle("Score!");
-            window.setScene(scene);
-            window.show();
+            Scene scene = new Scene(root);
+            scoreController.display(scene);
+            scoreController.setmainpane(mainpane);
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
