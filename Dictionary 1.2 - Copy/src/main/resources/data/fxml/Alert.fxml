@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="300.0" prefWidth="450.0" style="-fx-border-radius: 10; -fx-border-width: 4; -fx-border-color: black; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Connect.Alert">
+<AnchorPane prefHeight="300.0" prefWidth="450.0" style="-fx-border-radius: 10; -fx-border-width: 4; -fx-border-color: black; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Connect.Alerter">
    <children>
       <Label fx:id="alertLabel" alignment="CENTER" layoutX="83.0" layoutY="78.0" prefHeight="95.0" prefWidth="283.0" text="This word is exintct. Please try again." textAlignment="CENTER" textFill="#072e7d" wrapText="true">
          <font>

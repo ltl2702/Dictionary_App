@@ -283,7 +283,9 @@ public class Edit {
 
                     fakeword = fakeword.replaceAll("\'", "''");
                     fakedes = fakedes.replaceAll("\'", "''");
-                    fakepro = fakepro.replaceAll("\'", "''");
+                    if (fakepro != null)
+                       fakepro = fakepro.replaceAll("\'", "''");
+                    else fakepro = "";
                     //Tìm vị trí của "</h3>"
                     int index = fakehtml.indexOf("</h3>");
                     //Tìm thấy
@@ -314,6 +316,7 @@ public class Edit {
                             newchange++;
                     } else {
                         authpro = fakepro;
+                        //authpro = "";
                     }
                     convertHTML = HTML.convertToHtml(authword, authpro, authdes);
 
