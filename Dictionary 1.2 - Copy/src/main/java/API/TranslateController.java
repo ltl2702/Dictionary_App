@@ -1,18 +1,19 @@
-package Controller;
+package API;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import API.TranslateText;
 
 public class TranslateController {
 
     public Label count;
     public JFXButton changeLanguage;
+    public JFXButton speak1, speak2;
 
     @FXML
     private JFXComboBox<String> selectLanguage1;
@@ -23,7 +24,7 @@ public class TranslateController {
     @FXML
     private TextArea area2;
 
-    private TranslateText translator = new TranslateText();
+    private GoogleTranslateAPI translator = new GoogleTranslateAPI();
     private Task<Void> translationTask;
 
     @FXML
@@ -40,6 +41,23 @@ public class TranslateController {
     private void initializeEventHandlers() {
         selectLanguage1.setOnAction(event -> updateTranslationDirection());
         changeLanguage.setOnAction(event -> swapLanguages());
+
+        speak1.setOnAction(event -> {
+            String textToSpeak = area1.getText();
+            String selectedLanguage = selectLanguage1.getValue();
+            if (!textToSpeak.isEmpty() && selectedLanguage != null) {
+                speak(textToSpeak, GoogleTranslateAPI.getLanguageCode(selectedLanguage));
+            }
+        });
+
+        speak2.setOnAction(event -> {
+            String textToSpeak = area2.getText();
+            String selectedLanguage = selectLanguage2.getValue();
+            if (!textToSpeak.isEmpty() && selectedLanguage != null) {
+                speak(textToSpeak, GoogleTranslateAPI.getLanguageCode(selectedLanguage));
+            }
+        });
+
 
         area1.textProperty().addListener((observable, oldValue, newValue) -> {
             delayedTranslate();  // Thay vì gọi translate trực tiếp, gọi delayedTranslate
@@ -112,7 +130,7 @@ public class TranslateController {
             protected Void call(){
                 // Đợi 500ms trước khi thực hiện dịch
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(300);
                 } catch (InterruptedException e) {
                     // Restore interrupted status and return
                     Thread.currentThread().interrupt();
@@ -139,5 +157,25 @@ public class TranslateController {
     private void updateCharCount(String text) {
         int charCount = text.length();
         count.setText("Count: " + charCount);
+    }
+
+    private void speak(String textToSpeak, String lang) {
+        try {
+            TextToSpeechAPI textToSpeechApi = new TextToSpeechAPI();
+
+            // Run the textToSpeechApi.convertTextToSpeech in a separate thread
+            new Thread(() -> {
+                try {
+                    textToSpeechApi.convertTextToSpeech(textToSpeak, lang);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void speakAction(ActionEvent actionEvent) {
     }
 }

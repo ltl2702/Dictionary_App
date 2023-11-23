@@ -9,6 +9,7 @@ module OOP {
     requires freetts;
     requires com.fasterxml.jackson.databind;
     requires java.net.http;
+    requires java.desktop;
     //requires jsapi;
 
     exports App;
@@ -19,6 +20,8 @@ module OOP {
     opens Connect to javafx.fxml;
     exports MatchGame;
     opens MatchGame to javafx.fxml;
+    exports API;
+    opens API to javafx.fxml;
     //exports API;
    // opens API to javafx.fxml;
 }

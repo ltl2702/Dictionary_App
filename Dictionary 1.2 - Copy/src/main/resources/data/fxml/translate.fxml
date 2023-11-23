@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TranslateController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="API.TranslateController">
    <children>
       <AnchorPane layoutX="132.0" layoutY="149.0" prefHeight="57.0" prefWidth="635.0" style="-fx-background-color: #006699; -fx-background-radius: 10;">
          <children>
@@ -31,5 +31,23 @@
          </font>
       </Label>
       <Label fx:id="count" layoutX="283.0" layoutY="545.0" prefHeight="26.0" prefWidth="120.0" text="" />
+      <JFXButton fx:id="speak1" layoutX="140.0" layoutY="539.0" onAction="#speakAction" text=" ">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/loa-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="speak2" layoutX="487.0" layoutY="539.0" onAction="#speakAction" text=" ">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/loa-removebg-preview.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

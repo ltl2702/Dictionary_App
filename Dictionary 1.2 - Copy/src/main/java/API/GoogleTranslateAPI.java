@@ -11,7 +11,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
-public class TranslateText {
+public class GoogleTranslateAPI {
 
     //private final String MY_API_KEY = "69b58ee62amshd04e099689f7f18p1e56e9jsn7d5a526f61de"; hết hạn
     private final String MY_API_KEY = "3389d69e99msh7fb681519198bcfp12a68djsn33fd40a0c29c";
@@ -37,7 +37,6 @@ public class TranslateText {
     public void setTextForTranslate(String textForTranslate) {
         this.textForTranslate = textForTranslate;
     }
-
 
     public void translate() {
         try {
@@ -78,18 +77,16 @@ public class TranslateText {
             }
 
         } catch (IOException e) {
-            // Handle other exceptions
             e.printStackTrace();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private String getLanguageCode(String language) {
+    static String getLanguageCode(String language) {
         if (language == null) {
             throw new IllegalArgumentException("Ngôn ngữ không được hỗ trợ: null");
         }
-
         switch (language) {
             case "Vietnamese":
                 return "vi";

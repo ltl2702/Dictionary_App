@@ -88,7 +88,7 @@ public class Welcome implements Initializable {
                         //setUsernamefill(usernamefill);
                         System.out.println(getUsernamefill());
                         try {
-                            FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/homecopy.fxml"));
+                            FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home.fxml"));
 
                             Parent root = fxmlLoader.load();
                             Home homeController = fxmlLoader.getController();

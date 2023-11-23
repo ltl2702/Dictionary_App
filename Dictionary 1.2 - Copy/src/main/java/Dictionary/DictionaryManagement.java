@@ -29,7 +29,6 @@ public class DictionaryManagement {
                     }
                 }
             }
-
         } catch (Exception e) {
             System.out.println("Error executing query: " + e.getMessage());
             e.printStackTrace();

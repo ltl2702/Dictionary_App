@@ -3,7 +3,7 @@ package API;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
-public class TextToSpeech {
+public class TextToSpeechFreetts {
 
     private static final String VOICE_NAME = "kevin16";
 

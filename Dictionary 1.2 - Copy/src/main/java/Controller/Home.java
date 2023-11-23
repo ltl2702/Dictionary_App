@@ -1,6 +1,6 @@
 package Controller;
 
-import API.TextToSpeech;
+import API.TextToSpeechFreetts;
 import Dictionary.DictionaryManagement;
 import Dictionary.Word;
 import com.jfoenix.controls.JFXButton;
@@ -183,7 +183,7 @@ public class Home implements Initializable {
     @FXML
     void homeButtonOnAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/homecopy.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home.fxml"));
             AnchorPane homepane2 = fxmlLoader.load();
             homePane.getChildren().setAll(homepane2);
             closeMenu();
@@ -261,10 +261,10 @@ public class Home implements Initializable {
         if (!items.isEmpty()) {
             Word selectedWord = listResult.getSelectionModel().getSelectedItem();
             if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
-                    TextToSpeech.convertTextToSpeech(selectedWord.getWordTarget());
+                    TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWordTarget());
             } else if (items.get(0) != Word.NOT_FOUND) {
                 selectedWord = items.get(0);
-                    TextToSpeech.convertTextToSpeech(selectedWord.getWordTarget());
+                    TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWordTarget());
                 }
             }
         }
