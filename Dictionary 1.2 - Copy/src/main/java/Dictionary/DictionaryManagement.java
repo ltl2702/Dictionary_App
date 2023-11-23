@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DictionaryManagement {
-    private static final String TABLE_NAME = "av";
+    private static final String TABLE_NAME = "av1";
     public static ObservableList<Word> dbSearchWord(String keyWord, String datatable) {
         ObservableList<Word> list = FXCollections.observableArrayList();
         keyWord = keyWord.trim().replaceAll("\\s+", " ");
