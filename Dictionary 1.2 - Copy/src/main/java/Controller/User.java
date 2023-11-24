@@ -54,7 +54,7 @@ public class User implements Initializable {
     void userLogin() {
         System.out.println("User check login: " + checkLogin);
         if(checkLogin == true) {
-            try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
+            try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
                 String select = "SELECT firstname, lastname, username, image FROM account WHERE username = '" + usernameLogin.getText() + "'";
                 Statement statement = connectDatabase.createStatement();
                 ResultSet query = statement.executeQuery(select);
@@ -82,7 +82,7 @@ public class User implements Initializable {
             }
         }
         if(checkSignup == true) {
-            try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
+            try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
                 String select = "SELECT firstname, lastname, username, image FROM account WHERE username = '" + usernameSignup.getText() + "'";
                 Statement statement = connectDatabase.createStatement();
                 ResultSet query = statement.executeQuery(select);

@@ -70,7 +70,7 @@ public class Signup implements Initializable {
     }
 
     public void signup() {
-        try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String first = firstnamefill.getText();
             String last = lastnamefill.getText();
             String user = usernamefill.getText();
