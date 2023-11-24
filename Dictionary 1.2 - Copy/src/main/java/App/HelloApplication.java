@@ -1,8 +1,7 @@
 package App;
 
-import API.TextToSpeechAPI;
 import Connect.YesNo;
-import Controller.Welcome;
+import User.Welcome;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,7 +28,7 @@ public class HelloApplication extends Application {
             Welcome welcomeController = fxmlLoader.getController();
             welcomeController.initializeStage(window);
 
-            Scene scene = new Scene(root, 900, 600);
+            Scene scene = new Scene(root);
 
             // Closes the window.
             window.setOnCloseRequest(e -> {

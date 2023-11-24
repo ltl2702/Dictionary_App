@@ -3,6 +3,7 @@ package Controller;
 import API.TextToSpeechFreetts;
 import Dictionary.DictionaryManagement;
 import Dictionary.Word;
+import User.User;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -26,7 +27,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Home implements Initializable {
-    private final String datatable = "av1";
+    private final String datatable = "av";
     public Button speakerButton, searchButton;
     public JFXButton gameButton;
     public ImageView menuimage1;

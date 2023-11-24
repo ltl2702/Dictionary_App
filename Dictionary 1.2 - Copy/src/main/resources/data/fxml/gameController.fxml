@@ -33,19 +33,5 @@
             <Font name="Arial Bold Italic" size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="quizgameButton" layoutX="535.0" layoutY="181.0" onAction="#quizgameButtonOnAction" text=" ">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icon/flipicon2.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <Label alignment="CENTER" layoutX="552.0" layoutY="348.0" prefHeight="16.0" prefWidth="139.0" text="Quiz game" textFill="#08429a">
-         <font>
-            <Font name="Arial Bold Italic" size="14.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

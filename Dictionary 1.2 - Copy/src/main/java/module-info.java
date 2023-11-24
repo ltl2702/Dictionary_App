@@ -20,10 +20,10 @@ module OOP {
     opens Connect to javafx.fxml;
     exports MatchGame;
     opens MatchGame to javafx.fxml;
-    exports QuizGamee;
-    opens QuizGamee to javafx.fxml;
     exports API;
     opens API to javafx.fxml;
+    exports User;
+    opens User to javafx.fxml;
     //exports API;
    // opens API to javafx.fxml;
 }
