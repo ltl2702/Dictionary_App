@@ -428,6 +428,8 @@ public class MatchGameController implements Initializable {
             Scene scene = new Scene(root);
             scoreController.display(scene);
             scoreController.setmainpane(mainpane);
+            System.out.println(wordAnswer);
+            scoreController.setWordAns(wordAnswer);
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();

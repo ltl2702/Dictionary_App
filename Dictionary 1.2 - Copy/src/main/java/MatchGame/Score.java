@@ -15,6 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Score {
@@ -38,6 +39,7 @@ public class Score {
     
     private int score;
     private AnchorPane mainpane;
+    private ArrayList<String> WordAns;
 
     public void setScore(int currentscore) {
         this.score = currentscore;
@@ -62,6 +64,9 @@ public class Score {
             AnswerSlide answerSlideController = fxmlLoader.getController();
             answerSlideController.setStage(window);
             answerSlideController.setmainpane(mainpane);
+            answerSlideController.setWordAns(WordAns);
+            System.out.println(WordAns);
+            answerSlideController.initialize();
 
             Scene scene = new Scene(root);
             window.setScene(scene);
@@ -118,5 +123,9 @@ public class Score {
 
     public void setmainpane(AnchorPane mainpane) {
         this.mainpane = mainpane;
+    }
+
+    public void setWordAns(ArrayList<String> wordAnswer) {
+        this.WordAns = wordAnswer;
     }
 }
