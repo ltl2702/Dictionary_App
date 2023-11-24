@@ -1,5 +1,7 @@
 package QuizGamee;
 
+import Connect.ConnectDB;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -44,16 +46,13 @@ public class Quiz {
     }
 
     public static void createTable() {
-        try {
+        try (Connection connection = new ConnectDB().connect("quiz")){
             String raw = "CREATE TABLE if not exists %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s VARCHAR(50) )";
             String query = String.format(raw,
                     MetaData.TABLE_NAME,
                     MetaData.QUIZ_ID,
                     MetaData.TITLE);
             System.err.println(query);
-            String connectionUrl = "jdbc:sqlite:quiz.db";
-            Class.forName("org.sqlite.JDBC");
-            Connection connection = DriverManager.getConnection(connectionUrl);
             PreparedStatement ps = connection.prepareStatement(query);
             boolean b = ps.execute();
             System.out.println("models.Quiz.createTable()");
