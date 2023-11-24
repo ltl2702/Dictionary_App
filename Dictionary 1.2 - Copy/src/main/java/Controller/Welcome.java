@@ -71,7 +71,7 @@ public class Welcome implements Initializable {
     @FXML
     public void loginButtonOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         if (!usernamefill.getText().isBlank() && !passwordfill.getText().isBlank()) {
-            try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
+            try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
                 //Verifies login.
                 String verify = "SELECT username, password FROM account WHERE username = '" + usernamefill.getText() +
                         "' AND password = '" + passwordfill.getText() + "'";

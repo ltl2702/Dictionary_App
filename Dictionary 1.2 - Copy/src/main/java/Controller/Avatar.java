@@ -79,7 +79,7 @@ public class Avatar {
     }
 
     public void action(int imageNum) {
-        try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String userName = username.getText();
             String verify = "SELECT COUNT(*) AS counter" +
                     " FROM account WHERE username = '" + userName + "'";

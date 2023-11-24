@@ -2,13 +2,14 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="350.0" prefWidth="500.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.AnswerSlide">
+<AnchorPane prefHeight="350.0" prefWidth="500.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.AnswerSlide">
    <children>
-      <AnchorPane layoutX="116.0" layoutY="72.0" prefHeight="175.0" prefWidth="289.0" style="-fx-border-color: black; -fx-border-radius: 3;">
+      <AnchorPane layoutX="114.0" layoutY="76.0" prefHeight="175.0" prefWidth="289.0" style="-fx-border-color: black; -fx-border-radius: 3;">
          <children>
             <Label fx:id="descriptionLabel" alignment="CENTER" layoutX="24.0" layoutY="92.0" prefHeight="66.0" prefWidth="242.0" text="abc" textAlignment="CENTER">
                <font>
@@ -37,7 +38,21 @@
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="prevButton" layoutX="28.0" layoutY="147.0" onAction="#prevButtonOnAction" />
-      <JFXButton fx:id="beforeButton" layoutX="420.0" layoutY="147.0" onAction="#beforeButtonOnAction" />
+      <JFXButton fx:id="prevButton" layoutX="53.0" layoutY="149.0" onAction="#prevButtonOnAction" prefHeight="30.0" prefWidth="40.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/prev.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="nextButton" layoutX="421.0" layoutY="149.0" onAction="#nextButtonOnAction" prefHeight="30.0" prefWidth="50.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/next.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
    </children>
 </AnchorPane>

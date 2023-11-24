@@ -59,6 +59,9 @@ public class Score {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(AnswerSlide.class.getResource("/data/fxml/answerSlide.fxml"));
             Parent root = fxmlLoader.load();
+            AnswerSlide answerSlideController = fxmlLoader.getController();
+            answerSlideController.setStage(window);
+            answerSlideController.setmainpane(mainpane);
 
             Scene scene = new Scene(root);
             window.setScene(scene);

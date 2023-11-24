@@ -45,7 +45,7 @@ public class UpdateAcc implements Initializable {
     }
 
     void update() {
-        try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String oldusername = oldUsername.getText();
             String newusername = newUsername.getText();
             String oldpass = oldPass.getText();
@@ -119,7 +119,7 @@ public class UpdateAcc implements Initializable {
     public void setuserImage() {
         System.out.println(oldUsername.getText());
         //System.out.println(newUsername.getText());
-        try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String getID = "SELECT ID FROM account WHERE username = '" + oldUsername.getText() + "'";
             Statement statement = connectDatabase.createStatement();
             ResultSet IDquery = statement.executeQuery(getID);
