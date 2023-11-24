@@ -11,12 +11,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -92,7 +90,7 @@ public class Signup implements Initializable {
                     check = true;
                     System.out.println(getUsernamefill());
                     try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home2.fxml"));
                         //AnchorPane loadingpane = fxmlLoader.load();
                         Parent root = fxmlLoader.load();
                         Home homeController = fxmlLoader.getController();
