@@ -13,7 +13,6 @@
     -fx-border-color: white;
 }
 .button:pressed {
-    -fx-cursor: HAND;
     -fx-background-color: #283655; /* Màu nền khi nút được nhấn */
     -fx-text-fill: white;
     -fx-background-radius: 20;
