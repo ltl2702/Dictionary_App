@@ -10,7 +10,7 @@
 }
 
 .list-cell:hover {
-    -fx-background-color: #00f5ff; /* Màu nền khi di chuột qua cell */
+    -fx-background-color: #4d64d8; /* Màu nền khi di chuột qua cell */
 }
 .list-view:hover {
     -fx-cursor: HAND;
