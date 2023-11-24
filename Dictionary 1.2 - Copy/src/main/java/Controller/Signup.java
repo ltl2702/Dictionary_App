@@ -1,7 +1,6 @@
-package User;
+package Controller;
 
 import Connect.ConnectDB;
-import Controller.Home;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
@@ -14,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -27,7 +25,6 @@ import java.util.ResourceBundle;
 
 public class Signup implements Initializable {
 
-    public AnchorPane mainPane;
     @FXML
     private TextField firstnamefill, lastnamefill, usernamefill;
 
@@ -37,11 +34,18 @@ public class Signup implements Initializable {
     @FXML
     private PasswordField passwordfill;
 
+    @FXML
+    private ImageView welcomeimageView;
 
     @FXML
     private ProgressBar loading;
 
     private Timeline timeline;
+
+    /*
+    @FXML
+    private AnchorPane mainpane;
+     */
 
     private Stage stage;
 
@@ -64,7 +68,7 @@ public class Signup implements Initializable {
     }
 
     public void signup() {
-        try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String first = firstnamefill.getText();
             String last = lastnamefill.getText();
             String user = usernamefill.getText();
@@ -95,7 +99,6 @@ public class Signup implements Initializable {
                         homeController.setStage(stage);
                         homeController.setUsernameSignup(usernamefill);
                         homeController.setCheckSignup(check);
-
 
                         Scene scene = new Scene(root);
                         loading(scene);
@@ -134,24 +137,14 @@ public class Signup implements Initializable {
         timeline.play();
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    }
+
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
     public void returnAction(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/background.fxml"));
-            AnchorPane backgroundPane = fxmlLoader.load();
-            Scene currentScene = mainPane.getScene();
-            currentScene.setRoot(backgroundPane);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
-
 }

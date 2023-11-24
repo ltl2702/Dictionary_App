@@ -1,5 +1,6 @@
 package MatchGame;
 
+import Controller.Welcome;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Score {
@@ -37,6 +39,7 @@ public class Score {
     
     private int score;
     private AnchorPane mainpane;
+    private ArrayList<String> WordAns;
 
     public void setScore(int currentscore) {
         this.score = currentscore;
@@ -58,6 +61,12 @@ public class Score {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(AnswerSlide.class.getResource("/data/fxml/answerSlide.fxml"));
             Parent root = fxmlLoader.load();
+            AnswerSlide answerSlideController = fxmlLoader.getController();
+            answerSlideController.setStage(window);
+            answerSlideController.setmainpane(mainpane);
+            answerSlideController.setWordAns(WordAns);
+            System.out.println(WordAns);
+            answerSlideController.initialize();
 
             Scene scene = new Scene(root);
             window.setScene(scene);
@@ -114,5 +123,9 @@ public class Score {
 
     public void setmainpane(AnchorPane mainpane) {
         this.mainpane = mainpane;
+    }
+
+    public void setWordAns(ArrayList<String> wordAnswer) {
+        this.WordAns = wordAnswer;
     }
 }

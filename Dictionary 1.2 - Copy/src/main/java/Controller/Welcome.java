@@ -1,9 +1,7 @@
-package User;
+package Controller;
 
 
 import Connect.ConnectDB;
-import Controller.Home;
-import User.Signup;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
@@ -27,8 +25,6 @@ import java.util.ResourceBundle;
 
 
 public class Welcome implements Initializable {
-
-    double x,y = 0;
 
     private Stage stage;
 
@@ -73,7 +69,7 @@ public class Welcome implements Initializable {
     @FXML
     public void loginButtonOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         if (!usernamefill.getText().isBlank() && !passwordfill.getText().isBlank()) {
-            try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
+            try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
                 //Verifies login.
                 String verify = "SELECT username, password FROM account WHERE username = '" + usernamefill.getText() +
                         "' AND password = '" + passwordfill.getText() + "'";
@@ -97,16 +93,6 @@ public class Welcome implements Initializable {
                             homeController.setStage(stage);
                             homeController.setUsernameLogin(usernamefill);
                             homeController.setCheckLogin(check);
-
-                            root.setOnMousePressed(e -> {
-                                x = e.getSceneX();
-                                y = e.getSceneY();
-                            });
-
-                            root.setOnMouseDragged(e -> {
-                                stage.setX(e.getScreenX() - x);
-                                stage.setY(e.getScreenY() - y);
-                            });
 
                             Scene scene = new Scene(root);
                             //stage.setScene(scene);
@@ -176,11 +162,12 @@ public class Welcome implements Initializable {
         timeline.play();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-    }
-
     public void initializeStage(Stage window) {
         this.stage = window;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

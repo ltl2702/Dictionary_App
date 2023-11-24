@@ -1,9 +1,11 @@
-package User;
+package Controller;
 
 import Connect.ConnectDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -49,10 +51,10 @@ public class User implements Initializable {
     private AnchorPane userpane;
     private Stage stage;
 
-    public void userLogin() {
+    void userLogin() {
         System.out.println("User check login: " + checkLogin);
         if(checkLogin == true) {
-            try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
+            try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
                 String select = "SELECT firstname, lastname, username, image FROM account WHERE username = '" + usernameLogin.getText() + "'";
                 Statement statement = connectDatabase.createStatement();
                 ResultSet query = statement.executeQuery(select);
@@ -80,7 +82,7 @@ public class User implements Initializable {
             }
         }
         if(checkSignup == true) {
-            try (Connection connectDatabase = new ConnectDB().connect("userinfo")) {
+            try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
                 String select = "SELECT firstname, lastname, username, image FROM account WHERE username = '" + usernameSignup.getText() + "'";
                 Statement statement = connectDatabase.createStatement();
                 ResultSet query = statement.executeQuery(select);

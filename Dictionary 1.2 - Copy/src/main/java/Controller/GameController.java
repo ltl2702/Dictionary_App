@@ -1,6 +1,7 @@
 package Controller;
 
 import MatchGame.MenuMatchGame;
+import QuizGamee.QuizStartController;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,9 @@ public class GameController {
 
     @FXML
     private JFXButton flippinggameButton;
+
+    @FXML
+    private JFXButton quizgameButton;
 
     @FXML
     private AnchorPane gamepane;
@@ -25,6 +29,23 @@ public class GameController {
             MenuMatchGame MenuController = fxmlLoader.getController();
             //userController.userLogin();
             MenuController.setmainpane(gamepane);
+            //userController.setStage(stage);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
+    }
+
+    @FXML
+    void quizgameButtonOnAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(QuizStartController.class.getResource("/data/fxml/QuizStartScene.fxml"));
+            AnchorPane Matchpane = fxmlLoader.load();
+            gamepane.getChildren().setAll(Matchpane);
+
+            QuizStartController QuizController = fxmlLoader.getController();
+            //userController.userLogin();
+            QuizController.setmainpane(gamepane);
             //userController.setStage(stage);
         } catch (Exception ex) {
             ex.printStackTrace();

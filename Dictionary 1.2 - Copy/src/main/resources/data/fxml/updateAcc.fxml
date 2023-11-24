@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.UpdateAcc">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UpdateAcc">
    <children>
       <JFXButton fx:id="changeavt" alignment="BASELINE_CENTER" layoutX="150.0" layoutY="300.0" onAction="#changeavtButtonOnAction" prefHeight="40.0" prefWidth="158.0" text="Change your avatar" textFill="#1952a3" underline="true">
          <font>
