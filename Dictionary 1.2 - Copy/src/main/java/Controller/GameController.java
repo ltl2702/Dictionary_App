@@ -1,6 +1,7 @@
 package Controller;
 
 import MatchGame.MenuMatchGame;
+import QuizGamee.QuizStartController;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,13 +39,13 @@ public class GameController {
     @FXML
     void quizgameButtonOnAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(MenuMatchGame.class.getResource("/data/fxml/MenuMatchGame.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(QuizStartController.class.getResource("/data/fxml/QuizStartScene.fxml"));
             AnchorPane Matchpane = fxmlLoader.load();
             gamepane.getChildren().setAll(Matchpane);
 
-            MenuMatchGame MenuController = fxmlLoader.getController();
+            QuizStartController QuizController = fxmlLoader.getController();
             //userController.userLogin();
-            MenuController.setmainpane(gamepane);
+            QuizController.setmainpane(gamepane);
             //userController.setStage(stage);
         } catch (Exception ex) {
             ex.printStackTrace();
