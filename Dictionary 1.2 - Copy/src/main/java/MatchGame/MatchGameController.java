@@ -79,7 +79,7 @@ public class MatchGameController implements Initializable {
     private int score = 0;
     private int currentscore = 0;
     private Timeline countdown;
-    private int timeRemaining = 180;
+    private int timeRemaining = 90;
     private AnchorPane mainpane;
 
     private ArrayList<String> wordAnswer = new ArrayList<>();
@@ -95,6 +95,7 @@ public class MatchGameController implements Initializable {
                 while (query.next()) {
                     String word = query.getString("word");
                     String description = query.getString("description");
+                    wordAnswer.add(query.getString("word").replaceAll("''", "\'"));
                     //randomPairs.add(new RandomPair(word, description));
                     list.add(word);
                     list.add(description);
@@ -356,7 +357,7 @@ public class MatchGameController implements Initializable {
                     string = string.replaceAll("''", "\'");
                     s = s.replaceAll("''", "\'");
                     if (string.equalsIgnoreCase(s)) {
-                        wordAnswer.add(string);
+                        //wordAnswer.add(string);
                         //System.out.println(description1);
                         //System.out.println(description2);
                         return true;
@@ -424,7 +425,7 @@ public class MatchGameController implements Initializable {
             Parent root = fxmlLoader1.load();
             Score scoreController = fxmlLoader1.getController();
             scoreController.setScore(currentscore);
-            scoreController.setTime(180 - timeRemaining);
+            scoreController.setTime(90 - timeRemaining);
             Scene scene = new Scene(root);
             scoreController.display(scene);
             scoreController.setmainpane(mainpane);
@@ -446,7 +447,7 @@ public class MatchGameController implements Initializable {
         loadDataFromDatabase();
         updateButtonText();
         scoreLabel.setText(String.valueOf(0));
-        timeLabel.setText(String.valueOf(formatTime(180)));
+        timeLabel.setText(String.valueOf(formatTime(90)));
         start();
 
         card1.setOnAction(event -> handleButtonClick(card1));

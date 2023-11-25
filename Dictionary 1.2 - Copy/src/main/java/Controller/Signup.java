@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -144,5 +145,18 @@ public class Signup implements Initializable {
     }
 
     public void returnAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/background.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Welcome welcomeController = fxmlLoader.getController();
+            welcomeController.initializeStage(stage);
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
