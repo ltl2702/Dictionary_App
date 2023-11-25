@@ -180,14 +180,17 @@ public class Home implements Initializable {
 
     @FXML
     void searchOnAction(ActionEvent event) {
-        if (!list.isEmpty()) {
+        String searchTerm = searchField.getText().trim();
+
+        if (!list.isEmpty() && !searchTerm.isEmpty()) {
             Word firstResult = list.get(0);
             showHtmlContent(firstResult.getHtml());
+            speakerButton.setDisable(false);
+        } else {
+            speakerButton.setDisable(true); // Tắt speakerButton
         }
-
-        // Khi hiển thị definition, enable speakerButton
-        speakerButton.setDisable(false);
     }
+
 
     private ExecutorService fxmlLoaderThreadPool = Executors.newCachedThreadPool();
 
@@ -359,15 +362,21 @@ public class Home implements Initializable {
 
     public void speakClick(ActionEvent actionEvent) {
         ObservableList<Word> items = listResult.getItems();
+
         if (!items.isEmpty()) {
             Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+
             if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
                 TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWordTarget());
-            } else if (items.get(0) != Word.NOT_FOUND) {
+            } else if (items.get(0) != Word.NOT_FOUND && !searchField.getText().trim().isEmpty()) {
                 selectedWord = items.get(0);
                 TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWordTarget());
             }
         }
+    }
+
+
+    public void favoriteButtonOnAction(ActionEvent actionEvent) {
     }
 }
 

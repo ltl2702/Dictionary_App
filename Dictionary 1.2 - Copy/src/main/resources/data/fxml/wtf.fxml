@@ -78,15 +78,15 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </Button>
-                        <JFXButton fx:id="saveButton" layoutX="284.0" layoutY="2.0" onAction="#saveButtonOnAction" prefHeight="45.0" prefWidth="92.0" text=" ">
-                           <graphic>
-                              <ImageView fx:id="saveImage" fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icon/love1.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
+                                <JFXButton fx:id="saveButton" layoutX="284.0" layoutY="2.0" onAction="#saveButtonOnAction" prefHeight="45.0" prefWidth="92.0" text=" ">
+                                    <graphic>
+                                        <ImageView fx:id="saveImage" fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icon/love1.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </JFXButton>
                             </children>
                         </AnchorPane>
                         <AnchorPane layoutX="354.0" layoutY="68.0" prefHeight="50.0" prefWidth="141.0" style="-fx-background-color: #1e1f26; -fx-background-radius: 20;">
@@ -166,18 +166,18 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                  <JFXButton fx:id="favoriteButton" alignment="BASELINE_LEFT" layoutY="133.0" onAction="#favoriteButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Favorite" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icon/save.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
+                        <JFXButton fx:id="favoriteButton" alignment="BASELINE_LEFT" layoutY="133.0" onAction="#favoriteButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Favorite" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icon/save.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
                     </children>
                 </AnchorPane>
                 <JFXButton fx:id="MenuClose" layoutX="14.0" layoutY="436.0" prefHeight="30.0" prefWidth="92.0" stylesheets="@../css/background.css" text="MENU">
