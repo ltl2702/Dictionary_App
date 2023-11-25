@@ -36,7 +36,7 @@ public class Word {
     }
 
     public int getId() {
-        try (Connection connectDatabase = new ConnectDB().connect("test3")) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String verify = "SELECT ID FROM av1 WHERE word = '" + wordTarget + "'";
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(verify);

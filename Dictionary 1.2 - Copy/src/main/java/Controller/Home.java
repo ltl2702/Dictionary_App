@@ -89,9 +89,24 @@ public class Home implements Initializable {
             if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
                 updateSearchField(selectedWord);
                 showHtmlContent(selectedWord.getHtml());
+                // Update the saveImage based on whether the word is saved or not
+                updateSaveImage(selectedWord.getId(), username.getText());
             }
         });
+
     }
+
+    private void updateSaveImage(int wordId, String username) {
+        boolean isSaved = isWordSaved(wordId, username);
+        if (isSaved) {
+            Image image = new Image(getClass().getResourceAsStream("/data/icon/love2.png"));
+            saveImage.setImage(image);
+        } else {
+            Image image = new Image(getClass().getResourceAsStream("/data/icon/love1.png"));
+            saveImage.setImage(image);
+        }
+    }
+
     private void closeMenu() {
         animateMenu(-400, Duration.millis(900));
     }
@@ -189,16 +204,59 @@ public class Home implements Initializable {
         });
     }
 
+    public boolean isWordSaved(int wordId, String username) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
+            String verify = "SELECT COUNT(*) AS counter" +
+                    " FROM SavedWord WHERE English_id = '" + wordId + "' AND User_id = '" + username + "'";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(verify);
+
+            if (query.next()) {
+                int count = query.getInt("counter");
+                //if (count == 1) {
+                if (count > 0) {
+                    System.out.println("thấy id");
+                    Image image = new Image(getClass().getResourceAsStream("/data/icon/love2.png"));
+                    saveImage.setImage(image);
+                    return true;
+                } else {
+                    System.out.println("không thấy id");
+                    Image image = new Image(getClass().getResourceAsStream("/data/icon/love1.png"));
+                    saveImage.setImage(image);
+                    return false;
+                }
+            }
+        } catch(Exception ex){
+            ex.printStackTrace();
+            ex.getCause();
+        } finally{
+            ConnectDB.closeConnection();
+        }
+        return false;
+    }
+
+    private Word getSelectedWord() {
+        Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+
+        if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
+            return selectedWord;
+        } else if (list.size() > 0 && list.get(0) != Word.NOT_FOUND) {
+            return list.get(0);
+        } else {
+            return null;
+        }
+    }
+
     @FXML
     void saveButtonOnAction(ActionEvent event) {
-        Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+        Word selectedWord = getSelectedWord();
         System.out.println(username.getText());
 
         if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
             int wordId = selectedWord.getId();
 
             // Check if the word is already saved
-            boolean isSaved = DictionaryManagement.isWordSaved(wordId, username.getText());
+            boolean isSaved = isWordSaved(wordId, username.getText());
 
             if (isSaved) {
                 // If the word is saved, remove it from the SavedWord table
