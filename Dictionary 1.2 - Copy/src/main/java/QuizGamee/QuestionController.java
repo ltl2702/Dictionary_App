@@ -87,7 +87,6 @@ public class QuestionController implements Initializable {
         option2.setStyle("-fx-background-color: #fffff ");
         option3.setStyle("-fx-background-color: #fffff ");
         option4.setStyle("-fx-background-color: #fffff ");
-        answerLabel.setVisible(false);
         HashSet optSet = new HashSet();
         try {
             Random random = new Random();
