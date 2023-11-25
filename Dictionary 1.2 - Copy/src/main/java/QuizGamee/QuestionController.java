@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -36,7 +37,7 @@ public class QuestionController implements Initializable {
 
     @FXML
     AnchorPane mainpane;
-    public static int counter;
+    public int counter = 1;
     public static int wrong = 0;
     public static int correct = 0;
     public static Connection connection;
@@ -55,11 +56,9 @@ public class QuestionController implements Initializable {
             }
     }
 
-    @FXML
+
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        counter = 1;
-        correct = 0;
-        wrong = 0;
         loadQuestions();
         /*
         option1.setOnMouseEntered(mouseEvent -> option1.setOpacity(0.70));
@@ -70,8 +69,9 @@ public class QuestionController implements Initializable {
         option3.setOnMouseExited(mouseEvent -> option3.setOpacity(1));
         option4.setOnMouseEntered(mouseEvent -> option4.setOpacity(0.70));
         option4.setOnMouseExited(mouseEvent -> option4.setOpacity(1));
-         */
-    }
+        */
+     }
+
 
     public void loadQuestions() {
         option1.setStyle("-fx-background-color: #fffff ");
@@ -187,12 +187,13 @@ public class QuestionController implements Initializable {
         }
         if (counter == 10) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("data/fxml/QuizResultScene.fxml"));
-                AnchorPane gamepane = fxmlLoader.load();
-                mainpane.getChildren().setAll(gamepane);
+                FXMLLoader fxmlLoader = new FXMLLoader(QuizResultController.class.getResource("/data/fxml/QuizResultScene.fxml"));
+                Parent root = fxmlLoader.load();
+                Scene scene = new Scene(root);
 
-                QuestionController quizController = fxmlLoader.getController();
+                QuizResultController quizController = fxmlLoader.getController();
                 quizController.setmainpane(mainpane);
+                quizController.display(scene);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -219,12 +220,13 @@ public class QuestionController implements Initializable {
         }
         if (counter == 10) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("data/fxml/QuizResultScene.fxml"));
-                AnchorPane gamepane = fxmlLoader.load();
-                mainpane.getChildren().setAll(gamepane);
+                FXMLLoader fxmlLoader = new FXMLLoader(QuizResultController.class.getResource("/data/fxml/QuizResultScene.fxml"));
+                Parent root = fxmlLoader.load();
+                Scene scene = new Scene(root);
 
-                QuestionController quizController = fxmlLoader.getController();
+                QuizResultController quizController = fxmlLoader.getController();
                 quizController.setmainpane(mainpane);
+                quizController.display(scene);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -249,12 +251,13 @@ public class QuestionController implements Initializable {
         }
         if (counter == 10) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("data/fxml/QuizResultScene.fxml"));
-                AnchorPane gamepane = fxmlLoader.load();
-                mainpane.getChildren().setAll(gamepane);
+                FXMLLoader fxmlLoader = new FXMLLoader(QuizResultController.class.getResource("/data/fxml/QuizResultScene.fxml"));
+                Parent root = fxmlLoader.load();
+                Scene scene = new Scene(root);
 
-                QuestionController quizController = fxmlLoader.getController();
+                QuizResultController quizController = fxmlLoader.getController();
                 quizController.setmainpane(mainpane);
+                quizController.display(scene);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -281,12 +284,13 @@ public class QuestionController implements Initializable {
         }
         if (counter == 10) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("data/fxml/QuizResultScene.fxml"));
-                AnchorPane gamepane = fxmlLoader.load();
-                mainpane.getChildren().setAll(gamepane);
+                FXMLLoader fxmlLoader = new FXMLLoader(QuizResultController.class.getResource("/data/fxml/QuizResultScene.fxml"));
+                Parent root = fxmlLoader.load();
+                Scene scene = new Scene(root);
 
-                QuestionController quizController = fxmlLoader.getController();
+                QuizResultController quizController = fxmlLoader.getController();
                 quizController.setmainpane(mainpane);
+                quizController.display(scene);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -304,6 +308,7 @@ public class QuestionController implements Initializable {
     }
 
     public void setmainpane(AnchorPane mainpane) {
+        this.mainpane = mainpane;
     }
 }
 
