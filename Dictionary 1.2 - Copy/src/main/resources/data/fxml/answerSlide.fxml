@@ -7,9 +7,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="350.0" prefWidth="500.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.AnswerSlide">
+<AnchorPane fx:id="mainpane" prefHeight="350.0" prefWidth="500.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.AnswerSlide">
    <children>
-      <AnchorPane fx:id="wordpane" layoutX="114.0" layoutY="76.0" prefHeight="175.0" prefWidth="289.0" />
       <Label layoutX="181.0" layoutY="14.0" text="ANSWER BOARD" textFill="#860a0a">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -41,5 +40,18 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
+      <AnchorPane fx:id="wordpane" layoutX="116.0" layoutY="87.0" prefHeight="175.0" prefWidth="289.0" style="-fx-border-color: black; -fx-border-radius: 5;">
+         <children>
+            <Label fx:id="descriptionLabel" alignment="CENTER" layoutX="24.0" layoutY="88.0" prefHeight="66.0" prefWidth="242.0" text="abc" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="wordLabel" alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="30.0" prefWidth="277.0" text="Label">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
    </children>
 </AnchorPane>
