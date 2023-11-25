@@ -143,7 +143,7 @@ public class User implements Initializable {
                 Welcome welcomeController = fxmlLoader.getController();
                 welcomeController.initializeStage(stage);
 
-                Scene scene = new Scene(root, 900, 600);
+                Scene scene = new Scene(root);
                 stage.setScene(scene);
             } catch (Exception ex) {
                 ex.printStackTrace();
