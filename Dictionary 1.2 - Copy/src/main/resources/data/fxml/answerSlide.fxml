@@ -42,7 +42,7 @@
          </graphic></JFXButton>
       <AnchorPane fx:id="wordpane" layoutX="116.0" layoutY="87.0" prefHeight="175.0" prefWidth="289.0" style="-fx-border-color: black; -fx-border-radius: 5;">
          <children>
-            <Label fx:id="descriptionLabel" alignment="CENTER" layoutX="24.0" layoutY="88.0" prefHeight="66.0" prefWidth="242.0" text="abc" textAlignment="CENTER">
+            <Label fx:id="descriptionLabel" alignment="CENTER" layoutX="24.0" layoutY="88.0" prefHeight="66.0" prefWidth="242.0" text="abc" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Arial Italic" size="16.0" />
                </font>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -27,7 +27,15 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="exit" layoutX="494.0" layoutY="311.0" mnemonicParsing="false" onAction="#exitOnAction" text="Exit" />
-        <Button fx:id="replay" layoutX="417.0" layoutY="311.0" mnemonicParsing="false" onAction="#replayOnAction" text="Replay" />
+      <JFXButton fx:id="replay" layoutX="411.0" layoutY="311.0" onAction="#replayOnAction" style="-fx-border-color: black; -fx-border-radius: 5;" text="Replay" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="exit" layoutX="482.0" layoutY="311.0" onAction="#exitOnAction" prefHeight="25.0" prefWidth="55.0" style="-fx-border-color: black; -fx-border-radius: 5;" text="Exit" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>
