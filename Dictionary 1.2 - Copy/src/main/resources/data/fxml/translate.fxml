@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="API.TranslateController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="API.TranslateController">
    <children>
-      <AnchorPane layoutX="361.0" layoutY="70.0" prefHeight="610.0" prefWidth="802.0" style="-fx-background-color: #283655; -fx-background-radius: 30;">
+      <AnchorPane layoutX="298.0" layoutY="121.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="668.0" style="-fx-background-color: #283655; -fx-background-radius: 30;">
          <children>
-            <AnchorPane layoutX="69.0" layoutY="52.0" prefHeight="506.0" prefWidth="687.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+            <AnchorPane layoutX="14.0" layoutY="13.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="643.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                <children>
-                  <AnchorPane layoutX="25.0" layoutY="77.0" prefHeight="57.0" prefWidth="635.0" style="-fx-background-color: #006699; -fx-background-radius: 10;">
+                  <AnchorPane layoutX="25.0" layoutY="77.0" prefHeight="58.0" prefWidth="600.0" style="-fx-background-color: #006699; -fx-background-radius: 10;">
                      <children>
-                        <JFXComboBox fx:id="selectLanguage1" layoutX="58.0" layoutY="15.0" prefHeight="26.0" prefWidth="174.0" promptText="   Select language" style="-fx-background-color: white; -fx-background-radius: 5;" />
-                        <JFXComboBox fx:id="selectLanguage2" layoutX="406.0" layoutY="15.0" prefHeight="26.0" prefWidth="174.0" promptText="   Select language" style="-fx-background-color: white; -fx-background-radius: 5;" />
-                        <JFXButton fx:id="changeLanguage" layoutX="298.0" layoutY="7.0" text=" ">
+                        <JFXComboBox fx:id="selectLanguage1" layoutX="37.0" layoutY="16.0" prefHeight="26.0" prefWidth="174.0" promptText="   Select language" style="-fx-background-color: white; -fx-background-radius: 5;" />
+                        <JFXComboBox fx:id="selectLanguage2" layoutX="381.0" layoutY="16.0" prefHeight="26.0" prefWidth="174.0" promptText="   Select language" style="-fx-background-color: white; -fx-background-radius: 5;" />
+                        <JFXButton fx:id="changeLanguage" layoutX="272.0" layoutY="7.0" text=" ">
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -27,10 +30,10 @@
                         </JFXButton>
                      </children>
                   </AnchorPane>
-                  <TextArea fx:id="area1" layoutX="25.0" layoutY="169.0" prefHeight="287.0" prefWidth="289.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" />
-                  <TextArea fx:id="area2" layoutX="370.0" layoutY="169.0" prefHeight="287.0" prefWidth="289.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" />
-                  <Label fx:id="count" layoutX="176.0" layoutY="473.0" prefHeight="26.0" prefWidth="120.0" text="" />
-                  <JFXButton fx:id="speak1" layoutY="455.0" onAction="#speakAction" prefHeight="50.0" prefWidth="90.0" text=" ">
+                  <TextArea fx:id="area1" layoutX="25.0" layoutY="169.0" prefHeight="250.0" prefWidth="275.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" />
+                  <TextArea fx:id="area2" layoutX="342.0" layoutY="169.0" prefHeight="250.0" prefWidth="275.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" />
+                  <Label fx:id="count" layoutX="180.0" layoutY="431.0" prefHeight="26.0" prefWidth="120.0" text="" />
+                  <JFXButton fx:id="speak1" layoutX="25.0" layoutY="419.0" onAction="#speakAction" prefHeight="50.0" prefWidth="90.0" text=" ">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -39,7 +42,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="speak2" layoutX="362.0" layoutY="455.0" onAction="#speakAction" prefHeight="50.0" prefWidth="75.0" text=" ">
+                  <JFXButton fx:id="speak2" layoutX="356.0" layoutY="419.0" onAction="#speakAction" prefHeight="50.0" prefWidth="75.0" text=" ">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -52,15 +55,40 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="600.0" fitWidth="296.0" layoutX="47.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="266.0" fitWidth="214.0" layoutX="25.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../image/language.jpg" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" layoutX="47.0" layoutY="320.0" prefHeight="266.0" prefWidth="327.0" text="GOOGLE TRANSLATE" wrapText="true">
+      <Label alignment="CENTER" layoutX="14.0" layoutY="310.0" prefHeight="206.0" prefWidth="250.0" text="GOOGLE TRANSLATE" wrapText="true">
          <font>
-            <Font name="Arial Bold" size="48.0" />
+            <Font name="Arial Bold" size="40.0" />
          </font>
       </Label>
+      <AnchorPane layoutX="240.0" layoutY="10.0" prefHeight="102.0" prefWidth="574.0" style="-fx-background-radius: 40;">
+         <children>
+            <Label alignment="CENTER" layoutX="273.0" layoutY="14.0" prefHeight="60.0" prefWidth="304.0" text="Vietnamese" textAlignment="CENTER" textFill="#0092fa" wrapText="true">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="48.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="498.0" layoutY="13.0" AnchorPane.leftAnchor="0.0" />
+            <ImageView fitHeight="69.0" fitWidth="64.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/logo3.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="61.0" layoutY="13.0" prefHeight="60.0" prefWidth="250.0" text="English" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="48.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="220.0" layoutY="65.0" prefHeight="38.0" prefWidth="182.0" text="Dictionary" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Bookman Old Style" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="mainpane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Welcome">
+<AnchorPane fx:id="mainpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Welcome">
     <children>
-        <AnchorPane prefHeight="760.0" prefWidth="600.0">
+        <AnchorPane layoutX="500.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="500.0" style="-fx-background-color: #283655;">
             <children>
-                <AnchorPane layoutY="1.0" prefHeight="760.0" prefWidth="607.0">
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="61.0" layoutY="167.0" prefHeight="114.0" prefWidth="397.0" text="Hello, Friend!" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Arial" size="64.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="126.0" layoutY="306.0" prefHeight="96.0" prefWidth="293.0" text="Enter your personal details and start journey with us" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Button fx:id="signupbutton" alignment="CENTER" layoutX="194.0" layoutY="480.0" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="36.0" prefWidth="158.0" style="-fx-border-color: white; -fx-border-radius: 20;" stylesheets="@../css/background.css" text="SIGN UP" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="-100.0" layoutY="64.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0">
+            <children>
+                <AnchorPane layoutX="40.0" layoutY="-61.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="506.0">
                     <children>
-                        <AnchorPane layoutX="123.0" layoutY="329.0" prefHeight="286.0" prefWidth="374.0">
+                        <AnchorPane layoutX="129.0" layoutY="303.0" prefHeight="286.0" prefWidth="374.0">
                             <children>
                                 <TextField fx:id="usernamefill" layoutX="116.0" layoutY="1.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter your username" />
                                 <PasswordField fx:id="passwordfill" layoutX="116.0" layoutY="67.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter your password" />
@@ -41,39 +54,20 @@
                                         <Image url="@../icon/password.png" />
                                     </image>
                                 </ImageView>
+                              <Pane layoutX="-67.0" layoutY="227.0" prefHeight="62.0" prefWidth="487.0">
+                                  <children>
+                                      <ProgressBar fx:id="loading" layoutX="22.0" layoutY="22.0" prefHeight="18.0" prefWidth="443.0" progress="0.0" style="-fx-opacity: 0;" stylesheets="@../css/background.css" />
+                                  </children>
+                              </Pane>
                             </children>
                         </AnchorPane>
-                        <Label layoutX="177.0" layoutY="190.0" prefHeight="114.0" prefWidth="235.0" text="Sign in">
+                        <Label layoutX="199.0" layoutY="163.0" prefHeight="114.0" prefWidth="235.0" text="Sign in">
                             <font>
                                 <Font name="Arial Bold" size="64.0" />
                             </font>
                         </Label>
-                        <Pane layoutX="67.0" layoutY="606.0" prefHeight="62.0" prefWidth="487.0">
-                            <children>
-                                <ProgressBar fx:id="loading" layoutY="22.0" prefHeight="18.0" prefWidth="487.0" progress="0.0" style="-fx-opacity: 0;" stylesheets="@../css/background.css" />
-                            </children>
-                        </Pane>
                     </children>
                 </AnchorPane>
-            </children>
-        </AnchorPane>
-        <AnchorPane layoutX="607.0" prefHeight="764.0" prefWidth="600.0" style="-fx-background-color: #283655;">
-            <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="118.0" layoutY="209.0" prefHeight="96.0" prefWidth="397.0" text="Hello, Friend!" textAlignment="CENTER" textFill="WHITE">
-                    <font>
-                        <Font name="Arial" size="64.0" />
-                    </font>
-                </Label>
-                <Label alignment="CENTER" layoutX="170.0" layoutY="324.0" prefHeight="96.0" prefWidth="293.0" text="Enter your personal details and start journey with us" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Label>
-                <Button fx:id="signupbutton" alignment="CENTER" layoutX="237.0" layoutY="508.0" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="36.0" prefWidth="158.0" style="-fx-border-color: white; -fx-border-radius: 20;" stylesheets="@../css/background.css" text="SIGN UP" textAlignment="CENTER" textFill="WHITE">
-                    <font>
-                        <Font name="Arial Bold" size="18.0" />
-                    </font>
-                </Button>
             </children>
         </AnchorPane>
     </children>
