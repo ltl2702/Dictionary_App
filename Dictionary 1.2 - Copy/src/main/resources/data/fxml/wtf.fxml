@@ -98,106 +98,106 @@
                                 </Label>
                             </children>
                         </AnchorPane>
-                    <AnchorPane fx:id="menuPane" layoutX="8.0" layoutY="63.0" prefHeight="507.0" prefWidth="164.0">
-                        <children>
-                            <AnchorPane fx:id="slider" layoutX="2.0" layoutY="13.0" prefHeight="392.0" prefWidth="160.0" style="-fx-background-color: #fac400; -fx-background-radius: 10;">
-                                <children>
-                                    <JFXButton fx:id="homeButton" alignment="BASELINE_LEFT" layoutY="4.0" onAction="#homeButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Home" textFill="WHITE">
-                                        <font>
-                                            <Font name="System Bold" size="15.0" />
-                                        </font>
-                                        <graphic>
-                                            <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                                <image>
-                                                    <Image url="@../icon/home.png" />
-                                                </image>
-                                            </ImageView>
-                                        </graphic>
-                                    </JFXButton>
-                                    <JFXButton fx:id="editButton" alignment="BASELINE_LEFT" layoutY="74.0" onAction="#editButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Edit" textFill="WHITE">
-                                        <font>
-                                            <Font name="System Bold" size="15.0" />
-                                        </font>
-                                        <graphic>
-                                            <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                                <image>
-                                                    <Image url="@../icon/edit1.png" />
-                                                </image>
-                                            </ImageView>
-                                        </graphic>
-                                    </JFXButton>
-                                    <JFXButton fx:id="translateButton" alignment="BASELINE_LEFT" layoutY="196.0" onAction="#translateButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Translate" textFill="WHITE">
-                                        <font>
-                                            <Font name="System Bold" size="15.0" />
-                                        </font>
-                                        <graphic>
-                                            <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                                <image>
-                                                    <Image url="@../icon/translate1.png" />
-                                                </image>
-                                            </ImageView>
-                                        </graphic>
-                                    </JFXButton>
-                                    <JFXButton fx:id="userButton" alignment="BASELINE_LEFT" layoutY="336.0" onAction="#userButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="User" textFill="WHITE">
-                                        <font>
-                                            <Font name="System Bold" size="15.0" />
-                                        </font>
-                                        <graphic>
-                                            <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                                <image>
-                                                    <Image url="@../icon/user1.png" />
-                                                </image>
-                                            </ImageView>
-                                        </graphic>
-                                    </JFXButton>
-                                    <JFXButton fx:id="gameButton" alignment="BASELINE_LEFT" layoutY="266.0" onAction="#gameButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Game" textFill="WHITE">
-                                        <font>
-                                            <Font name="System Bold" size="15.0" />
-                                        </font>
-                                        <graphic>
-                                            <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                                <image>
-                                                    <Image url="@../icon/game.png" />
-                                                </image>
-                                            </ImageView>
-                                        </graphic>
-                                    </JFXButton>
-                              <JFXButton fx:id="saveButton" alignment="BASELINE_LEFT" layoutY="133.0" onAction="#saveButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Saved words" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../icon/save.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </JFXButton>
-                                </children>
-                            </AnchorPane>
-                            <JFXButton fx:id="MenuClose" layoutX="14.0" layoutY="436.0" prefHeight="30.0" prefWidth="92.0" stylesheets="@../css/background.css" text="MENU">
-                                <graphic>
-                                    <ImageView fx:id="menuimage1" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: HAND;">
-                                        <image>
-                                            <Image url="@../icon/menu.png" />
-                                        </image>
-                                    </ImageView>
-                                </graphic>
-                            </JFXButton>
-                            <JFXButton fx:id="Menu" layoutX="14.0" layoutY="436.0" prefHeight="30.0" prefWidth="92.0" stylesheets="@../css/background.css" text="MENU">
-                                <graphic>
-                                    <ImageView fx:id="menuimage11" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: HAND;">
-                                        <image>
-                                            <Image url="@../icon/menu.png" />
-                                        </image>
-                                    </ImageView>
-                                </graphic>
-                            </JFXButton>
-                        </children>
-                    </AnchorPane>
                     </children>
                 </AnchorPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="menuPane" layoutX="42.0" layoutY="165.0" prefHeight="507.0" prefWidth="164.0">
+            <children>
+                <AnchorPane fx:id="slider" layoutX="2.0" layoutY="13.0" prefHeight="392.0" prefWidth="160.0" style="-fx-background-color: #fac400; -fx-background-radius: 10;">
+                    <children>
+                        <JFXButton fx:id="homeButton" alignment="BASELINE_LEFT" layoutY="4.0" onAction="#homeButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Home" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icon/home.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="editButton" alignment="BASELINE_LEFT" layoutY="74.0" onAction="#editButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Edit" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icon/edit1.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="translateButton" alignment="BASELINE_LEFT" layoutY="196.0" onAction="#translateButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Translate" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icon/translate1.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="userButton" alignment="BASELINE_LEFT" layoutY="336.0" onAction="#userButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="User" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icon/user1.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="gameButton" alignment="BASELINE_LEFT" layoutY="266.0" onAction="#gameButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Game" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icon/game.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                  <JFXButton fx:id="saveButton" alignment="BASELINE_LEFT" layoutY="133.0" onAction="#saveButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Saved words" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icon/save.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                    </children>
+                </AnchorPane>
+                <JFXButton fx:id="MenuClose" layoutX="14.0" layoutY="436.0" prefHeight="30.0" prefWidth="92.0" stylesheets="@../css/background.css" text="MENU">
+                    <graphic>
+                        <ImageView fx:id="menuimage1" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: HAND;">
+                            <image>
+                                <Image url="@../icon/menu.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton fx:id="Menu" layoutX="14.0" layoutY="436.0" prefHeight="30.0" prefWidth="92.0" stylesheets="@../css/background.css" text="MENU">
+                    <graphic>
+                        <ImageView fx:id="menuimage11" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: HAND;">
+                            <image>
+                                <Image url="@../icon/menu.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
             </children>
         </AnchorPane>
     </children>
