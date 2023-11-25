@@ -39,7 +39,7 @@ public class Home implements Initializable {
     private AnchorPane homePane, slider;
 
     @FXML
-    private Label Menu, MenuClose;
+    private JFXButton Menu, MenuClose;
 
     @FXML
     private WebView webView;
@@ -56,22 +56,22 @@ public class Home implements Initializable {
     private boolean checklogin, checksignup;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        slider.setTranslateX(-176);
+        slider.setTranslateX(-400);
 
         // Animation duration
-        Duration animationDuration = Duration.millis(300);
+        Duration animationDuration = Duration.millis(900);
 
         Menu.setOnMouseClicked(event -> animateMenu(0, animationDuration));
-        MenuClose.setOnMouseClicked(event -> animateMenu(-176, animationDuration));
+        MenuClose.setOnMouseClicked(event -> animateMenu(-400, animationDuration));
 
         webEngine = webView.getEngine();
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             performSearch(newValue);
         });
 
-        list = DictionaryManagement.dbSearchWord("''", datatable);
+        list = DictionaryManagement.dbSearchWord("%", datatable);
         listResult.setItems(list);
-        listResult.setVisible(false);
+        listResult.setVisible(true);
 
         listResult.setOnMouseClicked(event -> {
             Word selectedWord = listResult.getSelectionModel().getSelectedItem();
@@ -82,7 +82,7 @@ public class Home implements Initializable {
         });
     }
     private void closeMenu() {
-        animateMenu(-176, Duration.millis(500));
+        animateMenu(-400, Duration.millis(900));
     }
 
     private void animateMenu(double toX, Duration duration) {
@@ -183,7 +183,7 @@ public class Home implements Initializable {
     @FXML
     void homeButtonOnAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home2.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/wtf.fxml"));
             AnchorPane homepane2 = fxmlLoader.load();
             homePane.getChildren().setAll(homepane2);
             closeMenu();
@@ -261,12 +261,12 @@ public class Home implements Initializable {
         if (!items.isEmpty()) {
             Word selectedWord = listResult.getSelectionModel().getSelectedItem();
             if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
-                    TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWordTarget());
+                TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWordTarget());
             } else if (items.get(0) != Word.NOT_FOUND) {
                 selectedWord = items.get(0);
-                    TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWordTarget());
-                }
+                TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWordTarget());
             }
         }
+    }
 }
 

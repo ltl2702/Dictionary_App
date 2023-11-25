@@ -1,17 +1,26 @@
 .list-view {
-    -fx-control-inner-background: #f4f4f4; /* Màu nền của ListView */
-    -fx-control-inner-background-alt: derive(-fx-control-inner-background, 20%); /* Màu nền của các item xen kẽ */
-    -fx-background-color: white; /* Màu nền của ListView */
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+    -fx-border-color: black;
+    -fx-border-radius: 20px;
+    -fx-border-width: 2;
+}
+
+.list-view:hover {
+    -fx-background-color: white; /* Màu nền khi di chuột vào */
+    -fx-background-radius: 20px;
+    -fx-border-color: black;
+    -fx-border-radius: 20px;
+    -fx-border-width: 2;
 }
 
 .list-cell {
-    -fx-background-color: transparent; /* Làm cho màu nền của cell trong suốt */
-    -fx-text-fill: black; /* Màu chữ của cell */
+    -fx-background-color: white ;
+    -fx-text-fill: black;
 }
 
 .list-cell:hover {
-    -fx-background-color: #4d64d8; /* Màu nền khi di chuột qua cell */
-}
-.list-view:hover {
     -fx-cursor: HAND;
+    -fx-background-color: #FF6A6A; /* Màu nền khi di chuột vào cell */
+    -fx-text-fill: black; /* Màu chữ khi di chuột vào cell */
 }
