@@ -46,15 +46,15 @@ public class QuestionController implements Initializable {
 
 
     public QuestionController() {
-            try {
-                //String Url = "jdbc:sqlite:data/database/que.db";
-                connection = new ConnectDB().connect("que");
-                System.out.println("Kết nối thành công");
-            } catch (Exception e) {
-                e.printStackTrace();
-                // In ra logs hoặc console để xem thông tin chi tiết về lỗi
-                System.err.println("Lỗi khi thiết lập kết nối: " + e.getMessage());
-            }
+        try {
+            //String Url = "jdbc:sqlite:data/database/que.db";
+            connection = new ConnectDB().connect("que");
+            System.out.println("Kết nối thành công");
+        } catch (Exception e) {
+            e.printStackTrace();
+            // In ra logs hoặc console để xem thông tin chi tiết về lỗi
+            System.err.println("Lỗi khi thiết lập kết nối: " + e.getMessage());
+        }
     }
 
     public String setQuesNum(int counter) {
@@ -79,7 +79,7 @@ public class QuestionController implements Initializable {
         option4.setOnMouseEntered(mouseEvent -> option4.setOpacity(0.70));
         option4.setOnMouseExited(mouseEvent -> option4.setOpacity(1));
         */
-     }
+    }
 
 
     public void loadQuestions() {
@@ -366,4 +366,3 @@ public class QuestionController implements Initializable {
         }
     }
 }
-

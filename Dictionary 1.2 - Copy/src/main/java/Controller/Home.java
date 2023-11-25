@@ -125,18 +125,16 @@ public class Home implements Initializable {
     }
 
     private void updateUI(ObservableList<Word> result, String searchTerm) {
-        list = result;
-        listResult.setItems(list);
-
-        if (list.isEmpty()) listResult.setVisible(false);
-
-        if (!list.isEmpty() && !searchTerm.trim().isEmpty()) {
-            listResult.setVisible(true);
-        } else {
+        if (result.isEmpty() || searchTerm.trim().isEmpty()) {
             // Display "Not found" in the listResult
             listResult.setItems(FXCollections.observableArrayList(Word.NOT_FOUND));
             listResult.setVisible(true);
+        } else {
+            list = result;
+            listResult.setItems(list);
+            listResult.setVisible(true);
         }
+
         Word selectedWord = listResult.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             updateSearchField(selectedWord);
