@@ -183,13 +183,19 @@ public class Home implements Initializable {
 
     @FXML
     void searchOnAction(ActionEvent event) {
-        if (!list.isEmpty()) {
-            Word firstResult = list.get(0);
-            showHtmlContent(firstResult.getHtml());
-        }
+        String searchTerm = searchField.getText().trim();
 
-        // Khi hiển thị definition, enable speakerButton
-        speakerButton.setDisable(false);
+        if (!list.isEmpty() && !searchTerm.isEmpty()) {
+            Word firstResult = list.get(0);
+            int id = firstResult.getId();
+            showHtmlContent(firstResult.getHtml());
+            speakerButton.setDisable(false);
+            saveButton.setDisable(false);
+            updateSaveImage(id, username.getText());
+        } else {
+            speakerButton.setDisable(true); // Tắt speakerButton
+            saveButton.setDisable(true); //Tắt saveButton
+        }
     }
 
     private ExecutorService fxmlLoaderThreadPool = Executors.newCachedThreadPool();
@@ -238,49 +244,65 @@ public class Home implements Initializable {
         return false;
     }
 
-    private Word getSelectedWord() {
-        Word selectedWord = listResult.getSelectionModel().getSelectedItem();
-
-        if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
-            return selectedWord;
-        } else if (list.size() > 0 && list.get(0) != Word.NOT_FOUND) {
-            return list.get(0);
-        } else {
-            return null;
-        }
-    }
-
     @FXML
     void saveButtonOnAction(ActionEvent event) {
-        Word selectedWord = getSelectedWord();
-        System.out.println(username.getText());
+        ObservableList<Word> items = listResult.getItems();
 
-        if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
-            int wordId = selectedWord.getId();
+        if (!items.isEmpty()) {
+            Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+            System.out.println(username.getText());
 
-            // Check if the word is already saved
-            boolean isSaved = isWordSaved(wordId, username.getText());
+            if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
+                int wordId = selectedWord.getId();
 
-            if (isSaved) {
-                // If the word is saved, remove it from the SavedWord table
-                DictionaryManagement.removeSavedWord(wordId, username.getText());
-                Image image = new Image(getClass().getResourceAsStream("/data/icon/love1.png"));
-                saveImage.setImage(image);
+                // Check if the word is already saved
+                boolean isSaved = isWordSaved(wordId, username.getText());
 
-                // Update UI or provide feedback as needed
-                System.out.println("Word removed from SavedWord table.");
+                if (isSaved) {
+                    // If the word is saved, remove it from the SavedWord table
+                    DictionaryManagement.removeSavedWord(wordId, username.getText());
+                    Image image = new Image(getClass().getResourceAsStream("/data/icon/love1.png"));
+                    saveImage.setImage(image);
+
+                    // Update UI or provide feedback as needed
+                    System.out.println("Word removed from SavedWord table.");
+                } else {
+                    // If the word is not saved, save it to the SavedWord table
+                    DictionaryManagement.saveWordToSavedWord(wordId, username.getText());
+                    Image image = new Image(getClass().getResourceAsStream("/data/icon/love2.png"));
+                    saveImage.setImage(image);
+
+                    // Update UI or provide feedback as needed
+                    System.out.println("Word saved to SavedWord table.");
+                }
+            } else if (items.get(0) != Word.NOT_FOUND && !searchField.getText().trim().isEmpty()) {
+                selectedWord = items.get(0);
+                int wordId = selectedWord.getId();
+
+                // Check if the word is already saved
+                boolean isSaved = isWordSaved(wordId, username.getText());
+
+                if (isSaved) {
+                    // If the word is saved, remove it from the SavedWord table
+                    DictionaryManagement.removeSavedWord(wordId, username.getText());
+                    Image image = new Image(getClass().getResourceAsStream("/data/icon/love1.png"));
+                    saveImage.setImage(image);
+
+                    // Update UI or provide feedback as needed
+                    System.out.println("Word removed from SavedWord table.");
+                } else {
+                    // If the word is not saved, save it to the SavedWord table
+                    DictionaryManagement.saveWordToSavedWord(wordId, username.getText());
+                    Image image = new Image(getClass().getResourceAsStream("/data/icon/love2.png"));
+                    saveImage.setImage(image);
+
+                    // Update UI or provide feedback as needed
+                    System.out.println("Word saved to SavedWord table.");
+                }
             } else {
-                // If the word is not saved, save it to the SavedWord table
-                DictionaryManagement.saveWordToSavedWord(wordId, username.getText());
-                Image image = new Image(getClass().getResourceAsStream("/data/icon/love2.png"));
-                saveImage.setImage(image);
-
-                // Update UI or provide feedback as needed
-                System.out.println("Word saved to SavedWord table.");
+                // Handle the case when no word is selected
+                System.out.println("No word selected.");
             }
-        } else {
-            // Handle the case when no word is selected
-            System.out.println("No word selected.");
         }
     }
 
@@ -377,11 +399,13 @@ public class Home implements Initializable {
 
     public void speakClick(ActionEvent actionEvent) {
         ObservableList<Word> items = listResult.getItems();
+
         if (!items.isEmpty()) {
             Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+
             if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
                 TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWord());
-            } else if (items.get(0) != Word.NOT_FOUND) {
+            } else if (items.get(0) != Word.NOT_FOUND && !searchField.getText().trim().isEmpty()) {
                 selectedWord = items.get(0);
                 TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWord());
             }

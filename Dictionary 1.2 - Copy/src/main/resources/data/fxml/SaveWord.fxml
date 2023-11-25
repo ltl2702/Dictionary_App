@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SaveWord">
    <children>
       <AnchorPane layoutX="250.0" layoutY="20.0" prefHeight="102.0" prefWidth="574.0" style="-fx-background-radius: 40;">
@@ -36,7 +35,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="table" editable="true" layoutX="131.0" layoutY="182.0" prefHeight="402.0" prefWidth="815.0" style="-fx-background-color: #283655;" tableMenuButtonVisible="true">
+      <TableView fx:id="table" editable="true" layoutX="92.0" layoutY="183.0" prefHeight="402.0" prefWidth="815.0" style="-fx-background-color: #283655;" tableMenuButtonVisible="true">
          <columns>
             <TableColumn fx:id="ID" prefWidth="44.666690826416016" text="ID" />
             <TableColumn fx:id="Word" minWidth="0.0" prefWidth="169.99996185302734" text="Word" />
