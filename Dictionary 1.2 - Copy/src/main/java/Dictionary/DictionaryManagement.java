@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class DictionaryManagement {
     private static final String TABLE_NAME = "av1";
@@ -34,5 +35,57 @@ public class DictionaryManagement {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public static boolean isWordSaved(int wordId, String username) {
+        try (Connection connectDatabase = new ConnectDB().connect("test3")) {
+            String verify = "SELECT COUNT(*) AS counter" +
+                    " FROM SavedWord WHERE English_id = '" + wordId + "' AND User_id = '" + username + "'";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(verify);
+
+            if (query.next()) {
+                int count = query.getInt("counter");
+                //if (count == 1) {
+                if (count > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } catch(Exception ex){
+            ex.printStackTrace();
+            ex.getCause();
+        } finally{
+            ConnectDB.closeConnection();
+        }
+        return false;
+    }
+
+    public static void removeSavedWord(int wordId, String username) {
+        try (Connection connectDatabase = new ConnectDB().connect("test3")) {
+            String verify = "DELETE FROM SavedWord WHERE English_id = '" + wordId + "' AND User_id = '" + username + "'";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(verify);
+        } catch(Exception ex){
+            ex.printStackTrace();
+            ex.getCause();
+        } finally{
+            ConnectDB.closeConnection();
+        }
+    }
+
+    public static void saveWordToSavedWord(int wordId, String username) {
+        try (Connection connectDatabase = new ConnectDB().connect("test3")) {
+            String add = "INSERT INTO SavedWord(English_id, User_id) VALUES ('"
+                    + wordId + "','" + username + "')";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(add);
+        } catch(Exception ex){
+            ex.printStackTrace();
+            ex.getCause();
+        } finally{
+            ConnectDB.closeConnection();
+        }
     }
 }

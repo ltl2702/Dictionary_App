@@ -1,6 +1,7 @@
 package Controller;
 
 import API.TextToSpeechFreetts;
+import Connect.ConnectDB;
 import Dictionary.DictionaryManagement;
 import Dictionary.Word;
 import com.jfoenix.controls.JFXButton;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
@@ -21,6 +23,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -51,6 +56,12 @@ public class Home implements Initializable {
 
     @FXML
     private ListView<Word> listResult;
+
+    @FXML
+    private JFXButton saveButton;
+
+    @FXML
+    private ImageView saveImage;
 
     private ObservableList<Word> list = FXCollections.observableArrayList();
     private boolean checklogin, checksignup;
@@ -176,6 +187,40 @@ public class Home implements Initializable {
                 ex.printStackTrace();
             }
         });
+    }
+
+    @FXML
+    void saveButtonOnAction(ActionEvent event) {
+        Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+        System.out.println(username.getText());
+
+        if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
+            int wordId = selectedWord.getId();
+
+            // Check if the word is already saved
+            boolean isSaved = DictionaryManagement.isWordSaved(wordId, username.getText());
+
+            if (isSaved) {
+                // If the word is saved, remove it from the SavedWord table
+                DictionaryManagement.removeSavedWord(wordId, username.getText());
+                Image image = new Image(getClass().getResourceAsStream("/data/icon/love1.png"));
+                saveImage.setImage(image);
+
+                // Update UI or provide feedback as needed
+                System.out.println("Word removed from SavedWord table.");
+            } else {
+                // If the word is not saved, save it to the SavedWord table
+                DictionaryManagement.saveWordToSavedWord(wordId, username.getText());
+                Image image = new Image(getClass().getResourceAsStream("/data/icon/love2.png"));
+                saveImage.setImage(image);
+
+                // Update UI or provide feedback as needed
+                System.out.println("Word saved to SavedWord table.");
+            }
+        } else {
+            // Handle the case when no word is selected
+            System.out.println("No word selected.");
+        }
     }
 
     @FXML
