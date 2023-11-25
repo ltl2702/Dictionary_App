@@ -74,6 +74,10 @@ public class QuestionController implements Initializable {
     }
 
     public void loadQuestions() {
+        option1.setStyle("-fx-background-color: #fffff ");
+        option2.setStyle("-fx-background-color: #fffff ");
+        option3.setStyle("-fx-background-color: #fffff ");
+        option4.setStyle("-fx-background-color: #fffff ");
         HashSet optSet = new HashSet();
         try {
             Random random = new Random();
@@ -194,7 +198,7 @@ public class QuestionController implements Initializable {
             }
         } else {
             counter++;
-            PauseTransition pause = new PauseTransition(Duration.seconds(1.1));
+            PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
             pause.setOnFinished(e -> {
                 loadQuestions();
             });
@@ -226,7 +230,7 @@ public class QuestionController implements Initializable {
             }
         } else {
             counter++;
-            PauseTransition pause = new PauseTransition(Duration.seconds(1.1));
+            PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
             pause.setOnFinished(e -> {
                 loadQuestions();
             });
@@ -257,7 +261,7 @@ public class QuestionController implements Initializable {
 
         } else {
             counter++;
-            PauseTransition pause = new PauseTransition(Duration.seconds(1.1));
+            PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
             pause.setOnFinished(e -> {
                 loadQuestions();
             });
@@ -289,7 +293,7 @@ public class QuestionController implements Initializable {
 
         } else {
             counter++;
-            PauseTransition pause = new PauseTransition(Duration.seconds(1.1));
+            PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
             pause.setOnFinished(e -> {
                 loadQuestions();
             });
