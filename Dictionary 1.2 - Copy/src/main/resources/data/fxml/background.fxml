@@ -11,48 +11,70 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainpane" prefHeight="547.0" prefWidth="890.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Welcome">
+<AnchorPane fx:id="mainpane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Welcome">
     <children>
-        <ImageView fx:id="welcomeimageView" fitHeight="553.0" fitWidth="900.0" layoutX="-5.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../image/background.png" />
-            </image>
-        </ImageView>
-      <Label fx:id="userlabel" alignment="CENTER_RIGHT" layoutX="477.0" layoutY="201.0" prefHeight="21.0" prefWidth="104.0" style="-fx-text-fill: white;" text="Username :">
-         <font>
-            <Font name="Arial Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="passwordlabel" alignment="CENTER_RIGHT" layoutX="477.0" layoutY="263.0" prefHeight="21.0" prefWidth="104.0" style="-fx-text-fill: white;" text="Password :">
-         <font>
-            <Font name="Arial Bold" size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="usernamefill" layoutX="600.0" layoutY="199.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter your username" />
-      <PasswordField fx:id="passwordfill" layoutX="600.0" layoutY="261.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter your password" />
-      <Button fx:id="loginbutton" alignment="CENTER" layoutX="609.0" layoutY="336.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: rgba(255, 255, 255, 0);" text="Login" textFill="WHITE" underline="true" wrapText="true">
-         <font>
-            <Font name="Arial Bold" size="16.0" />
-         </font></Button>
-      <Button fx:id="signupbutton" alignment="CENTER" layoutX="667.0" layoutY="383.0" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="31.0" prefWidth="111.0" style="-fx-background-color: rgba(255, 255, 255, 0);" text="Signup now!" textFill="WHITE" underline="true">
-         <font>
-            <Font name="Arial Italic" size="14.0" />
-         </font>
-      </Button>
-      <Label fx:id="invalidLabel" alignment="CENTER" layoutX="530.0" layoutY="313.0" prefHeight="16.0" prefWidth="241.0" textAlignment="CENTER" textFill="#6adff6">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="signupLabel" layoutX="529.0" layoutY="391.0" text="Don't have an account" textAlignment="CENTER" textFill="#6adff6">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-      </Label>
-      <Pane layoutX="203.0" layoutY="407.0" prefHeight="145.0" prefWidth="487.0">
-         <children>
-            <ProgressBar fx:id="loading" layoutY="92.0" prefHeight="18.0" prefWidth="487.0" progress="0.0" style="-fx-opacity: 0;" />
-         </children>
-      </Pane>
+        <AnchorPane prefHeight="760.0" prefWidth="600.0">
+            <children>
+                <AnchorPane layoutY="1.0" prefHeight="760.0" prefWidth="607.0">
+                    <children>
+                        <AnchorPane layoutX="123.0" layoutY="329.0" prefHeight="286.0" prefWidth="374.0">
+                            <children>
+                                <TextField fx:id="usernamefill" layoutX="116.0" layoutY="1.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter your username" />
+                                <PasswordField fx:id="passwordfill" layoutX="116.0" layoutY="67.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter your password" />
+                                <Button fx:id="loginbutton" alignment="CENTER" layoutX="91.0" layoutY="170.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="42.0" prefWidth="158.0" style="-fx-border-radius: 20; -fx-border-color: white;" stylesheets="@../css/background.css" text="SIGN IN" textAlignment="CENTER" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="18.0" />
+                                    </font>
+                                </Button>
+                                <Label fx:id="invalidLabel" alignment="CENTER" layoutX="52.0" layoutY="111.0" prefHeight="42.0" prefWidth="250.0" textAlignment="CENTER" textFill="#283655">
+                                    <font>
+                                        <Font name="Arial" size="14.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="52.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icon/avt2.png" />
+                                    </image>
+                                </ImageView>
+                                <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="52.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icon/password.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                        <Label layoutX="177.0" layoutY="190.0" prefHeight="114.0" prefWidth="235.0" text="Sign in">
+                            <font>
+                                <Font name="Arial Bold" size="64.0" />
+                            </font>
+                        </Label>
+                        <Pane layoutX="67.0" layoutY="606.0" prefHeight="62.0" prefWidth="487.0">
+                            <children>
+                                <ProgressBar fx:id="loading" layoutY="22.0" prefHeight="18.0" prefWidth="487.0" progress="0.0" style="-fx-opacity: 0;" stylesheets="@../css/background.css" />
+                            </children>
+                        </Pane>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="607.0" prefHeight="764.0" prefWidth="600.0" style="-fx-background-color: #283655;">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="118.0" layoutY="209.0" prefHeight="96.0" prefWidth="397.0" text="Hello, Friend!" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Arial" size="64.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="170.0" layoutY="324.0" prefHeight="96.0" prefWidth="293.0" text="Enter your personal details and start journey with us" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Button fx:id="signupbutton" alignment="CENTER" layoutX="237.0" layoutY="508.0" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="36.0" prefWidth="158.0" style="-fx-border-color: white; -fx-border-radius: 20;" stylesheets="@../css/background.css" text="SIGN UP" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
     </children>
 </AnchorPane>

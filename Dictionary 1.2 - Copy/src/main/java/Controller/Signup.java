@@ -11,12 +11,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,8 +22,6 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class Signup implements Initializable {
-
-    double x,y = 0;
 
     @FXML
     private TextField firstnamefill, lastnamefill, usernamefill;
@@ -94,7 +90,7 @@ public class Signup implements Initializable {
                     check = true;
                     System.out.println(getUsernamefill());
                     try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home2.fxml"));
                         //AnchorPane loadingpane = fxmlLoader.load();
                         Parent root = fxmlLoader.load();
                         Home homeController = fxmlLoader.getController();
@@ -102,17 +98,7 @@ public class Signup implements Initializable {
                         homeController.setUsernameSignup(usernamefill);
                         homeController.setCheckSignup(check);
 
-                        root.setOnMousePressed(e -> {
-                            x = e.getSceneX();
-                            y = e.getSceneY();
-                        });
-
-                        root.setOnMouseDragged(e -> {
-                            stage.setX(e.getScreenX() - x);
-                            stage.setY(e.getScreenY() - y);
-                        });
-
-                        Scene scene = new Scene(root, 900, 600);
+                        Scene scene = new Scene(root);
                         loading(scene);
                     } catch (Exception ex) {
                         ex.printStackTrace();
@@ -151,12 +137,12 @@ public class Signup implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        File welcomeFile = new File("src/main/resources/data/image/background.png");
-        Image welcomeImage = new Image(welcomeFile.toURI().toString());
-        welcomeimageView.setImage(welcomeImage);
     }
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public void returnAction(ActionEvent actionEvent) {
     }
 }

@@ -12,21 +12,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.sql.*;
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 public class Welcome implements Initializable {
-
-    double x,y = 0;
 
     private Stage stage;
 
@@ -88,7 +84,7 @@ public class Welcome implements Initializable {
                         //setUsernamefill(usernamefill);
                         System.out.println(getUsernamefill());
                         try {
-                            FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home.fxml"));
+                            FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home2.fxml"));
 
                             Parent root = fxmlLoader.load();
                             Home homeController = fxmlLoader.getController();
@@ -96,17 +92,7 @@ public class Welcome implements Initializable {
                             homeController.setUsernameLogin(usernamefill);
                             homeController.setCheckLogin(check);
 
-                            root.setOnMousePressed(e -> {
-                                x = e.getSceneX();
-                                y = e.getSceneY();
-                            });
-
-                            root.setOnMouseDragged(e -> {
-                                stage.setX(e.getScreenX() - x);
-                                stage.setY(e.getScreenY() - y);
-                            });
-
-                            Scene scene = new Scene(root, 900, 600);
+                            Scene scene = new Scene(root);
                             //stage.setScene(scene);
                             loading(scene);
                         } catch (Exception ex) {
@@ -145,7 +131,7 @@ public class Welcome implements Initializable {
                 Signup signupController = fxmlLoader.getController();
                 signupController.setStage(stage);
 
-                Scene scene = new Scene(root, 900, 600);
+                Scene scene = new Scene(root);
                 stage.setScene(scene);
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -174,14 +160,12 @@ public class Welcome implements Initializable {
         timeline.play();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        File welcomeFile = new File("src/main/resources/data/image/background.png");
-        Image welcomeImage = new Image(welcomeFile.toURI().toString());
-        welcomeimageView.setImage(welcomeImage);
-    }
-
     public void initializeStage(Stage window) {
         this.stage = window;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

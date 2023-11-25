@@ -1,15 +1,15 @@
 .button:hover {
-    -fx-cursor: HAND;
+    -fx-cursor: url('//src/main/resources/data/icon/pointer.png'), HAND;
 }
 
 .jfx-button:hover {
     -fx-cursor: HAND;
 }
 .jfx-button:hover {
-    -fx-background-color: #00f5ff; /* Màu nền khi di chuột qua */
+    -fx-background-color: white; /* Màu nền khi di chuột qua */
     -fx-text-fill: black; /* Màu chữ khi di chuột qua */
 }
 .jfx-button {
-    -fx-text-fill: #BEBEBE /* Màu chữ khi không di chuột qua */
+    -fx-text-fill: white /* Màu chữ khi không di chuột qua */
 }
 

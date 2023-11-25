@@ -183,7 +183,7 @@ public class Home implements Initializable {
     @FXML
     void homeButtonOnAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home2.fxml"));
             AnchorPane homepane2 = fxmlLoader.load();
             homePane.getChildren().setAll(homepane2);
             closeMenu();

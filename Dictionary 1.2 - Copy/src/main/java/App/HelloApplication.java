@@ -29,7 +29,7 @@ public class HelloApplication extends Application {
             Welcome welcomeController = fxmlLoader.getController();
             welcomeController.initializeStage(window);
 
-            Scene scene = new Scene(root, 900, 600);
+            Scene scene = new Scene(root);
 
             // Closes the window.
             window.setOnCloseRequest(e -> {

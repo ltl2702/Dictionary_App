@@ -41,6 +41,7 @@ public class QuizStartController {
 
      */
 
+
     @FXML
     private Button exitQuizButton;
 
@@ -55,6 +56,7 @@ public class QuizStartController {
             ex.getCause();
         }
     }
+
 
     @FXML
     void playQuizButtonOnAction(ActionEvent event) {
