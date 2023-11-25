@@ -57,7 +57,7 @@
       </AnchorPane>
       <ImageView fitHeight="266.0" fitWidth="214.0" layoutX="25.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/language.jpg" />
+            <Image url="@../image/language2.png" />
          </image>
       </ImageView>
       <Label alignment="CENTER" layoutX="14.0" layoutY="310.0" prefHeight="206.0" prefWidth="250.0" text="GOOGLE TRANSLATE" wrapText="true">

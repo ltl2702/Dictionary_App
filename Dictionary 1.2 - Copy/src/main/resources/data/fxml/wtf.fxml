@@ -166,7 +166,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                  <JFXButton fx:id="saveButton" alignment="BASELINE_LEFT" layoutY="133.0" onAction="#saveButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Saved words" textFill="WHITE">
+                  <JFXButton fx:id="saveButton" alignment="BASELINE_LEFT" layoutY="133.0" onAction="#saveButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Favorite" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
