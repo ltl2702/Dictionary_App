@@ -79,31 +79,31 @@ public class UpdateAcc implements Initializable {
     }
 
     @FXML
-    void changeavtButtonOnAction(ActionEvent event) {
-            try {
-                Stage window = new Stage();
-                FXMLLoader fxmlLoader = new FXMLLoader(Avatar.class.getResource("/data/fxml/avt.fxml"));
-                //Parent root = fxmlLoader.load();
-                AnchorPane Avtpane = fxmlLoader.load();
-                mainpane.getChildren().setAll(Avtpane);
-                Avatar avatarController = fxmlLoader.getController();
+    void changeAvtButtonOnAction(ActionEvent event) {
+        try {
+            Stage window = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(Avatar.class.getResource("/data/fxml/avt.fxml"));
+            //Parent root = fxmlLoader.load();
+            AnchorPane Avtpane = fxmlLoader.load();
+            mainpane.getChildren().setAll(Avtpane);
+            Avatar avatarController = fxmlLoader.getController();
 
-                //Scene scene = new Scene(root, 400, 400);
-                //Tối ưu chưa???
-                if(check)
-                    avatarController.setusername(newUsername);
-                else
-                    avatarController.setusername(oldUsername);
-                avatarController.setmainpane(mainpane);
-                avatarController.display();
-                //avatarController.setStage(window);
-                //window.setTitle("Choose your avatar");
-                //window.setScene(scene);
-                //window.show();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                ex.getCause();
-            }
+            //Scene scene = new Scene(root, 400, 400);
+            //Tối ưu chưa???
+            if(check)
+                avatarController.setusername(newUsername);
+            else
+                avatarController.setusername(oldUsername);
+            avatarController.setmainpane(mainpane);
+            avatarController.display();
+            //avatarController.setStage(window);
+            //window.setTitle("Choose your avatar");
+            //window.setScene(scene);
+            //window.show();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
     public void setusername(TextField username) {
@@ -145,6 +145,13 @@ public class UpdateAcc implements Initializable {
 
     public void setMainpane(AnchorPane userpane) {
         this.mainpane = userpane;
+    }
+
+
+    public void signoutButtonOnAction(ActionEvent actionEvent) {
+    }
+
+    public void changeInfoButtonOnAction(ActionEvent actionEvent) {
     }
 }
 

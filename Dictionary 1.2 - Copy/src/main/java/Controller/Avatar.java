@@ -105,19 +105,19 @@ public class Avatar {
 
     @FXML
     void returnButtonOnAction(ActionEvent event) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(UpdateAcc.class.getResource("/data/fxml/updateAcc.fxml"));
-                AnchorPane updatepane = fxmlLoader.load();
-                mainpane.getChildren().setAll(updatepane);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(UpdateAcc.class.getResource("/data/fxml/updateAcc.fxml"));
+            AnchorPane updatepane = fxmlLoader.load();
+            mainpane.getChildren().setAll(updatepane);
 
-                UpdateAcc updateController = fxmlLoader.getController();
-                updateController.setusername(username);
-                updateController.setuserImage();
-                updateController.setMainpane(mainpane);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                ex.getCause();
-            }
+            UpdateAcc updateController = fxmlLoader.getController();
+            updateController.setusername(username);
+            updateController.setuserImage();
+            updateController.setMainpane(mainpane);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
     public void setusername(TextField username) {
@@ -125,10 +125,10 @@ public class Avatar {
     }
 
     //public void setStage(Stage window) {
-        //this.window = window;
+    //this.window = window;
     //}
 
     public void setmainpane(AnchorPane mainpane) {
-          this.mainpane = mainpane;
+        this.mainpane = mainpane;
     }
 }

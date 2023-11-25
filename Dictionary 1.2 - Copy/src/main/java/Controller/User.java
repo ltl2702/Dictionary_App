@@ -25,7 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class User implements Initializable {
-    
+
     @FXML
     private JFXButton changeInfoButton;
 
@@ -43,7 +43,7 @@ public class User implements Initializable {
 
     @FXML
     private Label usernameLabel;
-    
+
     private TextField usernameLogin;
     private TextField usernameSignup;
     private boolean checkLogin;
@@ -112,43 +112,43 @@ public class User implements Initializable {
 
     @FXML
     void changeInfoButtonOnAction(ActionEvent event) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(UpdateAcc.class.getResource("/data/fxml/updateAcc.fxml"));
-                AnchorPane updatepane = fxmlLoader.load();
-                userpane.getChildren().setAll(updatepane);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(UpdateAcc.class.getResource("/data/fxml/updateAcc.fxml"));
+            AnchorPane updatepane = fxmlLoader.load();
+            userpane.getChildren().setAll(updatepane);
 
-                UpdateAcc updateController = fxmlLoader.getController();
-                if(checkSignup) {
-                    updateController.setusername(usernameSignup);
-                    updateController.setuserImage();
-                    updateController.setMainpane(userpane);
-                }
-                if(checkLogin) {
-                    updateController.setusername(usernameLogin);
-                    updateController.setuserImage();
-                    updateController.setMainpane(userpane);
-                }
-                //signupController.setStage(stage);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                ex.getCause();
+            UpdateAcc updateController = fxmlLoader.getController();
+            if(checkSignup) {
+                updateController.setusername(usernameSignup);
+                updateController.setuserImage();
+                updateController.setMainpane(userpane);
             }
+            if(checkLogin) {
+                updateController.setusername(usernameLogin);
+                updateController.setuserImage();
+                updateController.setMainpane(userpane);
+            }
+            //signupController.setStage(stage);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
     @FXML
     void signoutButtonOnAction(ActionEvent event) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(Signup.class.getResource("/data/fxml/background.fxml"));
-                Parent root = fxmlLoader.load();
-                Welcome welcomeController = fxmlLoader.getController();
-                welcomeController.initializeStage(stage);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Signup.class.getResource("/data/fxml/background.fxml"));
+            Parent root = fxmlLoader.load();
+            Welcome welcomeController = fxmlLoader.getController();
+            welcomeController.initializeStage(stage);
 
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                ex.getCause();
-            }
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
 
@@ -156,7 +156,7 @@ public class User implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-    
+
     public void setUsernameLogin(TextField username) {
         this.usernameLogin = username;
     }

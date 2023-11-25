@@ -54,7 +54,7 @@
                             </font>
                         </TextField>
 
-                        <Button id="searchA" fx:id="searchButton" layoutX="90.0" layoutY="20.0" mnemonicParsing="false" onAction="#searchOnAction" prefHeight="40.0" prefWidth="44.0" style="-fx-background-radius: 200; -fx-background-color: #fac400;" stylesheets="@../css/button.css">
+                        <Button id="searchA" fx:id="searchButton" layoutX="90.0" layoutY="20.0" mnemonicParsing="false" onAction="#searchOnAction" prefHeight="40.0" prefWidth="44.0" style="-fx-background-radius: 200; -fx-background-color: #fac400;" stylesheets="@../css/buttonhome.css">
                             <graphic>
                                 <ImageView fx:id="searchImage" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
                                     <image>
@@ -66,7 +66,7 @@
                         <AnchorPane layoutX="354.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="392.0" prefWidth="547.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                             <children>
                                 <WebView fx:id="webView" layoutX="18.0" layoutY="38.0" prefHeight="338.0" prefWidth="506.0" style="-fx-opacity: 1;" />
-                                <Button fx:id="speakerButton" contentDisplay="RIGHT" layoutX="184.0" mnemonicParsing="false" onAction="#speakClick" prefHeight="48.0" prefWidth="92.0" style="-fx-background-color: rgba(255,255,255,0);" stylesheets="@../css/button.css" textFill="WHITE">
+                                <Button fx:id="speakerButton" contentDisplay="RIGHT" layoutX="184.0" mnemonicParsing="false" onAction="#speakClick" prefHeight="48.0" prefWidth="92.0" style="-fx-background-color: rgba(255,255,255,0);" stylesheets="@../css/buttonhome.css" textFill="WHITE">
                                     <graphic>
                                         <ImageView fitHeight="37.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" style="fx-background-color: rgba(255,255,255,0);">
                                             <image>
@@ -102,11 +102,11 @@
                 </AnchorPane>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="menuPane" layoutX="42.0" layoutY="165.0" prefHeight="507.0" prefWidth="164.0">
+        <AnchorPane fx:id="menuPane" layoutX="42.0" layoutY="180.0" prefHeight="507.0" prefWidth="164.0">
             <children>
-                <AnchorPane fx:id="slider" layoutX="2.0" layoutY="13.0" prefHeight="392.0" prefWidth="160.0" style="-fx-background-color: #fac400; -fx-background-radius: 10;">
+                <AnchorPane fx:id="slider" layoutY="13.0" prefHeight="392.0" prefWidth="160.0" style="-fx-background-color: #fac400; -fx-background-radius: 10;">
                     <children>
-                        <JFXButton fx:id="homeButton" alignment="BASELINE_LEFT" layoutY="4.0" onAction="#homeButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Home" textFill="WHITE">
+                        <JFXButton fx:id="homeButton" alignment="BASELINE_LEFT" layoutY="4.0" onAction="#homeButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/buttonhome.css" text="Home" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -118,7 +118,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="editButton" alignment="BASELINE_LEFT" layoutY="74.0" onAction="#editButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Edit" textFill="WHITE">
+                        <JFXButton fx:id="editButton" alignment="BASELINE_LEFT" layoutY="74.0" onAction="#editButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/buttonhome.css" text="Edit" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -130,7 +130,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="translateButton" alignment="BASELINE_LEFT" layoutY="196.0" onAction="#translateButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Translate" textFill="WHITE">
+                        <JFXButton fx:id="translateButton" alignment="BASELINE_LEFT" layoutY="196.0" onAction="#translateButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/buttonhome.css" text="Translate" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -142,7 +142,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="userButton" alignment="BASELINE_LEFT" layoutY="336.0" onAction="#userButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="User" textFill="WHITE">
+                        <JFXButton fx:id="userButton" alignment="BASELINE_LEFT" layoutY="336.0" onAction="#userButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/buttonhome.css" text="User" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -154,7 +154,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="gameButton" alignment="BASELINE_LEFT" layoutY="266.0" onAction="#gameButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Game" textFill="WHITE">
+                        <JFXButton fx:id="gameButton" alignment="BASELINE_LEFT" layoutY="266.0" onAction="#gameButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/buttonhome.css" text="Game" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -166,7 +166,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="favoriteButton" alignment="BASELINE_LEFT" layoutY="133.0" onAction="#favoriteButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/button.css" text="Favorite" textFill="WHITE">
+                        <JFXButton fx:id="favoriteButton" alignment="BASELINE_LEFT" layoutY="133.0" onAction="#favoriteButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/buttonhome.css" text="Favorite" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
