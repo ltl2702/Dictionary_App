@@ -1,5 +1,6 @@
 package QuizGamee;
 
+import Connect.ConnectDB;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -32,6 +34,8 @@ public class QuestionController implements Initializable {
     @FXML
     Button next;
 
+    @FXML
+    AnchorPane mainpane;
     public static int counter;
     public static int wrong = 0;
     public static int correct = 0;
@@ -40,13 +44,15 @@ public class QuestionController implements Initializable {
 
 
     public QuestionController() {
-        try {
-            String Url = "jdbc:sqlite:" + this.getClass().getResource("/com/example/demo1/que.db");
-            connection = DriverManager.getConnection(Url);
-            System.out.println("Connect Success");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+            try {
+                //String Url = "jdbc:sqlite:data/database/que.db";
+                connection = new ConnectDB().connect("que");
+                System.out.println("Kết nối thành công");
+            } catch (Exception e) {
+                e.printStackTrace();
+                // In ra logs hoặc console để xem thông tin chi tiết về lỗi
+                System.err.println("Lỗi khi thiết lập kết nối: " + e.getMessage());
+            }
     }
 
     @FXML
@@ -148,14 +154,6 @@ public class QuestionController implements Initializable {
         return new HashSet<>(list);
     }
 
-    public void yourAnsIsWrong(Button opt) {
-        opt.setStyle("-fx-background-color:#ff6666; x-fx-text-fill: white; ");
-
-    }
-    public void yourAnsIsCorrect(Button opt) {
-        opt.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
-    }
-
     public boolean check(int counter, int x) {
         if(x == 1 && option1.getText().equals(answer)) {
             System.out.println("A la dap an dung");
@@ -185,14 +183,12 @@ public class QuestionController implements Initializable {
         }
         if (counter == 10) {
             try {
-                Stage thisstage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                thisstage.close();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("data/fxml/QuizResultScene.fxml"));
+                AnchorPane gamepane = fxmlLoader.load();
+                mainpane.getChildren().setAll(gamepane);
 
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("result.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.show();
+                QuestionController quizController = fxmlLoader.getController();
+                quizController.setmainpane(mainpane);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -219,14 +215,12 @@ public class QuestionController implements Initializable {
         }
         if (counter == 10) {
             try {
-                Stage thisstage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                thisstage.close();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("data/fxml/QuizResultScene.fxml"));
+                AnchorPane gamepane = fxmlLoader.load();
+                mainpane.getChildren().setAll(gamepane);
 
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("result.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.show();
+                QuestionController quizController = fxmlLoader.getController();
+                quizController.setmainpane(mainpane);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -251,13 +245,12 @@ public class QuestionController implements Initializable {
         }
         if (counter == 10) {
             try {
-                Stage thisstage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                thisstage.close();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("result.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.show();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("data/fxml/QuizResultScene.fxml"));
+                AnchorPane gamepane = fxmlLoader.load();
+                mainpane.getChildren().setAll(gamepane);
+
+                QuestionController quizController = fxmlLoader.getController();
+                quizController.setmainpane(mainpane);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -284,14 +277,12 @@ public class QuestionController implements Initializable {
         }
         if (counter == 10) {
             try {
-                Stage thisstage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                thisstage.close();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("data/fxml/QuizResultScene.fxml"));
+                AnchorPane gamepane = fxmlLoader.load();
+                mainpane.getChildren().setAll(gamepane);
 
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("result.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.show();
+                QuestionController quizController = fxmlLoader.getController();
+                quizController.setmainpane(mainpane);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -306,6 +297,9 @@ public class QuestionController implements Initializable {
         }
         System.out.println(correct);
         System.out.println(wrong);
+    }
+
+    public void setmainpane(AnchorPane mainpane) {
     }
 }
 
