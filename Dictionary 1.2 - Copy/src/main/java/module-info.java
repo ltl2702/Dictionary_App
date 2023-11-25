@@ -10,6 +10,7 @@ module OOP {
     requires com.fasterxml.jackson.databind;
     requires java.net.http;
     requires java.desktop;
+    requires javafx.base;
     //requires jsapi;
 
     exports App;
@@ -24,6 +25,8 @@ module OOP {
     opens QuizGamee to javafx.fxml;
     exports API;
     opens API to javafx.fxml;
+    exports Dictionary;
+    opens Dictionary to javafx.fxml;
     //exports API;
-   // opens API to javafx.fxml;
+    // opens API to javafx.fxml;
 }

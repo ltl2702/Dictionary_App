@@ -61,6 +61,9 @@ public class Home implements Initializable {
     private JFXButton saveButton;
 
     @FXML
+    private JFXButton favoriteButton;
+
+    @FXML
     private ImageView saveImage;
 
     private ObservableList<Word> list = FXCollections.observableArrayList();
@@ -174,7 +177,7 @@ public class Home implements Initializable {
 
     private void updateSearchField(Word selectedWord) {
         Platform.runLater(() -> {
-            searchField.setText(selectedWord.getWordTarget());
+            searchField.setText(selectedWord.getWord());
         });
     }
 
@@ -287,6 +290,8 @@ public class Home implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/wtf.fxml"));
             AnchorPane homepane2 = fxmlLoader.load();
             homePane.getChildren().setAll(homepane2);
+            Home homeController = fxmlLoader.getController();
+            homeController.setUsername(username);
             closeMenu();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -296,6 +301,23 @@ public class Home implements Initializable {
     @FXML
     void editButtonOnAction(ActionEvent event) {
         loadFXMLInBackground("/data/fxml/edit2.fxml");
+    }
+
+    @FXML
+    void favoriteButtonOnAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(SaveWord.class.getResource("/data/fxml/SaveWord.fxml"));
+            AnchorPane homepane2 = fxmlLoader.load();
+            homePane.getChildren().setAll(homepane2);
+
+            SaveWord saveController = fxmlLoader.getController();
+            saveController.setusername(username);
+            saveController.display();
+            closeMenu();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
     @FXML
@@ -341,16 +363,12 @@ public class Home implements Initializable {
         this.stage = stage;
     }
 
-    public void setUsernameLogin(TextField usernamefill) {
+    public void setUsername(TextField usernamefill) {
         this.username = usernamefill;
     }
 
     public void setCheckLogin(boolean check) {
         this.checklogin = check;
-    }
-
-    public void setUsernameSignup(TextField usernamefill) {
-        this.username = usernamefill;
     }
 
     public void setCheckSignup(boolean check) {
@@ -362,12 +380,11 @@ public class Home implements Initializable {
         if (!items.isEmpty()) {
             Word selectedWord = listResult.getSelectionModel().getSelectedItem();
             if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
-                TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWordTarget());
+                TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWord());
             } else if (items.get(0) != Word.NOT_FOUND) {
                 selectedWord = items.get(0);
-                TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWordTarget());
+                TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWord());
             }
         }
     }
 }
-

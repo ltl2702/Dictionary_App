@@ -96,7 +96,7 @@ public class Signup implements Initializable {
                         Parent root = fxmlLoader.load();
                         Home homeController = fxmlLoader.getController();
                         homeController.setStage(stage);
-                        homeController.setUsernameSignup(usernamefill);
+                        homeController.setUsername(usernamefill);
                         homeController.setCheckSignup(check);
 
                         Scene scene = new Scene(root);

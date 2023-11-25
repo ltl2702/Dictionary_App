@@ -89,7 +89,7 @@ public class Welcome implements Initializable {
                             Parent root = fxmlLoader.load();
                             Home homeController = fxmlLoader.getController();
                             homeController.setStage(stage);
-                            homeController.setUsernameLogin(usernamefill);
+                            homeController.setUsername(usernamefill);
                             homeController.setCheckLogin(check);
 
                             Scene scene = new Scene(root);
@@ -122,21 +122,21 @@ public class Welcome implements Initializable {
 
     @FXML
     public void signupButtonOnAction(ActionEvent event) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(Signup.class.getResource("/data/fxml/signup.fxml"));
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Signup.class.getResource("/data/fxml/signup.fxml"));
 
-                //AnchorPane signuppane = fxmlLoader.load();
-                //mainpane.getChildren().setAll(signuppane);
-                Parent root = fxmlLoader.load();
-                Signup signupController = fxmlLoader.getController();
-                signupController.setStage(stage);
+            //AnchorPane signuppane = fxmlLoader.load();
+            //mainpane.getChildren().setAll(signuppane);
+            Parent root = fxmlLoader.load();
+            Signup signupController = fxmlLoader.getController();
+            signupController.setStage(stage);
 
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                ex.getCause();
-            }
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
     private void loading(Scene scene) {
