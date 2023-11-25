@@ -19,7 +19,7 @@ import java.util.*;
 
 public class QuestionController implements Initializable {
     @FXML
-    Label question;
+    Label question, answerLabel;
     @FXML
     Button option1;
     @FXML
@@ -87,6 +87,7 @@ public class QuestionController implements Initializable {
         option2.setStyle("-fx-background-color: #fffff ");
         option3.setStyle("-fx-background-color: #fffff ");
         option4.setStyle("-fx-background-color: #fffff ");
+        answerLabel.setVisible(false);
         HashSet optSet = new HashSet();
         try {
             Random random = new Random();
@@ -194,6 +195,9 @@ public class QuestionController implements Initializable {
         } else {
             wrong++;
             option1.setStyle("-fx-background-color:#ff6666; x-fx-text-fill: white; ");
+            getCorrectButton(option4);
+            getCorrectButton(option2);
+            getCorrectButton(option3);
         }
         if (counter == 10) {
             try {
@@ -211,7 +215,7 @@ public class QuestionController implements Initializable {
             counter++;
             System.out.println("Câu " + counter);
             QuestionNum.setText(setQuesNum(counter));
-            PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
+            PauseTransition pause = new PauseTransition(Duration.seconds(0.8));
             pause.setOnFinished(e -> {
                 loadQuestions();
             });
@@ -230,6 +234,9 @@ public class QuestionController implements Initializable {
         } else {
             wrong++;
             option2.setStyle("-fx-background-color:#ff6666; x-fx-text-fill: white; ");
+            getCorrectButton(option1);
+            getCorrectButton(option4);
+            getCorrectButton(option3);
         }
         if (counter == 10) {
             try {
@@ -247,7 +254,7 @@ public class QuestionController implements Initializable {
             counter++;
             System.out.println("Câu " + counter);
             QuestionNum.setText(setQuesNum(counter));
-            PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
+            PauseTransition pause = new PauseTransition(Duration.seconds(0.8));
             pause.setOnFinished(e -> {
                 loadQuestions();
             });
@@ -264,6 +271,9 @@ public class QuestionController implements Initializable {
         } else {
             wrong++;
             option3.setStyle("-fx-background-color:#ff6666; x-fx-text-fill: white; ");
+            getCorrectButton(option1);
+            getCorrectButton(option2);
+            getCorrectButton(option4);
         }
         if (counter == 10) {
             try {
@@ -282,7 +292,7 @@ public class QuestionController implements Initializable {
             counter++;
             System.out.println("Câu " + counter);
             QuestionNum.setText(setQuesNum(counter));
-            PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
+            PauseTransition pause = new PauseTransition(Duration.seconds(0.8));
             pause.setOnFinished(e -> {
                 loadQuestions();
             });
@@ -300,6 +310,9 @@ public class QuestionController implements Initializable {
         } else {
             wrong++;
             option4.setStyle("-fx-background-color:#ff6666; x-fx-text-fill: white; ");
+            getCorrectButton(option1);
+            getCorrectButton(option2);
+            getCorrectButton(option3);
         }
         if (counter == 10) {
             try {
@@ -318,7 +331,7 @@ public class QuestionController implements Initializable {
             counter++;
             System.out.println("Câu " + counter);
             QuestionNum.setText(setQuesNum(counter));
-            PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
+            PauseTransition pause = new PauseTransition(Duration.seconds(0.8));
             pause.setOnFinished(e -> {
                 loadQuestions();
             });
@@ -342,6 +355,15 @@ public class QuestionController implements Initializable {
 
     public static void setCounter(int counter) {
         QuestionController.counter = counter;
+    }
+
+    public void getCorrectButton(Button option) {
+        if(option.getText().equals(answer)) {
+            option.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
+        }
+        else {
+            return;
+        }
     }
 }
 
