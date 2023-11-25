@@ -1,6 +1,9 @@
 package QuizGamee;
 
+import MatchGame.MenuMatchGame;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -34,11 +37,40 @@ public class QuizResultController {
         window.show();
     }
 
-    public void exitSetOnAction() {
+    @FXML
+    void exitOnAction(ActionEvent event) {
+        try {
+            window.close();
+            FXMLLoader fxmlLoader2 = new FXMLLoader(MenuMatchGame.class.getResource("/data/fxml/QuizStartScene.fxml"));
+            AnchorPane Matchpane = fxmlLoader2.load();
+            mainpane.getChildren().setAll(Matchpane);
 
+            QuizStartController MenuController = fxmlLoader2.getController();
+            MenuController.setmainpane(mainpane);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
-    public void replay() {
+    @FXML
+    void replayOnAction(ActionEvent event) {
+        try {
+            window.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/QuestionScene.fxml"));
+            AnchorPane gamepane = fxmlLoader.load();
+            mainpane.getChildren().setAll(gamepane);
+
+            QuestionController quizController = fxmlLoader.getController();
+            QuestionController.setCorrect(0);
+            QuestionController.setWrong(0);
+            QuestionController.setCounter(1);
+            quizController.setmainpane(mainpane);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void setmainpane(AnchorPane mainpane) {

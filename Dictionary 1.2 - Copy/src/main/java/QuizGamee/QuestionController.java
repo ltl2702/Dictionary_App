@@ -11,11 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
-import org.w3c.dom.ls.LSOutput;
 
 import java.net.URL;
 import java.sql.*;
@@ -34,10 +30,15 @@ public class QuestionController implements Initializable {
     Button option4;
     @FXML
     Button next;
+    @FXML
+    private Label QuestionNum;
 
     @FXML
+    private Label ScoreLabel;
+
     AnchorPane mainpane;
-    public int counter = 1;
+
+    public static int counter = 1;
     public static int wrong = 0;
     public static int correct = 0;
     public static Connection connection;
@@ -56,10 +57,18 @@ public class QuestionController implements Initializable {
             }
     }
 
+    public String setQuesNum(int counter) {
+        return "Câu " + counter + "/10";
+    }
+
+    public String setScoreNum(int correct) {
+        return "Score: " + correct + "/10";
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadQuestions();
+        QuestionNum.setText(setQuesNum(counter));
         /*
         option1.setOnMouseEntered(mouseEvent -> option1.setOpacity(0.70));
         option1.setOnMouseExited(mouseEvent -> option1.setOpacity(1));
@@ -180,6 +189,7 @@ public class QuestionController implements Initializable {
     public void opt1Clicked (ActionEvent event) throws SQLException {
         if(check(counter, 1)) {
             correct++;
+            ScoreLabel.setText(setScoreNum(correct));
             option1.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
         } else {
             wrong++;
@@ -199,6 +209,8 @@ public class QuestionController implements Initializable {
             }
         } else {
             counter++;
+            System.out.println("Câu " + counter);
+            QuestionNum.setText(setQuesNum(counter));
             PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
             pause.setOnFinished(e -> {
                 loadQuestions();
@@ -213,6 +225,7 @@ public class QuestionController implements Initializable {
     public void opt2Clicked (ActionEvent event) throws SQLException {
         if(check(counter, 2)) {
             correct++;
+            ScoreLabel.setText(setScoreNum(correct));
             option2.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
         } else {
             wrong++;
@@ -232,6 +245,8 @@ public class QuestionController implements Initializable {
             }
         } else {
             counter++;
+            System.out.println("Câu " + counter);
+            QuestionNum.setText(setQuesNum(counter));
             PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
             pause.setOnFinished(e -> {
                 loadQuestions();
@@ -244,6 +259,7 @@ public class QuestionController implements Initializable {
     public void opt3Clicked (ActionEvent event) throws SQLException {
         if(check(counter, 3)) {
             correct++;
+            ScoreLabel.setText(setScoreNum(correct));
             option3.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
         } else {
             wrong++;
@@ -264,6 +280,8 @@ public class QuestionController implements Initializable {
 
         } else {
             counter++;
+            System.out.println("Câu " + counter);
+            QuestionNum.setText(setQuesNum(counter));
             PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
             pause.setOnFinished(e -> {
                 loadQuestions();
@@ -277,6 +295,7 @@ public class QuestionController implements Initializable {
     public void opt4Clicked (ActionEvent event) throws SQLException {
         if (check(counter, 4)) {
             correct++;
+            ScoreLabel.setText(setScoreNum(correct));
             option4.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
         } else {
             wrong++;
@@ -297,6 +316,8 @@ public class QuestionController implements Initializable {
 
         } else {
             counter++;
+            System.out.println("Câu " + counter);
+            QuestionNum.setText(setQuesNum(counter));
             PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
             pause.setOnFinished(e -> {
                 loadQuestions();
@@ -309,6 +330,18 @@ public class QuestionController implements Initializable {
 
     public void setmainpane(AnchorPane mainpane) {
         this.mainpane = mainpane;
+    }
+
+    public static void setCorrect(int correct) {
+        QuestionController.correct = correct;
+    }
+
+    public static void setWrong(int wrong) {
+        QuestionController.wrong = wrong;
+    }
+
+    public static void setCounter(int counter) {
+        QuestionController.counter = counter;
     }
 }
 
