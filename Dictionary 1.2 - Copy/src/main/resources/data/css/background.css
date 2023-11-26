@@ -13,6 +13,7 @@
     -fx-text-fill: white;
     -fx-background-radius: 20;
     -fx-border-color: white;
+    -fx-padding: 10px 20px; /* Kích thước đệm của button */
 }
 .button:pressed {
     -fx-background-color: #4d648d; /* Màu nền khi di chuột qua */
