@@ -77,7 +77,7 @@ public class EditDefController {
                     PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
                     preparedStatement.setString(1, newdef);
                     if (selectedWord != null) {
-                        if(!newdef.equals(selectedWord.getHtml())) {
+                        if(newdef.equals(selectedWord.getHtml())) {
                             System.out.println("Chua cap nhat");
                             //thong bao cho nguoi dung
 
