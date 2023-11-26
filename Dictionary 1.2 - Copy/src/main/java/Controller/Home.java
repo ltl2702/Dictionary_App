@@ -343,7 +343,17 @@ public class Home implements Initializable {
 
     @FXML
     void gameButtonOnAction(ActionEvent event) {
-        loadFXMLInBackground("/data/fxml/gameController.fxml");
+        System.out.println(username.getText());
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("/data/fxml/gameController.fxml"));
+            AnchorPane gamepane = fxmlLoader.load();
+            homePane.getChildren().setAll(gamepane);
+            closeMenu();
+            GameController gameController = fxmlLoader.getController();
+            gameController.setUsername(username);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML
@@ -379,6 +389,10 @@ public class Home implements Initializable {
 
     public void setUsername(TextField usernamefill) {
         this.username = usernamefill;
+    }
+
+    public TextField getUsername() {
+        return username;
     }
 
     public void speakClick(ActionEvent actionEvent) {

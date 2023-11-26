@@ -95,8 +95,8 @@ public class AnswerSlide {
     private String getDescription(String text) {
         String description = "";
         text = text.replaceAll("\'", "''");
-        try (Connection connection = new ConnectDB().connect("test3")) {
-            String select = "SELECT description FROM av WHERE word = '" + text + "'";
+        try (Connection connection = new ConnectDB().connect("dict_hh")) {
+            String select = "SELECT description FROM av1 WHERE word = '" + text + "'";
             Statement statement = connection.createStatement();
             ResultSet qquery = statement.executeQuery(select);
             if (qquery.next()) {

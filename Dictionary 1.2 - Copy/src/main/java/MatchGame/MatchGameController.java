@@ -4,29 +4,25 @@ import Connect.ConnectDB;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
-import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import java.net.URL;
 import java.util.*;
 
-public class MatchGameController implements Initializable {
+public class MatchGameController {
 
     @FXML
     private JFXButton card1;
@@ -72,6 +68,8 @@ public class MatchGameController implements Initializable {
 
     private List<String> list = new ArrayList<>();
 
+    private TextField username;
+
     private boolean isButtonPressed = false;
     private boolean isButtonClickable = true;
     private JFXButton firstPressedButton;
@@ -84,30 +82,33 @@ public class MatchGameController implements Initializable {
 
     private ArrayList<String> wordAnswer = new ArrayList<>();
 
-    private void loadDataFromDatabase() {
-            try (Connection connectDatabase = new ConnectDB().connect("test3")) {
-                //Verifies.
-                String verify = "SELECT word, description FROM av WHERE description IS NOT NULL AND description != '' ORDER BY RANDOM() LIMIT 6";
-                Statement statement = connectDatabase.createStatement();
-                ResultSet query = statement.executeQuery(verify);
+    private void loadDataFromDatabase(TextField username) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
+            //Verifies.
+            String verify = "SELECT av1.word, av1.description, av1.id FROM av1 WHERE av1.description IS NOT NULL AND av1.description != '' AND av1.id IN (SELECT SavedWord.English_id FROM SavedWord WHERE SavedWord.English_id = av1.id AND SavedWord.User_id = '" + username.getText() + "') " +
+                    "ORDER BY RANDOM() LIMIT 6";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(verify);
 
-                //randomPairs = new ArrayList<>();
-                while (query.next()) {
-                    String word = query.getString("word");
-                    String description = query.getString("description");
-                    wordAnswer.add(query.getString("word").replaceAll("''", "\'"));
-                    //randomPairs.add(new RandomPair(word, description));
-                    list.add(word);
-                    list.add(description);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                e.getCause();
-            } finally {
-                ConnectDB.closeConnection();
+            while (query.next()) {
+                String word = query.getString("word");
+                String description = query.getString("description");
+                wordAnswer.add(query.getString("word").replaceAll("''", "\'"));
+                //randomPairs.add(new RandomPair(word, description));
+                list.add(word);
+                list.add(description);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        } finally {
+            ConnectDB.closeConnection();
         }
-
+    }
+/*
+String verify = "SELECT av1.word, av1.description, av1.id FROM av1 WHERE av1.description IS NOT NULL AND av1.description != '' AND av1.id IN (SELECT SavedWord.English_id FROM SavedWord WHERE SavedWord.English_id = av1.id AND SavedWord.User_id = '" + username.getText() + "') " +
+                        "ORDER BY RANDOM() LIMIT 6";
+ */
     private void updateButtonText() {
         Collections.shuffle(list);
         card1.setText(list.get(0));
@@ -218,8 +219,8 @@ public class MatchGameController implements Initializable {
        List<String> descriptions = null;
        text = text.replaceAll("\'", "''");
        descriptions = new ArrayList<>();
-       try (Connection connection = new ConnectDB().connect("test3")) {
-           String query = "SELECT COUNT(*) AS counter FROM av WHERE description = '" + text + "'";
+       try (Connection connection = new ConnectDB().connect("dict_hh")) {
+           String query = "SELECT COUNT(*) AS counter FROM av1 WHERE description = '" + text + "'";
            Statement statement = connection.createStatement();
            ResultSet resultSet = statement.executeQuery(query);
            if (resultSet.next()) {
@@ -228,7 +229,7 @@ public class MatchGameController implements Initializable {
                    descriptions.add(text);
                }
                else {
-                   String select = "SELECT description FROM av WHERE word = '" + text + "'";
+                   String select = "SELECT description FROM av1 WHERE word = '" + text + "'";
                    ResultSet qquery = statement.executeQuery(select);
                    while (qquery.next()) {
                        descriptions.add(qquery.getString("description"));
@@ -247,8 +248,8 @@ public class MatchGameController implements Initializable {
         List<String> word = null;
         text = text.replaceAll("\'", "''");
         word = new ArrayList<>();
-        try (Connection connection = new ConnectDB().connect("test3")) {
-            String query = "SELECT COUNT(*) AS counter FROM av WHERE word = '" + text + "'";
+        try (Connection connection = new ConnectDB().connect("dict_hh")) {
+            String query = "SELECT COUNT(*) AS counter FROM av1 WHERE word = '" + text + "'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             if (resultSet.next()) {
@@ -257,7 +258,7 @@ public class MatchGameController implements Initializable {
                     word.add(text);
                 }
                 else {
-                    String select = "SELECT word FROM av WHERE description = '" + text + "'";
+                    String select = "SELECT word FROM av1 WHERE description = '" + text + "'";
                     ResultSet qquery = statement.executeQuery(select);
                     while (qquery.next()) {
                         word.add(qquery.getString("word"));
@@ -442,29 +443,38 @@ public class MatchGameController implements Initializable {
         return String.format("%02d:%02d", minutes, remainingSeconds);
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        loadDataFromDatabase();
-        updateButtonText();
-        scoreLabel.setText(String.valueOf(0));
-        timeLabel.setText(String.valueOf(formatTime(90)));
-        start();
+    public void initialize() {
+        if (username != null) {
+            System.out.println("Initialize: " + this.username.getText());
 
-        card1.setOnAction(event -> handleButtonClick(card1));
-        card2.setOnAction(event -> handleButtonClick(card2));
-        card3.setOnAction(event -> handleButtonClick(card3));
-        card4.setOnAction(event -> handleButtonClick(card4));
-        card5.setOnAction(event -> handleButtonClick(card5));
-        card6.setOnAction(event -> handleButtonClick(card6));
-        card7.setOnAction(event -> handleButtonClick(card7));
-        card8.setOnAction(event -> handleButtonClick(card8));
-        card9.setOnAction(event -> handleButtonClick(card9));
-        card10.setOnAction(event -> handleButtonClick(card10));
-        card11.setOnAction(event -> handleButtonClick(card11));
-        card12.setOnAction(event -> handleButtonClick(card12));
+            loadDataFromDatabase(this.username);
+            updateButtonText();
+            scoreLabel.setText(String.valueOf(0));
+            timeLabel.setText(String.valueOf(formatTime(90)));
+            start();
+
+            card1.setOnAction(event -> handleButtonClick(card1));
+            card2.setOnAction(event -> handleButtonClick(card2));
+            card3.setOnAction(event -> handleButtonClick(card3));
+            card4.setOnAction(event -> handleButtonClick(card4));
+            card5.setOnAction(event -> handleButtonClick(card5));
+            card6.setOnAction(event -> handleButtonClick(card6));
+            card7.setOnAction(event -> handleButtonClick(card7));
+            card8.setOnAction(event -> handleButtonClick(card8));
+            card9.setOnAction(event -> handleButtonClick(card9));
+            card10.setOnAction(event -> handleButtonClick(card10));
+            card11.setOnAction(event -> handleButtonClick(card11));
+            card12.setOnAction(event -> handleButtonClick(card12));
+        } else {
+            System.out.println("Game username: null");
+        }
     }
 
     public void setmainpane(AnchorPane mainpane) {
         this.mainpane = mainpane;
+    }
+
+    public void setUsername(TextField username) {
+        this.username = username;
     }
 }
