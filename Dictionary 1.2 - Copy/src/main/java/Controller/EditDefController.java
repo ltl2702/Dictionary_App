@@ -67,6 +67,8 @@ public class EditDefController {
 
     public void submitEdition(ActionEvent actionEvent) {
         String newdef = htmlEditor.getHtmlText();
+        //cat thanh 3 string de upate 3 cot
+
         if (htmlEditor != null && newdef != null && !newdef.isEmpty()) {
             String updateQuery = "UPDATE av1 SET html = ? WHERE word = ?";
 
@@ -77,12 +79,17 @@ public class EditDefController {
                     if (selectedWord != null) {
                         if(!newdef.equals(selectedWord.getHtml())) {
                             System.out.println("Chua cap nhat");
+                            //thong bao cho nguoi dung
+
                         } else {
                             preparedStatement.setString(2, selectedWord.toString());
                             int rowsAffected = preparedStatement.executeUpdate();
 
                             if (rowsAffected > 0) {
                                 System.out.println("Cập nhật thành công!");
+                                //thong bao cho nguoi dung
+                                // neu duong dung ok moi the kia
+
                                 System.out.println("home Controller is not null.");
 
                                 Home homeController = Home.getInstance();
