@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,7 +23,10 @@ import java.util.ResourceBundle;
 public class UpdateAcc implements Initializable {
 
     @FXML
-    private TextField newPass, newUsername, oldPass,oldUsername;
+    private TextField oldUsername, newUsername;
+
+    @FXML
+    private PasswordField oldPass, newPass;
 
     @FXML
     private JFXButton submitButton, changeavt;

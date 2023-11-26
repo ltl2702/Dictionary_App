@@ -54,7 +54,8 @@ public class Word {
 
     public int getId() {
         try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
-            String verify = "SELECT ID FROM av1 WHERE word = '" + word + "'";
+            String fakeword = word.trim().replaceAll("\'", "''").toLowerCase();
+            String verify = "SELECT ID FROM av1 WHERE LOWER(word) = '" + fakeword + "'";
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(verify);
 
