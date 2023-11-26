@@ -95,7 +95,7 @@ public class User implements Initializable {
     @FXML
     void signoutButtonOnAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Signup.class.getResource("/data/fxml/background.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Welcome.class.getResource("/data/fxml/background.fxml"));
             Parent root = fxmlLoader.load();
             Welcome welcomeController = fxmlLoader.getController();
             welcomeController.initializeStage(stage);

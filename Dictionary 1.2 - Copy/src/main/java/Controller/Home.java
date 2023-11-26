@@ -26,6 +26,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -51,6 +52,12 @@ public class Home implements Initializable {
     private JFXButton Menu, MenuClose;
 
     @FXML
+    private MenuButton menuButton;
+
+    @FXML
+    private MenuItem menuitemContributor, menuitemInfo, menuitemSignout;
+
+    @FXML
     private WebView webView;
 
     private WebEngine webEngine;
@@ -63,6 +70,9 @@ public class Home implements Initializable {
 
     @FXML
     private JFXButton saveButton;
+
+    @FXML
+    private ImageView userimage;
 
     @FXML
     private JFXButton favoriteButton;
@@ -428,4 +438,79 @@ public class Home implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void menuitemContributorOnAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Contributor.class.getResource("/data/fxml/Contributor.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            Contributor contributorControler = fxmlLoader.getController();
+            contributorControler.display(scene);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    @FXML
+    void menuitemInfoOnAction(ActionEvent event) {
+        System.out.println(username.getText());
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
+            AnchorPane userpane = fxmlLoader.load();
+
+            homePane.getChildren().setAll(userpane);
+            closeMenu();
+
+            User userController = fxmlLoader.getController();
+            userController.setUsername(username);
+            userController.userLogin();
+            userController.setmainpane(homePane);
+            userController.setStage(stage);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
+    }
+
+    @FXML
+    void menuitemSignoutOnAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Welcome.class.getResource("/data/fxml/background.fxml"));
+            Parent root = fxmlLoader.load();
+            Welcome welcomeController = fxmlLoader.getController();
+            welcomeController.initializeStage(stage);
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
+    }
+
+    void userLogin() {
+        System.out.println(username.getText());
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
+            String select = "SELECT image FROM account WHERE username = '" + username.getText() + "'";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(select);
+            if (query.next()) {
+                int imageNumber = query.getInt("image");
+                System.out.println(imageNumber);
+                Image image = new Image(getClass().getResourceAsStream("/data/user/user" + imageNumber + ".png"));
+
+                userimage.setImage(image);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error loading image: " + e.getMessage());
+            e.getCause();
+        } finally {
+            ConnectDB.closeConnection();
+        }
+    }
+
 }

@@ -83,6 +83,7 @@ public class Welcome implements Initializable {
                             Home homeController = fxmlLoader.getController();
                             homeController.setStage(stage);
                             homeController.setUsername(usernamefill);
+                            homeController.userLogin();
 
                             Scene scene = new Scene(root);
                             //stage.setScene(scene);
