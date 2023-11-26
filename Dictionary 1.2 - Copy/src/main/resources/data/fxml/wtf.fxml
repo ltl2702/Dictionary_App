@@ -89,67 +89,67 @@
                                         </ImageView>
                                     </graphic>
                                 </JFXButton>
-                        <Button fx:id="editDButton" layoutX="552.0" layoutY="7.0" mnemonicParsing="false" onAction="#editDefinition" prefHeight="32.0" prefWidth="30.0" style="-fx-background-color: #ffffff;">
-                           <graphic>
-                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../image/editButton.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                              <AnchorPane layoutX="-19.0" layoutY="-18.0" prefHeight="50.0" prefWidth="141.0" style="-fx-background-color: #1e1f26; -fx-background-radius: 20;">
-                                  <children>
-                                      <Label layoutX="14.0" layoutY="7.0" text="Definition" textFill="WHITE">
-                                          <font>
-                                              <Font name="System Bold" size="24.0" />
-                                          </font>
-                                      </Label>
-                                  </children>
-                              </AnchorPane>
+                                <Button fx:id="editDButton" layoutX="552.0" layoutY="7.0" mnemonicParsing="false" onAction="#editDefinition" prefHeight="32.0" prefWidth="30.0" style="-fx-background-color: #ffffff;">
+                                    <graphic>
+                                        <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../image/editButton.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <AnchorPane layoutX="-19.0" layoutY="-18.0" prefHeight="50.0" prefWidth="141.0" style="-fx-background-color: #1e1f26; -fx-background-radius: 20;">
+                                    <children>
+                                        <Label layoutX="14.0" layoutY="7.0" text="Definition" textFill="WHITE">
+                                            <font>
+                                                <Font name="System Bold" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </AnchorPane>
                             </children>
                         </AnchorPane>
                     </children>
                 </AnchorPane>
-            <JFXButton layoutX="865.0" layoutY="13.0" text=" " />
-            <MenuButton fx:id="menuButton" layoutX="838.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0);" text=" ">
-              <items>
-                <MenuItem fx:id="menuitemContributor" mnemonicParsing="false" onAction="#menuitemContributorOnAction" text="Contributor">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icon/add2-removebg-preview.png" />
-                           </image>
+                <JFXButton layoutX="865.0" layoutY="13.0" text=" " />
+                <MenuButton fx:id="menuButton" layoutX="838.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0);" text=" ">
+                    <items>
+                        <MenuItem fx:id="menuitemContributor" mnemonicParsing="false" onAction="#menuitemContributorOnAction" text="Contributor">
+                            <graphic>
+                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icon/add2-removebg-preview.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="menuitemInfo" mnemonicParsing="false" onAction="#menuitemInfoOnAction" text="Your infomation">
+                            <graphic>
+                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../user/user16.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="menuitemSignout" mnemonicParsing="false" onAction="#menuitemSignoutOnAction" text="Sign out">
+                            <graphic>
+                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../icon/signout.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </MenuItem>
+                    </items>
+                    <graphic>
+                        <ImageView fx:id="userimage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../user/user8.png" />
+                            </image>
                         </ImageView>
-                     </graphic>
-                  </MenuItem>
-                <MenuItem fx:id="menuitemInfo" mnemonicParsing="false" onAction="#menuitemInfoOnAction" text="Your infomation">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../user/user16.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem fx:id="menuitemSignout" mnemonicParsing="false" onAction="#menuitemSignoutOnAction" text="Sign out">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icon/signout.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
-              </items>
-               <graphic>
-                  <ImageView fx:id="userimage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../user/user8.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </MenuButton>
+                    </graphic>
+                </MenuButton>
             </children>
         </AnchorPane>
         <AnchorPane fx:id="menuPane" layoutX="42.0" layoutY="180.0" prefHeight="507.0" prefWidth="164.0">

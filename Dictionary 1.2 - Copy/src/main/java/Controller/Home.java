@@ -1,6 +1,7 @@
 package Controller;
 
 import API.TextToSpeechFreetts;
+import Connect.Alerter;
 import Connect.ConnectDB;
 import Dictionary.DictionaryManagement;
 import Dictionary.Word;
@@ -36,6 +37,13 @@ import java.util.concurrent.Executors;
 
 public class Home implements Initializable {
     private final String datatable = "av1";
+
+    private static Home instance;
+
+    public static Home getInstance() {
+        return instance;
+    }
+
     public Button speakerButton, searchButton;
     public JFXButton gameButton;
     public ImageView menuimage1;
@@ -112,7 +120,7 @@ public class Home implements Initializable {
                 updateSaveImage(selectedWord.getId());
             }
         });
-
+        instance = this;
     }
 
     private void updateSaveImage(int wordId) {
@@ -223,6 +231,7 @@ public class Home implements Initializable {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource(resource));
                 AnchorPane pane = fxmlLoader.load();
+
                 Platform.runLater(() -> homePane.getChildren().setAll(pane));
                 closeMenu();
             } catch (Exception ex) {
@@ -431,12 +440,15 @@ public class Home implements Initializable {
             if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/EditDefScene.fxml"));
-                    AnchorPane editPane = fxmlLoader.load();
+                    Parent root = fxmlLoader.load();
                     EditDefController editDefController = fxmlLoader.getController();
                     editDefController.setHtmlContent(selectedWord.getHtml());
                     editDefController.setSelectedWord(selectedWord);
-                    editDefController.setMainPane(DefinitionPane);
-                    DefinitionPane.getChildren().setAll(editPane);
+
+                    Scene scene = new Scene(root);
+                    editDefController.display(scene);
+                    //editDefController.setHomeController(this);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -444,12 +456,15 @@ public class Home implements Initializable {
                 selectedWord = items.get(0);
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/EditDefScene.fxml"));
-                    AnchorPane editPane = fxmlLoader.load();
+                    Parent root = fxmlLoader.load();
                     EditDefController editDefController = fxmlLoader.getController();
                     editDefController.setHtmlContent(selectedWord.getHtml());
                     editDefController.setSelectedWord(selectedWord);
-                    editDefController.setMainPane(DefinitionPane);
-                    DefinitionPane.getChildren().setAll(editPane);
+
+                    Scene scene = new Scene(root);
+                    editDefController.display(scene);
+                    //editDefController.setHomeController(this);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -552,5 +567,24 @@ public class Home implements Initializable {
             ConnectDB.closeConnection();
         }
         return null;
+    }
+
+    public WebView getWebView() {
+        return webView;
+    }
+
+    public void setWebView(WebView webView) {
+        this.webView = webView;
+    }
+
+    // Method to update the WebView with new HTML content
+    public void updateWebView(String newHtmlContent) {
+        Platform.runLater(() -> {
+            if (newHtmlContent != null) {
+                webView.getEngine().loadContent(newHtmlContent);
+            } else {
+                webView.getEngine().loadContent("");
+            }
+        });
     }
 }

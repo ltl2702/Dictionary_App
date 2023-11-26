@@ -43,8 +43,30 @@ public class Word {
         return sequentialId;
     }
 
+    /*
     public String getHtml() {
         return html;
+    }
+     */
+
+    public String getHtml() {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
+            String fakeword = word.trim().replaceAll("\'", "''").toLowerCase();
+            String verify = "SELECT html FROM av1 WHERE LOWER(word) = '" + fakeword + "'";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(verify);
+
+            if (query.next()) {
+                String html = query.getString("html");
+                return html;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        } finally {
+            ConnectDB.closeConnection();
+        }
+        return null;
     }
 
     @Override
