@@ -207,10 +207,12 @@ public class Home implements Initializable {
             showHtmlContent(firstResult.getHtml());
             speakerButton.setDisable(false);
             saveButton.setDisable(false);
+            editDefButton.setDisable(false);
             updateSaveImage(id);
         } else {
             speakerButton.setDisable(true); // Tắt speakerButton
             saveButton.setDisable(true); //Tắt saveButton
+            editDefButton.setDisable(true);
         }
     }
 
@@ -422,21 +424,38 @@ public class Home implements Initializable {
 
     @FXML
     void editDefinition(ActionEvent event) {
-        Word selectedWord = listResult.getSelectionModel().getSelectedItem();
-        if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/EditDefScene.fxml"));
-                AnchorPane editPane = fxmlLoader.load();
-                EditDefController editDefController = fxmlLoader.getController();
-                editDefController.setHtmlContent(selectedWord.getHtml());
-                editDefController.setSelectedWord(selectedWord);
-                editDefController.setMainPane(DefinitionPane);
-                DefinitionPane.getChildren().setAll(editPane);
-            } catch (Exception e) {
-                e.printStackTrace();
+        ObservableList<Word> items = listResult.getItems();
+
+        if (!items.isEmpty()) {
+            Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+            if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/EditDefScene.fxml"));
+                    AnchorPane editPane = fxmlLoader.load();
+                    EditDefController editDefController = fxmlLoader.getController();
+                    editDefController.setHtmlContent(selectedWord.getHtml());
+                    editDefController.setSelectedWord(selectedWord);
+                    editDefController.setMainPane(DefinitionPane);
+                    DefinitionPane.getChildren().setAll(editPane);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (items.get(0) != Word.NOT_FOUND && !searchField.getText().trim().isEmpty()) {
+                selectedWord = items.get(0);
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/EditDefScene.fxml"));
+                    AnchorPane editPane = fxmlLoader.load();
+                    EditDefController editDefController = fxmlLoader.getController();
+                    editDefController.setHtmlContent(selectedWord.getHtml());
+                    editDefController.setSelectedWord(selectedWord);
+                    editDefController.setMainPane(DefinitionPane);
+                    DefinitionPane.getChildren().setAll(editPane);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("No word selected for editing definition.");
             }
-        } else {
-            System.out.println("No word selected for editing definition.");
         }
     }
 
