@@ -7,6 +7,9 @@
 .button:hover {
     -fx-border-width: 3px;
     -fx-border-color: red;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition: transform 0.3s ease;
 }
 .button:pressed {
     -fx-background-color: #013171;

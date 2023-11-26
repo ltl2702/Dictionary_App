@@ -56,7 +56,7 @@
                             </font>
                         </TextField>
 
-                        <Button id="searchA" fx:id="searchButton" layoutX="90.0" layoutY="20.0" mnemonicParsing="false" onAction="#searchOnAction" prefHeight="40.0" prefWidth="44.0" style="-fx-background-radius: 200; -fx-background-color: #fac400;" stylesheets="@../css/buttonhome.css">
+                        <Button id="searchA" fx:id="searchButton" layoutX="90.0" layoutY="20.0" mnemonicParsing="false" onAction="#searchOnAction" prefHeight="40.0" prefWidth="44.0" style="-fx-background-radius: 200; -fx-cursor: HAND; -fx-background-color: #fac400;" stylesheets="@../css/buttonhome.css">
                             <graphic>
                                 <ImageView fx:id="searchImage" fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: rgba(255,255,255,0);">
                                     <image>
@@ -68,7 +68,7 @@
                         <AnchorPane fx:id="DefinitionPane" layoutX="280.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="392.0" prefWidth="628.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                             <children>
                                 <WebView fx:id="webView" layoutX="14.0" layoutY="39.0" prefHeight="338.0" prefWidth="600.0" style="-fx-opacity: 1;" />
-                                <Button fx:id="speakerButton" contentDisplay="RIGHT" layoutX="392.0" mnemonicParsing="false" onAction="#speakClick" prefHeight="36.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0);" stylesheets="@../css/buttonhome.css" textFill="WHITE">
+                                <Button fx:id="speakerButton" contentDisplay="RIGHT" layoutX="392.0" mnemonicParsing="false" onAction="#speakClick" prefHeight="36.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0); -fx-cursor: HAND;" stylesheets="@../css/buttonhome.css" textFill="WHITE">
                                     <graphic>
                                         <ImageView fitHeight="37.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" style="fx-background-color: rgba(255,255,255,0);">
                                             <image>
@@ -80,16 +80,7 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </Button>
-                                <JFXButton fx:id="saveButton" layoutX="475.0" layoutY="2.0" onAction="#saveButtonOnAction" prefHeight="46.0" prefWidth="20.0" text=" ">
-                                    <graphic>
-                                        <ImageView fx:id="saveImage" fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../icon/love1.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </JFXButton>
-                                <Button fx:id="editDButton" layoutX="552.0" layoutY="7.0" mnemonicParsing="false" onAction="#editDefinition" prefHeight="32.0" prefWidth="30.0" style="-fx-background-color: #ffffff;">
+                                <Button fx:id="editDButton" layoutX="552.0" layoutY="7.0" mnemonicParsing="false" onAction="#editDefinition" prefHeight="32.0" prefWidth="30.0" style="-fx-background-color: #ffffff; -fx-cursor: HAND;" stylesheets="@../css/buttonhome.css">
                                     <graphic>
                                         <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -107,12 +98,21 @@
                                         </Label>
                                     </children>
                                 </AnchorPane>
+                        <Button fx:id="saveButton" layoutX="478.0" layoutY="2.0" mnemonicParsing="false" onAction="#saveButtonOnAction" style="-fx-background-color: white;" stylesheets="@../css/buttonhome.css" text=" ">
+                           <graphic>
+                                        <ImageView fx:id="saveImage" fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../icon/love1.png" />
+                                            </image>
+                                        </ImageView>
+                           </graphic>
+                        </Button>
                             </children>
                         </AnchorPane>
                     </children>
                 </AnchorPane>
                 <JFXButton layoutX="865.0" layoutY="13.0" text=" " />
-                <MenuButton fx:id="menuButton" layoutX="838.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0);" text=" ">
+                <MenuButton fx:id="menuButton" layoutX="838.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0);" stylesheets="@../css/buttonhome.css" text=" ">
                     <items>
                         <MenuItem fx:id="menuitemContributor" mnemonicParsing="false" onAction="#menuitemContributorOnAction" text="Contributor">
                             <graphic>
@@ -230,16 +230,19 @@
                         </JFXButton>
                     </children>
                 </AnchorPane>
-                <JFXButton fx:id="MenuClose" layoutX="14.0" layoutY="436.0" prefHeight="30.0" prefWidth="92.0" stylesheets="@../css/background.css" text="MENU">
-                    <graphic>
-                        <ImageView fx:id="menuimage1" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: HAND;">
-                            <image>
-                                <Image url="@../icon/menu.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </JFXButton>
-                <JFXButton fx:id="Menu" layoutX="14.0" layoutY="436.0" prefHeight="30.0" prefWidth="92.0" stylesheets="@../css/background.css" text="MENU">
+            <JFXButton fx:id="MenuClose" layoutX="14.0" layoutY="436.0" prefHeight="35.0" prefWidth="114.0" stylesheets="@../css/background.css" text="MENU" textFill="WHITE">
+               <graphic>
+                  <ImageView fx:id="menuimage111" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: HAND;">
+                     <image>
+                        <Image url="@../icon/menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+                <JFXButton fx:id="Menu" layoutX="14.0" layoutY="436.0" prefHeight="35.0" prefWidth="114.0" stylesheets="@../css/background.css" text="MENU" textFill="WHITE">
                     <graphic>
                         <ImageView fx:id="menuimage11" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: HAND;">
                             <image>
@@ -247,6 +250,9 @@
                             </image>
                         </ImageView>
                     </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
                 </JFXButton>
             </children>
         </AnchorPane>

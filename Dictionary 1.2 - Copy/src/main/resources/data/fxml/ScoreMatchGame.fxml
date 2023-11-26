@@ -39,7 +39,7 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="answerButton" layoutX="159.0" layoutY="344.0" onAction="#answerButtonOnAction" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: #283655; -fx-text-fill: white; -fx-cursor: hand;" text="Answer" textAlignment="CENTER">
+      <JFXButton fx:id="answerButton" layoutX="159.0" layoutY="344.0" onAction="#answerButtonOnAction" stylesheets="@../css/scoreboard.css" text="Answer" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>

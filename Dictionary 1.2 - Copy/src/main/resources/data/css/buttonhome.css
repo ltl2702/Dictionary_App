@@ -1,13 +1,23 @@
-
-.jfx-button:hover {
-    -fx-cursor: HAND;
-}
 .jfx-button:hover {
     -fx-background-color: yellow; /* Màu nền khi di chuột qua */
     -fx-text-fill: black; /* Màu chữ khi di chuột qua */
+    -fx-cursor: HAND;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition: transform 0.3s ease;
 }
 .jfx-button {
     -fx-text-fill: black /* Màu chữ khi không di chuột qua */
 }
-
-
+.button:hover {
+    -fx-cursor: HAND;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition: transform 0.3s ease;
+}
+.menu-button:hover {
+    -fx-cursor: HAND;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-transition: transform 0.3s ease;
+}

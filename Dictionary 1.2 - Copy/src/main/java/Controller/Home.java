@@ -75,13 +75,13 @@ public class Home implements Initializable {
     private ListView<Word> listResult;
 
     @FXML
-    private JFXButton saveButton;
+    private Button saveButton;
 
     @FXML
     private ImageView userimage;
 
     @FXML
-    private JFXButton favoriteButton;
+    private Button favoriteButton;
 
     @FXML
     private ImageView saveImage;

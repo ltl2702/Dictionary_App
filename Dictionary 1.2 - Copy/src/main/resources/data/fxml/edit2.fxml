@@ -15,9 +15,9 @@
    <children>
       <AnchorPane layoutX="29.0" layoutY="113.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="942.0" style="-fx-background-color: #283655; -fx-background-radius: 20;">
          <children>
-            <TabPane layoutX="378.0" layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0" style="-fx-border-radius: 5; -fx-background-radius: 20; -fx-border-width: 3; -fx-background-color: white; -fx-opacity: 1;" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutX="378.0" layoutY="23.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0" stylesheets="@../css/tabpane.css" tabClosingPolicy="UNAVAILABLE">
                <tabs>
-                  <Tab fx:id="addTab" text="Add">
+                  <Tab fx:id="addTab" style="-fx-cursor: HAND;" text="Add">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="355.0" prefWidth="632.0">
                            <children>
@@ -72,7 +72,7 @@
                         </ImageView>
                      </graphic>
                   </Tab>
-                  <Tab fx:id="removeTab" text="Remove">
+                  <Tab fx:id="removeTab" style="-fx-cursor: HAND;" text="Remove">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -120,7 +120,7 @@
                         </ImageView>
                      </graphic>
                   </Tab>
-                  <Tab fx:id="updateTab" text="Update">
+                  <Tab fx:id="updateTab" style="-fx-cursor: HAND;" text="Update">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
