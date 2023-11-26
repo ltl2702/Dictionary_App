@@ -75,25 +75,28 @@ public class EditDefController {
                     PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
                     preparedStatement.setString(1, newdef);
                     if (selectedWord != null) {
-                        preparedStatement.setString(2, selectedWord.toString());
-                        int rowsAffected = preparedStatement.executeUpdate();
+                        if(!newdef.equals(selectedWord.getHtml())) {
+                            System.out.println("Chua cap nhat");
+                        } else {
+                            preparedStatement.setString(2, selectedWord.toString());
+                            int rowsAffected = preparedStatement.executeUpdate();
 
-                        if (rowsAffected > 0) {
-                            System.out.println("Cập nhật thành công!");
-                            //if (homeController != null) {
+                            if (rowsAffected > 0) {
+                                System.out.println("Cập nhật thành công!");
                                 System.out.println("home Controller is not null.");
 
                                 Home homeController = Home.getInstance();
 
-                            if (homeController != null) {
-                                // Sử dụng thể hiện của Home controller để cập nhật WebView
-                                homeController.updateWebView(newdef);
-                                window.close();
+                                if (homeController != null) {
+                                    // Sử dụng thể hiện của Home controller để cập nhật WebView
+                                    homeController.updateWebView(newdef);
+                                    window.close();
+                                } else {
+                                    System.out.println("Home Controller is null");
+                                }
                             } else {
-                                System.out.println("Home Controller is null");
+                                System.out.println("WebView is null.");
                             }
-                        } else {
-                            System.out.println("WebView is null.");
                         }
                     } else {
                         System.out.println("Không tìm thấy từ để cập nhật.");
