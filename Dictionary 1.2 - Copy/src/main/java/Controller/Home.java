@@ -117,6 +117,8 @@ public class Home implements Initializable {
             }
         });
 
+        htmlEditor.setHtmlText((listResult.getSelectionModel().getSelectedItem()).getHtml());
+
     }
 
     private void updateSaveImage(int wordId, String username) {
