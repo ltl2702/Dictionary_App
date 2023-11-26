@@ -1,0 +1,23 @@
+/* Dòng trong bảng */
+.table-row-cell {
+    -fx-background-color: #f9f9f9; /* Màu nền của các dòng lẻ */
+    -fx-border-color: #ddd;
+    -fx-text-fill: black; /* Màu chữ của các dòng */
+}
+
+/* Dòng chẵn của bảng */
+.table-row-cell:odd {
+    -fx-background-color: #f2f2f2; /* Màu nền của các dòng chẵn */
+}
+
+/* Ô trong bảng */
+.table-cell {
+    -fx-padding: 10px; /* Khoảng cách giữa nội dung và đường viền */
+    -fx-border-color: #ddd;
+    -fx-text-fill: black; /* Màu chữ của các ô */
+}
+
+/* Hover trên các dòng của bảng */
+.table-row-cell:hover {
+    -fx-background-color: #d0e1f9;
+}
