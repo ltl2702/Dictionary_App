@@ -60,6 +60,7 @@
             </JFXButton>
             <AnchorPane layoutX="33.0" layoutY="51.0" prefHeight="221.0" prefWidth="224.0" style="-fx-background-color: #fac400; -fx-background-radius: 180;">
                <children>
+                  <AnchorPane layoutX="20.0" layoutY="22.0" prefHeight="177.0" prefWidth="182.0" style="-fx-background-color: white; -fx-background-radius: 360;" />
                   <ImageView fx:id="userimage" fitHeight="195.0" fitWidth="194.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../user/user14.png" />
