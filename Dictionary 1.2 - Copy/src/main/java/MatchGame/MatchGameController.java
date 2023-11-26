@@ -2,6 +2,7 @@ package MatchGame;
 
 import Connect.ConnectDB;
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -13,9 +14,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -65,6 +69,12 @@ public class MatchGameController {
 
     @FXML
     private Label timeLabel;
+
+    @FXML
+    private JFXButton PauseButton;
+
+    @FXML
+    private ImageView pauseImage;
 
     private List<String> list = new ArrayList<>();
 
@@ -490,5 +500,20 @@ public class MatchGameController {
             ConnectDB.closeConnection();
         }
         return null;
+    }
+
+    @FXML
+    void PauseButtonOnAction(ActionEvent event) {
+        if (countdown != null) {
+            if (countdown.getStatus() == Timeline.Status.RUNNING) {
+                countdown.pause();
+                Image image = new Image(getClass().getResourceAsStream("/data/icon/pause.png"));
+                pauseImage.setImage(image);
+            } else {
+                countdown.play();
+                Image image = new Image(getClass().getResourceAsStream("/data/icon/play.png"));
+                pauseImage.setImage(image);
+            }
+        }
     }
 }

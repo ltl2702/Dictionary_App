@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -87,5 +89,14 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <JFXButton fx:id="PauseButton" layoutX="766.0" layoutY="24.0" onAction="#PauseButtonOnAction" text=" ">
+         <graphic>
+            <ImageView fx:id="pauseImage" fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/play.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>
