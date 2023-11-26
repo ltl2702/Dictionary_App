@@ -44,10 +44,11 @@ public class Home implements Initializable {
     public JFXButton translateButton, editButton, homeButton, userButton;
     public AnchorPane menuPane;
     public ImageView searchImage, homeImage;
+
     private Stage stage;
 
     @FXML
-    private AnchorPane homePane, slider, DefinitionPane, editHomePane;
+    private AnchorPane homePane, slider, DefinitionPane, FunctionalPane;
 
     @FXML
     private JFXButton Menu, MenuClose;
@@ -81,13 +82,39 @@ public class Home implements Initializable {
     @FXML
     private ImageView saveImage;
 
-    @FXML
-    private Button editDefButton, discardButton, submitButton;
-
-    @FXML
-    private HTMLEditor htmlEditor;
+    public Button editDButton;
 
     private ObservableList<Word> list = FXCollections.observableArrayList();
+    @FXML
+    private AnchorPane EditPane;
+
+    @FXML
+    void editDefinition(ActionEvent event) {
+        Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+
+        if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/EditDefScene.fxml"));
+                AnchorPane editPane = fxmlLoader.load();
+
+                EditDefController editDefController = fxmlLoader.getController();
+
+                editDefController.setHtmlContent(selectedWord.getHtml());
+
+                editDefController.setSelectedWord(selectedWord);
+
+                editDefController.setMainPane(DefinitionPane);
+
+                DefinitionPane.getChildren().setAll(editPane);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("No word selected for editing definition.");
+        }
+    }
+
+
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         slider.setTranslateX(-400);
@@ -116,8 +143,6 @@ public class Home implements Initializable {
                 updateSaveImage(selectedWord.getId(), username.getText());
             }
         });
-
-        htmlEditor.setHtmlText((listResult.getSelectionModel().getSelectedItem()).getHtml());
 
     }
 
@@ -383,6 +408,21 @@ public class Home implements Initializable {
     void translateButtonOnAction(ActionEvent event) {
         loadFXMLInBackground("/data/fxml/translate.fxml");
     }
+    @FXML
+    void signoutButtonOnAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Welcome.class.getResource("/data/fxml/background.fxml"));
+            Parent root = fxmlLoader.load();
+            Welcome welcomeController = fxmlLoader.getController();
+            welcomeController.initializeStage(stage);
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
+    }
 
     private TextField username;
     @FXML
@@ -433,23 +473,6 @@ public class Home implements Initializable {
         }
     }
 
-    public void editDefinition(ActionEvent event){
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/EditDefScene.fxml"));
-            AnchorPane editPane = fxmlLoader.load();
-            DefinitionPane.getChildren().setAll(editPane);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void discardChanges() {
-
-    }
-
-    public void submitEdition() {
-
-    }
 
     @FXML
     void menuitemContributorOnAction(ActionEvent event) {
@@ -525,4 +548,9 @@ public class Home implements Initializable {
         }
     }
 
+    public void discardChanges(ActionEvent actionEvent) {
+    }
+
+    public void submitEdition(ActionEvent actionEvent) {
+    }
 }
