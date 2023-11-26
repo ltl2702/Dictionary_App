@@ -1,7 +1,6 @@
 package MatchGame;
 
 import Connect.ConnectDB;
-import com.jfoenix.controls.JFXButton;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -11,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,40 +29,40 @@ import java.util.List;
 public class MatchGameController {
 
     @FXML
-    private JFXButton card1;
+    private Button card1;
 
     @FXML
-    private JFXButton card10;
+    private Button card10;
 
     @FXML
-    private JFXButton card11;
+    private Button card11;
 
     @FXML
-    private JFXButton card12;
+    private Button card12;
 
     @FXML
-    private JFXButton card2;
+    private Button card2;
 
     @FXML
-    private JFXButton card3;
+    private Button card3;
 
     @FXML
-    private JFXButton card4;
+    private Button card4;
 
     @FXML
-    private JFXButton card5;
+    private Button card5;
 
     @FXML
-    private JFXButton card6;
+    private Button card6;
 
     @FXML
-    private JFXButton card7;
+    private Button card7;
 
     @FXML
-    private JFXButton card8;
+    private Button card8;
 
     @FXML
-    private JFXButton card9;
+    private Button card9;
 
     @FXML
     private Label scoreLabel;
@@ -71,7 +71,7 @@ public class MatchGameController {
     private Label timeLabel;
 
     @FXML
-    private JFXButton PauseButton;
+    private Button PauseButton;
 
     @FXML
     private ImageView pauseImage;
@@ -81,7 +81,7 @@ public class MatchGameController {
     private boolean isButtonPressed = false;
     private boolean isButtonClickable = true;
     private boolean isGamePaused = false;
-    private JFXButton firstPressedButton;
+    private Button firstPressedButton;
 
     private int score = 0;
     private int currentscore = 0;
@@ -280,14 +280,14 @@ public class MatchGameController {
         return (ArrayList<String>) word;
     }
 
-    private void handleButtonClick(JFXButton button) {
+    private void handleButtonClick(Button button) {
        if (!isGamePaused) {
            if (isButtonClickable) {
                if (!isButtonPressed) {
                    // Nếu chưa có nút nào được nhấn trước đó
                    firstPressedButton = button;
                    isButtonPressed = true;
-                   button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
+                   button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;-fx-background-color: #4d658d;-fx-text-fill: white");
                } else {
                    // Đã có một nút được nhấn trước đó
                    if (button != firstPressedButton) {
@@ -296,7 +296,7 @@ public class MatchGameController {
                        if (isPair(firstPressedButton, button)) {
                            System.out.println("trueeeeee");
                            // Nếu là cặp, triệt tiêu chúng
-                           button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
+                           button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;-fx-background-color: #4d658d;-fx-text-fill: white");
                            firstPressedButton.setDisable(true);
                            button.setDisable(true);
                            // Delay for 1 second before hiding the matched cards
@@ -328,15 +328,15 @@ public class MatchGameController {
                            System.out.println("false");
                            System.out.println(getWord(firstPressedButton.getText()));
                            System.out.println(getWord(button.getText()));
-                           button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
+                           button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;-fx-background-color: #4d658d;-fx-text-fill: white");
                            firstPressedButton.setDisable(false);
                            button.setDisable(false);
                            // Animation for the mismatched cards
                            animation(firstPressedButton);
                            animation(button);
                            // Đặt lại màu border về màu đen
-                           firstPressedButton.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;");
-                           button.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;");
+                           firstPressedButton.setStyle("-fx-border-color: black; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
+                           button.setStyle("-fx-border-color: black; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
                            // Delay for 1 second before resetting the state
                            Timeline pause = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
                                // Reset trạng thái
@@ -350,7 +350,7 @@ public class MatchGameController {
                        isButtonPressed = false;
                        firstPressedButton = null;
                        isButtonClickable = true;
-                       button.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;");
+                       button.setStyle("-fx-border-color: black; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
                    }
                }
            }
@@ -362,7 +362,7 @@ public class MatchGameController {
         return wordAnswer;
     }
 
-    private boolean isPair(JFXButton button1, JFXButton button2) {
+    private boolean isPair(Button button1, Button button2) {
         // Kiểm tra xem 2 nút có tạo thành cặp hay không
         //word word, word des, des word, des des
         String description1 = button1.getText();
@@ -389,7 +389,7 @@ public class MatchGameController {
     }
 
 /*
-    private boolean isPair(JFXButton button1, JFXButton button2) {
+    private boolean isPair(Button button1, Button button2) {
         // Kiểm tra xem 2 nút có tạo thành cặp hay không
         String description1 = button1.getText();
         String description2 = button2.getText();
@@ -400,7 +400,7 @@ public class MatchGameController {
     }
      */
 
-    private void animation(JFXButton button) {
+    private void animation(Button button) {
         //Vị trí ban đầu
         double x = button.getTranslateX();
         Timeline timeline = new Timeline(
