@@ -95,6 +95,7 @@ public class Score {
 
             MenuMatchGame MenuController = fxmlLoader2.getController();
             MenuController.setmainpane(mainpane);
+            MenuController.setUserID(userID);
 
         } catch (Exception ex) {
             ex.printStackTrace();

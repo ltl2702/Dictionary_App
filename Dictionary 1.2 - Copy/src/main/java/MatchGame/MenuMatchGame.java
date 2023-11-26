@@ -24,6 +24,9 @@ public class MenuMatchGame {
             FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("/data/fxml/gameController.fxml"));
             AnchorPane gamepane = fxmlLoader.load();
             mainpane.getChildren().setAll(gamepane);
+
+            GameController gameController = fxmlLoader.getController();
+            gameController.setUserID(userID);
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
