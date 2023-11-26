@@ -16,7 +16,7 @@ public class MenuMatchGame {
     @FXML
     private JFXButton playButton;
     private AnchorPane mainpane;
-    private TextField username;
+    private int userID;
 
     @FXML
     void exitButtonOnAction(ActionEvent event) {
@@ -32,7 +32,6 @@ public class MenuMatchGame {
 
     @FXML
     void playButtonOnAction(ActionEvent event) {
-        System.out.println("Play button: " + username.getText());
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MatchGameController.class.getResource("/data/fxml/MatchGame.fxml"));
             AnchorPane gamepane = fxmlLoader.load();
@@ -41,7 +40,8 @@ public class MenuMatchGame {
             MatchGameController gameController = fxmlLoader.getController();
             //userController.userLogin();
             gameController.setmainpane(mainpane);
-            gameController.setUsername(username);
+            //gameController.setUsername(username);
+            gameController.setUserID(userID);
             gameController.initialize();
             //userController.setStage(stage);
         } catch (Exception ex) {
@@ -54,7 +54,7 @@ public class MenuMatchGame {
         this.mainpane = gamepane;
     }
 
-    public void setUsername(TextField username) {
-        this.username = username;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

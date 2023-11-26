@@ -44,13 +44,13 @@ public class User implements Initializable {
     @FXML
     private Label usernameLabel;
 
-    private TextField username;
     private AnchorPane userpane;
     private Stage stage;
+    private int userID;
 
     void userLogin() {
             try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
-                String select = "SELECT firstname, lastname, username, image FROM account WHERE username = '" + username.getText() + "'";
+                String select = "SELECT firstname, lastname, username, image FROM account WHERE username = '" + getUserName() + "'";
                 Statement statement = connectDatabase.createStatement();
                 ResultSet query = statement.executeQuery(select);
                 if (query.next()) {
@@ -83,7 +83,7 @@ public class User implements Initializable {
             userpane.getChildren().setAll(updatepane);
 
             UpdateAcc updateController = fxmlLoader.getController();
-            updateController.setusername(username);
+            updateController.setUserID(userID);
             updateController.setuserImage();
             updateController.setMainpane(userpane);
         } catch (Exception ex) {
@@ -114,15 +114,33 @@ public class User implements Initializable {
 
     }
 
-    public void setUsername(TextField username) {
-        this.username = username;
-    }
-
     public void setmainpane(AnchorPane homePane) {
         this.userpane = homePane;
     }
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public String getUserName() {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
+            String verify = "SELECT username FROM account WHERE ID = '" + userID + "'";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(verify);
+            if (query.next()) {
+                String USERNAME = query.getString("username");
+                return USERNAME;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        } finally {
+            ConnectDB.closeConnection();
+        }
+        return null;
     }
 }

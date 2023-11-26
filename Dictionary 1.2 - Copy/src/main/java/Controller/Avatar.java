@@ -1,10 +1,13 @@
 package Controller;
 
+import Connect.Alerter;
 import Connect.ConnectDB;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -18,16 +21,12 @@ public class Avatar {
 
     @FXML
     private JFXButton user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, user11, user12, user13, user14, user15, user16;
-
-    @FXML
-    private Label avtLabel;
-
-    private TextField username;
+    
     //private Stage window;
     private AnchorPane mainpane;
+    private int userID;
 
     void display() {
-        System.out.println(username.getText());
         user1.setOnAction(e -> {
             action(1);
         });
@@ -80,21 +79,15 @@ public class Avatar {
 
     public void action(int imageNum) {
         try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
-            String userName = username.getText();
-            String verify = "SELECT COUNT(*) AS counter" +
-                    " FROM account WHERE username = '" + userName + "'";
+            String update = "UPDATE account SET image = '" + imageNum + "' WHERE id = '" + userID + "'";
             Statement statement = connectDatabase.createStatement();
-            ResultSet query = statement.executeQuery(verify);
-            if (query.next()) {
-                String getID = "SELECT ID FROM account WHERE username = '" + userName + "'";
-                ResultSet IDquery = statement.executeQuery(getID);
-                if (IDquery.next()) {
-                    int id = IDquery.getInt("id");
-                    String update = "UPDATE account SET image = '" + imageNum + "' WHERE id = '" + id + "'";
-                    statement.executeUpdate(update);
-                    avtLabel.setText("You have successfully changed your profile picture.");
-                }
-            }
+            statement.executeUpdate(update);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            Alerter alertControler = fxmlLoader.getController();
+            alertControler.display("You have successfully changed your profile picture.", "/data/icon/like2.gif", scene);
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
@@ -111,7 +104,8 @@ public class Avatar {
             mainpane.getChildren().setAll(updatepane);
 
             UpdateAcc updateController = fxmlLoader.getController();
-            updateController.setusername(username);
+            //updateController.setusername(username);
+            updateController.setUserID(userID);
             updateController.setuserImage();
             updateController.setMainpane(mainpane);
         } catch (Exception ex) {
@@ -119,16 +113,16 @@ public class Avatar {
             ex.getCause();
         }
     }
-
-    public void setusername(TextField username) {
-        this.username = username;
-    }
-
+    
     //public void setStage(Stage window) {
     //this.window = window;
     //}
 
     public void setmainpane(AnchorPane mainpane) {
         this.mainpane = mainpane;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

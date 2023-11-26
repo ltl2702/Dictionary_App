@@ -68,8 +68,6 @@ public class MatchGameController {
 
     private List<String> list = new ArrayList<>();
 
-    private TextField username;
-
     private boolean isButtonPressed = false;
     private boolean isButtonClickable = true;
     private JFXButton firstPressedButton;
@@ -81,11 +79,12 @@ public class MatchGameController {
     private AnchorPane mainpane;
 
     private ArrayList<String> wordAnswer = new ArrayList<>();
+    private int userID;
 
-    private void loadDataFromDatabase(TextField username) {
+    private void loadDataFromDatabase(String username) {
         try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             //Verifies.
-            String verify = "SELECT av1.word, av1.description, av1.id FROM av1 WHERE av1.description IS NOT NULL AND av1.description != '' AND av1.id IN (SELECT SavedWord.English_id FROM SavedWord WHERE SavedWord.English_id = av1.id AND SavedWord.User_id = '" + username.getText() + "') " +
+            String verify = "SELECT av1.word, av1.description, av1.id FROM av1 WHERE av1.description IS NOT NULL AND av1.description != '' AND av1.id IN (SELECT SavedWord.English_id FROM SavedWord WHERE SavedWord.English_id = av1.id AND SavedWord.User_id = '" + username + "') " +
                     "ORDER BY RANDOM() LIMIT 6";
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(verify);
@@ -105,10 +104,7 @@ public class MatchGameController {
             ConnectDB.closeConnection();
         }
     }
-/*
-String verify = "SELECT av1.word, av1.description, av1.id FROM av1 WHERE av1.description IS NOT NULL AND av1.description != '' AND av1.id IN (SELECT SavedWord.English_id FROM SavedWord WHERE SavedWord.English_id = av1.id AND SavedWord.User_id = '" + username.getText() + "') " +
-                        "ORDER BY RANDOM() LIMIT 6";
- */
+
     private void updateButtonText() {
         Collections.shuffle(list);
         card1.setText(list.get(0));
@@ -444,10 +440,12 @@ String verify = "SELECT av1.word, av1.description, av1.id FROM av1 WHERE av1.des
     }
 
     public void initialize() {
-        if (username != null) {
-            System.out.println("Initialize: " + this.username.getText());
+        if (getUserName() == null) {
+            System.out.println("Game: false");
+        } else {
+            System.out.println(getUserName());
 
-            loadDataFromDatabase(this.username);
+            loadDataFromDatabase(getUserName());
             updateButtonText();
             scoreLabel.setText(String.valueOf(0));
             timeLabel.setText(String.valueOf(formatTime(90)));
@@ -465,8 +463,6 @@ String verify = "SELECT av1.word, av1.description, av1.id FROM av1 WHERE av1.des
             card10.setOnAction(event -> handleButtonClick(card10));
             card11.setOnAction(event -> handleButtonClick(card11));
             card12.setOnAction(event -> handleButtonClick(card12));
-        } else {
-            System.out.println("Game username: null");
         }
     }
 
@@ -474,7 +470,25 @@ String verify = "SELECT av1.word, av1.description, av1.id FROM av1 WHERE av1.des
         this.mainpane = mainpane;
     }
 
-    public void setUsername(TextField username) {
-        this.username = username;
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public String getUserName() {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
+            String verify = "SELECT username FROM account WHERE ID = '" + userID + "'";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(verify);
+            if (query.next()) {
+                String USERNAME = query.getString("username");
+                return USERNAME;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        } finally {
+            ConnectDB.closeConnection();
+        }
+        return null;
     }
 }

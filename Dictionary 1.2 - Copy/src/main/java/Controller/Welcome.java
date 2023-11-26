@@ -82,7 +82,8 @@ public class Welcome implements Initializable {
                             Parent root = fxmlLoader.load();
                             Home homeController = fxmlLoader.getController();
                             homeController.setStage(stage);
-                            homeController.setUsername(usernamefill);
+                            //homeController.setUsername(usernamefill);
+                            homeController.setUserID(getUserID());
                             homeController.userLogin();
 
                             Scene scene = new Scene(root);
@@ -160,5 +161,24 @@ public class Welcome implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    public int getUserID() {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
+            String userName = usernamefill.getText();
+            String verify = "SELECT ID FROM account WHERE username = '" + userName + "'";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(verify);
+            if (query.next()) {
+                int id = query.getInt("id");
+                return id;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        } finally {
+            ConnectDB.closeConnection();
+        }
+        return 0;
     }
 }

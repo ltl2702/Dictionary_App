@@ -4,7 +4,6 @@ import API.TextToSpeechFreetts;
 import Connect.ConnectDB;
 import Dictionary.DictionaryManagement;
 import Dictionary.Word;
-import QuizGamee.QuestionController;
 import QuizGamee.QuizResultController;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
@@ -84,6 +83,7 @@ public class Home implements Initializable {
     private Button editDefButton;
 
     private ObservableList<Word> list = FXCollections.observableArrayList();
+    private int userID;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         slider.setTranslateX(-400);
@@ -109,14 +109,14 @@ public class Home implements Initializable {
                 updateSearchField(selectedWord);
                 showHtmlContent(selectedWord.getHtml());
                 // Update the saveImage based on whether the word is saved or not
-                updateSaveImage(selectedWord.getId(), username.getText());
+                updateSaveImage(selectedWord.getId());
             }
         });
 
     }
 
-    private void updateSaveImage(int wordId, String username) {
-        boolean isSaved = isWordSaved(wordId, username);
+    private void updateSaveImage(int wordId) {
+        boolean isSaved = isWordSaved(wordId, getUserName());
         if (isSaved) {
             Image image = new Image(getClass().getResourceAsStream("/data/icon/love2.png"));
             saveImage.setImage(image);
@@ -207,7 +207,7 @@ public class Home implements Initializable {
             showHtmlContent(firstResult.getHtml());
             speakerButton.setDisable(false);
             saveButton.setDisable(false);
-            updateSaveImage(id, username.getText());
+            updateSaveImage(id);
         } else {
             speakerButton.setDisable(true); // Tắt speakerButton
             saveButton.setDisable(true); //Tắt saveButton
@@ -266,17 +266,16 @@ public class Home implements Initializable {
 
         if (!items.isEmpty()) {
             Word selectedWord = listResult.getSelectionModel().getSelectedItem();
-            System.out.println(username.getText());
 
             if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
                 int wordId = selectedWord.getId();
 
                 // Check if the word is already saved
-                boolean isSaved = isWordSaved(wordId, username.getText());
+                boolean isSaved = isWordSaved(wordId, getUserName());
 
                 if (isSaved) {
                     // If the word is saved, remove it from the SavedWord table
-                    DictionaryManagement.removeSavedWord(wordId, username.getText());
+                    DictionaryManagement.removeSavedWord(wordId, getUserName());
                     Image image = new Image(getClass().getResourceAsStream("/data/icon/love1.png"));
                     saveImage.setImage(image);
 
@@ -284,7 +283,7 @@ public class Home implements Initializable {
                     System.out.println("Word removed from SavedWord table.");
                 } else {
                     // If the word is not saved, save it to the SavedWord table
-                    DictionaryManagement.saveWordToSavedWord(wordId, username.getText());
+                    DictionaryManagement.saveWordToSavedWord(wordId, getUserName());
                     Image image = new Image(getClass().getResourceAsStream("/data/icon/love2.png"));
                     saveImage.setImage(image);
 
@@ -296,11 +295,11 @@ public class Home implements Initializable {
                 int wordId = selectedWord.getId();
 
                 // Check if the word is already saved
-                boolean isSaved = isWordSaved(wordId, username.getText());
+                boolean isSaved = isWordSaved(wordId, getUserName());
 
                 if (isSaved) {
                     // If the word is saved, remove it from the SavedWord table
-                    DictionaryManagement.removeSavedWord(wordId, username.getText());
+                    DictionaryManagement.removeSavedWord(wordId, getUserName());
                     Image image = new Image(getClass().getResourceAsStream("/data/icon/love1.png"));
                     saveImage.setImage(image);
 
@@ -308,7 +307,7 @@ public class Home implements Initializable {
                     System.out.println("Word removed from SavedWord table.");
                 } else {
                     // If the word is not saved, save it to the SavedWord table
-                    DictionaryManagement.saveWordToSavedWord(wordId, username.getText());
+                    DictionaryManagement.saveWordToSavedWord(wordId, getUserName());
                     Image image = new Image(getClass().getResourceAsStream("/data/icon/love2.png"));
                     saveImage.setImage(image);
 
@@ -329,7 +328,10 @@ public class Home implements Initializable {
             AnchorPane homepane2 = fxmlLoader.load();
             homePane.getChildren().setAll(homepane2);
             Home homeController = fxmlLoader.getController();
-            homeController.setUsername(username);
+            //homeController.setUsername(username);
+            homeController.setUserID(userID);
+            homeController.userLogin();
+            homeController.setStage(stage);
             closeMenu();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -349,7 +351,7 @@ public class Home implements Initializable {
             homePane.getChildren().setAll(homepane2);
 
             SaveWord saveController = fxmlLoader.getController();
-            saveController.setusername(username);
+            saveController.setusername(getUserName());
             saveController.display();
             closeMenu();
         } catch (Exception ex) {
@@ -360,14 +362,14 @@ public class Home implements Initializable {
 
     @FXML
     void gameButtonOnAction(ActionEvent event) {
-        System.out.println(username.getText());
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("/data/fxml/gameController.fxml"));
             AnchorPane gamepane = fxmlLoader.load();
             homePane.getChildren().setAll(gamepane);
             closeMenu();
             GameController gameController = fxmlLoader.getController();
-            gameController.setUsername(username);
+            //gameController.setUsername(username);
+            gameController.setUserID(userID);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -378,10 +380,8 @@ public class Home implements Initializable {
         loadFXMLInBackground("/data/fxml/translate.fxml");
     }
 
-    private TextField username;
     @FXML
     void userButtonOnAction(ActionEvent event) {
-        System.out.println(username.getText());
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
             AnchorPane userpane = fxmlLoader.load();
@@ -390,7 +390,8 @@ public class Home implements Initializable {
             closeMenu();
 
             User userController = fxmlLoader.getController();
-            userController.setUsername(username);
+            //userController.setUsername(username);
+            userController.setUserID(userID);
             userController.userLogin();
             userController.setmainpane(homePane);
             userController.setStage(stage);
@@ -402,14 +403,6 @@ public class Home implements Initializable {
 
     public void setStage(Stage stage) {
         this.stage = stage;
-    }
-
-    public void setUsername(TextField usernamefill) {
-        this.username = usernamefill;
-    }
-
-    public TextField getUsername() {
-        return username;
     }
 
     public void speakClick(ActionEvent actionEvent) {
@@ -456,7 +449,6 @@ public class Home implements Initializable {
 
     @FXML
     void menuitemInfoOnAction(ActionEvent event) {
-        System.out.println(username.getText());
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
             AnchorPane userpane = fxmlLoader.load();
@@ -465,7 +457,8 @@ public class Home implements Initializable {
             closeMenu();
 
             User userController = fxmlLoader.getController();
-            userController.setUsername(username);
+            //userController.setUsername(username);
+            userController.setUserID(userID);
             userController.userLogin();
             userController.setmainpane(homePane);
             userController.setStage(stage);
@@ -492,9 +485,8 @@ public class Home implements Initializable {
     }
 
     void userLogin() {
-        System.out.println(username.getText());
         try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
-            String select = "SELECT image FROM account WHERE username = '" + username.getText() + "'";
+            String select = "SELECT image FROM account WHERE ID = '" + userID + "'";
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(select);
             if (query.next()) {
@@ -513,4 +505,25 @@ public class Home implements Initializable {
         }
     }
 
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public String getUserName() {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
+            String verify = "SELECT username FROM account WHERE ID = '" + userID + "'";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(verify);
+            if (query.next()) {
+                String USERNAME = query.getString("username");
+                return USERNAME;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        } finally {
+            ConnectDB.closeConnection();
+        }
+        return null;
+    }
 }

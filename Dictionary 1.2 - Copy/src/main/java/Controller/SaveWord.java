@@ -33,13 +33,13 @@ public class SaveWord {
 
     @FXML
     private TableView<Word> table;
-    private TextField username;
+    private String username;
 
     public void display() {
         try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String select = "SELECT av1.id, av1.word, av1.pronounce, av1.description " +
                     "FROM av1 " +
-                    "WHERE av1.id IN (SELECT English_id FROM SavedWord WHERE SavedWord.User_id = '" + username.getText() + "')";
+                    "WHERE av1.id IN (SELECT English_id FROM SavedWord WHERE SavedWord.User_id = '" + username + "')";
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(select);
             List<Word> wordList = new ArrayList<>();
@@ -73,7 +73,7 @@ public class SaveWord {
         }
     }
 
-    public void setusername(TextField username) {
+    public void setusername(String username) {
         this.username = username;
     }
 }
