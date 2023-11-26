@@ -9,33 +9,33 @@
     <children>
         <Label layoutX="237.0" layoutY="48.0" text="Result">
             <font>
-                <Font name="Arial Black" size="36.0" />
+                <Font name="Arial Black" size="40.0" />
             </font>
         </Label>
         <Label fx:id="yourScore" alignment="CENTER" layoutX="202.0" layoutY="146.0" prefHeight="54.0" prefWidth="197.0" text="Your score:">
             <font>
-                <Font name="Arial Bold" size="18.0" />
+                <Font name="Arial Bold" size="20.0" />
             </font>
         </Label>
-        <Label fx:id="correct" layoutX="128.0" layoutY="232.0" text="Correct answers:" textFill="#00bf40">
+        <Label fx:id="correct" layoutX="69.0" layoutY="232.0" text="Correct answers:" textFill="#00bf40">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="wrong" layoutX="346.0" layoutY="232.0" text="Incorrect anwers:" textFill="#c70000">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <JFXButton fx:id="replay" layoutX="411.0" layoutY="311.0" onAction="#replayOnAction" style="-fx-border-color: black; -fx-border-radius: 5; -fx-cursor: Hand;" text="Replay" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
-        </Label>
-        <Label fx:id="wrong" layoutX="380.0" layoutY="232.0" text="Incorrect anwers:" textFill="#c70000">
+        </JFXButton>
+        <JFXButton fx:id="exit" layoutX="482.0" layoutY="311.0" onAction="#exitOnAction" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-cursor: hand;" text="Exit" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
-        </Label>
-      <JFXButton fx:id="replay" layoutX="411.0" layoutY="311.0" onAction="#replayOnAction" style="-fx-border-color: black; -fx-border-radius: 5;" text="Replay" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="exit" layoutX="482.0" layoutY="311.0" onAction="#exitOnAction" prefHeight="25.0" prefWidth="55.0" style="-fx-border-color: black; -fx-border-radius: 5;" text="Exit" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXButton>
+        </JFXButton>
     </children>
 </AnchorPane>
