@@ -67,7 +67,6 @@ public class Home implements Initializable {
     private ImageView saveImage;
 
     private ObservableList<Word> list = FXCollections.observableArrayList();
-    private boolean checklogin, checksignup;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         slider.setTranslateX(-400);
@@ -355,7 +354,7 @@ public class Home implements Initializable {
     private TextField username;
     @FXML
     void userButtonOnAction(ActionEvent event) {
-        System.out.println("Home check login: " + checklogin);
+        System.out.println(username.getText());
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
             AnchorPane userpane = fxmlLoader.load();
@@ -364,14 +363,7 @@ public class Home implements Initializable {
             closeMenu();
 
             User userController = fxmlLoader.getController();
-            if(checklogin) {
-                userController.setUsernameLogin(username);
-                userController.setCheckLogin(checklogin);
-            }
-            else if(checksignup) {
-                userController.setUsernameSignup(username);
-                userController.setCheckSignup(checksignup);
-            }
+            userController.setUsername(username);
             userController.userLogin();
             userController.setmainpane(homePane);
             userController.setStage(stage);
@@ -387,14 +379,6 @@ public class Home implements Initializable {
 
     public void setUsername(TextField usernamefill) {
         this.username = usernamefill;
-    }
-
-    public void setCheckLogin(boolean check) {
-        this.checklogin = check;
-    }
-
-    public void setCheckSignup(boolean check) {
-        this.checksignup = check;
     }
 
     public void speakClick(ActionEvent actionEvent) {

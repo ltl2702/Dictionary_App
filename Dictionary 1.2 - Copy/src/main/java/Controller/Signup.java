@@ -52,12 +52,6 @@ public class Signup implements Initializable {
         return usernamefill.getText();
     }
 
-    public boolean check = false;
-
-    public boolean isCheck() {
-        return check;
-    }
-
     @FXML
     void signupButtonOnAction(ActionEvent event) {
         if (!usernamefill.getText().isBlank() && !passwordfill.getText().isBlank() && !firstnamefill.getText().isBlank() && !lastnamefill.getText().isBlank())
@@ -88,7 +82,6 @@ public class Signup implements Initializable {
                             + first + "','" + last + "','" + user + "','" + pass + "')";
                     statement.executeUpdate(add);
                     invalidLabel.setText("User has been registered successfully!");
-                    check = true;
                     System.out.println(getUsernamefill());
                     try {
                         FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/wtf.fxml"));
@@ -97,7 +90,6 @@ public class Signup implements Initializable {
                         Home homeController = fxmlLoader.getController();
                         homeController.setStage(stage);
                         homeController.setUsername(usernamefill);
-                        homeController.setCheckSignup(check);
 
                         Scene scene = new Scene(root);
                         loading(scene);

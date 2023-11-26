@@ -58,12 +58,6 @@ public class Welcome implements Initializable {
         this.usernamefill = usernamefill;
     }
 
-    public boolean check = false;
-
-    public boolean isCheck() {
-        return check;
-    }
-
     @FXML
     public void loginButtonOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         if (!usernamefill.getText().isBlank() && !passwordfill.getText().isBlank()) {
@@ -80,7 +74,6 @@ public class Welcome implements Initializable {
                         invalidLabel.setText("Invalid Login. Please try again.");
                     else {
                         invalidLabel.setText("Congratulations!!!");
-                        check = true;
                         //setUsernamefill(usernamefill);
                         System.out.println(getUsernamefill());
                         try {
@@ -90,7 +83,6 @@ public class Welcome implements Initializable {
                             Home homeController = fxmlLoader.getController();
                             homeController.setStage(stage);
                             homeController.setUsername(usernamefill);
-                            homeController.setCheckLogin(check);
 
                             Scene scene = new Scene(root);
                             //stage.setScene(scene);
