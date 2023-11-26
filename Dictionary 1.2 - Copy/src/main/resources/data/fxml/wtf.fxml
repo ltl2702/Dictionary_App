@@ -162,7 +162,7 @@
                                 </ImageView>
                             </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="editButton" alignment="BASELINE_LEFT" layoutY="74.0" onAction="#editButtonOnAction" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/buttonhome.css" text="Edit" textFill="WHITE">
+                        <JFXButton fx:id="editButton" alignment="BASELINE_LEFT" layoutY="74.0" onAction="#editDefinition" prefHeight="50.0" prefWidth="160.0" styleClass="sidebarItem" stylesheets="@../css/buttonhome.css" text="Edit" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
