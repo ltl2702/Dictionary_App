@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.web.HTMLEditor?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
 
-<AnchorPane fx:id="EditPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="392.0" prefWidth="628.0" style="-fx-background-radius: 30;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditDefController">
+<AnchorPane fx:id="EditPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="392.0" prefWidth="628.0" style="-fx-background-radius: 30;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditDefController">
    <children>
       <HTMLEditor fx:id="htmlEditor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="14.0" layoutY="5.0" prefHeight="350.0" prefWidth="600.0" style="-fx-background-color: white;" />
-      <Button fx:id="discardButton" layoutX="356.0" layoutY="357.0" mnemonicParsing="false" onAction="#discardChanges" stylesheets="@../css/background.css" text="Discard" />
-      <Button fx:id="submitButton" layoutX="456.0" layoutY="357.0" mnemonicParsing="false" onAction="#submitEdition" stylesheets="@../css/background.css" text="Submit" />
+      <Button fx:id="discardButton" layoutX="356.0" layoutY="357.0" mnemonicParsing="false" onAction="#discardChanges" text="Discard">
+         <stylesheets>
+            <URL value="@../css/background.css" />
+            <URL value="@../css/scoreboard.css" />
+            <URL value="@../css/zoom.css" />
+         </stylesheets></Button>
+      <Button fx:id="submitButton" layoutX="456.0" layoutY="357.0" mnemonicParsing="false" onAction="#submitEdition" text="Submit">
+         <stylesheets>
+            <URL value="@../css/scoreboard.css" />
+            <URL value="@../css/zoom.css" />
+         </stylesheets></Button>
    </children>
 </AnchorPane>

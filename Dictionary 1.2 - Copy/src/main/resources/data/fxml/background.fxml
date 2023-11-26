@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -19,10 +20,14 @@
                         <Font size="20.0" />
                     </font>
                 </Label>
-                <Button fx:id="signupbutton" alignment="CENTER" layoutX="194.0" layoutY="480.0" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="36.0" prefWidth="158.0" style="-fx-border-color: white; -fx-border-radius: 20;" stylesheets="@../css/background.css" text="SIGN UP" textAlignment="CENTER" textFill="WHITE">
+                <Button fx:id="signupbutton" alignment="CENTER" layoutX="194.0" layoutY="480.0" mnemonicParsing="false" onAction="#signupButtonOnAction" prefHeight="36.0" prefWidth="158.0" style="-fx-border-color: white; -fx-border-radius: 20;" text="SIGN UP" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
+               <stylesheets>
+                  <URL value="@../css/background.css" />
+                  <URL value="@../css/zoom.css" />
+               </stylesheets>
                 </Button>
             </children>
         </AnchorPane>
@@ -34,10 +39,14 @@
                             <children>
                                 <TextField fx:id="usernamefill" layoutX="116.0" layoutY="1.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter your username" />
                                 <PasswordField fx:id="passwordfill" layoutX="116.0" layoutY="67.0" prefHeight="25.0" prefWidth="165.0" promptText="Enter your password" />
-                                <Button fx:id="loginbutton" alignment="CENTER" layoutX="91.0" layoutY="170.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="42.0" prefWidth="158.0" style="-fx-border-radius: 20; -fx-border-color: white;" stylesheets="@../css/background.css" text="SIGN IN" textAlignment="CENTER" textFill="WHITE">
+                                <Button fx:id="loginbutton" alignment="CENTER" layoutX="91.0" layoutY="170.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="42.0" prefWidth="158.0" style="-fx-border-radius: 20; -fx-border-color: white;" text="SIGN IN" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font name="Arial Bold" size="18.0" />
                                     </font>
+                           <stylesheets>
+                              <URL value="@../css/background.css" />
+                              <URL value="@../css/zoom.css" />
+                           </stylesheets>
                                 </Button>
                                 <Label fx:id="invalidLabel" alignment="CENTER" layoutX="52.0" layoutY="111.0" prefHeight="42.0" prefWidth="250.0" textAlignment="CENTER" textFill="#283655">
                                     <font>

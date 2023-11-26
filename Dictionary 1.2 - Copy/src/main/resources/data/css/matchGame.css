@@ -22,11 +22,6 @@
     -fx-border-radius: 10;
     -fx-background-radius: 10;
     -fx-border-width: 2;
-    -fx-cursor: HAND;
-    -fx-text-fill: black;
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
-    -fx-transition: transform 0.3s ease;
 }
 
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.User">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.User">
    <children>
       <AnchorPane layoutX="29.0" layoutY="113.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="942.0" style="-fx-background-color: #283655; -fx-background-radius: 30;">
          <children>
@@ -53,10 +53,14 @@
                   </Label>
                </children>
             </AnchorPane>
-            <JFXButton fx:id="changeInfoButton" layoutX="75.0" layoutY="313.0" onAction="#changeInfoButtonOnAction" prefHeight="83.0" prefWidth="139.0" style="-fx-background-color: #4d648d;" stylesheets="@../css/background.css" text="Change your profile" textAlignment="CENTER" wrapText="true">
+            <JFXButton fx:id="changeInfoButton" layoutX="75.0" layoutY="313.0" onAction="#changeInfoButtonOnAction" prefHeight="83.0" prefWidth="139.0" style="-fx-background-color: #4d648d;" text="Change your profile" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <stylesheets>
+                  <URL value="@../css/background.css" />
+                  <URL value="@../css/zoom.css" />
+               </stylesheets>
             </JFXButton>
             <AnchorPane layoutX="33.0" layoutY="51.0" prefHeight="221.0" prefWidth="224.0" style="-fx-background-color: #fac400; -fx-background-radius: 180;">
                <children>

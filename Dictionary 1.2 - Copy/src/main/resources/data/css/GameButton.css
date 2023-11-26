@@ -1,6 +1,0 @@
-.jfx-button:hover {
-    -fx-cursor: HAND;
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
-    -fx-transition: transform 0.3s ease;
-}
