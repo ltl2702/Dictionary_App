@@ -41,7 +41,7 @@ public class QuizResultController {
     void exitOnAction(ActionEvent event) {
         try {
             window.close();
-            FXMLLoader fxmlLoader2 = new FXMLLoader(MenuMatchGame.class.getResource("/data/fxml/QuizStartScene.fxml"));
+            FXMLLoader fxmlLoader2 = new FXMLLoader(QuizResultController.class.getResource("/data/fxml/QuizStartScene.fxml"));
             AnchorPane Matchpane = fxmlLoader2.load();
             mainpane.getChildren().setAll(Matchpane);
 
@@ -66,6 +66,7 @@ public class QuizResultController {
             QuestionController.setCorrect(0);
             QuestionController.setWrong(0);
             QuestionController.setCounter(1);
+
             quizController.setmainpane(mainpane);
 
         } catch (Exception e) {

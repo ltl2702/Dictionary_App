@@ -67,8 +67,12 @@ public class QuestionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (QuestionNum != null) {
+            QuestionNum.setText(setQuesNum(1));
+        } else {
+            System.out.println("Don't load QuesNum.");
+        }
         loadQuestions();
-        QuestionNum.setText(setQuesNum(counter));
         /*
         option1.setOnMouseEntered(mouseEvent -> option1.setOpacity(0.70));
         option1.setOnMouseExited(mouseEvent -> option1.setOpacity(1));
