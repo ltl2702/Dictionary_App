@@ -2,7 +2,6 @@ package MatchGame;
 
 import Connect.ConnectDB;
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -13,18 +12,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
-import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class MatchGameController {
 
@@ -80,6 +80,7 @@ public class MatchGameController {
 
     private boolean isButtonPressed = false;
     private boolean isButtonClickable = true;
+    private boolean isGamePaused = false;
     private JFXButton firstPressedButton;
 
     private int score = 0;
@@ -280,70 +281,82 @@ public class MatchGameController {
     }
 
     private void handleButtonClick(JFXButton button) {
-        if (isButtonClickable) {
-            if (!isButtonPressed) {
-                // Nếu chưa có nút nào được nhấn trước đó
-                firstPressedButton = button;
-                isButtonPressed = true;
-                button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
-            } else {
-                // Đã có một nút được nhấn trước đó
-                if (button != firstPressedButton) {
-                    isButtonClickable = false;
-                    // Kiểm tra xem 2 nút có tạo thành cặp hay không
-                    if (isPair(firstPressedButton, button)) {
-                        System.out.println("trueeeeee");
-                        // Nếu là cặp, triệt tiêu chúng
-                        button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
-                        firstPressedButton.setDisable(true);
-                        button.setDisable(true);
-                        firstPressedButton.setOpacity(0);
-                        button.setOpacity(0);
-
-                        score++;
-                        if (score < 5) {
-                            currentscore = score * 15;
-                            scoreLabel.setText(String.valueOf(currentscore));
-                        } else if (score == 5) {
-                            currentscore = 80;
-                            scoreLabel.setText(String.valueOf(currentscore));
-                        } else if (score == 6) {
-                            currentscore = 100;
-                            scoreLabel.setText(String.valueOf(currentscore));
-                            close();
-                        }
-                    } else {
-                        // Nếu không phải là cặp, đặt lại trạng thái nhấn của cả hai nút
-                        System.out.println("false");
-                        System.out.println(getWord(firstPressedButton.getText()));
-                        System.out.println(getWord(button.getText()));
-                        button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
-                        firstPressedButton.setDisable(false);
-                        button.setDisable(false);
-                        firstPressedButton.setOpacity(1);
-                        button.setOpacity(1);
-
-                        animation(firstPressedButton);
-                        animation(button);
-
-                        // Đặt lại màu border về màu đen
-                        firstPressedButton.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;");
-                        button.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;");
-                    }
-                    //Reset trạng thái
-                    isButtonPressed = false;
-                    firstPressedButton = null;
-                    isButtonClickable = true;
-
-                } else {
-                    isButtonPressed = false;
-                    firstPressedButton = null;
-                    isButtonClickable = true;
-                    button.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;");
-                }
-            }
-        }
+       if (!isGamePaused) {
+           if (isButtonClickable) {
+               if (!isButtonPressed) {
+                   // Nếu chưa có nút nào được nhấn trước đó
+                   firstPressedButton = button;
+                   isButtonPressed = true;
+                   button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
+               } else {
+                   // Đã có một nút được nhấn trước đó
+                   if (button != firstPressedButton) {
+                       isButtonClickable = false;
+                       // Kiểm tra xem 2 nút có tạo thành cặp hay không
+                       if (isPair(firstPressedButton, button)) {
+                           System.out.println("trueeeeee");
+                           // Nếu là cặp, triệt tiêu chúng
+                           button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
+                           firstPressedButton.setDisable(true);
+                           button.setDisable(true);
+                           // Delay for 1 second before hiding the matched cards
+                           Timeline pause = new Timeline(new KeyFrame(Duration.seconds(0.3), e -> {
+                               TrueSound();
+                               firstPressedButton.setOpacity(0);
+                               button.setOpacity(0);
+                               score++;
+                               if (score < 5) {
+                                   currentscore = score * 15;
+                                   scoreLabel.setText(String.valueOf(currentscore));
+                               } else if (score == 5) {
+                                   currentscore = 80;
+                                   scoreLabel.setText(String.valueOf(currentscore));
+                               } else if (score == 6) {
+                                   currentscore = 100;
+                                   scoreLabel.setText(String.valueOf(currentscore));
+                                   close();
+                               }
+                               //Reset trạng thái
+                               isButtonPressed = false;
+                               firstPressedButton = null;
+                               isButtonClickable = true;
+                           }));
+                           pause.play();
+                       } else {
+                           NopeSound();
+                           // Nếu không phải là cặp, đặt lại trạng thái nhấn của cả hai nút
+                           System.out.println("false");
+                           System.out.println(getWord(firstPressedButton.getText()));
+                           System.out.println(getWord(button.getText()));
+                           button.setStyle("-fx-border-color: red; -fx-border-width: 2px; -fx-background-radius: 10; -fx-border-radius: 10;");
+                           firstPressedButton.setDisable(false);
+                           button.setDisable(false);
+                           // Animation for the mismatched cards
+                           animation(firstPressedButton);
+                           animation(button);
+                           // Đặt lại màu border về màu đen
+                           firstPressedButton.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;");
+                           button.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;");
+                           // Delay for 1 second before resetting the state
+                           Timeline pause = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+                               // Reset trạng thái
+                               isButtonPressed = false;
+                               firstPressedButton = null;
+                               isButtonClickable = true;
+                           }));
+                           pause.play();
+                       }
+                   } else {
+                       isButtonPressed = false;
+                       firstPressedButton = null;
+                       isButtonClickable = true;
+                       button.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-background-radius: 10; -fx-border-radius: 10;");
+                   }
+               }
+           }
+       }
     }
+
 
     private ArrayList<String> getWordAnswer() {
         return wordAnswer;
@@ -438,6 +451,8 @@ public class MatchGameController {
             scoreController.setmainpane(mainpane);
             System.out.println(wordAnswer);
             scoreController.setWordAns(wordAnswer);
+            scoreController.setUserID(userID);
+
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
@@ -507,13 +522,45 @@ public class MatchGameController {
         if (countdown != null) {
             if (countdown.getStatus() == Timeline.Status.RUNNING) {
                 countdown.pause();
+                isGamePaused = true;
                 Image image = new Image(getClass().getResourceAsStream("/data/icon/pause.png"));
                 pauseImage.setImage(image);
             } else {
                 countdown.play();
+                isGamePaused = false;
                 Image image = new Image(getClass().getResourceAsStream("/data/icon/play.png"));
                 pauseImage.setImage(image);
             }
         }
     }
+
+    private void updateButtonClickable() {
+        card1.setDisable(isGamePaused);
+        card2.setDisable(isGamePaused);
+        card3.setDisable(isGamePaused);
+        card4.setDisable(isGamePaused);
+        card5.setDisable(isGamePaused);
+        card6.setDisable(isGamePaused);
+        card7.setDisable(isGamePaused);
+        card8.setDisable(isGamePaused);
+        card9.setDisable(isGamePaused);
+        card10.setDisable(isGamePaused);
+        card11.setDisable(isGamePaused);
+        card12.setDisable(isGamePaused);
+    }
+
+    private MediaPlayer mediaPlayer;
+
+    private void TrueSound() {
+        Media sound = new Media(getClass().getResource("/data/audio/yes.mp3").toExternalForm());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+
+    private void NopeSound() {
+        Media sound = new Media(getClass().getResource("/data/audio/Nope.mp3").toExternalForm());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+
 }

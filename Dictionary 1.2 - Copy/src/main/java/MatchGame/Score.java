@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -36,10 +38,13 @@ public class Score {
 
     @FXML
     private JFXButton answerButton, okButton;
+
+    private MediaPlayer mediaPlayer;
     
     private int score;
     private AnchorPane mainpane;
     private ArrayList<String> WordAns;
+    private int userID;
 
     public void setScore(int currentscore) {
         this.score = currentscore;
@@ -66,6 +71,7 @@ public class Score {
             answerSlideController.setStage(window);
             answerSlideController.setmainpane(mainpane);
             answerSlideController.setWordAns(WordAns);
+            answerSlideController.setUserID(userID);
             answerSlideController.initialize();
             System.out.println(WordAns);
 
@@ -105,18 +111,34 @@ public class Score {
             judgeLabel.setText("Sir! Please lead us.");
             Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/data/gameMatching/100.jpg")));
             memeImage.setImage(image);
+
+            Media sound = new Media(getClass().getResource("/data/audio/cheer.mp3").toExternalForm());
+            mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
         } else if (score >= 60 && score < 100) {
             judgeLabel.setText("Very good. Continue to develop.");
             Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/data/gameMatching/60-80.jpg")));
             memeImage.setImage(image);
+
+            Media sound = new Media(getClass().getResource("/data/audio/cheer.mp3").toExternalForm());
+            mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
         } else if (score == 45) {
-            judgeLabel.setText("Good. Continue to develop.");
+            judgeLabel.setText("Continue to develop.");
             Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/data/gameMatching/45.jpg")));
             memeImage.setImage(image);
+
+            Media sound = new Media(getClass().getResource("/data/audio/disappointed.mp3").toExternalForm());
+            mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
         } else {
             judgeLabel.setText("Not good. Try harder.");
             Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/data/gameMatching/0-30.jpg")));
             memeImage.setImage(image);
+
+            Media sound = new Media(getClass().getResource("/data/audio/disappointed.mp3").toExternalForm());
+            mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
         }
         window.setScene(scene);
         window.show();
@@ -128,5 +150,9 @@ public class Score {
 
     public void setWordAns(ArrayList<String> wordAnswer) {
         this.WordAns = wordAnswer;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

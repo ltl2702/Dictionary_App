@@ -46,6 +46,7 @@ public class AnswerSlide {
     private ArrayList<String> WordAns;
 
     private int currentindex = 0;
+    private int userID;
 
     @FXML
     void skipButtonOnAction(ActionEvent event) {
@@ -58,6 +59,7 @@ public class AnswerSlide {
 
             MenuMatchGame MenuController = fxmlLoader2.getController();
             MenuController.setmainpane(answerpane);
+            MenuController.setUserID(userID);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -131,4 +133,7 @@ public class AnswerSlide {
         this.answerpane = mainpane;
     }
 
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 }

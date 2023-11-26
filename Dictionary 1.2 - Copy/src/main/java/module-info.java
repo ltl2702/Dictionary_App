@@ -11,6 +11,7 @@ module OOP {
     requires java.net.http;
     requires java.desktop;
     requires javafx.base;
+    requires javafx.media;
     //requires jsapi;
 
     exports App;
