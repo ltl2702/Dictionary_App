@@ -35,8 +35,6 @@ public class User implements Initializable {
     @FXML
     private Label lastLabel;
 
-    @FXML
-    private JFXButton signoutButton;
 
     @FXML
     private ImageView userimage;
@@ -49,30 +47,30 @@ public class User implements Initializable {
     private Stage stage;
 
     void userLogin() {
-            try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
-                String select = "SELECT firstname, lastname, username, image FROM account WHERE username = '" + username.getText() + "'";
-                Statement statement = connectDatabase.createStatement();
-                ResultSet query = statement.executeQuery(select);
-                if (query.next()) {
-                    String firstname = query.getString("firstname");
-                    String lastname = query.getString("lastname");
-                    String username = query.getString("username");
-                    int imageNumber = query.getInt("image");
-                    Image image = new Image(getClass().getResourceAsStream("/data/user/user" + imageNumber + ".png"));
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
+            String select = "SELECT firstname, lastname, username, image FROM account WHERE username = '" + username.getText() + "'";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(select);
+            if (query.next()) {
+                String firstname = query.getString("firstname");
+                String lastname = query.getString("lastname");
+                String username = query.getString("username");
+                int imageNumber = query.getInt("image");
+                Image image = new Image(getClass().getResourceAsStream("/data/user/user" + imageNumber + ".png"));
 
-                    userimage.setImage(image);
+                userimage.setImage(image);
 
-                    firstnameLabel.setText(firstname);
-                    lastLabel.setText(lastname);
-                    usernameLabel.setText(username);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println("Error loading image: " + e.getMessage());
-                e.getCause();
-            } finally {
-                ConnectDB.closeConnection();
+                firstnameLabel.setText(firstname);
+                lastLabel.setText(lastname);
+                usernameLabel.setText(username);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error loading image: " + e.getMessage());
+            e.getCause();
+        } finally {
+            ConnectDB.closeConnection();
+        }
     }
 
     @FXML
@@ -86,22 +84,6 @@ public class User implements Initializable {
             updateController.setusername(username);
             updateController.setuserImage();
             updateController.setMainpane(userpane);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            ex.getCause();
-        }
-    }
-
-    @FXML
-    void signoutButtonOnAction(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Welcome.class.getResource("/data/fxml/background.fxml"));
-            Parent root = fxmlLoader.load();
-            Welcome welcomeController = fxmlLoader.getController();
-            welcomeController.initializeStage(stage);
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();

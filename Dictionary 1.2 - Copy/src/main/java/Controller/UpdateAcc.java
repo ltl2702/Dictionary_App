@@ -1,11 +1,14 @@
 package Controller;
 
+import Connect.Alerter;
 import Connect.ConnectDB;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -14,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -31,8 +35,6 @@ public class UpdateAcc implements Initializable {
     @FXML
     private JFXButton submitButton, changeavt;
 
-    @FXML
-    private Label updateLabel;
 
     @FXML
     private ImageView userimage;
@@ -41,11 +43,16 @@ public class UpdateAcc implements Initializable {
     private AnchorPane mainpane;
 
     @FXML
-    void submitButtonOnAction(ActionEvent event) {
+    void submitButtonOnAction(ActionEvent event) throws IOException {
         if (!newUsername.getText().isBlank() && !newPass.getText().isBlank() && !oldPass.getText().isBlank())
             update();
-        else
-            updateLabel.setText("Please enter your change.");
+        else {
+            FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            Alerter alertControler = fxmlLoader.getController();
+            alertControler.display("Please enter your change.", "/data/icon/notfun2.gif", scene);
+        }
     }
 
     void update() {
@@ -67,12 +74,22 @@ public class UpdateAcc implements Initializable {
                     int id = IDquery.getInt("id");
                     String update = "UPDATE account SET username = '" + newusername + "', password = '" + newpass + "' WHERE id = '" + id + "'";
                     statement.executeUpdate(update);
-                    updateLabel.setText("The account has been successfully updated.");
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                    Parent root = fxmlLoader.load();
+                    Scene scene = new Scene(root);
+                    Alerter alertControler = fxmlLoader.getController();
+                    alertControler.display("The account has been successfully updated.", "/data/icon/like2.gif", scene);
+
                     check = true;
                 }
             }
             else {
-                updateLabel.setText("The account does not exist.");
+                FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                Parent root = fxmlLoader.load();
+                Scene scene = new Scene(root);
+                Alerter alertControler = fxmlLoader.getController();
+                alertControler.display("The account does not exist.", "/data/icon/cry.gif", scene);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -151,11 +168,4 @@ public class UpdateAcc implements Initializable {
         this.mainpane = userpane;
     }
 
-
-    public void signoutButtonOnAction(ActionEvent actionEvent) {
-    }
-
-    public void changeInfoButtonOnAction(ActionEvent actionEvent) {
-    }
 }
-

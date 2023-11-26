@@ -1,10 +1,13 @@
 package Controller;
 
+import Connect.Alerter;
 import Connect.ConnectDB;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -92,7 +95,12 @@ public class Avatar {
                     int id = IDquery.getInt("id");
                     String update = "UPDATE account SET image = '" + imageNum + "' WHERE id = '" + id + "'";
                     statement.executeUpdate(update);
-                    avtLabel.setText("You have successfully changed your profile picture.");
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                    Parent root = fxmlLoader.load();
+                    Scene scene = new Scene(root);
+                    Alerter alertControler = fxmlLoader.getController();
+                    alertControler.display("You have successfully changed your profile picture.", "/data/icon/like2.gif", scene);
                 }
             }
         } catch (Exception ex) {
