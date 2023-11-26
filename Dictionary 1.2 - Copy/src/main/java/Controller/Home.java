@@ -21,6 +21,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -46,7 +47,7 @@ public class Home implements Initializable {
     private Stage stage;
 
     @FXML
-    private AnchorPane homePane, slider, DefinitionPane, FunctionalPane;
+    private AnchorPane homePane, slider, DefinitionPane, editHomePane;
 
     @FXML
     private JFXButton Menu, MenuClose;
@@ -81,7 +82,10 @@ public class Home implements Initializable {
     private ImageView saveImage;
 
     @FXML
-    private Button editDefButton;
+    private Button editDefButton, discardButton, submitButton;
+
+    @FXML
+    private HTMLEditor htmlEditor;
 
     private ObservableList<Word> list = FXCollections.observableArrayList();
 
@@ -429,14 +433,20 @@ public class Home implements Initializable {
 
     public void editDefinition(ActionEvent event){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(QuizResultController.class.getResource("/data/fxml/EditDefScene.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/EditDefScene.fxml"));
             AnchorPane editPane = fxmlLoader.load();
             DefinitionPane.getChildren().setAll(editPane);
-            EditDefController editDefController = fxmlLoader.getController();
-            editDefController.setmainpane(DefinitionPane);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void discardChanges() {
+
+    }
+
+    public void submitEdition() {
+
     }
 
     @FXML
