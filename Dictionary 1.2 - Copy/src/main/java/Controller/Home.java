@@ -4,6 +4,8 @@ import API.TextToSpeechFreetts;
 import Connect.ConnectDB;
 import Dictionary.DictionaryManagement;
 import Dictionary.Word;
+import QuizGamee.QuestionController;
+import QuizGamee.QuizResultController;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -13,6 +15,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -41,7 +45,7 @@ public class Home implements Initializable {
     private Stage stage;
 
     @FXML
-    private AnchorPane homePane, slider;
+    private AnchorPane homePane, slider, DefinitionPane, FunctionalPane;
 
     @FXML
     private JFXButton Menu, MenuClose;
@@ -65,6 +69,9 @@ public class Home implements Initializable {
 
     @FXML
     private ImageView saveImage;
+
+    @FXML
+    private Button editDefButton;
 
     private ObservableList<Word> list = FXCollections.observableArrayList();
 
@@ -407,6 +414,18 @@ public class Home implements Initializable {
                 selectedWord = items.get(0);
                 TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWord());
             }
+        }
+    }
+
+    public void editDefinition(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(QuizResultController.class.getResource("/data/fxml/EditDefScene.fxml"));
+            AnchorPane editPane = fxmlLoader.load();
+            DefinitionPane.getChildren().setAll(editPane);
+            EditDefController editDefController = fxmlLoader.getController();
+            editDefController.setmainpane(DefinitionPane);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
