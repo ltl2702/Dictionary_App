@@ -69,7 +69,7 @@
                         <AnchorPane fx:id="DefinitionPane" layoutX="280.0" layoutY="87.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="392.0" prefWidth="628.0" style="-fx-background-color: white; -fx-background-radius: 30;">
                             <children>
                                 <WebView fx:id="webView" layoutX="14.0" layoutY="39.0" prefHeight="338.0" prefWidth="600.0" style="-fx-opacity: 1;" />
-                                <Button fx:id="speakerButton" contentDisplay="RIGHT" layoutX="392.0" mnemonicParsing="false" onAction="#speakClick" prefHeight="36.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0); -fx-cursor: HAND;" stylesheets="@../css/zoom.css" textFill="WHITE">
+                                <Button fx:id="speakerButton" contentDisplay="RIGHT" layoutX="360.0" mnemonicParsing="false" onAction="#speakClick" prefHeight="36.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0); -fx-cursor: HAND;" stylesheets="@../css/zoom.css" textFill="WHITE">
                                     <graphic>
                                         <ImageView fitHeight="37.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" style="fx-background-color: rgba(255,255,255,0);">
                                             <image>
@@ -81,9 +81,9 @@
                                         <Font name="System Bold" size="18.0" />
                                     </font>
                                 </Button>
-                                <Button fx:id="editDButton" layoutX="552.0" layoutY="7.0" mnemonicParsing="false" onAction="#editDefinition" prefHeight="32.0" prefWidth="30.0" style="-fx-background-color: #ffffff; -fx-cursor: HAND;" stylesheets="@../css/zoom.css">
+                                <Button fx:id="editDButton" layoutX="493.0" layoutY="4.0" mnemonicParsing="false" onAction="#editDefinition" prefHeight="32.0" prefWidth="30.0" style="-fx-background-color: #ffffff; -fx-cursor: HAND;" stylesheets="@../css/zoom.css">
                                     <graphic>
-                                        <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="34.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../image/editButton.png" />
                                             </image>
@@ -99,7 +99,7 @@
                                         </Label>
                                     </children>
                                 </AnchorPane>
-                                <Button fx:id="saveButton" layoutX="478.0" layoutY="2.0" mnemonicParsing="false" onAction="#saveButtonOnAction" style="-fx-background-color: white;" stylesheets="@../css/zoom.css" text=" ">
+                                <Button fx:id="saveButton" layoutX="429.0" layoutY="2.0" mnemonicParsing="false" onAction="#saveButtonOnAction" style="-fx-background-color: white;" stylesheets="@../css/zoom.css">
                                     <graphic>
                                         <ImageView fx:id="saveImage" fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -108,6 +108,15 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
+                        <Button layoutX="543.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" style="-fx-background-color: white;" stylesheets="@../css/buttonhome.css">
+                           <graphic>
+                              <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icon/online2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                             </children>
                         </AnchorPane>
                     </children>
