@@ -28,9 +28,6 @@ public class AnswerSlide {
     private JFXButton prevButton;
 
     @FXML
-    private JFXButton searchButton;
-
-    @FXML
     private JFXButton skipButton;
 
     private Stage window;
@@ -58,11 +55,6 @@ public class AnswerSlide {
             ex.printStackTrace();
             ex.getCause();
         }
-    }
-
-    @FXML
-    void searchButtonOnAction(ActionEvent event) {
-
     }
 
     @FXML
