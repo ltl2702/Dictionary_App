@@ -77,19 +77,18 @@ public class EditDefController {
                     PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
                     preparedStatement.setString(1, newdef);
                     if (selectedWord != null) {
-                        if(newdef.equals(selectedWord.getHtml())) {
-                            System.out.println("Chua cap nhat");
+                        if(!newdef.equals(selectedWord.getHtml())) {
+                        preparedStatement.setString(2, selectedWord.toString());
+                        int rowsAffected = preparedStatement.executeUpdate();
+
+                        if (rowsAffected > 0) {
+                            System.out.println("Cập nhật thành công!");
                             //thong bao cho nguoi dung
-
-                        } else {
-                            preparedStatement.setString(2, selectedWord.toString());
-                            int rowsAffected = preparedStatement.executeUpdate();
-
-                            if (rowsAffected > 0) {
-                                System.out.println("Cập nhật thành công!");
-                                //thong bao cho nguoi dung
-                                // neu duong dung ok moi the kia
-
+                            // neu duong dung ok moi ddongs
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Update succesfully");
+                            alert.setHeaderText("Your edit has been updated.");
+                            if(alert.showAndWait().get() == ButtonType.OK) {
                                 System.out.println("home Controller is not null.");
 
                                 Home homeController = Home.getInstance();
@@ -101,9 +100,23 @@ public class EditDefController {
                                 } else {
                                     System.out.println("Home Controller is null");
                                 }
-                            } else {
-                                System.out.println("WebView is null.");
                             }
+                            } else {
+
+                            System.out.println("WebView is null.");
+
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Update failed.");
+                            alert.setHeaderText("Nothing has been made");
+                            alert.showAndWait();
+                        }
+                        } else {
+                            System.out.println("Chua cap nhat");
+                            //thong bao cho nguoi dung
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Update failed.");
+                            alert.setHeaderText("Nothing has been made");
+                            alert.showAndWait();
                         }
                     } else {
                         System.out.println("Không tìm thấy từ để cập nhật.");
