@@ -25,7 +25,7 @@ public class TranslateController {
     @FXML
     private TextArea area2;
 
-    private final GoogleTranslateAPI translator = new GoogleTranslateAPI("f80aa95348msh2d56bb30429d70ap139102jsn3766e7dff046", "google-translate113.p.rapidapi.com", "https://google-translate113.p.rapidapi.com/api/v1/translator/text");
+    private final GoogleTranslateAPI translator = new GoogleTranslateAPI("350c50c415msh8a0f5c71730baadp15d423jsnbe641e0ae6b8", "google-translate113.p.rapidapi.com", "https://google-translate113.p.rapidapi.com/api/v1/translator/text");
     private Task<Void> translationTask;
 
     @FXML
@@ -169,18 +169,27 @@ public class TranslateController {
         count.setText("Count: " + charCount);
     }
 
+    private volatile boolean isSpeaking = false;
     private void speak(String textToSpeak, String lang) {
+        if (isSpeaking) {
+            System.out.println("Speech is already in progress. Ignoring request.");
+            return;
+        }
         try {
-            TextToSpeechAPI textToSpeechApi = new TextToSpeechAPI("f80aa95348msh2d56bb30429d70ap139102jsn3766e7dff046", "text-to-speech27.p.rapidapi.com", "https://text-to-speech27.p.rapidapi.com/speech");
+            isSpeaking = true;
+            TextToSpeechAPI textToSpeechApi = new TextToSpeechAPI("350c50c415msh8a0f5c71730baadp15d423jsnbe641e0ae6b8", "text-to-speech27.p.rapidapi.com", "https://text-to-speech27.p.rapidapi.com/speech");
             new Thread(() -> {
                 try {
                     textToSpeechApi.convertTextToSpeech(textToSpeak, lang);
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    isSpeaking = false;
                 }
             }).start();
         } catch (Exception e) {
             e.printStackTrace();
+            isSpeaking = false;
         }
     }
     public void speakAction(ActionEvent actionEvent) {

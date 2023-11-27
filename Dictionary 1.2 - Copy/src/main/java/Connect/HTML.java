@@ -1,8 +1,5 @@
 package Connect;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class HTML {
     public static String convertToHtml(String word, String pronounce, String description) {
         StringBuilder html = new StringBuilder();

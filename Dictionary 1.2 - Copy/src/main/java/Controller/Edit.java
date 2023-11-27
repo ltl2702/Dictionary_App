@@ -86,7 +86,7 @@ public class Edit {
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
             Alerter alertControler = fxmlLoader.getController();
-            alertControler.display("Please enter your word.", "/data/icon/angry2.gif", scene);
+            alertControler.display("Please enter your word.", "/data/icon/angry.gif", scene);
         }
     }
 
@@ -150,7 +150,7 @@ public class Edit {
                     Parent root = fxmlLoader.load();
                     Scene scene = new Scene(root);
                     Alerter alertControler = fxmlLoader.getController();
-                    alertControler.display("The word is added.", "/data/icon/like2.gif", scene);
+                    alertControler.display("The word is added.", "/data/icon/like.gif", scene);
                 }
             }
         } catch (Exception e) {
@@ -171,7 +171,7 @@ public class Edit {
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
             Alerter alertControler = fxmlLoader.getController();
-            alertControler.display("Please enter your word.", "/data/icon/angry2.gif", scene);
+            alertControler.display("Please enter your word.", "/data/icon/angry.gif", scene);
         }
     }
 
@@ -196,7 +196,7 @@ public class Edit {
                     Parent root = fxmlLoader.load();
                     Scene scene = new Scene(root);
                     Alerter alertControler = fxmlLoader.getController();
-                    alertControler.display("The word is removed.", "/data/icon/like2.gif", scene);
+                    alertControler.display("The word is removed.", "/data/icon/like.gif", scene);
                 } else {
                     removeLabel.setText("The word does not exist. Please try again.");
                     FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
@@ -225,7 +225,7 @@ public class Edit {
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
             Alerter alertControler = fxmlLoader.getController();
-            alertControler.display("Please enter your word.", "/data/icon/angry2.gif", scene);
+            alertControler.display("Please enter your word.", "/data/icon/angry.gif", scene);
         } else {
             System.out.println("Old word is not blank.");
             update();
@@ -340,7 +340,7 @@ public class Edit {
                                     Parent root = fxmlLoader.load();
                                     Scene scene = new Scene(root);
                                     Alerter alertControler = fxmlLoader.getController();
-                                    alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+                                    alertControler.display("The word has been successfully updated.", "/data/icon/like.gif", scene);
                                 }
                                 if (!newWord.isBlank() && !newWord.equals(oldWord) && existedWord(newWord, oldWord)) {
                                     updateLabel.setText("The word has not been successfully updated.");
@@ -349,7 +349,7 @@ public class Edit {
                                     Parent root = fxmlLoader.load();
                                     Scene scene = new Scene(root);
                                     Alerter alertControler = fxmlLoader.getController();
-                                    alertControler.display("The word already exists. Please try again.", "/data/icon/angry2.gif", scene);
+                                    alertControler.display("The word already exists. Please try again.", "/data/icon/angry.gif", scene);
                                 }
                             } else {
                                 System.out.println("false");
@@ -363,7 +363,7 @@ public class Edit {
                                     Parent root = fxmlLoader.load();
                                     Scene scene = new Scene(root);
                                     Alerter alertControler = fxmlLoader.getController();
-                                    alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+                                    alertControler.display("The word has been successfully updated.", "/data/icon/like.gif", scene);
                                 }
                                 if (!newWord.isBlank() && !newWord.equals(oldWord) && existedWord(newWord, oldWord)) {
                                     updateLabel.setText("The word has not been successfully updated.");
@@ -372,7 +372,7 @@ public class Edit {
                                     Parent root = fxmlLoader.load();
                                     Scene scene = new Scene(root);
                                     Alerter alertControler = fxmlLoader.getController();
-                                    alertControler.display("The word already exists. Please try again.", "/data/icon/angry2.gif", scene);
+                                    alertControler.display("The word already exists. Please try again.", "/data/icon/angry.gif", scene);
 
                                 }
                             }

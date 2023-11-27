@@ -12,11 +12,7 @@ public class GoogleTranslateAPI extends BaseAPI implements Language {
     private String languageTo;
     private String textForTranslate;
     private String translatedItem;
-    //private final String MY_API_KEY = "69b58ee62amshd04e099689f7f18p1e56e9jsn7d5a526f61de"; hết lượt
-    // private final String MY_API_KEY = "3389d69e99msh7fb681519198bcfp12a68djsn33fd40a0c29c"; hết lượt
 
-    //dùng cái trên, cái dưới để lúc quan trọng dùng, dùng nhiều hết lượt :))) dùng 2 nick đấy các friend
-    //private final String MY_API_KEY = "350c50c415msh8a0f5c71730baadp15d423jsnbe641e0ae6b8";
     String url = "https://google-translate113.p.rapidapi.com/api/v1/translator/text";
 
     public GoogleTranslateAPI(String apiKey, String apiHost, String apiUrl) {

@@ -1,12 +1,5 @@
 package Dictionary;
-
-import Connect.Alerter;
 import Connect.ConnectDB;
-import Connect.HTML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -42,12 +35,6 @@ public class Word {
     public int getSequentialId() {
         return sequentialId;
     }
-
-    /*
-    public String getHtml() {
-        return html;
-    }
-     */
 
     public String getHtml() {
         try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {

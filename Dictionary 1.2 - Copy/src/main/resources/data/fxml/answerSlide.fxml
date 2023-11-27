@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="313.0" fitWidth="431.0" layoutX="-111.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/robot2.gif" />
+            <Image url="@../icon/robot1.gif" />
          </image>
       </ImageView>
       <AnchorPane layoutX="306.0" layoutY="122.0" prefHeight="454.0" prefWidth="626.0" style="-fx-background-color: #283655; -fx-background-radius: 30;">
@@ -180,7 +180,7 @@
             <AnchorPane layoutX="498.0" layoutY="13.0" AnchorPane.leftAnchor="0.0" />
             <ImageView fitHeight="69.0" fitWidth="64.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/logo3.png" />
+                  <Image url="@../icon/logo.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="61.0" layoutY="13.0" prefHeight="60.0" prefWidth="250.0" text="English" textAlignment="CENTER" wrapText="true">
@@ -213,7 +213,7 @@
       </JFXButton>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="109.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/game2.png" />
+            <Image url="@../image/game1.png" />
          </image>
       </ImageView>
    </children>

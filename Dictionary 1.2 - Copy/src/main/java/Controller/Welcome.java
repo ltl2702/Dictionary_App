@@ -41,9 +41,6 @@ public class Welcome implements Initializable {
     private Timeline timeline;
 
     @FXML
-    private ImageView welcomeimageView;
-
-    @FXML
     private AnchorPane mainpane;
 
     public AnchorPane getMainpane() {
@@ -54,9 +51,6 @@ public class Welcome implements Initializable {
         return usernamefill.getText();
     }
 
-    public void setUsernamefill(TextField usernamefill) {
-        this.usernamefill = usernamefill;
-    }
 
     @FXML
     public void loginButtonOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {

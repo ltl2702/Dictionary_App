@@ -18,7 +18,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -27,16 +26,11 @@ import javafx.stage.Stage;
 public class User implements Initializable {
 
     @FXML
-    private JFXButton changeInfoButton;
-
-    @FXML
     private Label firstnameLabel;
 
     @FXML
     private Label lastLabel;
 
-    @FXML
-    private JFXButton signoutButton;
 
     @FXML
     private ImageView userimage;
@@ -86,22 +80,6 @@ public class User implements Initializable {
             updateController.setUserID(userID);
             updateController.setuserImage();
             updateController.setMainpane(userpane);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            ex.getCause();
-        }
-    }
-
-    @FXML
-    void signoutButtonOnAction(ActionEvent event) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Welcome.class.getResource("/data/fxml/background.fxml"));
-            Parent root = fxmlLoader.load();
-            Welcome welcomeController = fxmlLoader.getController();
-            welcomeController.initializeStage(stage);
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();

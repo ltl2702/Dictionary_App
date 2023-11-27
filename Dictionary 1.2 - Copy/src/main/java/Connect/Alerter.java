@@ -13,7 +13,6 @@ import javafx.stage.StageStyle;
 import java.util.Objects;
 
 public class Alerter {
-    //Stage window = new Stage();
 
     @FXML
     private Label alertLabel;

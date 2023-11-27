@@ -8,13 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Avatar {
@@ -87,7 +82,7 @@ public class Avatar {
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
             Alerter alertControler = fxmlLoader.getController();
-            alertControler.display("You have successfully changed your profile picture.", "/data/icon/like2.gif", scene);
+            alertControler.display("You have successfully changed your profile picture.", "/data/icon/like.gif", scene);
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
