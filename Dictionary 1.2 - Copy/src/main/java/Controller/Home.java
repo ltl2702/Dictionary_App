@@ -47,6 +47,9 @@ public class Home implements Initializable {
     public JFXButton gameButton;
     public ImageView menuimage1;
     public JFXButton translateButton, editButton, homeButton, userButton;
+
+    @FXML
+    private Button onlineDictionary;
     public AnchorPane menuPane;
     public ImageView searchImage, homeImage;
     private Stage stage;
@@ -212,14 +215,7 @@ public class Home implements Initializable {
             Word firstResult = list.get(0);
             int id = firstResult.getId();
             showHtmlContent(firstResult.getHtml());
-            speakerButton.setDisable(false);
-            saveButton.setDisable(false);
-            editDefButton.setDisable(false);
             updateSaveImage(id);
-        } else {
-            speakerButton.setDisable(true); // Tắt speakerButton
-            saveButton.setDisable(true); //Tắt saveButton
-            editDefButton.setDisable(true);
         }
     }
 
@@ -426,6 +422,8 @@ public class Home implements Initializable {
             } else if (items.get(0) != Word.NOT_FOUND && !searchField.getText().trim().isEmpty()) {
                 selectedWord = items.get(0);
                 TextToSpeechFreetts.convertTextToSpeech(selectedWord.getWord());
+            } else {
+                System.out.println("No word selected for speaking.");
             }
         }
     }
@@ -585,5 +583,43 @@ public class Home implements Initializable {
                 webView.getEngine().loadContent("");
             }
         });
+    }
+
+    @FXML
+    void onlineDictionaryOnAction(ActionEvent event) {
+        ObservableList<Word> items = listResult.getItems();
+
+        if (!items.isEmpty()) {
+            Word selectedWord = listResult.getSelectionModel().getSelectedItem();
+            if (selectedWord != null && selectedWord != Word.NOT_FOUND) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/OnlineDictionary.fxml"));
+                    Parent root = fxmlLoader.load();
+                    OnlineDictionary onlineDictionaryController = fxmlLoader.getController();
+                    onlineDictionaryController.setSelectedWord(selectedWord);
+
+                    Scene scene = new Scene(root);
+                    onlineDictionaryController.display(scene);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (items.get(0) != Word.NOT_FOUND && !searchField.getText().trim().isEmpty()) {
+                selectedWord = items.get(0);
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/OnlineDictionary.fxml"));
+                    Parent root = fxmlLoader.load();
+                    OnlineDictionary onlineDictionaryController = fxmlLoader.getController();
+                    onlineDictionaryController.setSelectedWord(selectedWord);
+
+                    Scene scene = new Scene(root);
+                    onlineDictionaryController.display(scene);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("No word selected for online dictionary.");
+            }
+        }
     }
 }
