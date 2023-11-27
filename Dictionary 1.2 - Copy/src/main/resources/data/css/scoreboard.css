@@ -5,12 +5,11 @@
     -fx-text-fill: white;
     -fx-cursor: hand;
 }
-.jfx-button.pressed {
+.jfx-button:hover {
     -fx-border-radius: 5;
     -fx-border-color: black;
     -fx-background-color:  #283655;
     -fx-text-fill: white;
-    -fx-cursor: hand;
 }
 .jfx-button:pressed {
     -fx-cursor: HAND;

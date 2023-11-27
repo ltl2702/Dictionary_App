@@ -11,19 +11,19 @@
             <font>
                 <Font name="Arial Rounded MT Bold" size="36.0" />
             </font></Label>
-        <Button fx:id="option1" layoutX="172.0" layoutY="263.0" mnemonicParsing="false" onAction="#opt1Clicked" prefHeight="102.0" prefWidth="217.0" stylesheets="@../css/QuestionSceneStyle.css" text="Option1" wrapText="true">
+        <Button fx:id="option1" layoutX="172.0" layoutY="263.0" mnemonicParsing="false" onAction="#opt1Clicked" prefHeight="102.0" prefWidth="217.0" style="-fx-cursor: HAND;" stylesheets="@../css/QuestionSceneStyle.css" text="Option1" wrapText="true">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font></Button>
-        <Button fx:id="option3" layoutX="172.0" layoutY="395.0" mnemonicParsing="false" onAction="#opt3Clicked" prefHeight="102.0" prefWidth="217.0" stylesheets="@../css/QuestionSceneStyle.css" text="Option3" wrapText="true">
+        <Button fx:id="option3" layoutX="172.0" layoutY="395.0" mnemonicParsing="false" onAction="#opt3Clicked" prefHeight="102.0" prefWidth="217.0" style="-fx-cursor: HAND;" stylesheets="@../css/QuestionSceneStyle.css" text="Option3" wrapText="true">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font></Button>
-        <Button fx:id="option4" layoutX="603.0" layoutY="395.0" mnemonicParsing="false" onAction="#opt4Clicked" prefHeight="102.0" prefWidth="217.0" stylesheets="@../css/QuestionSceneStyle.css" text="Option4" wrapText="true">
+        <Button fx:id="option4" layoutX="603.0" layoutY="395.0" mnemonicParsing="false" onAction="#opt4Clicked" prefHeight="102.0" prefWidth="217.0" style="-fx-cursor: HAND;" stylesheets="@../css/QuestionSceneStyle.css" text="Option4" wrapText="true">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font></Button>
-        <Button fx:id="option2" layoutX="603.0" layoutY="263.0" mnemonicParsing="false" onAction="#opt2Clicked" prefHeight="102.0" prefWidth="217.0" stylesheets="@../css/QuestionSceneStyle.css" text="Option2" wrapText="true">
+        <Button fx:id="option2" layoutX="603.0" layoutY="263.0" mnemonicParsing="false" onAction="#opt2Clicked" prefHeight="102.0" prefWidth="217.0" style="-fx-cursor: HAND;" stylesheets="@../css/QuestionSceneStyle.css" text="Option2" wrapText="true">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font></Button>

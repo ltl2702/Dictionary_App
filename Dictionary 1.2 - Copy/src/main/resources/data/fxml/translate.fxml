@@ -17,9 +17,9 @@
                <children>
                   <AnchorPane layoutX="25.0" layoutY="77.0" prefHeight="58.0" prefWidth="600.0" style="-fx-background-color: #006699; -fx-background-radius: 10;">
                      <children>
-                        <JFXComboBox fx:id="selectLanguage1" layoutX="37.0" layoutY="16.0" prefHeight="26.0" prefWidth="174.0" promptText="   Select language" style="-fx-background-color: white; -fx-background-radius: 5;" />
-                        <JFXComboBox fx:id="selectLanguage2" layoutX="381.0" layoutY="16.0" prefHeight="26.0" prefWidth="174.0" promptText="   Select language" style="-fx-background-color: white; -fx-background-radius: 5;" />
-                        <JFXButton fx:id="changeLanguage" layoutX="272.0" layoutY="7.0" text=" ">
+                        <JFXComboBox fx:id="selectLanguage1" layoutX="37.0" layoutY="16.0" prefHeight="26.0" prefWidth="174.0" promptText="   Select language" style="-fx-background-color: white; -fx-cursor: HAND; -fx-background-radius: 5;" />
+                        <JFXComboBox fx:id="selectLanguage2" layoutX="381.0" layoutY="16.0" prefHeight="26.0" prefWidth="174.0" promptText="   Select language" style="-fx-background-color: white; -fx-background-radius: 5; -fx-cursor: HAND;" />
+                        <JFXButton fx:id="changeLanguage" layoutX="272.0" layoutY="7.0" style="-fx-cursor: HAND;" text=" ">
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -33,7 +33,7 @@
                   <TextArea fx:id="area1" layoutX="25.0" layoutY="169.0" prefHeight="250.0" prefWidth="275.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" />
                   <TextArea fx:id="area2" layoutX="342.0" layoutY="169.0" prefHeight="250.0" prefWidth="275.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: black; -fx-border-width: 2;" />
                   <Label fx:id="count" layoutX="180.0" layoutY="431.0" prefHeight="26.0" prefWidth="120.0" text="" />
-                  <JFXButton fx:id="speak1" layoutX="25.0" layoutY="419.0" onAction="#speakAction" prefHeight="50.0" prefWidth="90.0" text=" ">
+                  <JFXButton fx:id="speak1" layoutX="25.0" layoutY="419.0" onAction="#speakAction" prefHeight="50.0" prefWidth="90.0" stylesheets="@../css/zoom.css" text=" ">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -42,7 +42,7 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="speak2" layoutX="356.0" layoutY="419.0" onAction="#speakAction" prefHeight="50.0" prefWidth="75.0" text=" ">
+                  <JFXButton fx:id="speak2" layoutX="356.0" layoutY="419.0" onAction="#speakAction" prefHeight="50.0" prefWidth="75.0" stylesheets="@../css/zoom.css" text=" ">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>

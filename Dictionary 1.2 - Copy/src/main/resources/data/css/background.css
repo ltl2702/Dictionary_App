@@ -1,5 +1,5 @@
 .button {
-    -fx-background-color: #283655; /* Màu nền mặc định khi không hover và không nhấn */
+    -fx-background-color: #283655;
     -fx-text-fill: white;
     -fx-background-radius: 20;
     -fx-border-color: white;
@@ -9,14 +9,14 @@
 
 .button:hover {
     -fx-cursor: HAND;
-    -fx-background-color: #283655; /* Màu nền khi nút được nhấn */
+    -fx-background-color: #283655;
     -fx-text-fill: white;
     -fx-background-radius: 20;
     -fx-border-color: white;
 }
 .button:pressed {
-    -fx-background-color: #4d648d; /* Màu nền khi di chuột qua */
-    -fx-text-fill: black; /* Màu chữ khi di chuột qua */
+    -fx-background-color: #4d648d;
+    -fx-text-fill: black;
     -fx-background-radius: 20;
     -fx-border-color: white;
 }
@@ -41,10 +41,7 @@
     -fx-border-radius: 20;
 }
 
-
-
 .progress-bar {
     -fx-accent: #283655; /* Màu thanh tiến trình đã hoàn thành */
 }
-
 

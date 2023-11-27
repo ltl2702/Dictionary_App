@@ -84,7 +84,7 @@ public class Signup implements Initializable {
                     invalidLabel.setText("User has been registered successfully!");
                     System.out.println(getUsernamefill());
                     try {
-                        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/wtf.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/data/fxml/home.fxml"));
                         //AnchorPane loadingpane = fxmlLoader.load();
                         Parent root = fxmlLoader.load();
                         Home homeController = fxmlLoader.getController();

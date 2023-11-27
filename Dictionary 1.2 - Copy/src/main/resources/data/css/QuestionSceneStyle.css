@@ -3,10 +3,6 @@
     -fx-background-radius: 10;
     -fx-border-color: #dbd9d9;
     -fx-border-radius: 10;
-
-}
-.button:hover {
-    -fx-border-color: #7d7b7a;
 }
 .button:pressed {
     -fx-background-color: #dedede;

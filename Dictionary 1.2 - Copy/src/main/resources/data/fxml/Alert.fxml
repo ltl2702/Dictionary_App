@@ -1,25 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="450.0" style="-fx-border-radius: 10; -fx-border-width: 4; -fx-border-color: black; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Connect.Alerter">
+<AnchorPane prefHeight="300.0" prefWidth="450.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Connect.Alerter">
    <children>
-      <Label fx:id="alertLabel" alignment="CENTER" layoutX="83.0" layoutY="54.0" prefHeight="95.0" prefWidth="283.0" text="This word is exintct. Please try again." textAlignment="CENTER" textFill="#072e7d" wrapText="true">
+      <Label fx:id="alertLabel" alignment="CENTER" layoutX="83.0" layoutY="30.0" prefHeight="95.0" prefWidth="283.0" text="This word is exintct. Please try again." textAlignment="CENTER" textFill="#072e7d" wrapText="true">
          <font>
             <Font name="Impact" size="20.0" />
          </font>
       </Label>
-      <JFXButton fx:id="okButton" alignment="CENTER" layoutX="173.0" layoutY="188.0" prefHeight="35.0" prefWidth="103.0" stylesheets="@../css/background.css" text="OKEEE" textAlignment="CENTER">
+      <JFXButton fx:id="okButton" alignment="CENTER" layoutX="173.0" layoutY="188.0" prefHeight="35.0" prefWidth="103.0" text="OKEEE" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
+         <stylesheets>
+            <URL value="@../css/scoreboard.css" />
+            <URL value="@../css/zoom.css" />
+         </stylesheets>
       </JFXButton>
-      <ImageView fx:id="alertImage" fitHeight="140.0" fitWidth="140.0" layoutX="302.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="alertImage" fitHeight="152.0" fitWidth="140.0" layoutX="291.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icon/cry.gif" />
          </image>

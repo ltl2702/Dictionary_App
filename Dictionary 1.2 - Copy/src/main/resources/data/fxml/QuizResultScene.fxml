@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -27,15 +28,23 @@
                 <Font name="System Bold" size="16.0" />
             </font>
         </Label>
-        <JFXButton fx:id="replay" layoutX="411.0" layoutY="311.0" onAction="#replayOnAction" style="-fx-border-color: black; -fx-border-radius: 5; -fx-cursor: Hand;" text="Replay" textAlignment="CENTER">
+        <JFXButton fx:id="replay" layoutX="411.0" layoutY="311.0" onAction="#replayOnAction" text="Replay" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
+            <stylesheets>
+                <URL value="@../css/scoreboard.css" />
+                <URL value="@../css/zoom.css" />
+            </stylesheets>
         </JFXButton>
         <JFXButton fx:id="exit" layoutX="482.0" layoutY="311.0" onAction="#exitOnAction" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-cursor: hand;" text="Exit" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
+            <stylesheets>
+                <URL value="@../css/scoreboard.css" />
+                <URL value="@../css/zoom.css" />
+            </stylesheets>
         </JFXButton>
     </children>
 </AnchorPane>

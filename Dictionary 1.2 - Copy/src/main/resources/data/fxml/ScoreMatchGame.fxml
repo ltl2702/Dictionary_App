@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="390.0" prefWidth="500.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.Score">
+<AnchorPane prefHeight="390.0" prefWidth="500.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.Score">
    <children>
       <ImageView fx:id="memeImage" fitHeight="206.0" fitWidth="295.0" layoutX="103.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="91.0" layoutY="59.0" text="Score:">
@@ -39,15 +40,23 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="answerButton" layoutX="159.0" layoutY="344.0" onAction="#answerButtonOnAction" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: #283655; -fx-text-fill: white; -fx-cursor: hand;" text="Answer" textAlignment="CENTER">
+      <JFXButton fx:id="answerButton" layoutX="159.0" layoutY="344.0" onAction="#answerButtonOnAction" text="Answer" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
+         <stylesheets>
+            <URL value="@../css/scoreboard.css" />
+            <URL value="@../css/zoom.css" />
+         </stylesheets>
       </JFXButton>
-      <JFXButton fx:id="okButton" layoutX="280.0" layoutY="344.0" onAction="#okButtonOnAction" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: #283655; -fx-text-fill: white; -fx-cursor: hand;" text="Okeee" textAlignment="CENTER">
+      <JFXButton fx:id="okButton" layoutX="280.0" layoutY="344.0" onAction="#okButtonOnAction" text="Okeee" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
+         <stylesheets>
+            <URL value="@../css/zoom.css" />
+            <URL value="@../css/scoreboard.css" />
+         </stylesheets>
       </JFXButton>
    </children>
 </AnchorPane>

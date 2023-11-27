@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="gamepane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameController">
+<AnchorPane fx:id="gamepane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameController">
    <children>
       <ImageView fitHeight="104.0" fitWidth="148.0" layoutX="48.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -19,7 +18,7 @@
             <Font name="Perpetua Titling MT Bold" size="48.0" />
          </font>
       </Label>
-      <JFXButton fx:id="flippinggameButton" layoutX="692.0" layoutY="147.0" onAction="#flippinggameButtonOnAction" text=" ">
+      <JFXButton fx:id="flippinggameButton" layoutX="692.0" layoutY="147.0" onAction="#flippinggameButtonOnAction" stylesheets="@../css/zoom.css" text=" ">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,12 +27,12 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <Label alignment="CENTER" layoutX="709.0" layoutY="305.0" prefHeight="16.0" prefWidth="139.0" text="Match game" textFill="#08429a">
+      <Label alignment="CENTER" layoutX="709.0" layoutY="318.0" prefHeight="16.0" prefWidth="139.0" text="Match game" textFill="#08429a">
          <font>
             <Font name="Arial Bold Italic" size="24.0" />
          </font>
       </Label>
-      <JFXButton fx:id="quizgameButton" layoutX="692.0" layoutY="376.0" onAction="#quizgameButtonOnAction" text=" ">
+      <JFXButton fx:id="quizgameButton" layoutX="692.0" layoutY="382.0" onAction="#quizgameButtonOnAction" stylesheets="@../css/zoom.css" text=" ">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -42,7 +41,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <Label alignment="CENTER" layoutX="709.0" layoutY="541.0" prefHeight="16.0" prefWidth="139.0" text="Quiz game" textFill="#08429a">
+      <Label alignment="CENTER" layoutX="709.0" layoutY="556.0" prefHeight="16.0" prefWidth="139.0" text="Quiz game" textFill="#08429a">
          <font>
             <Font name="Arial Bold Italic" size="24.0" />
          </font>
