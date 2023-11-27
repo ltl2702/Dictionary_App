@@ -174,7 +174,9 @@ public class UpdateAcc implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        newUsername.setFocusTraversable(false);
+        newPass.setFocusTraversable(false);
+        oldPass.setFocusTraversable(false);
     }
 
     public void setuserImage() {
