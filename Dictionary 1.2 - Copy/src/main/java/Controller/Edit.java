@@ -373,6 +373,7 @@ public class Edit {
                                     Scene scene = new Scene(root);
                                     Alerter alertControler = fxmlLoader.getController();
                                     alertControler.display("The word already exists. Please try again.", "/data/icon/angry2.gif", scene);
+
                                 }
                             }
                         } else {

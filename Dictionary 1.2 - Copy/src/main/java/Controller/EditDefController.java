@@ -52,14 +52,14 @@ public class EditDefController {
     }
 
     public void discardChanges(ActionEvent actionEvent) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Discard changes?");
-            alert.setContentText("If you discard now, you will lose any changes you've made.");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Discard changes?");
+        alert.setContentText("If you discard now, you will lose any changes you've made.");
 
-            //ý là alert hiện ra, ấn ok thì nó quay lại nơi bắt đầu
-            if(alert.showAndWait().get() == ButtonType.OK) {
-                window.close();
-            }
+        //ý là alert hiện ra, ấn ok thì nó quay lại nơi bắt đầu
+        if(alert.showAndWait().get() == ButtonType.OK) {
+            window.close();
+        }
     }
 
     public void submitEdition(ActionEvent actionEvent) throws IOException {
