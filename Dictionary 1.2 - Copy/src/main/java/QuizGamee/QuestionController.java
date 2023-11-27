@@ -89,6 +89,10 @@ public class QuestionController implements Initializable {
 
 
     public void loadQuestions() {
+        option1.setDisable(false);
+        option2.setDisable(false);
+        option3.setDisable(false);
+        option4.setDisable(false);
         option1.setStyle("-fx-background-color: #fffff ");
         option2.setStyle("-fx-background-color: #fffff ");
         option3.setStyle("-fx-background-color: #fffff ");
@@ -193,6 +197,9 @@ public class QuestionController implements Initializable {
         return false;
     };
     public void opt1Clicked (ActionEvent event) throws SQLException {
+        option2.setDisable(true);
+        option3.setDisable(true);
+        option4.setDisable(true);
         if(check(counter, 1)) {
             correct++;
             TrueSound();
@@ -234,6 +241,9 @@ public class QuestionController implements Initializable {
         System.out.println(wrong);
     }
     public void opt2Clicked (ActionEvent event) throws SQLException {
+        option1.setDisable(true);
+        option3.setDisable(true);
+        option4.setDisable(true);
         if(check(counter, 2)) {
             correct++;
             TrueSound();
@@ -273,6 +283,9 @@ public class QuestionController implements Initializable {
         System.out.println(wrong);
     }
     public void opt3Clicked (ActionEvent event) throws SQLException {
+        option2.setDisable(true);
+        option1.setDisable(true);
+        option4.setDisable(true);
         if(check(counter, 3)) {
             correct++;
             TrueSound();
@@ -314,6 +327,9 @@ public class QuestionController implements Initializable {
         System.out.println(wrong);
     }
     public void opt4Clicked (ActionEvent event) throws SQLException {
+        option2.setDisable(true);
+        option3.setDisable(true);
+        option1.setDisable(true);
         if (check(counter, 4)) {
             correct++;
             TrueSound();
