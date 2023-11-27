@@ -1,29 +1,26 @@
 package Controller;
 
+import Connect.Alerter;
 import Connect.ConnectDB;
 import Dictionary.Word;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Objects;
+import java.sql.*;
 
 public class EditDefController {
     Stage window = new Stage();
@@ -65,44 +62,62 @@ public class EditDefController {
             }
     }
 
-    public void submitEdition(ActionEvent actionEvent) {
+    public void submitEdition(ActionEvent actionEvent) throws IOException {
         String newdef = htmlEditor.getHtmlText();
         if (htmlEditor != null && newdef != null && !newdef.isEmpty()) {
-            String updateQuery = "UPDATE av1 SET html = ? WHERE word = ?";
+            String newWord = getWordFromHtml(newdef);
+            String newPro = getPronounceFromHtml(newdef);
 
-            try (Connection connection = ConnectDB.connect("dict_hh")) {
-                if (connection != null) {
-                    PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
-                    preparedStatement.setString(1, newdef);
-                    if (selectedWord != null) {
-                        preparedStatement.setString(2, selectedWord.toString());
-                        int rowsAffected = preparedStatement.executeUpdate();
+            if (!newWord.equals(selectedWord.toString()) && !existedWord(newWord, selectedWord.toString())) {
+                String updateQuery = "UPDATE av1 SET html = ? ,word = ?, pronounce = ? WHERE id = ?";
 
-                        if (rowsAffected > 0) {
-                            System.out.println("Cập nhật thành công!");
-                            //if (homeController != null) {
-                                System.out.println("home Controller is not null.");
+                try (Connection connection = ConnectDB.connect("dict_hh")) {
+                    if (connection != null) {
+                        PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+                        preparedStatement.setString(1, newdef);
+                        if (selectedWord != null) {
+                            preparedStatement.setString(2, newWord);
+                            preparedStatement.setString(3, newPro);
+                            preparedStatement.setInt(4, selectedWord.getId());
 
+                            int rowsAffected = preparedStatement.executeUpdate();
+
+                            if (rowsAffected > 0) {
+                                System.out.println("Cập nhật thành công!");
                                 Home homeController = Home.getInstance();
 
-                            if (homeController != null) {
-                                // Sử dụng thể hiện của Home controller để cập nhật WebView
-                                homeController.updateWebView(newdef);
-                                window.close();
+                                FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                                Parent root = fxmlLoader.load();
+                                Scene scene = new Scene(root);
+                                Alerter alertControler = fxmlLoader.getController();
+                                alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+
+                                if (homeController != null) {
+                                    // Sử dụng thể hiện của Home controller để cập nhật WebView
+                                    homeController.updateWebView(newdef);
+                                    window.close();
+                                } else {
+                                    System.out.println("Home Controller is null");
+                                }
                             } else {
-                                System.out.println("Home Controller is null");
+                                System.out.println("WebView is null.");
                             }
                         } else {
-                            System.out.println("WebView is null.");
+                            System.out.println("Không tìm thấy từ để cập nhật.");
                         }
                     } else {
-                        System.out.println("Không tìm thấy từ để cập nhật.");
+                        System.out.println("No word selected to update.");
                     }
-                } else {
-                    System.out.println("No word selected to update.");
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
+            } else {
+                FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                Parent root = fxmlLoader.load();
+                Scene scene = new Scene(root);
+                Alerter alertControler = fxmlLoader.getController();
+                alertControler.display("The word already exists. Please try again.", "/data/icon/angry2.gif", scene);
             }
         } else {
             System.out.println("HTML content is null or empty.");
@@ -117,6 +132,45 @@ public class EditDefController {
         //Displays window and waits for it to be closed before returning.
         window.showAndWait();
 
+    }
+
+    public boolean existedWord(String newword, String oldword) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
+            String verify = "SELECT COUNT(*) AS counter" +
+                    " FROM av1 WHERE word = '" + newword + "' AND word <> '"+ oldword + "'";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(verify);
+
+            if (query.next()) {
+                int count = query.getInt("counter");
+                //if (count == 1) {
+                if (count > 0) {
+                    System.out.println("thấy id");
+                    return true;
+                } else {
+                    System.out.println("không thấy id");
+                    return false;
+                }
+            }
+        } catch(Exception ex){
+            ex.printStackTrace();
+            ex.getCause();
+        } finally{
+            ConnectDB.closeConnection();
+        }
+        return false;
+    }
+
+    public String getWordFromHtml (String html) {
+        Document doc = Jsoup.parse(html);
+        String word = doc.select("h1").text();
+        return word;
+    }
+
+    public String getPronounceFromHtml (String html) {
+        Document doc = Jsoup.parse(html);
+        String pronounce = doc.select("h3 i").text();
+        return pronounce;
     }
 }
 

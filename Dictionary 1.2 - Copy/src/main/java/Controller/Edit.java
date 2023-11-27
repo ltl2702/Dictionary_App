@@ -91,7 +91,7 @@ public class Edit {
     }
 
     void add() {
-        try (Connection connectDatabase = new ConnectDB().connect("test3")) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String word = addword.getText().toLowerCase().trim();
             String word2 = addword.getText().trim();
             word = word.replaceAll("\\s+", " ").replaceAll("\'", "''");
@@ -125,7 +125,7 @@ public class Edit {
 
             //Verifies word.
             String verify = "SELECT COUNT(*) AS counter" +
-                    " FROM av WHERE LOWER(word) = '" + word + "'";
+                    " FROM av1 WHERE LOWER(word) = '" + word + "'";
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(verify);
 
@@ -141,7 +141,7 @@ public class Edit {
                     alertControler.display("The word already exists. Please try again.", "/data/icon/cry.gif", scene);
                 }
                 else {
-                    String add = "INSERT INTO av(word, html, pronounce, description) VALUES ('"
+                    String add = "INSERT INTO av1(word, html, pronounce, description) VALUES ('"
                             + word2 + "','" + convertHTML + "','" + pronounce + "','" + description + "')";
                     statement.executeUpdate(add);
                     addLabel.setText("The word is added.");
@@ -176,12 +176,12 @@ public class Edit {
     }
 
     void remove() {
-        try (Connection connectDatabase = new ConnectDB().connect("test3")) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String wordremove = removeword.getText().toLowerCase().trim();
             wordremove = wordremove.replaceAll("\\s+", " ").replaceAll("\'", "''");
 
             String verify = "SELECT COUNT(*) AS counter" +
-                    " FROM av WHERE LOWER(word) = '" + wordremove + "'";
+                    " FROM av1 WHERE LOWER(word) = '" + wordremove + "'";
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(verify);
 
@@ -189,7 +189,7 @@ public class Edit {
                 int count = query.getInt("counter");
                 //if (count == 1) {
                 if (count > 0) {
-                    String remove = "DELETE FROM av WHERE LOWER(word) = '" + wordremove + "'";
+                    String remove = "DELETE FROM av1 WHERE LOWER(word) = '" + wordremove + "'";
                     statement.executeUpdate(remove);
                     removeLabel.setText("The word is removed.");
                     FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
@@ -233,7 +233,7 @@ public class Edit {
     }
 
     void update() {
-        try (Connection connectDatabase = new ConnectDB().connect("test3")) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
             String oldWord = oldword.getText().toLowerCase().trim();
             String newWord = newword.getText().trim();
             String description = updateDes.getText().trim();
@@ -255,7 +255,7 @@ public class Edit {
             //convertHTML = HTML.convertToHtml(authword, authpro, authdes);
 
             String verify = "SELECT COUNT(*) AS counter" +
-                    " FROM av WHERE LOWER(word) = '" + oldWord + "'";
+                    " FROM av1 WHERE LOWER(word) = '" + oldWord + "'";
             Statement statement = connectDatabase.createStatement();
             ResultSet query = statement.executeQuery(verify);
 
@@ -264,7 +264,7 @@ public class Edit {
                 System.out.println(count);
                 if (count > 0) {
                     System.out.println("Old word exists.");
-                    String getinfo = "SELECT id, word, html, description, pronounce FROM av WHERE LOWER(word) = '" + oldWord + "'";
+                    String getinfo = "SELECT id, word, html, description, pronounce FROM av1 WHERE LOWER(word) = '" + oldWord + "'";
                     ResultSet IFquery = statement.executeQuery(getinfo);
                     if (IFquery.next()) {
                         int id = IFquery.getInt("id");
@@ -329,29 +329,51 @@ public class Edit {
 
                         if (newchange > 0) {
                             if (description.isBlank()) {
-                                System.out.println("true");
-                                String update = "UPDATE av SET word = '" + authword + "', html = '" + html.toString() + "', pronounce = '" + authpro + "' WHERE LOWER(word) = '" + oldWord + "'";
+                                if (!newWord.isBlank() && !newWord.equals(oldWord) && !existedWord(newWord, oldWord)) {
+                                    System.out.println("true");
+                                    String update = "UPDATE av1 SET word = '" + authword + "', html = '" + html.toString() + "', pronounce = '" + authpro + "' WHERE LOWER(word) = '" + oldWord + "'";
 
-                                statement.executeUpdate(update);
-                                updateLabel.setText("The word has been successfully updated.");
+                                    statement.executeUpdate(update);
+                                    updateLabel.setText("The word has been successfully updated.");
 
-                                FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
-                                Parent root = fxmlLoader.load();
-                                Scene scene = new Scene(root);
-                                Alerter alertControler = fxmlLoader.getController();
-                                alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+                                    FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                                    Parent root = fxmlLoader.load();
+                                    Scene scene = new Scene(root);
+                                    Alerter alertControler = fxmlLoader.getController();
+                                    alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+                                }
+                                if (!newWord.isBlank() && !newWord.equals(oldWord) && existedWord(newWord, oldWord)) {
+                                    updateLabel.setText("The word has not been successfully updated.");
+
+                                    FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                                    Parent root = fxmlLoader.load();
+                                    Scene scene = new Scene(root);
+                                    Alerter alertControler = fxmlLoader.getController();
+                                    alertControler.display("The word already exists. Please try again.", "/data/icon/angry2.gif", scene);
+                                }
                             } else {
                                 System.out.println("false");
-                                String update = "UPDATE av SET word = '" + authword + "', html = '" + convertHTML + "', description = '" + authdes + "', pronounce = '" + authpro + "' WHERE LOWER(word) = '" + oldWord + "'";
+                                if (!newWord.isBlank() && !newWord.equals(oldWord) && !existedWord(newWord, oldWord)) {
+                                    String update = "UPDATE av1 SET word = '" + authword + "', html = '" + convertHTML + "', description = '" + authdes + "', pronounce = '" + authpro + "' WHERE LOWER(word) = '" + oldWord + "'";
 
-                                statement.executeUpdate(update);
-                                updateLabel.setText("The word has been successfully updated.");
+                                    statement.executeUpdate(update);
+                                    updateLabel.setText("The word has been successfully updated.");
 
-                                FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
-                                Parent root = fxmlLoader.load();
-                                Scene scene = new Scene(root);
-                                Alerter alertControler = fxmlLoader.getController();
-                                alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+                                    FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                                    Parent root = fxmlLoader.load();
+                                    Scene scene = new Scene(root);
+                                    Alerter alertControler = fxmlLoader.getController();
+                                    alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+                                }
+                                if (!newWord.isBlank() && !newWord.equals(oldWord) && existedWord(newWord, oldWord)) {
+                                    updateLabel.setText("The word has not been successfully updated.");
+
+                                    FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                                    Parent root = fxmlLoader.load();
+                                    Scene scene = new Scene(root);
+                                    Alerter alertControler = fxmlLoader.getController();
+                                    alertControler.display("The word already exists. Please try again.", "/data/icon/angry2.gif", scene);
+                                }
                             }
                         } else {
                             updateLabel.setText("No change.");
@@ -378,5 +400,32 @@ public class Edit {
         } finally {
             ConnectDB.closeConnection();
         }
+    }
+
+    public boolean existedWord(String newword, String oldword) {
+        try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
+            String verify = "SELECT COUNT(*) AS counter" +
+                    " FROM av1 WHERE word = '" + newword + "' AND word <> '"+ oldword + "'";
+            Statement statement = connectDatabase.createStatement();
+            ResultSet query = statement.executeQuery(verify);
+
+            if (query.next()) {
+                int count = query.getInt("counter");
+                //if (count == 1) {
+                if (count > 0) {
+                    System.out.println("thấy id");
+                    return true;
+                } else {
+                    System.out.println("không thấy id");
+                    return false;
+                }
+            }
+        } catch(Exception ex){
+            ex.printStackTrace();
+            ex.getCause();
+        } finally{
+            ConnectDB.closeConnection();
+        }
+        return false;
     }
 }
