@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -24,10 +26,20 @@ public class QuizResultController {
     @FXML
     Button exit, replay;
     private AnchorPane mainpane;
+    private MediaPlayer mediaPlayer;
 
     public void display(Scene scene) {
         window.initModality(Modality.APPLICATION_MODAL);
         window.initStyle(StageStyle.UNDECORATED);
+        if (QuestionController.correct >= 7) {
+            Media sound = new Media(getClass().getResource("/data/audio/cheer.mp3").toExternalForm());
+            mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+        } else {
+            Media sound = new Media(getClass().getResource("/data/audio/disappointed.mp3").toExternalForm());
+            mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+        }
 
         yourScore.setText("Your score: " + QuestionController.correct + "/10");
         correct.setText("Correct answers: " + String.valueOf(QuestionController.correct));

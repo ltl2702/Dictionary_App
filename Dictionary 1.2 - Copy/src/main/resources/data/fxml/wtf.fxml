@@ -118,7 +118,7 @@
                             <graphic>
                                 <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../icon/add2-removebg-preview.png" />
+                                        <Image url="@../icon/contributor.png" />
                                     </image>
                                 </ImageView>
                             </graphic>

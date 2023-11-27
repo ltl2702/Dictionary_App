@@ -11,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -193,10 +195,12 @@ public class QuestionController implements Initializable {
     public void opt1Clicked (ActionEvent event) throws SQLException {
         if(check(counter, 1)) {
             correct++;
+            TrueSound();
             ScoreLabel.setText(setScoreNum(correct));
             option1.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
         } else {
             wrong++;
+            NopeSound();
             option1.setStyle("-fx-background-color:#ff6666; x-fx-text-fill: white; ");
             getCorrectButton(option4);
             getCorrectButton(option2);
@@ -232,10 +236,12 @@ public class QuestionController implements Initializable {
     public void opt2Clicked (ActionEvent event) throws SQLException {
         if(check(counter, 2)) {
             correct++;
+            TrueSound();
             ScoreLabel.setText(setScoreNum(correct));
             option2.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
         } else {
             wrong++;
+            NopeSound();
             option2.setStyle("-fx-background-color:#ff6666; x-fx-text-fill: white; ");
             getCorrectButton(option1);
             getCorrectButton(option4);
@@ -269,10 +275,12 @@ public class QuestionController implements Initializable {
     public void opt3Clicked (ActionEvent event) throws SQLException {
         if(check(counter, 3)) {
             correct++;
+            TrueSound();
             ScoreLabel.setText(setScoreNum(correct));
             option3.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
         } else {
             wrong++;
+            NopeSound();
             option3.setStyle("-fx-background-color:#ff6666; x-fx-text-fill: white; ");
             getCorrectButton(option1);
             getCorrectButton(option2);
@@ -308,10 +316,12 @@ public class QuestionController implements Initializable {
     public void opt4Clicked (ActionEvent event) throws SQLException {
         if (check(counter, 4)) {
             correct++;
+            TrueSound();
             ScoreLabel.setText(setScoreNum(correct));
             option4.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white;");
         } else {
             wrong++;
+            NopeSound();
             option4.setStyle("-fx-background-color:#ff6666; x-fx-text-fill: white; ");
             getCorrectButton(option1);
             getCorrectButton(option2);
@@ -367,5 +377,19 @@ public class QuestionController implements Initializable {
         else {
             return;
         }
+    }
+
+    private MediaPlayer mediaPlayer;
+
+    private void TrueSound() {
+        Media sound = new Media(getClass().getResource("/data/audio/yes.mp3").toExternalForm());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+    }
+
+    private void NopeSound() {
+        Media sound = new Media(getClass().getResource("/data/audio/Nope.mp3").toExternalForm());
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
     }
 }
