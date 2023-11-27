@@ -173,15 +173,20 @@ public class EditDefController {
         }
     }
 
-    public void display(Scene scene) {
+    public void display(Scene scene, double x, double y) {
         window.initModality(Modality.APPLICATION_MODAL);
         window.initStyle(StageStyle.UNDECORATED);
 
         window.setScene(scene);
-        //Displays window and waits for it to be closed before returning.
-        window.showAndWait();
 
+        // Đặt tọa độ cho cửa sổ
+        window.setX(x);
+        window.setY(y);
+
+        // Hiển thị cửa sổ và đợi nó được đóng trước khi trả về
+        window.showAndWait();
     }
+
 
     public boolean existedWord(String newword, String oldword) {
         try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {

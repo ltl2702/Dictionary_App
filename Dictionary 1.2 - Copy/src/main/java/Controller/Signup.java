@@ -23,7 +23,6 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class Signup implements Initializable {
-
     @FXML
     private TextField firstnamefill, lastnamefill, usernamefill;
 
@@ -123,6 +122,8 @@ public class Signup implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        usernamefill.setFocusTraversable(false);
+        passwordfill.setFocusTraversable(false);
     }
 
     public void setStage(Stage stage) {

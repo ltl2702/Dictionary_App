@@ -441,7 +441,7 @@ public class Home implements Initializable {
                     editDefController.setSelectedWord(selectedWord);
 
                     Scene scene = new Scene(root);
-                    editDefController.display(scene);
+                    editDefController.display(scene, 588, 290);
                     //editDefController.setHomeController(this);
 
                 } catch (Exception e) {
@@ -457,7 +457,7 @@ public class Home implements Initializable {
                     editDefController.setSelectedWord(selectedWord);
 
                     Scene scene = new Scene(root);
-                    editDefController.display(scene);
+                    editDefController.display(scene,588,290);
                     //editDefController.setHomeController(this);
 
                 } catch (Exception e) {
