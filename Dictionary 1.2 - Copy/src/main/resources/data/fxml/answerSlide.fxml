@@ -50,7 +50,7 @@
          </graphic></JFXButton>
       <AnchorPane fx:id="wordpane" layoutX="105.0" layoutY="115.0" prefHeight="215.0" prefWidth="343.0" style="-fx-border-color: black; -fx-background-color: #EEE5DE; -fx-border-radius: 5;">
          <children>
-            <Label fx:id="descriptionLabel" alignment="CENTER" layoutX="29.0" layoutY="81.0" prefHeight="119.0" prefWidth="289.0" text="abc" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="descriptionLabel" alignment="CENTER" layoutX="29.0" layoutY="81.0" prefHeight="119.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="abc" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Arial Italic" size="16.0" />
                </font>
