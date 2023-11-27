@@ -6,6 +6,7 @@ import Dictionary.Word;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.jsoup.Jsoup;
@@ -173,19 +175,24 @@ public class EditDefController {
         }
     }
 
-    public void display(Scene scene, double x, double y) {
+    public void display(Scene scene, double relativeX, double relativeY) {
         window.initModality(Modality.APPLICATION_MODAL);
         window.initStyle(StageStyle.UNDECORATED);
 
         window.setScene(scene);
 
-        // Đặt tọa độ cho cửa sổ
-        window.setX(x);
-        window.setY(y);
+        Screen primaryScreen = Screen.getPrimary();
+        Rectangle2D screenBounds = primaryScreen.getBounds();
 
-        // Hiển thị cửa sổ và đợi nó được đóng trước khi trả về
+        double absoluteX = screenBounds.getMinX() + screenBounds.getWidth() * relativeX;
+        double absoluteY = screenBounds.getMinY() + screenBounds.getHeight() * relativeY;
+
+        window.setX(absoluteX);
+        window.setY(absoluteY);
+
         window.showAndWait();
     }
+
 
 
     public boolean existedWord(String newword, String oldword) {
