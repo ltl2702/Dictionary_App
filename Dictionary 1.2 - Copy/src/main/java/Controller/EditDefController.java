@@ -25,6 +25,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Objects;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
 public class EditDefController {
     Stage window = new Stage();
     @FXML
@@ -67,22 +71,44 @@ public class EditDefController {
 
     public void submitEdition(ActionEvent actionEvent) {
         String newdef = htmlEditor.getHtmlText();
-        //cat thanh 3 string de upate 3 cot
+        //cat thanh 3 string de update 3 cot
+
+        Document document = Jsoup.parse(newdef);
+
+        // Tách phần h1
+        Element h1Element = document.select("h1").first();
+        String h1String = h1Element != null ? h1Element.text() : "";
+        System.out.println(h1String);
+
+        // Tách phần h3
+        Element h3Element = document.select("h3 i").first();
+        String h3String = h3Element != null ? h3Element.text() : "";
+        System.out.println(h3String);
+
+        System.out.println();
+
+        // Tách phần còn lại và xóa các ký tự đặc biệt
+        String remainingString = document.body().text().replaceAll((h1String + " " + h3String + " "), "");
+        System.out.println(remainingString);
 
         if (htmlEditor != null && newdef != null && !newdef.isEmpty()) {
             String updateQuery = "UPDATE av1 SET html = ? WHERE word = ?";
+            String updateWord = "update av1 set word = ? where id = ?";
+            String updatePronounce = "update av1 set pronounce = ? where id = ?";
+            String updateDes = "update av1 set description = ? where id = ?";
 
             try (Connection connection = ConnectDB.connect("dict_hh")) {
                 if (connection != null) {
                     PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
                     preparedStatement.setString(1, newdef);
                     if (selectedWord != null) {
+                        String wordID = String.valueOf(selectedWord.getId());
                         if(!newdef.equals(selectedWord.getHtml())) {
                         preparedStatement.setString(2, selectedWord.toString());
                         int rowsAffected = preparedStatement.executeUpdate();
 
                         if (rowsAffected > 0) {
-                            System.out.println("Cập nhật thành công!");
+                            System.out.println("Cập nhật html thành công!");
                             //thong bao cho nguoi dung
                             // neu duong dung ok moi ddongs
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
