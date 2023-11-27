@@ -64,11 +64,55 @@ public class EditDefController {
 
     public void submitEdition(ActionEvent actionEvent) throws IOException {
         String newdef = htmlEditor.getHtmlText();
-        if (htmlEditor != null && newdef != null && !newdef.isEmpty()) {
-            String newWord = getWordFromHtml(newdef);
-            String newPro = getPronounceFromHtml(newdef);
+        String newWord = getWordFromHtml(newdef);
+        String newPro = getPronounceFromHtml(newdef);
 
+        if (htmlEditor != null && newdef != null && !newdef.isEmpty() && !newdef.isBlank() && !newWord.isBlank() && !newWord.isEmpty()) {
             if (!newWord.equals(selectedWord.toString()) && !existedWord(newWord, selectedWord.toString())) {
+                String updateQuery = "UPDATE av1 SET html = ? ,word = ?, pronounce = ? WHERE id = ?";
+
+                try (Connection connection = ConnectDB.connect("dict_hh")) {
+                    if (connection != null) {
+                        PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+                        preparedStatement.setString(1, newdef);
+                        if (selectedWord != null) {
+                            preparedStatement.setString(2, newWord);
+                            preparedStatement.setString(3, newPro);
+                            preparedStatement.setInt(4, selectedWord.getId());
+
+                            int rowsAffected = preparedStatement.executeUpdate();
+
+                            if (rowsAffected > 0) {
+                                System.out.println("Cập nhật thành công!");
+                                Home homeController = Home.getInstance();
+
+                                FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+                                Parent root = fxmlLoader.load();
+                                Scene scene = new Scene(root);
+                                Alerter alertControler = fxmlLoader.getController();
+                                alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+
+                                if (homeController != null) {
+                                    // Sử dụng thể hiện của Home controller để cập nhật WebView
+                                    homeController.updateWebView(newdef);
+                                    window.close();
+                                } else {
+                                    System.out.println("Home Controller is null");
+                                }
+                            } else {
+                                System.out.println("WebView is null.");
+                            }
+                        } else {
+                            System.out.println("Không tìm thấy từ để cập nhật.");
+                        }
+                    } else {
+                        System.out.println("No word selected to update.");
+                    }
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } else if (newWord.equals(selectedWord.toString())) {
                 String updateQuery = "UPDATE av1 SET html = ? ,word = ?, pronounce = ? WHERE id = ?";
 
                 try (Connection connection = ConnectDB.connect("dict_hh")) {
@@ -120,7 +164,20 @@ public class EditDefController {
                 alertControler.display("The word already exists. Please try again.", "/data/icon/angry2.gif", scene);
             }
         } else {
+            Home homeController = Home.getInstance();
+            if (homeController != null) {
+                // Sử dụng thể hiện của Home controller để cập nhật WebView
+                homeController.updateWebView(selectedWord.getHtml());
+            } else {
+                System.out.println("Home Controller is null");
+            }
+
             System.out.println("HTML content is null or empty.");
+            FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            Alerter alertControler = fxmlLoader.getController();
+            alertControler.display("Please enter your word.", "/data/icon/angry2.gif", scene);
         }
     }
 
@@ -172,5 +229,40 @@ public class EditDefController {
         String pronounce = doc.select("h3 i").text();
         return pronounce;
     }
+
 }
 
+/*
+a
+
+/ei, ə/
+
+danh từ, số nhiều as, a's
+
+(thông tục) loại a, hạng nhất, hạng tốt nhất hạng rất tốt
+his health is a: sức khoẻ anh ta vào loại a
+(âm nhạc) la
+a sharp: la thăng
+a flat: la giáng
+người giả định thứ nhất; trường hợp giả định thứ nhất
+from a to z: từ đầu đến đuôi, tường tận
+not to know a from b: không biết tí gì cả; một chữ bẻ đôi cũng không biết
+mạo từ
+
+một; một (như kiểu); một (nào đó)
+a very cold day: một ngày rất lạnh
+a dozen: một tá
+a few: một ít
+all of a size: tất cả cùng một cỡ
+a Shakespeare: một (văn hào như kiểu) Sếch-xpia
+a Mr Nam: một ông Nam (nào đó)
+cái, con, chiếc, cuốn, người, đứa...;
+a cup: cái chén
+a knife: con dao
+a son of the Party: người con của Đảng
+a Vietnamese grammar: cuốn ngữ pháp Việt Nam
+giới từ
+
+mỗi, mỗi một
+twice a week: mỗi tuần hai lần
+ */
