@@ -1,0 +1,35 @@
+/* Đặt màu nền cho khung HTML */
+.html-editor {
+    -fx-background-color: #f0f0f0;
+}
+
+/* Đặt màu nền cho thanh công cụ */
+.tool-bar {
+    -fx-background-color: #cccccc;
+}
+
+/* Đặt màu nền cho vùng soạn thảo HTML */
+.web-view {
+    -fx-background-color: #ffffff;
+}
+
+/* Đặt màu chữ cho vùng soạn thảo HTML */
+.web-view .editor {
+    -fx-text-fill: #000000;
+}
+
+/* Đặt màu nền cho các nút trong thanh công cụ */
+.tool-bar .button {
+    -fx-background-color: #a0a0a0;
+}
+
+/* Đặt màu chữ cho các nút trong thanh công cụ */
+.tool-bar .button .text {
+    -fx-fill: #ffffff;
+}
+
+/* Đặt màu chữ cho các nút trong thanh công cụ khi được di chuột qua */
+.tool-bar .button:hover .text {
+    -fx-fill: #000000;
+    -fx-cursor: hand;
+}

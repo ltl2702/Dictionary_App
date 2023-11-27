@@ -16,7 +16,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="544.0" style="-fx-border-radius: 10; -fx-border-width: 4; -fx-border-color: black; -fx-background-radius: 10; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OnlineDictionary">
    <children>
-      <JFXButton fx:id="okButton" alignment="CENTER" layoutX="220.0" layoutY="340.0" prefHeight="35.0" prefWidth="103.0" text="OKEEE" textAlignment="CENTER">
+      <JFXButton fx:id="okButton" alignment="CENTER" layoutX="236.0" layoutY="338.0" prefHeight="35.0" prefWidth="103.0" text="OKEEE" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
@@ -61,8 +61,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Hyperlink fx:id="uetHyperLink" onAction="#handleHyperLinkClick" prefHeight="27.0" prefWidth="345.0" style="-fx-cursor: HAND;" text="University of Engineering and Technology, VNU" GridPane.rowIndex="3" />
-            <HBox prefHeight="15.0" prefWidth="269.0" GridPane.rowIndex="1">
+            <Hyperlink fx:id="uetHyperLink" alignment="CENTER" contentDisplay="CENTER" onAction="#handleHyperLinkClick" prefHeight="30.0" prefWidth="334.0" style="-fx-cursor: HAND;" text="University of Engineering and Technology, VNU" textAlignment="CENTER" GridPane.rowIndex="3" />
+            <HBox alignment="CENTER" prefHeight="15.0" prefWidth="269.0" GridPane.rowIndex="1">
                <children>
                   <Hyperlink fx:id="CamHyperLink" onAction="#handleHyperLinkClick" prefHeight="30.0" prefWidth="75.0" text="Cambridge">
                      <opaqueInsets>
@@ -72,10 +72,10 @@
                         <Insets left="8.0" />
                      </padding>
                   </Hyperlink>
-                  <Label prefHeight="27.0" prefWidth="152.0" text="Cambridge Dictionary" />
+                  <Label prefHeight="30.0" prefWidth="152.0" text="Cambridge Dictionary" />
                </children>
             </HBox>
-            <HBox prefHeight="15.0" prefWidth="269.0" GridPane.rowIndex="2">
+            <HBox alignment="CENTER" prefHeight="15.0" prefWidth="269.0" GridPane.rowIndex="2">
                <children>
                   <Hyperlink fx:id="OxfordHyperLink" onAction="#handleHyperLinkClick" prefHeight="30.0" prefWidth="75.0" text="Oxford">
                      <opaqueInsets>
@@ -85,10 +85,10 @@
                         <Insets left="8.0" />
                      </padding>
                   </Hyperlink>
-                  <Label prefHeight="27.0" prefWidth="152.0" text="Oxford Learner Dictionary" />
+                  <Label prefHeight="30.0" prefWidth="152.0" text="Oxford Learner Dictionary" />
                </children>
             </HBox>
-            <Label alignment="CENTER" prefHeight="35.0" prefWidth="151.0" text="DICTIONARY LINK" textAlignment="CENTER" textFill="#072e7d" wrapText="true">
+            <Label alignment="CENTER" prefHeight="35.0" prefWidth="359.0" text="DICTIONARY LINK" textAlignment="CENTER" textFill="#072e7d" wrapText="true">
                <font>
                   <Font name="Impact" size="20.0" />
                </font>

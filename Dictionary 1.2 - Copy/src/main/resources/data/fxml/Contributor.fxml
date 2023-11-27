@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="544.0" style="-fx-border-radius: 10; -fx-border-width: 4; -fx-border-color: black; -fx-background-radius: 10; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Contributor">
+<AnchorPane prefHeight="400.0" prefWidth="544.0" style="-fx-border-radius: 10; -fx-border-width: 4; -fx-border-color: black; -fx-background-radius: 10; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Contributor">
    <children>
-      <JFXButton fx:id="okButton" alignment="CENTER" layoutX="220.0" layoutY="340.0" prefHeight="35.0" prefWidth="103.0" text="OKEEE" textAlignment="CENTER">
+      <JFXButton fx:id="okButton" alignment="CENTER" layoutX="236.0" layoutY="340.0" prefHeight="35.0" prefWidth="103.0" text="OKEEE" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
@@ -56,8 +62,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Hyperlink fx:id="uetHyperLink" onAction="#handleHyperLinkClick" prefHeight="27.0" prefWidth="345.0" style="-fx-cursor: HAND;" text="University of Engineering and Technology, VNU" GridPane.rowIndex="4" />
-            <HBox prefHeight="15.0" prefWidth="269.0" GridPane.rowIndex="1">
+            <Hyperlink fx:id="uetHyperLink" alignment="CENTER" contentDisplay="CENTER" onAction="#handleHyperLinkClick" prefHeight="27.0" prefWidth="362.0" style="-fx-cursor: HAND;" text="University of Engineering and Technology, VNU" GridPane.rowIndex="4" />
+            <HBox alignment="CENTER" prefHeight="15.0" prefWidth="269.0" GridPane.rowIndex="1">
                <children>
                   <Hyperlink fx:id="ntttHyperLink" onAction="#handleHyperLinkClick" prefHeight="30.0" prefWidth="75.0" text="\@nttt2004">
                      <opaqueInsets>
@@ -70,7 +76,7 @@
                   <Label prefHeight="29.0" prefWidth="146.0" text="Nguyen Thi Thu Trang" />
                </children>
             </HBox>
-            <HBox prefHeight="15.0" prefWidth="269.0" GridPane.rowIndex="2">
+            <HBox alignment="CENTER" prefHeight="15.0" prefWidth="269.0" GridPane.rowIndex="2">
                <children>
                   <Hyperlink fx:id="ltlHyperLink" onAction="#handleHyperLinkClick" prefHeight="30.0" prefWidth="75.0" text="\@ltl2702">
                      <opaqueInsets>
@@ -83,7 +89,7 @@
                   <Label prefHeight="27.0" prefWidth="152.0" text="Luong Thi Linh" />
                </children>
             </HBox>
-            <HBox prefHeight="15.0" prefWidth="269.0" GridPane.rowIndex="3">
+            <HBox alignment="CENTER" prefHeight="15.0" prefWidth="269.0" GridPane.rowIndex="3">
                <children>
                   <Hyperlink fx:id="vtqHyperLink" onAction="#handleHyperLinkClick" prefHeight="30.0" prefWidth="75.0" text="\@vtq0611">
                      <opaqueInsets>
@@ -96,7 +102,7 @@
                   <Label prefHeight="27.0" prefWidth="145.0" text="Vu Tu Quynh" />
                </children>
             </HBox>
-            <Label alignment="CENTER" prefHeight="35.0" prefWidth="125.0" text="CONTRIBUTOR" textAlignment="CENTER" textFill="#072e7d" wrapText="true">
+            <Label alignment="CENTER" prefHeight="35.0" prefWidth="359.0" text="CONTRIBUTOR" textAlignment="CENTER" textFill="#072e7d" wrapText="true">
                <font>
                   <Font name="Impact" size="20.0" />
                </font>

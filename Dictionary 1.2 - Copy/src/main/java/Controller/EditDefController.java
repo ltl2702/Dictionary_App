@@ -175,21 +175,11 @@ public class EditDefController {
         }
     }
 
-    public void display(Scene scene, double relativeX, double relativeY) {
+    public void display(Scene scene) {
         window.initModality(Modality.APPLICATION_MODAL);
         window.initStyle(StageStyle.UNDECORATED);
 
         window.setScene(scene);
-
-        Screen primaryScreen = Screen.getPrimary();
-        Rectangle2D screenBounds = primaryScreen.getBounds();
-
-        double absoluteX = screenBounds.getMinX() + screenBounds.getWidth() * relativeX;
-        double absoluteY = screenBounds.getMinY() + screenBounds.getHeight() * relativeY;
-
-        window.setX(absoluteX);
-        window.setY(absoluteY);
-
         window.showAndWait();
     }
 
