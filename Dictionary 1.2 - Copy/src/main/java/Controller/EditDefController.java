@@ -45,7 +45,8 @@ public class EditDefController {
         }
     }
 
-    public void discardChanges(ActionEvent actionEvent) {
+    public void discardChanges(ActionEvent actionEvent) throws IOException {
+        /*
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Discard changes?");
         alert.setContentText("If you discard now, you will lose any changes you've made.");
@@ -54,6 +55,15 @@ public class EditDefController {
         if(alert.showAndWait().get() == ButtonType.OK) {
             window.close();
         }
+
+         */
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        Alerter alertControler = fxmlLoader.getController();
+        alertControler.display("Discard changes?\nIf you discard now, you will lose any changes you've made.", "/data/icon/notfun2.gif", scene);
+        window.close();
     }
 
     public void submitEdition(ActionEvent actionEvent) throws IOException {

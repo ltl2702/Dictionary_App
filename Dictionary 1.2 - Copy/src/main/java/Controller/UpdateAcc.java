@@ -13,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -37,11 +39,16 @@ public class UpdateAcc implements Initializable {
     private int userID;
 
     @FXML
-    void submitButtonOnAction(ActionEvent event) {
+    void submitButtonOnAction(ActionEvent event) throws IOException {
         if (!newUsername.getText().isBlank() && !newPass.getText().isBlank() && !oldPass.getText().isBlank())
             update();
-        else
-            updateLabel.setText("Please enter your change.");
+        else {
+            FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            Alerter alertControler = fxmlLoader.getController();
+            alertControler.display("Please enter your change.", "/data/icon/like.gif", scene);
+        }
     }
 
     void update() {
