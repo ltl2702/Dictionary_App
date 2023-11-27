@@ -34,18 +34,9 @@ public class Signup implements Initializable {
     private PasswordField passwordfill;
 
     @FXML
-    private ImageView welcomeimageView;
-
-    @FXML
     private ProgressBar loading;
 
     private Timeline timeline;
-
-    /*
-    @FXML
-    private AnchorPane mainpane;
-     */
-
     private Stage stage;
 
     public String getUsernamefill() {

@@ -11,21 +11,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-
 import java.io.IOException;
 import java.sql.*;
 
 public class EditDefController {
     Stage window = new Stage();
-    @FXML
-    private AnchorPane mainpane;
 
     @FXML
     private HTMLEditor htmlEditor;
@@ -37,10 +33,6 @@ public class EditDefController {
 
     public void setSelectedWord(Word word) {
         this.selectedWord = word;
-    }
-
-    public void setMainPane(AnchorPane mainpane) {
-        this.mainpane = mainpane;
     }
 
     public void setHtmlContent(String htmlContent) {
@@ -90,7 +82,7 @@ public class EditDefController {
                                 Parent root = fxmlLoader.load();
                                 Scene scene = new Scene(root);
                                 Alerter alertControler = fxmlLoader.getController();
-                                alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+                                alertControler.display("The word has been successfully updated.", "/data/icon/like.gif", scene);
 
                                 if (homeController != null) {
                                     // Sử dụng thể hiện của Home controller để cập nhật WebView
@@ -134,7 +126,7 @@ public class EditDefController {
                                 Parent root = fxmlLoader.load();
                                 Scene scene = new Scene(root);
                                 Alerter alertControler = fxmlLoader.getController();
-                                alertControler.display("The word has been successfully updated.", "/data/icon/like2.gif", scene);
+                                alertControler.display("The word has been successfully updated.", "/data/icon/like.gif", scene);
 
                                 if (homeController != null) {
                                     // Sử dụng thể hiện của Home controller để cập nhật WebView
@@ -161,7 +153,7 @@ public class EditDefController {
                 Parent root = fxmlLoader.load();
                 Scene scene = new Scene(root);
                 Alerter alertControler = fxmlLoader.getController();
-                alertControler.display("The word already exists. Please try again.", "/data/icon/angry2.gif", scene);
+                alertControler.display("The word already exists. Please try again.", "/data/icon/angry.gif", scene);
             }
         } else {
             Home homeController = Home.getInstance();
@@ -177,7 +169,7 @@ public class EditDefController {
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
             Alerter alertControler = fxmlLoader.getController();
-            alertControler.display("Please enter your word.", "/data/icon/angry2.gif", scene);
+            alertControler.display("Please enter your word.", "/data/icon/angry.gif", scene);
         }
     }
 
@@ -231,38 +223,3 @@ public class EditDefController {
     }
 
 }
-
-/*
-a
-
-/ei, ə/
-
-danh từ, số nhiều as, a's
-
-(thông tục) loại a, hạng nhất, hạng tốt nhất hạng rất tốt
-his health is a: sức khoẻ anh ta vào loại a
-(âm nhạc) la
-a sharp: la thăng
-a flat: la giáng
-người giả định thứ nhất; trường hợp giả định thứ nhất
-from a to z: từ đầu đến đuôi, tường tận
-not to know a from b: không biết tí gì cả; một chữ bẻ đôi cũng không biết
-mạo từ
-
-một; một (như kiểu); một (nào đó)
-a very cold day: một ngày rất lạnh
-a dozen: một tá
-a few: một ít
-all of a size: tất cả cùng một cỡ
-a Shakespeare: một (văn hào như kiểu) Sếch-xpia
-a Mr Nam: một ông Nam (nào đó)
-cái, con, chiếc, cuốn, người, đứa...;
-a cup: cái chén
-a knife: con dao
-a son of the Party: người con của Đảng
-a Vietnamese grammar: cuốn ngữ pháp Việt Nam
-giới từ
-
-mỗi, mỗi một
-twice a week: mỗi tuần hai lần
- */

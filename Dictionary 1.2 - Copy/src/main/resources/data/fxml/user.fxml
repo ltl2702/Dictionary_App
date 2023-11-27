@@ -84,7 +84,7 @@
             <AnchorPane layoutX="498.0" layoutY="13.0" AnchorPane.leftAnchor="0.0" />
             <ImageView fitHeight="69.0" fitWidth="64.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/logo3.png" />
+                  <Image url="@../icon/logo.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="61.0" layoutY="13.0" prefHeight="60.0" prefWidth="250.0" text="English" textAlignment="CENTER" wrapText="true">

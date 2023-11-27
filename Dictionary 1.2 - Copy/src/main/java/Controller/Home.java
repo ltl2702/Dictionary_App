@@ -1,7 +1,6 @@
 package Controller;
 
 import API.TextToSpeechFreetts;
-import Connect.Alerter;
 import Connect.ConnectDB;
 import Dictionary.DictionaryManagement;
 import Dictionary.Word;
@@ -45,7 +44,6 @@ public class Home implements Initializable {
 
     public Button speakerButton, searchButton;
     public JFXButton gameButton;
-    public ImageView menuimage1;
     public JFXButton translateButton, editButton, homeButton, userButton;
 
     @FXML

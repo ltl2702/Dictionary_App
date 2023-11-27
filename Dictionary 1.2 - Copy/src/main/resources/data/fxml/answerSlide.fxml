@@ -7,214 +7,50 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Avatar">
+<AnchorPane fx:id="mainpane" prefHeight="416.0" prefWidth="553.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.AnswerSlide">
    <children>
-      <ImageView fitHeight="313.0" fitWidth="431.0" layoutX="-111.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../icon/robot2.gif" />
-         </image>
-      </ImageView>
-      <AnchorPane layoutX="306.0" layoutY="122.0" prefHeight="454.0" prefWidth="626.0" style="-fx-background-color: #283655; -fx-background-radius: 30;">
-         <children>
-            <AnchorPane layoutX="21.0" layoutY="12.0" prefHeight="430.0" prefWidth="590.0" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: #fac400; -fx-border-width: 5; -fx-border-radius: 20;">
-               <children>
-                  <AnchorPane layoutX="21.0" layoutY="16.0" prefHeight="377.0" prefWidth="554.0">
-                     <children>
-                        <JFXButton fx:id="user14" alignment="TOP_CENTER" layoutX="150.0" layoutY="300.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user14.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user1" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user1.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user2" alignment="TOP_CENTER" layoutX="150.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user2.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user3" alignment="TOP_CENTER" layoutX="300.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user3.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user4" alignment="TOP_CENTER" layoutX="450.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user4.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user5" alignment="TOP_CENTER" layoutY="100.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user5.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user6" alignment="TOP_CENTER" layoutX="150.0" layoutY="100.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user6.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user7" alignment="TOP_CENTER" layoutX="300.0" layoutY="100.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user7.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user8" alignment="TOP_CENTER" layoutX="450.0" layoutY="100.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user8.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user9" alignment="TOP_CENTER" layoutY="200.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user9.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user10" alignment="TOP_CENTER" layoutX="150.0" layoutY="200.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user10.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user11" alignment="TOP_CENTER" layoutX="300.0" layoutY="200.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user11.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user12" alignment="TOP_CENTER" layoutX="450.0" layoutY="200.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user12.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user13" alignment="TOP_CENTER" layoutY="300.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user13.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user15" alignment="TOP_CENTER" layoutX="300.0" layoutY="300.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user15.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="user16" alignment="TOP_CENTER" layoutX="450.0" layoutY="300.0" prefHeight="100.0" prefWidth="100.0" stylesheets="@../css/zoom.css" text=" ">
-                           <graphic>
-                              <ImageView fitHeight="80.0" fitWidth="80.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../user/user16.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="230.0" prefHeight="102.0" prefWidth="574.0" style="-fx-background-radius: 40;">
-         <children>
-            <Label alignment="CENTER" layoutX="273.0" layoutY="14.0" prefHeight="60.0" prefWidth="304.0" text="Vietnamese" textAlignment="CENTER" textFill="#0092fa" wrapText="true">
-               <font>
-                  <Font name="Bookman Old Style Bold" size="48.0" />
-               </font>
-            </Label>
-            <AnchorPane layoutX="498.0" layoutY="13.0" AnchorPane.leftAnchor="0.0" />
-            <ImageView fitHeight="69.0" fitWidth="64.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icon/logo3.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" layoutX="61.0" layoutY="13.0" prefHeight="60.0" prefWidth="250.0" text="English" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font name="Bookman Old Style Bold" size="48.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="220.0" layoutY="65.0" prefHeight="38.0" prefWidth="182.0" text="Dictionary" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font name="Bookman Old Style" size="30.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <JFXButton fx:id="returnButton" layoutX="835.0" layoutY="591.0" onAction="#returnButtonOnAction" prefHeight="38.0" prefWidth="131.0" text="Return">
+      <Label layoutX="152.0" layoutY="39.0" text="ANSWER BOARD" textFill="#860a0a">
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="35.0" />
          </font>
-         <graphic>
-            <ImageView blendMode="LIGHTEN" fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icon/return1.png" />
-               </image>
-            </ImageView>
-         </graphic>
+      </Label>
+      <JFXButton fx:id="skipButton" layoutX="245.0" layoutY="350.0" onAction="#skipButtonOnAction" prefHeight="32.0" prefWidth="61.0" text="Skip" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
          <stylesheets>
+            <URL value="@../css/scoreboard.css" />
             <URL value="@../css/zoom.css" />
-            <URL value="@../css/background.css" />
          </stylesheets>
       </JFXButton>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="109.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/game2.png" />
-         </image>
-      </ImageView>
+      <JFXButton fx:id="prevButton" layoutX="41.0" layoutY="193.0" onAction="#prevButtonOnAction" prefHeight="30.0" prefWidth="40.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/prev.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="nextButton" layoutX="474.0" layoutY="193.0" onAction="#nextButtonOnAction" prefHeight="30.0" prefWidth="50.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/next.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <AnchorPane fx:id="wordpane" layoutX="105.0" layoutY="115.0" prefHeight="215.0" prefWidth="343.0" style="-fx-border-color: black; -fx-background-color: #EEE5DE; -fx-border-radius: 5;">
+         <children>
+            <Label fx:id="descriptionLabel" alignment="CENTER" layoutX="29.0" layoutY="81.0" prefHeight="119.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="abc" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Arial Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="wordLabel" alignment="CENTER" layoutX="18.0" layoutY="14.0" prefHeight="30.0" prefWidth="312.0" text="Label">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

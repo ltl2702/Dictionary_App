@@ -2,23 +2,16 @@ package MatchGame;
 
 import Connect.ConnectDB;
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class AnswerSlide {
 
@@ -33,9 +26,6 @@ public class AnswerSlide {
 
     @FXML
     private JFXButton prevButton;
-
-    @FXML
-    private JFXButton searchButton;
 
     @FXML
     private JFXButton skipButton;
@@ -65,11 +55,6 @@ public class AnswerSlide {
             ex.printStackTrace();
             ex.getCause();
         }
-    }
-
-    @FXML
-    void searchButtonOnAction(ActionEvent event) {
-
     }
 
     @FXML

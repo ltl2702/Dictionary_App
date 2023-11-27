@@ -14,7 +14,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-
 import java.net.URL;
 import java.sql.*;
 import java.util.*;
@@ -22,16 +21,19 @@ import java.util.*;
 public class QuestionController implements Initializable {
     @FXML
     Label question, answerLabel;
+
     @FXML
     Button option1;
+
     @FXML
     Button option2;
+
     @FXML
     Button option3;
+
     @FXML
     Button option4;
-    @FXML
-    Button next;
+
     @FXML
     private Label QuestionNum;
 

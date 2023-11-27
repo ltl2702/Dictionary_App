@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="104.0" fitWidth="148.0" layoutX="48.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/gaming-icon-2.jpg" />
+            <Image url="@../icon/game_icon.jpg" />
          </image>
       </ImageView>
       <Label layoutX="165.0" layoutY="99.0" prefHeight="149.0" prefWidth="159.0" text="GAME" textFill="#0873b5" wrapText="true">
@@ -23,7 +23,7 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/flipicon2.png" />
+                  <Image url="@../icon/flipicon.png" />
                </image>
             </ImageView>
          </graphic>
@@ -37,7 +37,7 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/flipicon2.png" />
+                  <Image url="@../icon/flipicon.png" />
                </image>
             </ImageView>
          </graphic>
@@ -57,7 +57,7 @@
             <AnchorPane layoutX="498.0" layoutY="13.0" AnchorPane.leftAnchor="0.0" />
             <ImageView fitHeight="69.0" fitWidth="64.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/logo3.png" />
+                  <Image url="@../icon/logo.png" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="61.0" layoutY="13.0" prefHeight="60.0" prefWidth="250.0" text="English" textAlignment="CENTER" wrapText="true">
@@ -79,12 +79,12 @@
       </ImageView>
       <ImageView fitHeight="111.0" fitWidth="129.0" layoutX="573.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/next.gif" />
+            <Image url="@../icon/choiceGame.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="111.0" fitWidth="129.0" layoutX="573.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/next.gif" />
+            <Image url="@../icon/choiceGame.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="257.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">

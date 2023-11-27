@@ -1,8 +1,6 @@
 package Controller;
-
 import Connect.Alerter;
 import Connect.ConnectDB;
-import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -31,17 +27,12 @@ public class UpdateAcc implements Initializable {
 
     @FXML
     private PasswordField oldPass, newPass;
-
-    @FXML
-    private JFXButton submitButton, changeavt;
-
     @FXML
     private Label updateLabel;
 
     @FXML
     private ImageView userimage;
 
-    private boolean check = false;
     private AnchorPane mainpane;
     private int userID;
 
@@ -81,14 +72,14 @@ public class UpdateAcc implements Initializable {
                         Parent root = fxmlLoader.load();
                         Scene scene = new Scene(root);
                         Alerter alertControler = fxmlLoader.getController();
-                        alertControler.display("The account has been successfully updated.", "/data/icon/like2.gif", scene);
+                        alertControler.display("The account has been successfully updated.", "/data/icon/like.gif", scene);
                     }
                     if (oldusername.equals(newusername) && oldpass.equals(newpass)) {
                         FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
                         Parent root = fxmlLoader.load();
                         Scene scene = new Scene(root);
                         Alerter alertControler = fxmlLoader.getController();
-                        alertControler.display("No change", "/data/icon/angry2.gif", scene);
+                        alertControler.display("No change", "/data/icon/angry.gif", scene);
                     }
                     if (!oldusername.equals(newusername)) {
                         if (check()) {
@@ -102,14 +93,14 @@ public class UpdateAcc implements Initializable {
                             Parent root = fxmlLoader.load();
                             Scene scene = new Scene(root);
                             Alerter alertControler = fxmlLoader.getController();
-                            alertControler.display("The account has been successfully updated.", "/data/icon/like2.gif", scene);
+                            alertControler.display("The account has been successfully updated.", "/data/icon/like.gif", scene);
                         } else {
                             System.out.println("Check: false");
                             FXMLLoader fxmlLoader = new FXMLLoader(Alerter.class.getResource("/data/fxml/Alert.fxml"));
                             Parent root = fxmlLoader.load();
                             Scene scene = new Scene(root);
                             Alerter alertControler = fxmlLoader.getController();
-                            alertControler.display("This account exists.", "/data/icon/angry2.gif", scene);
+                            alertControler.display("This account exists.", "/data/icon/angry.gif", scene);
                         }
                     }
                 } else {
@@ -201,13 +192,6 @@ public class UpdateAcc implements Initializable {
 
     public void setMainpane(AnchorPane userpane) {
         this.mainpane = userpane;
-    }
-
-
-    public void signoutButtonOnAction(ActionEvent actionEvent) {
-    }
-
-    public void changeInfoButtonOnAction(ActionEvent actionEvent) {
     }
 
     public void setUserID(int userID) {
