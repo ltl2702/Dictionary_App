@@ -1,6 +1,7 @@
 package QuizGamee;
 
 import Connect.ConnectDB;
+import MatchGame.MenuMatchGame;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -418,5 +419,26 @@ public class QuestionController implements Initializable {
 
     public void setUserID(int userID) {
         this.userID = userID;
+    }
+
+    @FXML
+    void returnButtonOnAction(ActionEvent event) {
+        correct = 0;
+        wrong = 0;
+        counter = 1;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(QuizStartController.class.getResource("/data/fxml/QuizstartScene.fxml"));
+            AnchorPane Matchpane = fxmlLoader.load();
+            mainpane.getChildren().setAll(Matchpane);
+
+            QuizStartController MenuController = fxmlLoader.getController();
+            //userController.userLogin();
+            MenuController.setmainpane(mainpane);
+            MenuController.setUserID(userID);
+            //userController.setStage(stage);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 }

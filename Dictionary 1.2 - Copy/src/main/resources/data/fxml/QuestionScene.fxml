@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -37,5 +41,21 @@
                 <Font name="Arial Rounded MT Bold" size="18.0" />
             </font>
         </Label>
+      <JFXButton fx:id="returnButton" layoutX="801.0" layoutY="556.0" onAction="#returnButtonOnAction" prefHeight="38.0" prefWidth="131.0" text="Return">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <graphic>
+            <ImageView blendMode="LIGHTEN" fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/return1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <stylesheets>
+            <URL value="@../css/zoom.css" />
+            <URL value="@../css/background.css" />
+         </stylesheets>
+      </JFXButton>
     </children>
 </AnchorPane>

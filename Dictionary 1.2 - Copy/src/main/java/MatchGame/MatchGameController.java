@@ -1,6 +1,7 @@
 package MatchGame;
 
 import Connect.ConnectDB;
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -72,6 +73,9 @@ public class MatchGameController {
 
     @FXML
     private Button PauseButton;
+
+    @FXML
+    private JFXButton returnButton;
 
     @FXML
     private ImageView pauseImage;
@@ -562,5 +566,26 @@ public class MatchGameController {
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
     }
+
+    @FXML
+    void returnButtonOnAction(ActionEvent event) {
+        countdown.pause();
+        isGamePaused = true;
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MenuMatchGame.class.getResource("/data/fxml/MenuMatchGame.fxml"));
+            AnchorPane Matchpane = fxmlLoader.load();
+            mainpane.getChildren().setAll(Matchpane);
+
+            MenuMatchGame MenuController = fxmlLoader.getController();
+            //userController.userLogin();
+            MenuController.setmainpane(mainpane);
+            MenuController.setUserID(userID);
+            //userController.setStage(stage);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
+    }
+
 
 }
