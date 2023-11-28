@@ -14,12 +14,17 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import java.net.URL;
 import java.sql.*;
 import java.util.*;
 
-public class QuestionController implements Initializable {
+public class QuestionController {
+
+    Stage window = new Stage();
     @FXML
     Label question, answerLabel;
 
@@ -71,8 +76,10 @@ public class QuestionController implements Initializable {
         return "Score: " + correct + "/10";
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(Scene scene) {
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.initStyle(StageStyle.UNDECORATED);
+
         if (QuestionNum != null) {
             QuestionNum.setText(setQuesNum(1));
         } else {
@@ -89,6 +96,8 @@ public class QuestionController implements Initializable {
         option4.setOnMouseEntered(mouseEvent -> option4.setOpacity(0.70));
         option4.setOnMouseExited(mouseEvent -> option4.setOpacity(1));
         */
+        window.setScene(scene);
+        window.showAndWait();
     }
 
 
@@ -423,6 +432,7 @@ public class QuestionController implements Initializable {
 
     @FXML
     void returnButtonOnAction(ActionEvent event) {
+        window.close();
         correct = 0;
         wrong = 0;
         counter = 1;

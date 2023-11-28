@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.MatchGameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #283655; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.MatchGameController">
     <children>
         <AnchorPane layoutX="103.0" layoutY="161.0" stylesheets="@../css/matchGame.css">
             <children>
@@ -75,22 +75,22 @@
                 </Button>
             </children>
         </AnchorPane>
-        <Label layoutX="50.0" layoutY="77.0" prefHeight="30.0" prefWidth="63.0" stylesheets="@../css/matchGame.css" text="TIME: " textFill="RED">
+        <Label layoutX="117.0" layoutY="81.0" prefHeight="30.0" prefWidth="63.0" stylesheets="@../css/matchGame.css" text="TIME: " textFill="RED">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
         </Label>
-        <Label layoutX="395.0" layoutY="77.0" prefHeight="30.0" prefWidth="94.0" stylesheets="@../css/matchGame.css" text="SCORE: ">
+        <Label layoutX="462.0" layoutY="81.0" prefHeight="30.0" prefWidth="94.0" stylesheets="@../css/matchGame.css" text="SCORE: ">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
         </Label>
-        <Label fx:id="timeLabel" alignment="CENTER" layoutX="103.0" layoutY="77.0" prefHeight="25.0" prefWidth="94.0" stylesheets="@../css/matchGame.css" text="Label" textFill="RED">
+        <Label fx:id="timeLabel" alignment="CENTER" layoutX="170.0" layoutY="81.0" prefHeight="25.0" prefWidth="94.0" stylesheets="@../css/matchGame.css" text="Label" textFill="RED">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label fx:id="scoreLabel" alignment="CENTER" layoutX="461.0" layoutY="77.0" prefHeight="25.0" prefWidth="94.0" stylesheets="@../css/matchGame.css" text="Label">
+        <Label fx:id="scoreLabel" alignment="CENTER" layoutX="528.0" layoutY="81.0" prefHeight="25.0" prefWidth="94.0" stylesheets="@../css/matchGame.css" text="Label">
             <font>
                 <Font size="20.0" />
             </font>
@@ -104,7 +104,7 @@
                 </ImageView>
             </graphic>
         </JFXButton>
-      <JFXButton fx:id="returnButton" layoutX="854.0" layoutY="593.0" onAction="#returnButtonOnAction" prefHeight="38.0" prefWidth="131.0" text="Return">
+      <JFXButton fx:id="returnButton" layoutX="14.0" layoutY="14.0" onAction="#returnButtonOnAction" prefHeight="41.0" prefWidth="131.0" text="Return">
          <font>
             <Font size="20.0" />
          </font>

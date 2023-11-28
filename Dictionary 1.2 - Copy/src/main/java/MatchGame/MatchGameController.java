@@ -18,6 +18,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.sql.Connection;
@@ -28,6 +31,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class MatchGameController {
+
+    Stage window = new Stage();
 
     @FXML
     private Button card1;
@@ -468,7 +473,10 @@ public class MatchGameController {
         return String.format("%02d:%02d", minutes, remainingSeconds);
     }
 
-    public void initialize() {
+    public void initialize(Scene scene) {
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.initStyle(StageStyle.UNDECORATED);
+
         if (getUserName() == null) {
             System.out.println("Game: false");
         } else {
@@ -492,6 +500,9 @@ public class MatchGameController {
             card10.setOnAction(event -> handleButtonClick(card10));
             card11.setOnAction(event -> handleButtonClick(card11));
             card12.setOnAction(event -> handleButtonClick(card12));
+
+            window.setScene(scene);
+            window.showAndWait();
         }
     }
 
@@ -569,6 +580,7 @@ public class MatchGameController {
 
     @FXML
     void returnButtonOnAction(ActionEvent event) {
+        window.close();
         countdown.pause();
         isGamePaused = true;
         try {

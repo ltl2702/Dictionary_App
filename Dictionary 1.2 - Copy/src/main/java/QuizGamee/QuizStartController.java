@@ -4,6 +4,8 @@ import Controller.GameController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -63,12 +65,13 @@ public class QuizStartController {
     void playQuizButtonOnAction(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/QuestionScene.fxml"));
-            AnchorPane gamepane = fxmlLoader.load();
-            mainpane.getChildren().setAll(gamepane);
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
 
             QuestionController quizController = fxmlLoader.getController();
             quizController.setmainpane(mainpane);
             quizController.setUserID(userID);
+            quizController.initialize(scene);
 
         } catch (Exception e) {
             e.printStackTrace();
