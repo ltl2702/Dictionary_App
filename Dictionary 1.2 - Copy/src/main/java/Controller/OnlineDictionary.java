@@ -13,6 +13,8 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 import static java.awt.Desktop.getDesktop;
 
@@ -36,13 +38,15 @@ public class OnlineDictionary {
     void handleHyperLinkClick(ActionEvent event) {
         if (event.getSource() == CamHyperLink) {
             try {
-                getDesktop().browse(new URI("https://dictionary.cambridge.org/dictionary/english/" + selectedWord.toString()));
+                String encodedWord = URLEncoder.encode(selectedWord.toString(), StandardCharsets.UTF_8);
+                getDesktop().browse(new URI("https://dictionary.cambridge.org/dictionary/english/" + encodedWord.replace("+", "-")));
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
         } else if (event.getSource() == OxfordHyperLink) {
             try {
-                getDesktop().browse(new URI("https://www.oxfordlearnersdictionaries.com/definition/english/" + selectedWord.toString() + "?q=" + selectedWord.toString()));
+                String encodedWord = URLEncoder.encode(selectedWord.toString(), StandardCharsets.UTF_8);
+                getDesktop().browse(new URI("https://www.oxfordlearnersdictionaries.com/definition/english/" + encodedWord.replace("+", "-") + "?q=" + encodedWord));
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
