@@ -104,6 +104,7 @@ public class Home implements Initializable {
         MenuClose.setOnMouseClicked(event -> animateMenu(-400, animationDuration));
 
         webEngine = webView.getEngine();
+        webView.setDisable(true);
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             performSearch(newValue);
         });
