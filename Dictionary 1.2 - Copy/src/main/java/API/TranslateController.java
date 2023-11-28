@@ -27,6 +27,7 @@ public class TranslateController {
 
     private final GoogleTranslateAPI translator = new GoogleTranslateAPI("350c50c415msh8a0f5c71730baadp15d423jsnbe641e0ae6b8", "google-translate113.p.rapidapi.com", "https://google-translate113.p.rapidapi.com/api/v1/translator/text");
     private Task<Void> translationTask;
+    private int userID;
 
     @FXML
     private void initialize() {
@@ -193,5 +194,9 @@ public class TranslateController {
         }
     }
     public void speakAction(ActionEvent actionEvent) {
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

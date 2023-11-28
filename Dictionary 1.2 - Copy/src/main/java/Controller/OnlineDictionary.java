@@ -30,6 +30,7 @@ public class OnlineDictionary {
     @FXML
     private Hyperlink uetHyperLink;
     private Word selectedWord;
+    private int userID;
 
     @FXML
     void handleHyperLinkClick(ActionEvent event) {
@@ -66,5 +67,9 @@ public class OnlineDictionary {
 
     public void setSelectedWord(Word selectedWord) {
         this.selectedWord = selectedWord;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

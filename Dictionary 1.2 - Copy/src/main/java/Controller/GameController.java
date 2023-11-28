@@ -49,6 +49,7 @@ public class GameController {
             QuizStartController QuizController = fxmlLoader.getController();
             //userController.userLogin();
             QuizController.setmainpane(gamepane);
+            QuizController.setUserID(userID);
             //userController.setStage(stage);
         } catch (Exception ex) {
             ex.printStackTrace();

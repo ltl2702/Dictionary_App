@@ -23,7 +23,7 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/flipicon.png" />
+                  <Image url="@../icon/matchgame.png" />
                </image>
             </ImageView>
          </graphic>
@@ -37,7 +37,7 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../icon/flipicon.png" />
+                  <Image url="@../icon/quizicon.png" />
                </image>
             </ImageView>
          </graphic>

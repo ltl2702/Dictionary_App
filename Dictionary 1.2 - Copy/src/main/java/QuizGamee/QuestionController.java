@@ -47,6 +47,7 @@ public class QuestionController implements Initializable {
     public static int correct = 0;
     public static Connection connection;
     public static String answer;
+    private int userID;
 
 
     public QuestionController() {
@@ -224,6 +225,7 @@ public class QuestionController implements Initializable {
                 QuizResultController quizController = fxmlLoader.getController();
                 quizController.setmainpane(mainpane);
                 quizController.display(scene);
+                quizController.setUserID(userID);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -268,6 +270,7 @@ public class QuestionController implements Initializable {
                 QuizResultController quizController = fxmlLoader.getController();
                 quizController.setmainpane(mainpane);
                 quizController.display(scene);
+                quizController.setUserID(userID);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -310,6 +313,7 @@ public class QuestionController implements Initializable {
                 QuizResultController quizController = fxmlLoader.getController();
                 quizController.setmainpane(mainpane);
                 quizController.display(scene);
+                quizController.setUserID(userID);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -354,6 +358,7 @@ public class QuestionController implements Initializable {
                 QuizResultController quizController = fxmlLoader.getController();
                 quizController.setmainpane(mainpane);
                 quizController.display(scene);
+                quizController.setUserID(userID);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -409,5 +414,9 @@ public class QuestionController implements Initializable {
         Media sound = new Media(getClass().getResource("/data/audio/Nope.mp3").toExternalForm());
         mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

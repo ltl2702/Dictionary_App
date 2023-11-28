@@ -29,6 +29,7 @@ public class Contributor {
 
     @FXML
     private Hyperlink vtqHyperLink;
+    private int userID;
 
     @FXML
     void handleHyperLinkClick(ActionEvent event) {
@@ -69,4 +70,7 @@ public class Contributor {
         window.showAndWait();
     }
 
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 }

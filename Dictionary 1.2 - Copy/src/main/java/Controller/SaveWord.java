@@ -34,6 +34,7 @@ public class SaveWord {
     @FXML
     private TableView<Word> table;
     private String username;
+    private int userID;
 
     public void display() {
         try (Connection connectDatabase = new ConnectDB().connect("dict_hh")) {
@@ -75,5 +76,9 @@ public class SaveWord {
 
     public void setusername(String username) {
         this.username = username;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

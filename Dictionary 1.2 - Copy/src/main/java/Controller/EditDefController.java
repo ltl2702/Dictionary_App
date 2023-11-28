@@ -32,6 +32,7 @@ public class EditDefController {
     private Button discardButton, submitButton;
 
     private Word selectedWord;
+    private int userID;
 
     public void setSelectedWord(Word word) {
         this.selectedWord = word;
@@ -234,4 +235,7 @@ public class EditDefController {
         return pronounce;
     }
 
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 }

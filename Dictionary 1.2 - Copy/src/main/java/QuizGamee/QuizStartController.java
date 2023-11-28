@@ -41,6 +41,7 @@ public class QuizStartController {
 
     @FXML
     private Button exitQuizButton;
+    private int userID;
 
     @FXML
     void exitButtonOnAction(ActionEvent event) {
@@ -48,6 +49,9 @@ public class QuizStartController {
             FXMLLoader fxmlLoader = new FXMLLoader(GameController.class.getResource("/data/fxml/gameController.fxml"));
             AnchorPane gamepane = fxmlLoader.load();
             mainpane.getChildren().setAll(gamepane);
+
+            GameController gameController = fxmlLoader.getController();
+            gameController.setUserID(userID);
         } catch (Exception ex) {
             ex.printStackTrace();
             ex.getCause();
@@ -64,6 +68,7 @@ public class QuizStartController {
 
             QuestionController quizController = fxmlLoader.getController();
             quizController.setmainpane(mainpane);
+            quizController.setUserID(userID);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,5 +77,9 @@ public class QuizStartController {
 
     public void setmainpane(AnchorPane gamepane) {
         this.mainpane = gamepane;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

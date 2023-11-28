@@ -36,7 +36,7 @@ public class HelloApplication extends Application {
                 closeProgram();
             });
 
-            window.setTitle("Hello!");
+            window.setTitle("English Vietnamese Dictionary");
             window.setScene(scene);
             window.show();
         } catch (IOException e) {

@@ -21,6 +21,7 @@ public class QuizResultController {
     Button exit, replay;
     private AnchorPane mainpane;
     private MediaPlayer mediaPlayer;
+    private int userID;
 
     public void display(Scene scene) {
         window.initModality(Modality.APPLICATION_MODAL);
@@ -53,6 +54,7 @@ public class QuizResultController {
 
             QuizStartController MenuController = fxmlLoader2.getController();
             MenuController.setmainpane(mainpane);
+            MenuController.setUserID(userID);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -74,6 +76,7 @@ public class QuizResultController {
             QuestionController.setCounter(1);
 
             quizController.setmainpane(mainpane);
+            quizController.setUserID(userID);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,5 +85,9 @@ public class QuizResultController {
 
     public void setmainpane(AnchorPane mainpane) {
         this.mainpane = mainpane;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

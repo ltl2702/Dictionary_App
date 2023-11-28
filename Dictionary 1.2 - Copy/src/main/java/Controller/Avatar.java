@@ -108,10 +108,6 @@ public class Avatar {
             ex.getCause();
         }
     }
-    
-    //public void setStage(Stage window) {
-    //this.window = window;
-    //}
 
     public void setmainpane(AnchorPane mainpane) {
         this.mainpane = mainpane;

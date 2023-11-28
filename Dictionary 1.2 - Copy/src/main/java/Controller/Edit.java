@@ -75,6 +75,7 @@ public class Edit {
 
     @FXML
     private TextField removeword;
+    private int userID;
 
     @FXML
     void addSubOnAction(ActionEvent event) throws IOException {
@@ -428,5 +429,9 @@ public class Edit {
             ConnectDB.closeConnection();
         }
         return false;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }

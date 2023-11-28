@@ -1,6 +1,7 @@
 package Controller;
 
 import API.TextToSpeechFreetts;
+import API.TranslateController;
 import Connect.ConnectDB;
 import Dictionary.DictionaryManagement;
 import Dictionary.Word;
@@ -344,7 +345,18 @@ public class Home implements Initializable {
     }
     @FXML
     void editButtonOnAction(ActionEvent event) {
-        loadFXMLInBackground("/data/fxml/edit2.fxml");
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/edit2.fxml"));
+            AnchorPane homepane2 = fxmlLoader.load();
+            homePane.getChildren().setAll(homepane2);
+            Edit editController = fxmlLoader.getController();
+            //homeController.setUsername(username);
+            editController.setUserID(userID);
+            closeMenu();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            ex.getCause();
+        }
     }
 
     @FXML
@@ -356,6 +368,7 @@ public class Home implements Initializable {
 
             SaveWord saveController = fxmlLoader.getController();
             saveController.setusername(getUserName());
+            saveController.setUserID(userID);
             saveController.display();
             closeMenu();
         } catch (Exception ex) {
@@ -381,13 +394,23 @@ public class Home implements Initializable {
 
     @FXML
     void translateButtonOnAction(ActionEvent event) {
-        loadFXMLInBackground("/data/fxml/translate.fxml");
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(TranslateController.class.getResource("/data/fxml/translate.fxml"));
+            AnchorPane gamepane = fxmlLoader.load();
+            homePane.getChildren().setAll(gamepane);
+            closeMenu();
+            TranslateController translateController = fxmlLoader.getController();
+            translateController.setUserID(userID);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     @FXML
     void userButtonOnAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(User.class.getResource("/data/fxml/user.fxml"));
             AnchorPane userpane = fxmlLoader.load();
 
             homePane.getChildren().setAll(userpane);
@@ -439,6 +462,7 @@ public class Home implements Initializable {
                     EditDefController editDefController = fxmlLoader.getController();
                     editDefController.setHtmlContent(selectedWord.getHtml());
                     editDefController.setSelectedWord(selectedWord);
+                    editDefController.setUserID(userID);
 
                     Scene scene = new Scene(root);
                     editDefController.display(scene);
@@ -455,6 +479,7 @@ public class Home implements Initializable {
                     EditDefController editDefController = fxmlLoader.getController();
                     editDefController.setHtmlContent(selectedWord.getHtml());
                     editDefController.setSelectedWord(selectedWord);
+                    editDefController.setUserID(userID);
 
                     Scene scene = new Scene(root);
                     editDefController.display(scene);
@@ -477,6 +502,7 @@ public class Home implements Initializable {
             Scene scene = new Scene(root);
             Contributor contributorControler = fxmlLoader.getController();
             contributorControler.display(scene);
+            contributorControler.setUserID(userID);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -487,7 +513,7 @@ public class Home implements Initializable {
     @FXML
     void menuitemInfoOnAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Edit.class.getResource("/data/fxml/user.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(User.class.getResource("/data/fxml/user.fxml"));
             AnchorPane userpane = fxmlLoader.load();
 
             homePane.getChildren().setAll(userpane);
@@ -595,6 +621,7 @@ public class Home implements Initializable {
                     Parent root = fxmlLoader.load();
                     OnlineDictionary onlineDictionaryController = fxmlLoader.getController();
                     onlineDictionaryController.setSelectedWord(selectedWord);
+                    onlineDictionaryController.setUserID(userID);
 
                     Scene scene = new Scene(root);
                     onlineDictionaryController.display(scene);
@@ -609,6 +636,7 @@ public class Home implements Initializable {
                     Parent root = fxmlLoader.load();
                     OnlineDictionary onlineDictionaryController = fxmlLoader.getController();
                     onlineDictionaryController.setSelectedWord(selectedWord);
+                    onlineDictionaryController.setUserID(userID);
 
                     Scene scene = new Scene(root);
                     onlineDictionaryController.display(scene);
