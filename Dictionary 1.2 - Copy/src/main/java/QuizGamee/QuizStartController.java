@@ -13,9 +13,6 @@ public class QuizStartController {
     private Button playQuizButton;
     private AnchorPane mainpane;
 
-    @FXML
-    private AnchorPane quizgamePane;
-
     /*
     @FXML
     private void initializeQuiz () {
@@ -67,7 +64,7 @@ public class QuizStartController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/data/fxml/QuestionScene.fxml"));
             AnchorPane gamepane = fxmlLoader.load();
-            quizgamePane.getChildren().setAll(gamepane);
+            mainpane.getChildren().setAll(gamepane);
 
             QuestionController quizController = fxmlLoader.getController();
             quizController.setmainpane(mainpane);

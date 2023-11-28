@@ -16,8 +16,6 @@ public class MenuMatchGame {
     private JFXButton playButton;
     private AnchorPane mainpane;
     private int userID;
-    @FXML
-    private AnchorPane menumatchgamePane;
 
     @FXML
     void exitButtonOnAction(ActionEvent event) {
@@ -39,7 +37,7 @@ public class MenuMatchGame {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MatchGameController.class.getResource("/data/fxml/MatchGame.fxml"));
             AnchorPane gamepane = fxmlLoader.load();
-            menumatchgamePane.getChildren().setAll(gamepane);
+            mainpane.getChildren().setAll(gamepane);
 
             MatchGameController gameController = fxmlLoader.getController();
             //userController.userLogin();

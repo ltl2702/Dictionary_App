@@ -30,6 +30,10 @@ public class Intro {
         if (currentIndex < 2) {
             currentIndex++;
             updateImage();
+            prevButton.setOpacity(1);
+            nextButton.setOpacity(0);
+            nextButton.setDisable(true);
+            prevButton.setDisable(false);
         }
     }
 
@@ -38,6 +42,10 @@ public class Intro {
         if (currentIndex > 1) {
             currentIndex--;
             updateImage();
+            prevButton.setOpacity(0);
+            nextButton.setOpacity(1);
+            nextButton.setDisable(false);
+            prevButton.setDisable(true);
         }
     }
 
@@ -80,6 +88,8 @@ public class Intro {
 
     public void initialize() {
         currentIndex = 1;
+        prevButton.setOpacity(0);
+        prevButton.setDisable(true);
         String imagePath = "/data/image/intro" + currentIndex + ".png";
         Image newImage = new Image(getClass().getResourceAsStream(imagePath));
         image.setImage(newImage);
