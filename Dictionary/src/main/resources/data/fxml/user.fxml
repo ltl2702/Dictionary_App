@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.User">
+   <children>
+      <AnchorPane layoutX="29.0" layoutY="113.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="942.0" style="-fx-background-color: #283655; -fx-background-radius: 30;">
+         <children>
+            <AnchorPane layoutX="310.0" layoutY="32.0" prefHeight="434.0" prefWidth="578.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+               <children>
+                  <AnchorPane layoutX="93.0" layoutY="116.0" prefHeight="234.0" prefWidth="392.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 2;">
+                     <children>
+                        <Label layoutX="38.0" layoutY="41.0" text="First name :">
+                           <font>
+                              <Font name="Arial Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="39.0" layoutY="105.0" text="Last name :">
+                           <font>
+                              <Font name="Arial Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="38.0" layoutY="175.0" text="User name :">
+                           <font>
+                              <Font name="Arial Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="firstnameLabel" alignment="BASELINE_LEFT" layoutX="166.0" layoutY="37.0" prefHeight="30.0" prefWidth="200.0" textAlignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lastLabel" alignment="BASELINE_LEFT" layoutX="166.0" layoutY="102.0" prefHeight="30.0" prefWidth="200.0" textAlignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="usernameLabel" alignment="BASELINE_LEFT" layoutX="166.0" layoutY="171.0" prefHeight="30.0" prefWidth="200.0" textAlignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Label>
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="112.0" layoutY="31.0" text="Personal Infomation" textFill="#062e79">
+                     <font>
+                        <Font name="System Bold Italic" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <JFXButton fx:id="changeInfoButton" layoutX="75.0" layoutY="313.0" onAction="#changeInfoButtonOnAction" prefHeight="83.0" prefWidth="139.0" style="-fx-background-color: #4d648d;" text="Change your profile" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <stylesheets>
+                  <URL value="@../css/background.css" />
+                  <URL value="@../css/zoom.css" />
+               </stylesheets>
+            </JFXButton>
+            <AnchorPane layoutX="33.0" layoutY="51.0" prefHeight="221.0" prefWidth="224.0" style="-fx-background-color: #fac400; -fx-background-radius: 180;">
+               <children>
+                  <AnchorPane layoutX="20.0" layoutY="22.0" prefHeight="177.0" prefWidth="182.0" style="-fx-background-color: white; -fx-background-radius: 360;" />
+                  <ImageView fx:id="userimage" fitHeight="195.0" fitWidth="194.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../user/user14.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="230.0" prefHeight="102.0" prefWidth="574.0" style="-fx-background-radius: 40;">
+         <children>
+            <Label alignment="CENTER" layoutX="273.0" layoutY="14.0" prefHeight="60.0" prefWidth="304.0" text="Vietnamese" textAlignment="CENTER" textFill="#0092fa" wrapText="true">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="48.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="498.0" layoutY="13.0" AnchorPane.leftAnchor="0.0" />
+            <ImageView fitHeight="69.0" fitWidth="64.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/logo.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="61.0" layoutY="13.0" prefHeight="60.0" prefWidth="250.0" text="English" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="48.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="220.0" layoutY="65.0" prefHeight="38.0" prefWidth="182.0" text="Dictionary" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Bookman Old Style" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

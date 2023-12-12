@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="72d930b4-eae1-4440-967f-dbeaa109739c" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/src/main/java/cmd/Dictionary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/src/main/java/cmd/DictionaryCommandline.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/src/main/java/cmd/DictionaryManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/src/main/java/cmd/Word.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/src/main/resources/dictionaries.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.0/src/main/resources/dictionaryExport.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/cmd/Dictionary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/cmd/DictionaryCommandline.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/cmd/DictionaryManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/cmd/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/java/cmd/Word.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/resources/dictionaries.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.1/src/main/resources/dictionaryExport.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/cmu_us_kal.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/cmudict04.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/cmulex.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/controlsfx-8.40.11.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/en_us.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/freetts-jsapi10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/freetts.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/jackson-annotations-2.16.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/jackson-core-2.16.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/jackson-databind-2.16.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/jfoenix-9.0.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/jlayer-1.0.1.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/jsapi.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/jsoup-1.16.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/mbrola.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/mysql-connector-j-8.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/lib/sqlite-jdbc-3.36.0.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/API/BaseAPI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/API/GoogleTranslateAPI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/API/Language.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/API/TextToSpeechAPI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/API/TextToSpeechFreetts.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/API/TranslateController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/App/HelloApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Connect/Alerter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Connect/ConnectDB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Connect/HTML.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Connect/YesNo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/Avatar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/Contributor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/Edit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/EditDefController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/GameController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/Home.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/Intro.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/OnlineDictionary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/SaveWord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/Signup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/UpdateAcc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Controller/Welcome.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Dictionary/DictionaryManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/Dictionary/Word.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/MatchGame/AnswerSlide.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/MatchGame/MatchGameController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/MatchGame/MenuMatchGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/MatchGame/Score.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/QuizGamee/QuestionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/QuizGamee/QuizResultController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/QuizGamee/QuizStartController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/java/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/audio/Nope.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/audio/cheer.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/audio/disappointed.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/audio/true.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/audio/yes.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/css/QuestionSceneStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/css/QuizStartStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/css/background.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/css/buttonhome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/css/html.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/css/listResult.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/css/matchGame.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/css/scoreboard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/css/table.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/css/tabpane.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/css/zoom.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/database/dict_hh.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/database/dictionary_database.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/database/que.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/database/test2.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/database/test3.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/database/test4.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/database/tu.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/database/userinfo.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/Alert.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/Contributor.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/EditDefScene.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/Intro.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/MatchGame.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/MenuMatchGame.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/OnlineDictionary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/QuestionScene.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/QuizResultScene.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/QuizStartScene.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/SaveWord.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/ScoreMatchGame.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/answerSlide.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/avt.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/background.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/edit2.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/gameController.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/home.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/signup.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/translate.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/updateAcc.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/fxml/user.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/gameMatching/0-30.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/gameMatching/100.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/gameMatching/45.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/gameMatching/60-80.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/angry.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/avt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/chem.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/choiceGame.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/contributor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/cry.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/edit1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/exchange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/game.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/game_icon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/like.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/loa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/love1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/love2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/matchgame.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/menu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/next.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/notfun2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/online.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/password.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/pause.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/prev.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/quizicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/remove1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/return.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/return1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/robot.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/robot1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/save.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/signout.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/speaker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/submit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/think.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/translate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/icon/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/image/EditPerson.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/image/editButton.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/image/game.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/image/game1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/image/intro1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/image/intro2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/image/language.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/image/matching.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/image/ruleMatching.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dictionary 1.2/src/main/resources/data/user/user9.png" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2ZRKRsWEc55YsdvB1pfqIbdvmur" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/PC/IdeaProjects/BTL/Dictionary",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="72d930b4-eae1-4440-967f-dbeaa109739c" name="Changes" comment="" />
+      <created>1702379446848</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702379446848</updated>
+      <workItem from="1702379447860" duration="655000" />
+    </task>
+    <task id="LOCAL-00001" summary="update">
+      <option name="closed" value="true" />
+      <created>1702379461333</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1702379461333</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+</project>

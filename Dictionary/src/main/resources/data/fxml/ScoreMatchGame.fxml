@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="390.0" prefWidth="500.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.Score">
+   <children>
+      <ImageView fx:id="memeImage" fitHeight="206.0" fitWidth="295.0" layoutX="103.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="91.0" layoutY="59.0" text="Score:">
+         <font>
+            <Font name="Arial Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="270.0" layoutY="59.0" text="Time:">
+         <font>
+            <Font name="Arial Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="181.0" layoutY="14.0" text="SCORE BOARD" textFill="#860a0a">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="judgeLabel" alignment="CENTER" layoutX="129.0" layoutY="90.0" prefHeight="17.0" prefWidth="242.0" textFill="#062d6b">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreLabel" alignment="CENTER" layoutX="151.0" layoutY="54.0" prefHeight="30.0" prefWidth="82.0" text="Label">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="timeLabel" alignment="CENTER" layoutX="330.0" layoutY="54.0" prefHeight="30.0" prefWidth="82.0" text="Label">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="answerButton" layoutX="159.0" layoutY="344.0" onAction="#answerButtonOnAction" text="Answer" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <stylesheets>
+            <URL value="@../css/scoreboard.css" />
+            <URL value="@../css/zoom.css" />
+         </stylesheets>
+      </JFXButton>
+      <JFXButton fx:id="okButton" layoutX="280.0" layoutY="344.0" onAction="#okButtonOnAction" text="Okeee" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <stylesheets>
+            <URL value="@../css/zoom.css" />
+            <URL value="@../css/scoreboard.css" />
+         </stylesheets>
+      </JFXButton>
+   </children>
+</AnchorPane>

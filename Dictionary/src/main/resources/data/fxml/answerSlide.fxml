@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="mainpane" prefHeight="416.0" prefWidth="553.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.AnswerSlide">
+   <children>
+      <Label layoutX="152.0" layoutY="39.0" text="ANSWER BOARD" textFill="#860a0a">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="skipButton" layoutX="245.0" layoutY="350.0" onAction="#skipButtonOnAction" prefHeight="32.0" prefWidth="61.0" text="Skip" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <stylesheets>
+            <URL value="@../css/scoreboard.css" />
+            <URL value="@../css/zoom.css" />
+         </stylesheets>
+      </JFXButton>
+      <JFXButton fx:id="prevButton" layoutX="41.0" layoutY="193.0" onAction="#prevButtonOnAction" prefHeight="30.0" prefWidth="40.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/prev.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="nextButton" layoutX="474.0" layoutY="193.0" onAction="#nextButtonOnAction" prefHeight="30.0" prefWidth="50.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/next.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <AnchorPane fx:id="wordpane" layoutX="105.0" layoutY="115.0" prefHeight="215.0" prefWidth="343.0" style="-fx-border-color: black; -fx-background-color: #EEE5DE; -fx-border-radius: 5;">
+         <children>
+            <Label fx:id="descriptionLabel" alignment="CENTER" layoutX="29.0" layoutY="81.0" prefHeight="119.0" prefWidth="289.0" style="-fx-background-color: white; -fx-background-radius: 20;" text="abc" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Arial Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="wordLabel" alignment="CENTER" layoutX="18.0" layoutY="14.0" prefHeight="30.0" prefWidth="312.0" text="Label">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
