@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.net.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainpane" prefHeight="416.0" prefWidth="553.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.AnswerSlide">
+<AnchorPane fx:id="mainpane" prefHeight="416.0" prefWidth="553.0" style="-fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10; -fx-border-width: 4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.AnswerSlide">
    <children>
       <Label layoutX="152.0" layoutY="39.0" text="ANSWER BOARD" textFill="#860a0a">
          <font>
@@ -23,7 +24,7 @@
             <URL value="@../css/zoom.css" />
          </stylesheets>
       </JFXButton>
-      <JFXButton fx:id="prevButton" layoutX="41.0" layoutY="193.0" onAction="#prevButtonOnAction" prefHeight="30.0" prefWidth="40.0" text=" ">
+      <JFXButton fx:id="prevButton" layoutX="41.0" layoutY="193.0" onAction="#prevButtonOnAction" prefHeight="30.0" prefWidth="40.0" style="-fx-cursor: hand;" text=" ">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -31,7 +32,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="nextButton" layoutX="474.0" layoutY="193.0" onAction="#nextButtonOnAction" prefHeight="30.0" prefWidth="50.0" text=" ">
+      <JFXButton fx:id="nextButton" layoutX="474.0" layoutY="193.0" onAction="#nextButtonOnAction" prefHeight="30.0" prefWidth="50.0" style="-fx-cursor: hand;" text=" ">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
