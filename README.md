@@ -22,13 +22,13 @@ Our group consists of 3 members:
 #### 2.1. Search, Favorite , Edit directly and Online Dictionary:
 <img width="753" alt="image" src="https://github.com/ltl2702/Dictionary_App/assets/124849254/1d279d4f-9c2f-4d10-ac00-7c35e7c45b40">
 
--- Can save, edit words, look up words on Cambridge and Oxford dictionaries.
--- Can see our group information, your information and SIGN OUT.
+* Can save, edit words, look up words on Cambridge and Oxford dictionaries.
+* Can see our group information, your information and SIGN OUT.
 
 ### 3. Edit words:
 <img width="754" alt="image" src="https://github.com/ltl2702/Dictionary_App/assets/124849254/bf5387e1-1e5a-432c-bafa-52d3c63aa640">
 
--- Can add, remove words, edit undirectly words.
+* Can add, remove words, edit undirectly words.
 
 ### 4. Favorite words:
 ***Each account has a different list of favorite words***
@@ -53,7 +53,7 @@ Our game have:
 <img width="379" alt="image" src="https://github.com/ltl2702/Dictionary_App/assets/124849254/ee8776f0-0676-4bca-bb1c-85991a9e036d">
 
 * Answer: The answer appears when the countdown ends or you win the game
-***Can press prev or next button to see the answer***
+* ***Can press prev or next button to see the answer***
 <img width="749" alt="image" src="https://github.com/ltl2702/Dictionary_App/assets/124849254/3377801d-b9f4-4054-bea5-441d5ad3b8a8">
 
 #### 6.2. Quiz game:
