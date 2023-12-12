@@ -4,19 +4,13 @@ import Connect.ConnectDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-
-import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
