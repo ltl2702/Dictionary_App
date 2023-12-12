@@ -21,23 +21,27 @@ Our group consists of 3 members:
 ### 2. Home:
 #### 2.1. Search, Favorite , Edit directly and Online Dictionary:
 <img width="753" alt="image" src="https://github.com/ltl2702/Dictionary_App/assets/124849254/1d279d4f-9c2f-4d10-ac00-7c35e7c45b40">
+
 -- Can save, edit words, look up words on Cambridge and Oxford dictionaries.
 -- Can see our group information, your information and SIGN OUT.
 
 ### 3. Edit words:
 <img width="754" alt="image" src="https://github.com/ltl2702/Dictionary_App/assets/124849254/bf5387e1-1e5a-432c-bafa-52d3c63aa640">
+
 -- Can add, remove words, edit undirectly words.
 
 ### 4. Favorite words:
-**Each account has a different list of favorite words**
+***Each account has a different list of favorite words***
+
 <img width="756" alt="image" src="https://github.com/ltl2702/Dictionary_App/assets/124849254/f41b82f0-cbb3-43fd-815b-c3bccfca1073">
 
 ### 5. Google translate:
-**Can translate and listen**
+***Can translate and listen***
+
 <img width="757" alt="image" src="https://github.com/ltl2702/Dictionary_App/assets/124849254/14bd3cd5-e9b2-476e-b376-87eaf68f9b0c">
 
 ### 6. Game:
-**We have 2 games**
+***We have 2 games***
 #### 6.1. Matching game:
 <img width="755" alt="image" src="https://github.com/ltl2702/Dictionary_App/assets/124849254/536734f0-ed56-4e7f-b64d-81f5b9417f32">
 
@@ -49,9 +53,8 @@ Our game have:
 <img width="379" alt="image" src="https://github.com/ltl2702/Dictionary_App/assets/124849254/ee8776f0-0676-4bca-bb1c-85991a9e036d">
 
 * Answer: The answer appears when the countdown ends or you win the game
+***Can press prev or next button to see the answer***
 <img width="749" alt="image" src="https://github.com/ltl2702/Dictionary_App/assets/124849254/3377801d-b9f4-4054-bea5-441d5ad3b8a8">
-
-**Can press prev or next button to see the answer**
 
 #### 6.2. Quiz game:
 <img width="748" alt="image" src="https://github.com/ltl2702/Dictionary_App/assets/124849254/f1bd7915-0793-4121-9d6b-871a5bfe3f08">
