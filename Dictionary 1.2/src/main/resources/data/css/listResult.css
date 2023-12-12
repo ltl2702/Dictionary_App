@@ -1,0 +1,28 @@
+.list-view {
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+    -fx-border-color: black;
+    -fx-border-radius: 20px;
+    -fx-border-width: 2;
+}
+
+.list-view:hover {
+    -fx-background-color: white; /* Màu nền khi di chuột vào */
+    -fx-background-radius: 20px;
+    -fx-border-color: black;
+    -fx-border-radius: 20px;
+    -fx-border-width: 2;
+}
+.list-view:empty {
+    -fx-background-color: transparent;
+}
+.list-cell {
+    -fx-background-color: white ;
+    -fx-text-fill: black;
+}
+
+.list-cell:hover {
+    -fx-cursor: HAND;
+    -fx-background-color: #d0e1f9; /* Màu nền khi di chuột vào cell */
+    -fx-text-fill: black; /* Màu chữ khi di chuột vào cell */
+}

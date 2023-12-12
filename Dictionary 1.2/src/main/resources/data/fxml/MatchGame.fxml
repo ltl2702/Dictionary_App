@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #283655; -fx-border-width: 5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchGame.MatchGameController">
+    <children>
+        <AnchorPane layoutX="103.0" layoutY="161.0" stylesheets="@../css/matchGame.css">
+            <children>
+                <Button fx:id="card1" mnemonicParsing="false" prefHeight="120.0" prefWidth="175.0" stylesheets="@../css/matchGame.css" text="a" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="card2" layoutX="204.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="175.0" stylesheets="@../css/matchGame.css" text="a" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="card3" layoutX="412.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="175.0" stylesheets="@../css/matchGame.css" text="a" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="card4" layoutX="618.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="175.0" stylesheets="@../css/matchGame.css" text="a" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="card5" layoutY="158.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="175.0" stylesheets="@../css/matchGame.css" text="a" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="card6" layoutX="204.0" layoutY="158.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="175.0" stylesheets="@../css/matchGame.css" text="a" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="card7" layoutX="412.0" layoutY="158.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="175.0" stylesheets="@../css/matchGame.css" text="a" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="card8" layoutX="618.0" layoutY="158.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="175.0" stylesheets="@../css/matchGame.css" text="a" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="card9" layoutY="309.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="175.0" stylesheets="@../css/matchGame.css" text="a" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="card10" layoutX="204.0" layoutY="309.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="175.0" stylesheets="@../css/matchGame.css" text="a" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="card11" layoutX="412.0" layoutY="309.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="175.0" stylesheets="@../css/matchGame.css" text="a" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="card12" layoutX="618.0" layoutY="309.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="175.0" stylesheets="@../css/matchGame.css" text="a" wrapText="true">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <Label layoutX="117.0" layoutY="81.0" prefHeight="30.0" prefWidth="63.0" stylesheets="@../css/matchGame.css" text="TIME: " textFill="RED">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <Label layoutX="462.0" layoutY="81.0" prefHeight="30.0" prefWidth="94.0" stylesheets="@../css/matchGame.css" text="SCORE: ">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="timeLabel" alignment="CENTER" layoutX="170.0" layoutY="81.0" prefHeight="25.0" prefWidth="94.0" stylesheets="@../css/matchGame.css" text="Label" textFill="RED">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="scoreLabel" alignment="CENTER" layoutX="528.0" layoutY="81.0" prefHeight="25.0" prefWidth="94.0" stylesheets="@../css/matchGame.css" text="Label">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <JFXButton fx:id="PauseButton" layoutX="854.4" layoutY="28.0" onAction="#PauseButtonOnAction" prefHeight="58.0" prefWidth="63.0" style="-fx-background-color: white; -fx-cursor: hand; -fx-background-radius: 10;" text=" " AnchorPane.bottomAnchor="564.0" AnchorPane.leftAnchor="854.0" AnchorPane.rightAnchor="83.0" AnchorPane.topAnchor="28.0">
+            <graphic>
+                <ImageView fx:id="pauseImage" fitHeight="41.0" fitWidth="60.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icon/play.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+      <JFXButton fx:id="returnButton" layoutX="14.0" layoutY="14.0" onAction="#returnButtonOnAction" prefHeight="41.0" prefWidth="131.0" text="Return">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <graphic>
+            <ImageView blendMode="LIGHTEN" fitHeight="38.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/return1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <stylesheets>
+            <URL value="@../css/zoom.css" />
+            <URL value="@../css/background.css" />
+         </stylesheets>
+      </JFXButton>
+    </children>
+</AnchorPane>
