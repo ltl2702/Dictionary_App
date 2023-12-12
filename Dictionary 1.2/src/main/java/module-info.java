@@ -12,8 +12,8 @@ module OOP {
     requires java.desktop;
     requires javafx.base;
     requires javafx.media;
+    //requires jsoup;
     requires org.jsoup;
-    // requires jsoup;
     //requires jsapi;
 
     exports App;
